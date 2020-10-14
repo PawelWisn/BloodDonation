@@ -26,11 +26,12 @@ SECRET_KEY = 'y$#h_=vm)r5vp-=u*--0+5cp@jcjaf&7s(b5=_iz#3*$$^*c4='
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]']
-
+DATE_INPUT_FORMATS = ('%d-%m-%Y', '%d-%m-y', '%Y-%m-%d')
 
 # Application definition
 
 INSTALLED_APPS = [
+    'Main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
