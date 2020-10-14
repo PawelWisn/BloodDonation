@@ -25,11 +25,14 @@ class User(models.Model):
 
 
 class Donation(models.Model):
-    DONATIONTYPE = [("BLD","Blood"),("PLM","Plasma"),("PLT","Platelets")]
-    
+    class DONATIONTYPE(models.TextChoices):
+        BLD = "Blood"
+        PLM = "Plasma"
+        PLT = "Platelets"
+
     donor = models.ForeignKey(User, on_delete=models.CASCADE)
     place = models.ForeignKey(Localization, on_delete=models.CASCADE)
-    donationType = models.CharField(choices=DONATIONTYPE, max_length=50)
+    donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLD ,max_length=50)
     amount = models.FloatField(null=False)
     time = models.DateTimeField(null=True)
     
