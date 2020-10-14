@@ -1,0 +1,31 @@
+version: '3'
+services:
+ frontend:
+  build: ./Frontend/
+  command: npm start
+  ports:
+   - "80:3000"
+ postgres:
+  image: postgres:12.2
+  ports:
+   - "5432"
+  volumes:
+   - postgres_data:/var/lib/postgresql/data
+  environment:
+   POSTGRES_DB: blooddonation
+   POSTGRES_USER: admin
+   POSTGRES_PASSWORD: password
+ backend:
+  build: ./BloodDonationBackend
+  entrypoint: ./entrypoint.sh
+  command: python manage.py runserver 0.0.0.0:8000
+  volumes:
+   - ./BloodDonationBackend:/code
+  ports:
+   - "8000:8000"
+  depends_on:
+   - postgres
+  
+volumes:
+  postgres_data:
+
