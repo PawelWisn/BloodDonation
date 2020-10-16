@@ -32,6 +32,7 @@ DATE_INPUT_FORMATS = ('%d-%m-%Y', '%d-%m-y', '%Y-%m-%d')
 
 INSTALLED_APPS = [
     'Main.apps.MainConfig',
+    'graphene_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+GRAPHENE = {
+    'SCHEMA:': 'app.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
