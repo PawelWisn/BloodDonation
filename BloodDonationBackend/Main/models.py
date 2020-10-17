@@ -1,7 +1,9 @@
 from django.db import models
-
+from graphene_django import DjangoObjectType
+import graphene
 
 # Create your models here.
+
 
 class Localization(models.Model):
     city = models.CharField(max_length=256)
@@ -10,6 +12,17 @@ class Localization(models.Model):
     addressLine2 = models.CharField(max_length=256, null=True)
     placeName = models.CharField(max_length=256, null=True)
     isMobilePoint = models.BooleanField(default=False)
+
+class Local(DjangoObjectType):
+    class Meta:
+        model = Localization
+        fields = ("city","country",'addressLine1','addressLine2', 'placeName', 'isMobilePoint')
+
+class QueryLocal(graphene.ObjectType):
+    all_locals = graphene.List(Local)
+    def resolve_all_locals(self, info):
+        print('----',Localization.objects.all())
+        return Localization.objects.all()
 
 class User(models.Model):
     firstName = models.CharField(max_length=64)
@@ -36,4 +49,4 @@ class Donation(models.Model):
     amount = models.FloatField(null=False)
     time = models.DateTimeField(null=True)
     
-
+schema = graphene.Schema(query=QueryLocal)
