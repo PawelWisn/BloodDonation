@@ -1,11 +1,9 @@
 from django.db import models
-from graphene_django import DjangoObjectType
-import graphene
 
 # Create your models here.
 
 
-class Localization(models.Model):
+class LocalizationModel(models.Model):
     city = models.CharField(max_length=256)
     country = models.CharField(max_length=256)
     addressLine1 = models.CharField(max_length=256, null=True)
@@ -13,18 +11,9 @@ class Localization(models.Model):
     placeName = models.CharField(max_length=256, null=True)
     isMobilePoint = models.BooleanField(default=False)
 
-class Local(DjangoObjectType):
-    class Meta:
-        model = Localization
-        fields = ("city","country",'addressLine1','addressLine2', 'placeName', 'isMobilePoint')
 
-class QueryLocal(graphene.ObjectType):
-    all_locals = graphene.List(Local)
-    def resolve_all_locals(self, info):
-        print('----',Localization.objects.all())
-        return Localization.objects.all()
 
-class User(models.Model):
+class UserModel(models.Model):
     firstName = models.CharField(max_length=64)
     lastName = models.CharField(max_length=256)
     email = models.CharField(max_length=64)
@@ -37,16 +26,16 @@ class User(models.Model):
 
 
 
-class Donation(models.Model):
+class DonationModel(models.Model):
     class DONATIONTYPE(models.TextChoices):
         BLD = "Blood"
         PLM = "Plasma"
         PLT = "Platelets"
 
-    donor = models.ForeignKey(User, on_delete=models.CASCADE)
-    place = models.ForeignKey(Localization, on_delete=models.CASCADE)
+    donor = models.ForeignKey(UserModel, on_delete=models.CASCADE)
+    place = models.ForeignKey(LocalizationModel, on_delete=models.CASCADE)
     donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLD ,max_length=50)
     amount = models.FloatField(null=False)
     time = models.DateTimeField(null=True)
     
-schema = graphene.Schema(query=QueryLocal)
+
