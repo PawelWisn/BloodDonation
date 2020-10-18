@@ -41,7 +41,6 @@ class LocalizationModel(models.Model):
 
 class UserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), max_length=64, unique=True)
-    salt = models.CharField(max_length=64, default='')
     password = models.CharField(max_length=128, default='')
     date_joined = models.DateTimeField(default=datetime.datetime.now)
     is_superuser = models.BooleanField(default=False)
