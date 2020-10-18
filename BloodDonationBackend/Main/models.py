@@ -37,12 +37,15 @@ class LocalizationModel(models.Model):
     placeName = models.CharField(max_length=256, null=True)
     isMobilePoint = models.BooleanField(default=False)
 
+    def __str__(self):
+        return self.placeName
+
 
 
 class UserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), max_length=64, unique=True)
     password = models.CharField(max_length=128, default='')
-    date_joined = models.DateTimeField(default=datetime.datetime.now)
+    date_joined = models.DateTimeField(default=timezone.now)
     is_superuser = models.BooleanField(default=False)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -71,5 +74,8 @@ class DonationModel(models.Model):
     donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLD ,max_length=50)
     amount = models.FloatField(null=False)
     time = models.DateTimeField(null=True)
+
+    def __str__(self):
+        return self.id
     
 
