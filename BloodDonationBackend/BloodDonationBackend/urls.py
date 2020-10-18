@@ -22,6 +22,7 @@ from Main.schema import *
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path(r'graphql/locals', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=LocalizationSchema))),
-    path(r'graphql/users', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=UserSchema))),
+    path(r'graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
+    # path(r'graphql/locals', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=LocalizationSchema))),
+    # path(r'graphql/users', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=UserSchema))),
 ]
