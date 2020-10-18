@@ -31,9 +31,8 @@ class CustomUserManager(BaseUserManager):
 
 class LocalizationModel(models.Model):
     city = models.CharField(max_length=256)
-    country = models.CharField(max_length=256)
-    addressLine1 = models.CharField(max_length=256, null=True)
-    addressLine2 = models.CharField(max_length=256, null=True)
+    addressLine1 = models.CharField(max_length=256, null=True, default='')
+    addressLine2 = models.CharField(max_length=256, null=True, default='')
     placeName = models.CharField(max_length=256, null=True)
     isMobilePoint = models.BooleanField(default=False)
 
