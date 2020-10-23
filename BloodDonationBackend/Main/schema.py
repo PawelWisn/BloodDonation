@@ -50,10 +50,20 @@ class Query(graphene.ObjectType):
 
     all_donations = graphene.List(DonationType)
     donation_by_type = graphene.List(DonationType, donationType=graphene.String(required=True))
+    donation_with_user = graphene.List(DonationType, donor=graphene.String(required=True))
     def resolve_all_donations(self, info):
         return DonationModel.objects.all()
 
     def resolve_donation_by_type(self, info, donationType):
         return DonationModel.objects.filter(donationType=donationType)
+
+    def resolve_donation_with_user(self, info,donor):
+        try:
+            user = UserModel.objects.get(email=donor)
+        except UserModel.DoesNotExist:
+            return None
+        return DonationModel.objects.filter(donor=user)
+
+
 
 schema = graphene.Schema(query=Query)
