@@ -33,7 +33,7 @@ class LocalizationModel(models.Model):
     city = models.CharField(max_length=256)
     addressLine1 = models.CharField(max_length=256, null=True, default='')
     addressLine2 = models.CharField(max_length=256, null=True, default='')
-    placeName = models.CharField(max_length=256, null=True)
+    placeName = models.CharField(max_length=256, primary_key=True)
     isMobilePoint = models.BooleanField(default=False)
 
     def __str__(self):
@@ -50,9 +50,9 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    donatedBlood = models.FloatField(default=0.0)
-    donatedPlasma = models.FloatField(default=0.0)
-    donatedPlatelets = models.FloatField(default=0.0)
+    donatedBlood = models.IntegerField(default=0)
+    donatedPlasma = models.IntegerField(default=0)
+    donatedPlatelets = models.IntegerField(default=0)
     lastDonationTime = models.DateTimeField(null=True)
 
     objects = CustomUserManager()
@@ -64,17 +64,17 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
 
 class DonationModel(models.Model):
     class DONATIONTYPE(models.TextChoices):
-        BLD = "Blood"
-        PLM = "Plasma"
-        PLT = "Platelets"
+        BLOOD = "BLD"
+        PLASMA = "PLM"
+        PLATELETS = "PLT"
 
     donor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     place = models.ForeignKey(LocalizationModel, on_delete=models.CASCADE)
-    donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLD ,max_length=50)
-    amount = models.FloatField(null=False)
+    donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLOOD ,max_length=3)
+    amount = models.IntegerField(null=False)
     time = models.DateTimeField(null=True)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
     
 

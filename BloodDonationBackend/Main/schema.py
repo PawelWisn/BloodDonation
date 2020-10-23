@@ -21,12 +21,22 @@ class LocalizationNode(DjangoObjectType):
         interfaces = (graphene.relay.Node,)
 
 
+class DonationNode(DjangoObjectType):
+    class Meta:
+        model = DonationModel
+        fields = ("donor", 'place', 'donationType', 'amount', 'time')
+        filter_fields = ["donor", 'place', 'donationType', 'amount', 'time']
+        interfaces = (graphene.relay.Node,)
+
 class Query(graphene.ObjectType):
     city = graphene.relay.Node.Field(LocalizationNode)
     all_localizations = DjangoFilterConnectionField(LocalizationNode)
 
     is_staff = graphene.relay.Node.Field(UserNode)
     all_users = DjangoFilterConnectionField(UserNode)
+
+    all_donations = DjangoFilterConnectionField(DonationNode)
+    donation = DjangoFilterConnectionField(UserNode)
 
 
 
