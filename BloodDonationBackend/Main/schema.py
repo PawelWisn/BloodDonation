@@ -22,18 +22,11 @@ class DonationType(DjangoObjectType):
         model = DonationModel
         fields = ("donor", 'place', 'donationType', 'amount', 'time')
 
-class Query(graphene.ObjectType):
-    # city = graphene.relay.Node.Field(LocalizationNode)
-    # all_localizations = DjangoFilterConnectionField(LocalizationNode)
-    #
-    # is_staff = graphene.relay.Node.Field(UserNode)
-    # all_users = DjangoFilterConnectionField(UserNode)
-    #
-    # all_donations = DjangoFilterConnectionField(DonationNode)
-    # donation = DjangoFilterConnectionField(UserNode)
 
+class Query(graphene.ObjectType):
     all_localizations = graphene.List(LocalizationType)
     city = graphene.Field(LocalizationType, city=graphene.String(required=True))
+
     def resolve_all_localizations(self, info):
         return LocalizationModel.objects.all()
 
@@ -42,6 +35,7 @@ class Query(graphene.ObjectType):
 
     all_users = graphene.List(UserType)
     is_staff = graphene.List(UserType, is_staff=graphene.Boolean(required=True))
+
     def resolve_all_users(self, info):
         return UserModel.objects.all()
 
@@ -51,19 +45,22 @@ class Query(graphene.ObjectType):
     all_donations = graphene.List(DonationType)
     donation_by_type = graphene.List(DonationType, donationType=graphene.String(required=True))
     donation_with_user = graphene.List(DonationType, donor=graphene.String(required=True))
+
     def resolve_all_donations(self, info):
         return DonationModel.objects.all()
 
     def resolve_donation_by_type(self, info, donationType):
         return DonationModel.objects.filter(donationType=donationType)
 
-    def resolve_donation_with_user(self, info,donor):
+    def resolve_donation_with_user(self, info, donor):
         try:
             user = UserModel.objects.get(email=donor)
         except UserModel.DoesNotExist:
             return None
         return DonationModel.objects.filter(donor=user)
 
+# class Mutation(graphene.ObjectType):
+#     pass
 
-
+# schema = graphene.Schema(query=Query, mutation=Mutation)
 schema = graphene.Schema(query=Query)

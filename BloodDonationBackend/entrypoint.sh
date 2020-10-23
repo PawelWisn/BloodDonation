@@ -17,8 +17,8 @@ echo "from Main.models import LocalizationModel; LocalizationModel.objects.creat
 echo "from Main.models import LocalizationModel; LocalizationModel.objects.create(city='Opole',placeName='Donatorium')" | python manage.py shell
 echo "from Main.models import LocalizationModel; LocalizationModel.objects.create(city='Wroclaw',placeName='Plytka')" | python manage.py shell
 echo "from Main.models import LocalizationModel; LocalizationModel.objects.create(city='London',placeName='Bloody')" | python manage.py shell
-echo "from Main.models import *;from django.utils import timezone;users = UserModel.objects.all();locs = LocalizationModel.objects.all();DonationModel(donor=users[1],place=locs[0],donationType=DonationModel.DONATIONTYPE.BLOOD, amount=450,time=timezone.now()).save();
-DonationModel(donor=users[2],place=locs[2],donationType=DonationModel.DONATIONTYPE.PLASMA, amount=450,time=timezone.now()).save();
-DonationModel(donor=users[3],place=locs[3],donationType=DonationModel.DONATIONTYPE.PLATELETS, amount=450,time=timezone.now()).save();" | python manage.py shell
+echo "from Main.models import *;from django.utils import timezone;users = UserModel.objects.all();locs = LocalizationModel.objects.all();DonationModel(donor=users[1],place=locs[0],donationType='BLD', amount=450,time=timezone.now()).save();
+DonationModel(donor=users[2],place=locs[2],donationType='PLM', amount=450,time=timezone.now()).save();
+DonationModel(donor=users[3],place=locs[3],donationType='PLT', amount=450,time=timezone.now()).save();" | python manage.py shell
 
 exec "$@"
