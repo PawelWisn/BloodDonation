@@ -4,41 +4,56 @@ from Main.models import *
 from graphene_django.filter import DjangoFilterConnectionField
 
 
-class UserNode(DjangoObjectType):
+class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
         fields = ("email", "date_joined", 'is_superuser', 'is_staff', 'is_active', 'donatedBlood', 'donatedPlasma',
                   'donatedPlatelets', 'lastDonationTime')
-        filter_fields = ['is_staff', 'date_joined', 'is_active']
-        interfaces = (graphene.relay.Node,)
 
 
-class LocalizationNode(DjangoObjectType):
+class LocalizationType(DjangoObjectType):
     class Meta:
         model = LocalizationModel
         fields = ("city", 'addressLine1', 'addressLine2', 'placeName', 'isMobilePoint')
-        filter_fields = ["city", 'addressLine1', 'addressLine2', 'placeName', 'isMobilePoint']
-        interfaces = (graphene.relay.Node,)
 
 
-class DonationNode(DjangoObjectType):
+class DonationType(DjangoObjectType):
     class Meta:
         model = DonationModel
         fields = ("donor", 'place', 'donationType', 'amount', 'time')
-        filter_fields = ["donor", 'place', 'donationType', 'amount', 'time']
-        interfaces = (graphene.relay.Node,)
 
 class Query(graphene.ObjectType):
-    city = graphene.relay.Node.Field(LocalizationNode)
-    all_localizations = DjangoFilterConnectionField(LocalizationNode)
+    # city = graphene.relay.Node.Field(LocalizationNode)
+    # all_localizations = DjangoFilterConnectionField(LocalizationNode)
+    #
+    # is_staff = graphene.relay.Node.Field(UserNode)
+    # all_users = DjangoFilterConnectionField(UserNode)
+    #
+    # all_donations = DjangoFilterConnectionField(DonationNode)
+    # donation = DjangoFilterConnectionField(UserNode)
 
-    is_staff = graphene.relay.Node.Field(UserNode)
-    all_users = DjangoFilterConnectionField(UserNode)
+    all_localizations = graphene.List(LocalizationType)
+    city = graphene.Field(LocalizationType, city=graphene.String(required=True))
+    def resolve_all_localizations(self, info):
+        return LocalizationModel.objects.all()
 
-    all_donations = DjangoFilterConnectionField(DonationNode)
-    donation = DjangoFilterConnectionField(UserNode)
+    def resolve_city(self, info, city):
+        return LocalizationModel.objects.filter(city=city).first()
 
+    all_users = graphene.List(UserType)
+    is_staff = graphene.List(UserType, is_staff=graphene.Boolean(required=True))
+    def resolve_all_users(self, info):
+        return UserModel.objects.all()
 
+    def resolve_is_staff(self, info, is_staff):
+        return UserModel.objects.filter(is_staff=is_staff)
 
+    all_donations = graphene.List(DonationType)
+    donation_by_type = graphene.List(DonationType, donationType=graphene.String(required=True))
+    def resolve_all_donations(self, info):
+        return DonationModel.objects.all()
+
+    def resolve_donation_by_type(self, info, donationType):
+        return DonationModel.objects.filter(donationType=donationType)
 
 schema = graphene.Schema(query=Query)
