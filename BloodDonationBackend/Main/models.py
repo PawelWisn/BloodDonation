@@ -33,7 +33,7 @@ class LocalizationModel(models.Model):
     city = models.CharField(max_length=256)
     addressLine1 = models.CharField(max_length=256, null=True, default='')
     addressLine2 = models.CharField(max_length=256, null=True, default='')
-    placeName = models.CharField(max_length=256, primary_key=True)
+    placeName = models.CharField(max_length=256)
     isMobilePoint = models.BooleanField(default=False)
 
     def __str__(self):

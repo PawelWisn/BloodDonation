@@ -1,7 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
 from Main.models import *
-from graphene_django.filter import DjangoFilterConnectionField
 
 
 class UserType(DjangoObjectType):
@@ -59,8 +58,59 @@ class Query(graphene.ObjectType):
             return None
         return DonationModel.objects.filter(donor=user)
 
-# class Mutation(graphene.ObjectType):
-#     pass
+
+class ApplyDonationMutation(graphene.Mutation):
+    class Arguments:
+        email = graphene.String(required=True)
+        donatedAmount = graphene.String(required=True)
+        donatedType = graphene.String(required=True)
+        # city = graphene.String(required=True)
+        # addressLine1 = graphene.String(required=False)
+        # addressLine2 = graphene.String(required=False)
+        # placeName = graphene.String(required=True)
+        # isMobilePoint = graphene.Boolean(required=False)
+
+    user = graphene.Field(UserType)
+
+    def mutate(self, info, email, donatedAmount, donatedType):
+        try:
+            user = UserModel.objects.get(email=email)
+        except UserModel.DoesNotExist:
+            return None
+        if donatedType == 'BLD':
+            user.donatedBlood += int(donatedAmount)
+        elif donatedType == 'PLM':
+            user.donatedPlasma += int(donatedAmount)
+        elif donatedType == 'PLT':
+            user.donatedPlatelets += int(donatedAmount)
+        else:
+            return None
+        user.save()
+        return ApplyDonationMutation(user=user)
+
+
+class CreateUserMutation(graphene.Mutation):
+    class Arguments:
+        email = graphene.String(required=True)
+        password = graphene.String(required=True)
+
+    user = graphene.Field(UserType)
+
+    def mutate(self, info, email, password):
+        try:
+            UserModel.objects.get(email=email)
+        except UserModel.DoesNotExist:
+            user = UserModel.objects.create_user(email=email, password=password)
+            user.save()
+            return CreateUserMutation(user=user)
+        else:
+            return None
+
+
+class Mutation(graphene.ObjectType):
+    update_user = ApplyDonationMutation.Field()
+    create_user = CreateUserMutation.Field()
+
 
 # schema = graphene.Schema(query=Query, mutation=Mutation)
-schema = graphene.Schema(query=Query)
+schema = graphene.Schema(query=Query, mutation=Mutation)
