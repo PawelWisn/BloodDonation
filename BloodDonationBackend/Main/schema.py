@@ -14,7 +14,7 @@ class UserType(DjangoObjectType):
 class LocalizationType(DjangoObjectType):
     class Meta:
         model = LocalizationModel
-        fields = ("localization_id","city", 'addressLine1', 'addressLine2', 'placeName', 'isMobilePoint')
+        fields = ("localization_id","city", 'address', 'placeName', 'isMobilePoint')
 
 
 class DonationType(DjangoObjectType):
@@ -25,13 +25,14 @@ class DonationType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     all_localizations = graphene.List(LocalizationType)
-    city = graphene.Field(LocalizationType, city=graphene.String(required=True))
+    # city = graphene.Field(LocalizationType, city=graphene.String(required=True))
+    city = graphene.List(LocalizationType, city=graphene.String(required=True))
 
     def resolve_all_localizations(self, info):
         return LocalizationModel.objects.all()
 
     def resolve_city(self, info, city):
-        return LocalizationModel.objects.filter(city=city).first()
+        return LocalizationModel.objects.filter(city=city)
 
     all_users = graphene.List(UserType)
     is_staff = graphene.List(UserType, is_staff=graphene.Boolean(required=True))
@@ -68,13 +69,12 @@ class ApplyDonationMutation(graphene.Mutation):
         time = graphene.String(required=False)
         city = graphene.String(required=True)
         placeName = graphene.String(required=True)
-        addressLine1 = graphene.String(required=False)
-        addressLine2 = graphene.String(required=False)
+        address = graphene.String(required=False)
         isMobilePoint = graphene.Boolean(required=False)
 
     donation = graphene.Field(DonationType)
 
-    def mutate(self, info, email, donatedAmount, donatedType,city,placeName,time=None,addressLine1='',addressLine2='',isMobilePoint=False):
+    def mutate(self, info, email, donatedAmount, donatedType,city,placeName,time=None,address='',isMobilePoint=False):
         try:
             user = UserModel.objects.get(email=email)
         except UserModel.DoesNotExist:
@@ -88,9 +88,9 @@ class ApplyDonationMutation(graphene.Mutation):
         else:
             return None
         user.save()
-        localization = LocalizationModel.objects.filter(city=city,placeName=placeName, addressLine1=addressLine1, addressLine2=addressLine2,isMobilePoint=isMobilePoint).first()
+        localization = LocalizationModel.objects.filter(city=city,placeName=placeName, address=address,isMobilePoint=isMobilePoint).first()
         if not localization:
-            localization = LocalizationModel(city=city,placeName=placeName, addressLine1=addressLine1, addressLine2=addressLine2,isMobilePoint=isMobilePoint)
+            localization = LocalizationModel(city=city,placeName=placeName, address=address,isMobilePoint=isMobilePoint)
             localization.save()
         time = timezone.now() if not time else datetime.fromisoformat(time)
         print(time,type(time))
