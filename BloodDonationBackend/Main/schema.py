@@ -25,7 +25,7 @@ class DonationType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    all_localizations = graphene.List(LocalizationType)
+    all_localizations = graphene.List(LocalizationType,last=graphene.Int())
     # city = graphene.Field(LocalizationType, city=graphene.String(required=True))
     city = graphene.List(LocalizationType, city=graphene.String(required=True))
 
@@ -36,8 +36,8 @@ class Query(graphene.ObjectType):
             raise Exception('Not logged in!')
         return user
 
-    def resolve_all_localizations(self, info):
-        return LocalizationModel.objects.all()
+    def resolve_all_localizations(self, info, last=100):
+        return LocalizationModel.objects.all().order_by('-localization_id')[:last]
 
     def resolve_city(self, info, city):
         return LocalizationModel.objects.filter(city=city)
@@ -53,7 +53,7 @@ class Query(graphene.ObjectType):
 
     all_donations = graphene.List(DonationType)
     donation_by_type = graphene.List(DonationType, donationType=graphene.String(required=True))
-    donation_with_user = graphene.List(DonationType, donor=graphene.String(required=True))
+    donation_with_user = graphene.List(DonationType, donor=graphene.String(required=True),last=graphene.Int())
 
     def resolve_all_donations(self, info):##
         return DonationModel.objects.all()##
@@ -61,14 +61,14 @@ class Query(graphene.ObjectType):
     def resolve_donation_by_type(self, info, donationType):##
         return DonationModel.objects.filter(donationType=donationType)##
 
-    def resolve_donation_with_user(self, info, donor):
+    def resolve_donation_with_user(self, info, donor, last=100):
         if info.context.user.is_anonymous:
             raise Exception('Not logged in!')
         try:
             user = UserModel.objects.get(email=donor)
         except UserModel.DoesNotExist:
             return None
-        return DonationModel.objects.filter(donor=user)
+        return DonationModel.objects.filter(donor=user).order_by('-time')[:last]
 
 
 class ApplyDonationMutation(graphene.Mutation):
