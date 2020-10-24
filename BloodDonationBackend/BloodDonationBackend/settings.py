@@ -129,7 +129,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+USE_TZ = False
 
 
 # Static files (CSS, JavaScript, Images)
@@ -143,3 +143,12 @@ AUTHENTICATION_BACKENDS = [
     'graphql_jwt.backends.JSONWebTokenBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = r'smtp.mail.yahoo.com'
+EMAIL_PORT = '587'
+EMAIL_HOST_USER = r'blood.donation@yahoo.com'
+EMAIL_HOST_PASSWORD = r'ejtxsytjnctidgms'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False

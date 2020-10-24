@@ -105,7 +105,7 @@ class ApplyDonationMutation(graphene.Mutation):
         if not localization:
             localization = LocalizationModel(city=city,placeName=placeName, address=address,isMobilePoint=isMobilePoint)
             localization.save()
-        time = datetime.fromisoformat(time) if time else timezone.now()
+        time = datetime.fromisoformat(time) if time else timezone.localtime()
         donation = DonationModel(donor=user,place=localization, donationType=donatedType,amount=donatedAmount, time=time)
         donation.save()
         return ApplyDonationMutation(donation=donation)
