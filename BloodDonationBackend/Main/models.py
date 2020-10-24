@@ -75,6 +75,6 @@ class DonationModel(models.Model):
     time = models.DateTimeField(null=True)
 
     def __str__(self):
-        return str(self.id)
+        return str(self.donation_id)
     
 

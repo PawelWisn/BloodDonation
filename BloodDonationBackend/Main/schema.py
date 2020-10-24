@@ -4,6 +4,7 @@ from Main.models import *
 from django.utils import timezone
 from datetime import datetime
 import graphql_jwt
+import Main.scripts as scr
 
 class UserType(DjangoObjectType):
     class Meta:
