@@ -53,7 +53,6 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     donatedBlood = models.IntegerField(default=0)
     donatedPlasma = models.IntegerField(default=0)
     donatedPlatelets = models.IntegerField(default=0)
-    lastDonationTime = models.DateTimeField(null=True)
 
     objects = CustomUserManager()
 

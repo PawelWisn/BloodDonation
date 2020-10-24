@@ -2,7 +2,7 @@
 
 sleep 1s
 pip install graphene-django
-#pip install django-extensions
+pip install django-extensions
 rm -rf Main/migrations/*
 python manage.py makemigrations Main
 python manage.py makemigrations

@@ -8,7 +8,7 @@ class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
         fields = ("email", "date_joined", 'is_superuser', 'is_staff', 'is_active', 'donatedBlood', 'donatedPlasma',
-                  'donatedPlatelets', 'lastDonationTime')
+                  'donatedPlatelets')
 
 
 class LocalizationType(DjangoObjectType):
@@ -92,8 +92,7 @@ class ApplyDonationMutation(graphene.Mutation):
         if not localization:
             localization = LocalizationModel(city=city,placeName=placeName, address=address,isMobilePoint=isMobilePoint)
             localization.save()
-        time = timezone.now() if not time else datetime.fromisoformat(time)
-        print(time,type(time))
+        time = datetime.fromisoformat(time) if time else timezone.now()
         donation = DonationModel(donor=user,place=localization, donationType=donatedType,amount=donatedAmount, time=time)
         donation.save()
         return ApplyDonationMutation(donation=donation)
