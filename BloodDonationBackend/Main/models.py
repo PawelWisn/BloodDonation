@@ -30,6 +30,7 @@ class CustomUserManager(BaseUserManager):
         return self.create_user(email, password, **extra_fields)
 
 class LocalizationModel(models.Model):
+    localization_id = models.AutoField(primary_key=True)
     city = models.CharField(max_length=256)
     addressLine1 = models.CharField(max_length=256, null=True, default='')
     addressLine2 = models.CharField(max_length=256, null=True, default='')
@@ -68,6 +69,7 @@ class DonationModel(models.Model):
         PLASMA = "PLM"
         PLATELETS = "PLT"
 
+    donation_id = models.AutoField(primary_key=True)
     donor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     place = models.ForeignKey(LocalizationModel, on_delete=models.CASCADE)
     donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLOOD ,max_length=3)

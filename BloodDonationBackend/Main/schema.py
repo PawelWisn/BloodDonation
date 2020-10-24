@@ -1,7 +1,8 @@
 import graphene
 from graphene_django import DjangoObjectType
 from Main.models import *
-
+from django.utils import timezone
+from datetime import datetime
 
 class UserType(DjangoObjectType):
     class Meta:
@@ -13,13 +14,13 @@ class UserType(DjangoObjectType):
 class LocalizationType(DjangoObjectType):
     class Meta:
         model = LocalizationModel
-        fields = ("city", 'addressLine1', 'addressLine2', 'placeName', 'isMobilePoint')
+        fields = ("localization_id","city", 'addressLine1', 'addressLine2', 'placeName', 'isMobilePoint')
 
 
 class DonationType(DjangoObjectType):
     class Meta:
         model = DonationModel
-        fields = ("donor", 'place', 'donationType', 'amount', 'time')
+        fields = ("donation_id","donor", 'place', 'donationType', 'amount', 'time')
 
 
 class Query(graphene.ObjectType):
@@ -64,15 +65,16 @@ class ApplyDonationMutation(graphene.Mutation):
         email = graphene.String(required=True)
         donatedAmount = graphene.String(required=True)
         donatedType = graphene.String(required=True)
-        # city = graphene.String(required=True)
-        # addressLine1 = graphene.String(required=False)
-        # addressLine2 = graphene.String(required=False)
-        # placeName = graphene.String(required=True)
-        # isMobilePoint = graphene.Boolean(required=False)
+        time = graphene.String(required=False)
+        city = graphene.String(required=True)
+        placeName = graphene.String(required=True)
+        addressLine1 = graphene.String(required=False)
+        addressLine2 = graphene.String(required=False)
+        isMobilePoint = graphene.Boolean(required=False)
 
-    user = graphene.Field(UserType)
+    donation = graphene.Field(DonationType)
 
-    def mutate(self, info, email, donatedAmount, donatedType):
+    def mutate(self, info, email, donatedAmount, donatedType,city,placeName,time=None,addressLine1='',addressLine2='',isMobilePoint=False):
         try:
             user = UserModel.objects.get(email=email)
         except UserModel.DoesNotExist:
@@ -86,7 +88,15 @@ class ApplyDonationMutation(graphene.Mutation):
         else:
             return None
         user.save()
-        return ApplyDonationMutation(user=user)
+        localization = LocalizationModel.objects.filter(city=city,placeName=placeName, addressLine1=addressLine1, addressLine2=addressLine2,isMobilePoint=isMobilePoint).first()
+        if not localization:
+            localization = LocalizationModel(city=city,placeName=placeName, addressLine1=addressLine1, addressLine2=addressLine2,isMobilePoint=isMobilePoint)
+            localization.save()
+        time = timezone.now() if not time else datetime.fromisoformat(time)
+        print(time,type(time))
+        donation = DonationModel(donor=user,place=localization, donationType=donatedType,amount=donatedAmount, time=time)
+        donation.save()
+        return ApplyDonationMutation(donation=donation)
 
 
 class CreateUserMutation(graphene.Mutation):
@@ -108,7 +118,7 @@ class CreateUserMutation(graphene.Mutation):
 
 
 class Mutation(graphene.ObjectType):
-    update_user = ApplyDonationMutation.Field()
+    apply_donation = ApplyDonationMutation.Field()
     create_user = CreateUserMutation.Field()
 
 
