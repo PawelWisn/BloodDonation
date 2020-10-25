@@ -22,10 +22,7 @@ def run():
     socket.setdefaulttimeout(120)
 
     host = settings.EMAIL_HOST
-    # host = r'smtp.mail.yahoo.com'
     _from = settings.EMAIL_HOST_USER
-    # _from = r'blood.donation@yahoo.com'
-    # _pass = r'ejtxsytjnctidgms'
     _pass = settings.EMAIL_HOST_PASSWORD
 
     server = smtplib.SMTP(host)
