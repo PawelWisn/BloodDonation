@@ -1,13 +1,12 @@
 from datetime import date, datetime, timedelta
 from Main.models import *
 from django.utils import timezone
-from django.core.mail import send_mail
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import socket
 from time import sleep
-
+from django.conf import settings
 
 def run():
     BloodWasPrev = dict([(8, ("Blood", "Plasma", "Platelets",)), (4, ("Plasma",))])
@@ -16,14 +15,18 @@ def run():
 
     waitingDict = {"BLD": BloodWasPrev, "PLM": PlasmaWasPrev, "PLT": PlateletsWasPrev}
 
-    users = [u for u in UserModel.objects.all()]
+    users = [user for user in UserModel.objects.all()]
 
     today = timezone.now()
 
     socket.setdefaulttimeout(120)
-    host = r'smtp.mail.yahoo.com'
-    _from = r'blood.donation@yahoo.com'
-    _pass = r'ejtxsytjnctidgms'
+
+    host = settings.EMAIL_HOST
+    # host = r'smtp.mail.yahoo.com'
+    _from = settings.EMAIL_HOST_USER
+    # _from = r'blood.donation@yahoo.com'
+    # _pass = r'ejtxsytjnctidgms'
+    _pass = settings.EMAIL_HOST_PASSWORD
 
     server = smtplib.SMTP(host)
     server.ehlo()
@@ -61,9 +64,3 @@ def run():
                     server.sendmail(_from, user.email, text)
                     sleep(15)
     server.quit()
-
-# for user in Tournament.objects.filter(tournament_start_date=date.today() + relativedelta(days=5)):
-#
-#     # find the players that are registered for the tournament
-#     for player in tournament.registered_player_set():
-#         send_mail(...)
