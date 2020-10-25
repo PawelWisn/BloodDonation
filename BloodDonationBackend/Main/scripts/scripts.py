@@ -6,6 +6,8 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import socket
+from time import sleep
+
 
 def run():
     BloodWasPrev = dict([(8, ("Blood", "Plasma", "Platelets",)), (4, ("Plasma",))])
@@ -18,46 +20,46 @@ def run():
 
     today = timezone.now()
 
-    lastDonations = []
-    for user in users:
-        donation = DonationModel.objects.filter(donor=user).last()
-        if donation is not None:
-            lastDonations.append(donation)
-    lastDonations = lastDonations[3:]
-    for lastDonation in lastDonations:
-        difference = (today - lastDonation.time).days / 7
-        if difference == 2 or difference == 4 or difference == 8:
-            try:
-                whatCanBeDonated = waitingDict[lastDonation.donationType][difference]
-            except KeyError:
-                pass
-            else:
-                print("Can donate:", whatCanBeDonated)
-        break
-
-    socket.setdefaulttimeout(30)
+    socket.setdefaulttimeout(120)
     host = r'smtp.mail.yahoo.com'
     _from = r'blood.donation@yahoo.com'
-    _to = r'wispawelwis38@gmail.com'
     _pass = r'ejtxsytjnctidgms'
-
 
     server = smtplib.SMTP(host)
     server.ehlo()
     server.starttls()
     server.ehlo()
     server.login(_from, _pass)
-    from time import sleep
-    for i in range(3):
-        body = "Hello there, " + str(timezone.now())
-        msg = MIMEMultipart()
-        msg['Subject'] = "subject1"
-        msg['From'] = _from
-        msg['To'] = _to
-        msg.attach(MIMEText(body, 'plain'))
-        text = msg.as_string()
-        server.sendmail(_from, _to, text)
-        sleep(15)
+    for user in users:
+        donation = DonationModel.objects.filter(donor=user).last()
+        if donation is not None:
+            difference = (today - donation.time).days / 7
+            if difference == 2.0 or difference == 4.0 or difference == 8.0:
+                try:
+                    whatCanBeDonated = waitingDict[donation.donationType][int(difference)]
+                except KeyError:
+                    pass
+                else:
+                    appendix = '\n\t-'.join(whatCanBeDonated) + '\n\n'
+                    body = (
+                        "Dear User,\n\n"
+                        "It's been enough time since your last donation to regenerate the missing components in your blood.\n"
+                        "You can now go back to the collection point and repeat your noble deed saving people's lives.\n"
+                        "At this time, you can donate the following blood components:\n"
+                        f"\n\t-{appendix}"
+                        "We encourage you to visit the nearest blood collection point.\n"
+                        "You can recall its location on our website blooddonation.com.\n\n"
+                        "Best regards,\n"
+                        "BloodDonation team"
+                    )
+                    msg = MIMEMultipart()
+                    msg['Subject'] = "BloodDonation - You can donate again"
+                    msg['From'] = _from
+                    msg['To'] = user.email
+                    msg.attach(MIMEText(body, 'plain'))
+                    text = msg.as_string()
+                    server.sendmail(_from, user.email, text)
+                    sleep(15)
     server.quit()
 
 # for user in Tournament.objects.filter(tournament_start_date=date.today() + relativedelta(days=5)):
