@@ -58,7 +58,6 @@ def run():
                     msg['To'] = user.email
                     msg.attach(MIMEText(body, 'plain'))
                     text = msg.as_string()
-                    print('sending email...')
                     server.sendmail(_from, user.email, text)
                     sleep(15)
     server.quit()
