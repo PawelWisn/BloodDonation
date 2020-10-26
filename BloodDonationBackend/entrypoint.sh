@@ -21,4 +21,5 @@ echo "from Main.models import *;from django.utils import timezone;users = UserMo
 DonationModel(donor=users[2],place=locs[2],donationType='PLM', amount=450,time=timezone.now()).save();
 DonationModel(donor=users[3],place=locs[3],donationType='PLT', amount=450,time=timezone.now()).save();" | python manage.py shell
 
+
 exec "$@"
