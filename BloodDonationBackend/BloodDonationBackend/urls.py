@@ -20,7 +20,7 @@ from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
 from Main.schemas.schemaDonations import schemaDonations
 from Main.schemas.schemaLocalizations import schemaLocalizations
-from Main.schemas.schemaReserves import *
+from Main.schemas.schemaReserves import schemaBloodReserves
 from Main.schemas.schemaUsers import schemaUsers
 
 urlpatterns = [
@@ -28,4 +28,5 @@ urlpatterns = [
     path(r'users/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schemaUsers))),
     path(r'localizations/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schemaLocalizations))),
     path(r'donations/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schemaDonations))),
+    path(r'reserves/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schemaBloodReserves))),
 ]

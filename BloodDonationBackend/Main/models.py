@@ -84,22 +84,18 @@ class DonationModel(models.Model):
 
 
 class BloodReservesModel(models.Model):
-    BLOOD_GROUPS = [('0+', '0+'),
-                    ('0-', '0-'),
-                    ('A+', 'A+'),
-                    ('A-', 'A-'),
-                    ('B-', 'B-'),
-                    ('B+', 'B+'),
-                    ('AB-', 'AB-'),
-                    ('AB+', 'AB+')]
-    VOLUME_STATES = [(0, 0),
-                     (1, 1),
-                     (2, 2),
-                     (3, 3)]
+    BLOOD_GROUPS = [('0_P', '0_P'),
+                    ('0_N', '0_N'),
+                    ('A_P', 'A_P'),
+                    ('A_N', 'A_N'),
+                    ('B_N', 'B_N'),
+                    ('B_P', 'B_P'),
+                    ('AB_N', 'AB_N'),
+                    ('AB_P', 'AB_P')]
 
     region = models.CharField(primary_key=True, max_length=64)
-    volume = models.IntegerField(choices=VOLUME_STATES)
-    group = models.CharField(choices=BLOOD_GROUPS, max_length=3)
+    volume = models.IntegerField(default=0)
+    group = models.CharField(choices=BLOOD_GROUPS, max_length=4)
 
     def __str__(self):
         return self.region
