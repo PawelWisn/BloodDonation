@@ -9,11 +9,13 @@ from time import sleep
 from django.conf import settings
 
 def run():
-    BloodWasPrev = dict([(8, ("Blood", "Plasma", "Platelets",)), (4, ("Plasma",))])
-    PlasmaWasPrev = dict([(4, ("Platelets", "Blood", "Plasma",)), (2, ("Blood", "Plasma",))])
-    PlateletsWasPrev = dict([(4, ("Blood", "Plasma", "Platelets",))])
+    BloodWasPrev = dict([(8, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes")), (4, ("Plasma","Leukocytes"))])
+    PlasmaWasPrev = dict([(4, ("Platelets", "Blood", "Plasma","Erythrocytes","Leukocytes")), (2, ("Blood", "Plasma",))])
+    PlateletsWasPrev = dict([(4, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes"))])
+    ErythrocytesWasPrev = dict([(8, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes")),(4, ("Plasma", "Platelets","Leukocytes"))])
+    LeukocytesWasPrev = dict([(4, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes"))])
 
-    waitingDict = {"BLD": BloodWasPrev, "PLM": PlasmaWasPrev, "PLT": PlateletsWasPrev}
+    waitingDict = {"BLD": BloodWasPrev, "PLM": PlasmaWasPrev, "PLT": PlateletsWasPrev, "ERT":ErythrocytesWasPrev, "LEU":LeukocytesWasPrev}
 
     users = [user for user in UserModel.objects.all()]
 
