@@ -18,11 +18,14 @@ from django.urls import path
 from django.conf.urls import url
 from graphene_django.views import GraphQLView
 from django.views.decorators.csrf import csrf_exempt
-from Main.schema import *
+from Main.schemas.schemaDonations import schemaDonations
+from Main.schemas.schemaLocalizations import schemaLocalizations
+from Main.schemas.schemaReserves import *
+from Main.schemas.schemaUsers import schemaUsers
 
 urlpatterns = [
     path(r'admin/', admin.site.urls),
-    path(r'graphql/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema))),
-    # path(r'graphql/locals', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=LocalizationSchema))),
-    # path(r'graphql/users', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=UserSchema))),
+    path(r'users/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schemaUsers))),
+    path(r'localizations/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schemaLocalizations))),
+    path(r'donations/', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schemaDonations))),
 ]
