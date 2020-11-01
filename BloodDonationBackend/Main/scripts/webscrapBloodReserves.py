@@ -2,13 +2,14 @@ from Main.models import BloodReservesModel
 import requests
 from bs4 import BeautifulSoup
 import re
-
+import time
 
 def run():
     webscrapKrakow()
     webscrapBialystok()
     webscrapBydgoszcz()
     webscrapGdansk()
+    webscrapKatowice()
 
 
 def webscrapKrakow():
@@ -50,7 +51,6 @@ def webscrapBialystok():
             volume = 4
         group = x.text.replace(u'\xa0', ' ')
         group = group.split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
-        print(group, BloodReservesModel.objects.all())
         try:
             br = BloodReservesModel.objects.get(region='Bialystok', group=group)
         except BloodReservesModel.DoesNotExist:
@@ -100,3 +100,23 @@ def webscrapGdansk():
         else:
             br.volume = volume
             br.save()
+
+
+def webscrapKatowice():
+    from selenium.webdriver.chrome.options import Options
+    from selenium import webdriver
+    def set_chrome_options() -> None:
+        chrome_options = Options()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_prefs = {}
+        chrome_options.experimental_options["prefs"] = chrome_prefs
+        chrome_prefs["profile.default_content_settings"] = {"images": 2}
+        return chrome_options
+    driver = webdriver.Chrome(options=set_chrome_options())
+    driver.get('https://rckik-katowice.pl')
+    time.sleep(5)
+    data = driver.find_element_by_id('app')
+    print(data.text)
+    driver.close()

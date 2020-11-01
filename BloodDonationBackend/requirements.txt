@@ -4,5 +4,7 @@ djangorestframework==3.11.0
 django-filter>=2
 django-extensions
 django-graphql-jwt
-bs4
+bs4==0.0.1
 requests
+requests_html==0.10.0
+selenium==3.141.0
