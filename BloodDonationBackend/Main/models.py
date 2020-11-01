@@ -84,8 +84,8 @@ class DonationModel(models.Model):
 
 
 class BloodReservesModel(models.Model):
-    BLOOD_GROUPS = [('0_P', '0_P'),
-                    ('0_N', '0_N'),
+    BLOOD_GROUPS = [('O_P', 'O_P'),
+                    ('O_N', 'O_N'),
                     ('A_P', 'A_P'),
                     ('A_N', 'A_N'),
                     ('B_N', 'B_N'),
@@ -99,4 +99,4 @@ class BloodReservesModel(models.Model):
     group = models.CharField(choices=BLOOD_GROUPS, max_length=4)
 
     def __str__(self):
-        return str(self.bloodReserveID) + self.region
+        return str(self.bloodReserveID) + '-'+ self.region + '-'+ self.group
