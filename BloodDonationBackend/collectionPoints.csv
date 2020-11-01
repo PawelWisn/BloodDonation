@@ -1,0 +1,185 @@
+'Swinoujscie';'RCKiK Szczecin OT Swinoujscie';'Mieszka 1-go 4';0
+'Gryfice';'RCKiK Szczecin OT Gryfice';'Niechorska 27';0
+'Kolobrzeg';'RCKiK Szczecin OT Kolobrzeg';'Lopuskiego 31';0
+'Bialogard';'RCKiK Szczecin OT Bialogard';'Nowowiejskiego 7';0
+'Koszalin';'RCKiK Szczecin OT Koszalin';'Chalubinskiego 7';0
+'Lebork';'RCKiK Slupsk OT Lebork';'Wegrzynowicza 13';0
+'Wejherowo';'RCKiK Gdansk OT Wejherowo';'Weteranow 10';0
+'Gdynia';'RCKiK Gdansk OT Gdynia';'Powstania Styczniowego 9b';0
+'Gdansk';'RCKiK Gdansk OT Gdansk';'Polanki 117';0
+'Kartuzy';'RCKiK Gdansk OT Kartuzy';'Floriana Ceynowy 7';0
+'Koscierzyna';'RCKiK Gdansk OT Koscierzyna';'Alojzego Piechowskiego 36';0
+'Chojnice';'RCKiK Slupsk OT Chojnice';'Lesna 10';0
+'Starogard Gdanski';'RCKiK Gdansk OT Starogard Gdanski';'dr Jozefa Balewskiego 1';0
+'Tczew';'RCKiK Gdansk OT Tczew';'Piaskowa 3';0
+'Malbork';'RCKiK Gdansk OT Malbork';'Kotarbinskiego 14';0
+'Elblag';'RCKiK Olsztyn OT Elblag';'Bema 80';0
+'Paslek';'RCKiK Olsztyn OT Paslek';'Plac Grunwaldzki 8';0
+'Bartoszyce';'RCKiK Olsztyn OT Bartoszyce';'Wyszynskiego 11';0
+'Gizycko';'RCKiK Olsztyn OT Gizycko';'Bohaterow Westerplatte 4';0
+'Suwalki';'RCKiK Bialystok OT Suwalki';'Szpitalna 60';0
+'Lomza';'RCKiK Bialystok OT Lomza';'Al. Pilsudskiego 11';0
+'Nidzica';'RCKiK Olsztyn OT Nidzica';'Traugutta 13';0
+'Mlawa';'RCKiK Warszawa OT Mlawa';'A. Dobrskiej 1';0
+'Ciechanow';'RCKiK Warszawa OT Ciechanow';'Powstancow Wielkopolskich 2';0
+'Bielsk Podlaski';'RCKiK Bialystok OT Bielsk Podlaski';'Kleszczelowska 1c';0
+'Hajnowka';'RCKiK Bialystok OT Hajnowka';'Doc Adama Dowgirda 9';0
+'Biala Podlaska';'RCKiK Lublin OT Biala Podlaska';'Jana III Sobieskiego 8';0
+'Siedlce';'RCKiK Warszawa OT Siedlce';'Forminskiego 14';0
+'Lukow';'RCKiK Lublin OT Lukow';'Andrzeja Rogalinskiego 3';0
+'Wlodawa';'RCKiK Lublin OT Wlodawa';'Al. J. Pilsudskiego 66';0
+'Chelm';'RCKiK Lublin OT Chelm';'Szpitalna 53';0
+'Zamosc';'RCKiK Lublin OT Zamosc';'Al. Jana Pawla II 10';0
+'Tomaszow Lubelski';'RCKiK Lublin OT Tomaszow Lubelski';'Lwowska 82';0
+'Przemysl';'RCKiK Rzeszow OT Przemysl';'Monte Cassino 18';0
+'Sanok';'RCKiK Rzeszow OT Sanok';'Konarskiego 24';0
+'Lezajsk';'RCKiK Rzeszow OT Lezajsk';'Lesna 22';0
+'Stalowa Wola';'RCKiK Rzeszow OT Stalowa Wola';'Staszica 4';0
+'Krasnik';'RCKiK Lublin OT Krasnik';'Al. Niepodleglości 25';0
+'Krosno';'RCKiK Rzeszow OT Krosno';'Korczynska 57';0
+'Mielec';'RCKiK Rzeszow OT Mielec';'Zeromskiego 17';0
+'Debica';'RCKiK Rzeszow OT Debica';'Krakowska 91';0
+'Jaslo';'RCKiK Rzeszow OT Jaslo';'Lwowska 22';0
+'Gorlice';'RCKiK Krakow OT Gorlice';'Wegierska 21';0
+'Nowy Sacz';'RCKiK Krakow OT Nowy Sacz';'Kazimierza Wielkiego 9a';0
+'Limanowa';'RCKiK Krakow OT Limanowa';'Pilsudskiego 61';0
+'Bochnia';'RCKiK Krakow OT Bochnia';'Krakowska 31';0
+'Nowy Targ';'RCKiK Krakow OT Nowy Targ';'Szpitalna 12';0
+'Zakopane';'RCKiK Krakow OT Zakopane';'Szymony 14';0
+'Sucha Beskidzka';'RCKiK Krakow OT Sucha Beskidzka';'Szpitalna 22';0
+'Wadowice';'RCKiK Krakow OT Wadowice';'Karmelicka 5';0
+'Myslenice';'RCKiK Krakow OT Myslenice';'Szpitalna 2';0
+'Cieszyn';'RCKiK Katowice OT Cieszyn';'Bielska 4';0
+'Bielsko-Biala';'RCKiK Katowice OT Bielsko-Biala';'Wyspianskiego 21';0
+'Oswiecim';'RCKiK Krakow OT Oswiecim';'Wysokie Brzegi 4';0
+'Pszczyna';'RCKiK Katowice OT Pszczyna';'Biskupa Bednorza 10';0
+'Jastrzebie-Zdroj';'RCKiK Raciborz OT Jastrzebie-Zdroj';'Jana Pawla II 7';0
+'Wodzislaw Slaski';'RCKiK Raciborz OT Wodzislaw Slaski';'Radlinska 68';0
+'Rybnik';'RCKiK Raciborz OT Rybnik';'Rudzka 15';0
+'Kedzierzyn-Kozle';'RCKiK Opole OT Kedzierzyn-Kozle';'Koszykowa 5B';0
+'Czestochowa';'RCKiK Katowice OT Czestochowa';'Kopernika 38';0
+'Kluczbork';'RCKiK Opole OT Kluczbork';'Katowicka 26';0
+'Brzeg';'RCKiK Opole OT Brzeg';'Mossora 1';0
+'Nysa';'RCKiK Opole OT Nysa';'Pilsudskiego 47';0
+'Ostrzeszow';'RCKiK Kalisz OT Ostrzeszow';'Zamkowa 17';0
+'Ostrow Wielkopolski';'RCKiK Kalisz OT Ostrow Wielkopolski';'Limanowskiego 20-22';0
+'Krotoszyn';'RCKiK Kalisz OT Krotoszyn';'Bolewskiego 8';0
+'Legnica';'RCKiK Wroclaw OT Legnica';'Iwaszkiewicza 5';0
+'Lubin';'RCKiK Wroclaw OT Lubin';'Bema 5';0
+'Glogow';'RCKiK Wroclaw OT Glogow';'Kosciuszki 15';0
+'Zagan';'RCKiK Zielona Gora OT Zagan';'Szprotawska 45a';0
+'Zary';'RCKiK Zielona Gora OT Zary';'Skarbowa 2';0
+'Leszno';'RCKiK Poznan OT Leszno';'Kiepury 45';0
+'Srem';'RCKiK Poznan OT Srem';'Chelmonskiego 1';0
+'Koscian';'RCKiK Poznan OT Koscian';'Szpitalna 7';0
+'Wolsztyn';'RCKiK Poznan OT Wolsztyn';'Wschowska 3';0
+'Nowy Tomysl';'RCKiK Poznan OT Nowy Tomysl';'Sienkiewicza 7';0
+'Miedzyrzecz';'RCKiK Zielona Gora OT Miedzyrzecz';'Konstytucji 3 Maja 24';0
+'Sulecin';'RCKiK Zielona Gora OT Sulecin';'Dudka 15';0
+'Gorzow Wielkopolski';'RCKiK Zielona Gora OT Gorzow Wielkopolski';'Dekerta 1';0
+'Szamotuly';'RCKiK Poznan OT Szamotuly';'Sukiennicza 13';0
+'Czarnkow';'RCKiK Poznan OT Czarnkow';'Kosciuszki 91';0
+'Pila';'RCKiK Poznan OT Pila';'Rydygiera 1';0
+'Chodziez';'RCKiK Poznan OT Chodziez';'Zeromskiego 29';0
+'Wagrowiec';'RCKiK Poznan OT Wagrowiec';'Kosciuszki 74';0
+'Gniezno';'RCKiK Poznan OT Gniezno';'Sw. Jana 9';0
+'Wrzesnia';'RCKiK Poznan OT Wrzesnia';'Slowackiego 2';0
+'Konin';'RCKiK Kalisz OT Konin';'Wyszynskiego 1';0
+'Drawsko Pomorskie';'RCKiK Szczecin OT Drawsko Pomorskie';'Boleslawa Chrobrego 4';0
+'Grudziadz';'RCKiK Bydgoszcz OT Grudziadz';'Wlodka 16-18';0
+'Ilawa';'RCKiK Olsztyn OT Ilawa';'Wladysława Andersa 3';0
+'Brodnica';'RCKiK Bydgoszcz OT Brodnica';'18 Stycznia 36a';0
+'Torun';'RCKiK Bydgoszcz OT Torun';'Gagarina 212-226';0
+'Inowrocław';'RCKiK Bydgoszcz OT Inowrocław';'Poznanska 97';0
+'Wloclawek';'RCKiK Bydgoszcz OT Wloclawek';'Lunewil 15';0
+'Plock';'RCKiK Warszawa OT Plock';'Medyczna 19';0
+'Nowy Dwor Paderewskiego';'RCKiK Warszawa OT Nowy Dwor Paderewskiego';'Paderewskiego 7';0
+'Garwolin';'RCKiK Warszawa OT Garwolin';'Lubelska 50';0
+'Grojec';'RCKiK Radom OT Grojec';'Piotra Skargi 10';0
+'Kozienice';'RCKiK Radom OT Kozienice';'gen. Wladysława Sikorskiego 10';0
+'Pulawy';'RCKiK Lublin OT Pulawy';'Bema 1';0
+'Lubartow';'RCKiK Lublin OT Lubartow';'Cicha 14';0
+'Sandomierz';'RCKiK Kielce OT Sandomierz';'Schinzla 13';0
+'Ostrowiec Swietokrzyski';'RCKiK Kielce OT Ostrowiec Swietokrzyski';'Szymanowskiego 11';0
+'Skarzysko-Kamienna';'RCKiK Kielce OT Skarzysko-Kamienna';'Szpitalna 1';0
+'Konskie';'RCKiK Kielce OT Konskie';'Gimnazjalna 41b';0
+'Konskie';'RCKiK Kielce OT Konskie';'Gimnazjalna 41b';0
+'Tarnow';'RCKiK Krakow OT Tarnow 2';'Lwowska 178a';0
+'Tarnow';'RCKiK Krakow OT Tarnow 1';'Szpitalna 13';0
+'Poznan';'RCKiK Poznan OT Poznan';'Juraszów 7';0
+'Gdansk';'WCKiK MON Terenowa Stacja Gdańsk';'Polanki 117';0
+'Gliwice';'RCKiK Katowice OT Gliwice';'Wybrzeze Armii Krajowej 15';0
+'Zabrze';'RCKiK Katowice OT Zabrze';'Wolnosci 265-267';0
+'Bytom';'RCKiK Katowice OT Bytom';'Zeromskiego 7';0
+'Tarnowskie Gory';'RCKiK Katowice OT Tarnowskie Gory';'Pyskowicka 47';0
+'Dabrowa Gornicza';'RCKiK Katowice OT Dabrowa Gornicza';'Szpitalna 13';0
+'Sosnowiec';'RCKiK Katowice OT Sosnowiec';'Zegadlowicza 3';0
+'Lublin';'RCKiK Lublin OT Lublin';'Al. Krasnicka 100';0
+'Warszawa';'RCKiK Warszawa OT Warszawa 1';'Ceglowska 80';0
+'Warszawa';'RCKiK Warszawa OT Warszawa 2';'Nowogrodzka 59';0
+'Krakow';'RCKiK Krakow OT Krakow';'Wielicka 265';0
+'Warszawa';'WCKiK MSW Warsaw';'Woloska 137';0
+'Warszawa';'WCKiK MON Warsaw';'Szaserów 128';0
+'Lublin';'WCKiK MON Lublin';'Al. Raclawickie 23';0
+'Elk';'WCKiK MON Elk';'Kosciuszki 30';0
+'Bydgoszcz';'WCKiK MON Bydgoszcz';'Powstancow Warszawy 5';0
+'Szczecin';'WCKiK MON Szczecin';'Piotra Skargi 9-11';0
+'Wroclaw';'WCKiK MON Wroclaw';'Rudolfa Weigla 5';0
+'Krakow';'WCKiK MON Krakow';'Wroclawska 1-3';0
+'Bialystok';'RCKiK Bialystok';'Marii Sklodowskiej-Curie 23';0
+'Bydgoszcz';'RCKiK Bydgoszcz';'Ks. Markwarta 8';0
+'Gdansk';'RCKiK Gdansk';'J. Hoene-Wronskiego 4';0
+'Kalisz';'RCKiK Kalisz';'Kaszubska 9';0
+'Katowice';'RCKiK Katowice';'Raciborska 15';0
+'Kielce';'RCKiK Kielce';'Jagiellonska 66';0
+'Krakow';'RCKiK Krakow';'Rzeznicza 11';0
+'Lublin';'RCKiK Lublin';'Zolnierzy Niepodleglej 8';0
+'Lodz';'RCKiK Lodz';'Franciszkanska 17/25';0
+'Olsztyn';'RCKiK Olsztyn';'Malborska 2';0
+'Opole';'RCKiK Opole';'Kosnego 55';0
+'Poznan';'RCKiK Poznan';'Marcelinska 44';0
+'Raciborz';'RCKiK Raciborz';'Sienkiewicza 3 A';0
+'Radom';'RCKiK Radom';'Limanowskiego 42';0
+'Rzeszow';'RCKiK Rzeszow';'Wierzbowa 14';0
+'Slupsk';'RCKiK Slupsk';'Szarych Szeregow 21';0
+'Szczecin';'RCKiK Szczecin';'al. Wojska Polskiego 80/82';0
+'Walbrzych';'RCKiK Walbrzych';'Chrobrego 31';0
+'Warszawa';'RCKiK Warszawa';'Saska 63';0
+'Wroclaw';'RCKiK Wroclaw';'Czerwonego Krzyza 5';0
+'Zielona Gora';'RCKiK Zielona Gora';'Zyty 21';0
+'Gryfino';'RCKiK Szczecin Mobile Gryfino';'Boleslawa Chrobrego 52';1
+'Stargard Szczecinski';'RCKiK Szczecin Mobile Stargard Szczecinski';'Pl. Wolnosci 1';1
+'Barlinek';'RCKiK Szczecin Mobile Barlinek';'Szpitalna 8';1
+'Wiecbork';'RCKiK Bydgoszcz Mobile Wiecbork';'Pl. Jana Pawa II';1
+'Naklo';'RCKiK Bydgoszcz Mobile Naklo';'Dabrowskiego 50';1
+'Chelmno';'RCKiK Bydgoszcz Mobile Chelmno';'Plac Rydygiera 1';1
+'Swiecie';'RCKiK Bydgoszcz Mobile Swiecie';'Wojska Polskiego 173';1
+'Golub-Dobrzyn';'RCKiK Bydgoszcz Mobile Golub-Dobrzyn';'Plac Tysiaclecia 25';1
+'Rypin';'RCKiK Bydgoszcz Mobile Rypin';'3 Maja 2';1
+'Lipno';'RCKiK Bydgoszcz Mobile Lipno';'Pl. Dekerta';1
+'Radziejow';'RCKiK Bydgoszcz Mobile Radziejow';'Kosciuszki 17';1
+'Kutno';'RCKiK Lodz Mobile Kutno';'Kosciuszki 52';1
+'Skierniewice';'RCKiK Lodz Mobile Skierniewice';'Senatorska 12';1
+'Bogatynia';'RCKiK Walbrzych Mobile Bogatynia';'Szpitalna 16';1
+'Zgorzelec';'RCKiK Walbrzych Mobile Zgorzelec';'Maratonska 2';1
+'Luban';'RCKiK Walbrzych Mobile Luban';'Wojska Polskiego 2';1
+'Lwowek Slaski';'RCKiK Walbrzych Mobile Lwowek Slaski';'Al. Wojska Polskiego 25A';1
+'Boleslawiec';'RCKiK Walbrzych Mobile Boleslawiec';'Plac Marszalka Jozefa Pilsudskiego 1';1
+'Jelenia Gora';'RCKiK Walbrzych Mobile Jelenia Gora';'Oginskiego 6';1
+'Dzierzaniow';'RCKiK Walbrzych Mobile Dzierzaniow';'Poprzeczna 16';1
+'Klodzko';'RCKiK Walbrzych Mobile Klodzko';'Szpitalna 1';1
+'Zywiec';'RCKiK Katowice Mobile Zywiec';'Pilsudskiego 50';1
+'Knurow';'RCKiK Katowice Mobile Knurow';'Dworcowa 1';1
+'Zawiercie';'RCKiK Katowice Mobile Zawiercie';'Pilsudskiego 81 c';1
+'Busko-Zdroj';'RCKiK Kielce Mobile Busko-Zdroj';'Bohaterow Warszawy 67';1
+'Tarnobrzeg';'RCKiK Rzeszow Mobile Tarnobrzeg';'1 Maja 1';1
+'Starachowice';'RCKiK Kielce Mobile Starachowice';'Radomska 70';1
+'Radomsko';'RCKiK Kielce Mobile Radomsko';'Jagiellonska 36';1
+'Wielun';'RCKiK Lodz Mobile Wielun';'Sieradzka 56';1
+'Sieradz';'RCKiK Lodz Mobile Sieradz';'Armii Krajowej 7';1
+'Zdunska Wola';'RCKiK Lodz Mobile Zdunska Wola';'Krolewska 29';1
+'Pabianice';'RCKiK Lodz Mobile Pabianice';'Jana Pawla II 68';1
+'Belchatow';'RCKiK Lodz Mobile Belchatow';'Edwardow 3A';1
+'Piotrkow Trybunalski';'RCKiK Lodz Mobile Piotrkow Trybunalski';'Slowackiego 74';1
+'Tomaszow Mazowiecki';'RCKiK Lodz Mobile Tomaszow Mazowiecki';'Jana Pawla II 35';1
+'Tomaszow Mazowiecki';'RCKiK Lodz Mobile Tomaszow Mazowiecki';'Jana Pawla II 35';1

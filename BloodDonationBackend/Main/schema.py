@@ -16,7 +16,7 @@ class UserType(DjangoObjectType):
 class LocalizationType(DjangoObjectType):
     class Meta:
         model = LocalizationModel
-        fields = ("localization_id","city", 'address', 'placeName', 'isMobilePoint')
+        fields = ("city", 'address', 'placeName', 'isMobilePoint')
 
 
 class DonationType(DjangoObjectType):
@@ -26,7 +26,7 @@ class DonationType(DjangoObjectType):
 
 
 class Query(graphene.ObjectType):
-    all_localizations = graphene.List(LocalizationType,recent=graphene.Int(),skip=graphene.Int())
+    all_localizations = graphene.List(LocalizationType,recent=graphene.Int(),skip=graphene.Int(),mobile=graphene.Boolean())
     # city = graphene.Field(LocalizationType, city=graphene.String(required=True))
     city = graphene.List(LocalizationType, city=graphene.String(required=True))
 
@@ -37,8 +37,10 @@ class Query(graphene.ObjectType):
             raise Exception('Not logged in!')
         return user
 
-    def resolve_all_localizations(self, info, recent=100, skip=0):
-        return LocalizationModel.objects.all().order_by('-localization_id')[skip:][:recent]
+    def resolve_all_localizations(self, info, recent=100, skip=0, mobile=None):
+        if mobile:
+            return LocalizationModel.objects.filter(isMobilePoint=mobile)[skip:][:recent]
+        return LocalizationModel.objects.all()[skip:][:recent]
 
     def resolve_city(self, info, city):
         return LocalizationModel.objects.filter(city=city)
