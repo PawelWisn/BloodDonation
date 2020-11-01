@@ -29,4 +29,5 @@ DonationModel(donor=users[2],place=locs[18],donationType='LEU', amount=300,time=
 DonationModel(donor=users[3],place=locs[3],donationType='ERT', amount=450,time=timezone.now()).save();" | python manage.py shell
 
 #python manage.py runscript sendEmailRemainders
+python manage.py runscript webscrapBloodReserves
 exec "$@"

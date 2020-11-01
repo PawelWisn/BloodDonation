@@ -19,7 +19,6 @@ class QueryBloodReserves(graphene.ObjectType):
 
     def resolve_all_reserves(self, info, region=None, group=None):
         out = BloodReservesModel.objects.all()
-        print(out)
         if region:
             out = out.filter(region=region)
         if group:
