@@ -8,14 +8,26 @@ import socket
 from time import sleep
 from django.conf import settings
 
-def run():
-    BloodWasPrev = dict([(8, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes")), (4, ("Plasma","Leukocytes"))])
-    PlasmaWasPrev = dict([(4, ("Platelets", "Blood", "Plasma","Erythrocytes","Leukocytes")), (2, ("Blood", "Plasma",))])
-    PlateletsWasPrev = dict([(4, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes"))])
-    ErythrocytesWasPrev = dict([(8, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes")),(4, ("Plasma", "Platelets","Leukocytes"))])
-    LeukocytesWasPrev = dict([(4, ("Blood", "Plasma", "Platelets","Erythrocytes","Leukocytes"))])
 
-    waitingDict = {"BLD": BloodWasPrev, "PLM": PlasmaWasPrev, "PLT": PlateletsWasPrev, "ERT":ErythrocytesWasPrev, "LEU":LeukocytesWasPrev}
+def run():
+    BloodWasPrev = dict(
+        [(8, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes")),
+         (4, ("Plasma", "Leukocytes"))])
+    PlasmaWasPrev = dict(
+        [(4, ("Platelets", "Blood", "Plasma", "Erythrocytes", "Leukocytes")),
+         (2, ("Blood", "Plasma",))])
+    PlateletsWasPrev = dict([
+        (4, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes"))])
+    ErythrocytesWasPrev = dict(
+        [(8, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes")),
+         (4, ("Plasma", "Platelets", "Leukocytes"))])
+    LeukocytesWasPrev = dict(
+        [(4, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes"))])
+    waitingDict = {DonationModel.DONATIONTYPE.BLOOD: BloodWasPrev,
+                   DonationModel.DONATIONTYPE.PLASMA: PlasmaWasPrev,
+                   DonationModel.DONATIONTYPE.PLATELETS: PlateletsWasPrev,
+                   DonationModel.DONATIONTYPE.ERYTHROCYTES: ErythrocytesWasPrev,
+                   DonationModel.DONATIONTYPE.LEUKOCYTES: LeukocytesWasPrev}
 
     users = [user for user in UserModel.objects.all()]
 
@@ -42,6 +54,16 @@ def run():
                 except KeyError:
                     pass
                 else:
+                    if "Blood" in whatCanBeDonated:
+                        usersDonations = DonationModel.objects.filter(donor=user).order_by('-time')
+                        bloodDonationsCounter = 0
+                        for usersDonation in usersDonations:
+                            if usersDonation.time.year == today.year and usersDonation.donationType == DonationModel.DONATIONTYPE.BLOOD:
+                                bloodDonationsCounter += 1
+                        if (user.is_male and bloodDonationsCounter >= 6) or (
+                                not user.is_male and bloodDonationsCounter >= 4):
+                            bloodIndex = whatCanBeDonated.index("Blood")
+                            whatCanBeDonated = whatCanBeDonated[:bloodIndex] + whatCanBeDonated[bloodIndex + 1:]
                     appendix = '\n\t-'.join(whatCanBeDonated) + '\n\n'
                     body = (
                         "Dear User,\n\n"

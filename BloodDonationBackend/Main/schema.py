@@ -50,6 +50,7 @@ class Query(graphene.ObjectType):
     all_users = graphene.List(UserType)  ##
 
     def resolve_all_users(self, info):  ##
+        print( UserModel.objects.all())
         return UserModel.objects.all()  ##
 
 
@@ -95,15 +96,15 @@ class ApplyDonationMutation(graphene.Mutation):
             user = UserModel.objects.get(email=email)
         except UserModel.DoesNotExist:
             return None
-        if donatedType == 'BLD':
+        if donatedType == DonationModel.DONATIONTYPE.BLOOD:
             user.donatedBlood += int(donatedAmount)
-        elif donatedType == 'PLM':
+        elif donatedType == DonationModel.DONATIONTYPE.PLASMA:
             user.donatedPlasma += int(donatedAmount)
-        elif donatedType == 'PLT':
+        elif donatedType == DonationModel.DONATIONTYPE.PLATELETS:
             user.donatedPlatelets += int(donatedAmount)
-        elif donatedType == 'ERT':
+        elif donatedType == DonationModel.DONATIONTYPE.ERYTHROCYTES:
             user.donatedErythrocytes += int(donatedAmount)
-        elif donatedType == 'LEU':
+        elif donatedType == DonationModel.DONATIONTYPE.LEUKOCYTES:
             user.donatedLeukocytes += int(donatedAmount)
         else:
             return None
