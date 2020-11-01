@@ -50,7 +50,6 @@ class Query(graphene.ObjectType):
     all_users = graphene.List(UserType)  ##
 
     def resolve_all_users(self, info):  ##
-        print( UserModel.objects.all())
         return UserModel.objects.all()  ##
 
 
