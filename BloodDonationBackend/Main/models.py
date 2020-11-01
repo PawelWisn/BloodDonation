@@ -93,9 +93,10 @@ class BloodReservesModel(models.Model):
                     ('AB_N', 'AB_N'),
                     ('AB_P', 'AB_P')]
 
-    region = models.CharField(primary_key=True, max_length=64)
+    bloodReserveID = models.AutoField(primary_key=True)
+    region = models.CharField(max_length=64)
     volume = models.IntegerField(default=0)
     group = models.CharField(choices=BLOOD_GROUPS, max_length=4)
 
     def __str__(self):
-        return self.region
+        return str(self.bloodReserveID) + self.region
