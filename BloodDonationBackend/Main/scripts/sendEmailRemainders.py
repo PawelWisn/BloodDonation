@@ -52,7 +52,7 @@ def adjustToRules(whatCanBeDonated, user, today):
 
 
 def sendEmails(users, today, itemsAbleToDonateDict):
-    socket.setdefaulttimeout(120)
+    socket.setdefaulttimeout(180)
 
     host = settings.EMAIL_HOST
     sender = settings.EMAIL_HOST_USER

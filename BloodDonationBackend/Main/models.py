@@ -6,6 +6,8 @@ import datetime
 from django.contrib.auth.base_user import BaseUserManager
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
+
+
 # Create your models here.
 
 class CustomUserManager(BaseUserManager):
@@ -29,15 +31,15 @@ class CustomUserManager(BaseUserManager):
             raise ValueError(_('Superuser must have is_superuser=True.'))
         return self.create_user(email, password, **extra_fields)
 
+
 class LocalizationModel(models.Model):
     city = models.CharField(max_length=256)
     address = models.CharField(max_length=256, null=True, default='')
-    placeName = models.CharField(max_length=256, default='',primary_key=True)
+    placeName = models.CharField(max_length=256, default='', primary_key=True)
     isMobilePoint = models.BooleanField(default=False)
 
     def __str__(self):
         return self.placeName
-
 
 
 class UserModel(AbstractBaseUser, PermissionsMixin):
@@ -62,7 +64,6 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-
 class DonationModel(models.Model):
     class DONATIONTYPE(models.TextChoices):
         BLOOD = "BLD"
@@ -74,11 +75,31 @@ class DonationModel(models.Model):
     donation_id = models.AutoField(primary_key=True)
     donor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     place = models.ForeignKey(LocalizationModel, on_delete=models.CASCADE)
-    donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLOOD ,max_length=3)
+    donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLOOD, max_length=3)
     amount = models.IntegerField(null=False)
     time = models.DateTimeField(null=True)
 
     def __str__(self):
-        return str(self.donation_id)
-    
+        return str(self.donation_id) + '-' + str(self.time.year) + str(self.time.month) + str(self.time.day)
 
+
+class BloodReservesModel(models.Model):
+    BLOOD_GROUPS = [('0+', '0+'),
+                    ('0-', '0-'),
+                    ('A+', 'A+'),
+                    ('A-', 'A-'),
+                    ('B-', 'B-'),
+                    ('B+', 'B+'),
+                    ('AB-', 'AB-'),
+                    ('AB+', 'AB+')]
+    VOLUME_STATES = [(0, 0),
+                     (1, 1),
+                     (2, 2),
+                     (3, 3)]
+
+    region = models.CharField(primary_key=True, max_length=64)
+    volume = models.IntegerField(choices=VOLUME_STATES)
+    group = models.CharField(choices=BLOOD_GROUPS, max_length=3)
+
+    def __str__(self):
+        return self.region

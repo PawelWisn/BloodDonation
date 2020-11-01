@@ -6,7 +6,7 @@ services:
   ports:
    - "80:3000"
   volumes:
-   - blood-donation-frontend:/code
+   - ./blood-donation-frontend:/code
  postgres:
   image: postgres:12.2
   ports:
@@ -24,7 +24,7 @@ services:
   entrypoint: ./entrypoint.sh
   command: python manage.py runserver 0.0.0.0:8000
   volumes:
-   - BloodDonationBackend:/code
+   - ./BloodDonationBackend:/code
   ports:
    - "8000:8000"
   depends_on:
@@ -33,5 +33,5 @@ services:
 
 volumes:
   postgres_data:
-  BloodDonationBackend:
+#  BloodDonationBackend:
   blood-donation-frontend:
