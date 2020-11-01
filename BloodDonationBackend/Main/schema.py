@@ -4,13 +4,13 @@ from Main.models import *
 from django.utils import timezone
 from datetime import datetime
 import graphql_jwt
-import Main.scripts as scr
+
 
 class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
         fields = ("email", "date_joined", 'is_superuser', 'is_staff', 'is_active', 'donatedBlood', 'donatedPlasma',
-                  'donatedPlatelets')
+                  'donatedPlatelets', 'donatedLeukocytes', 'donatedErythrocytes', 'is_male')
 
 
 class LocalizationType(DjangoObjectType):
@@ -22,15 +22,17 @@ class LocalizationType(DjangoObjectType):
 class DonationType(DjangoObjectType):
     class Meta:
         model = DonationModel
-        fields = ("donation_id","donor", 'place', 'donationType', 'amount', 'time')
+        fields = ("donation_id", "donor", 'place', 'donationType', 'amount', 'time')
 
 
 class Query(graphene.ObjectType):
-    all_localizations = graphene.List(LocalizationType,recent=graphene.Int(),skip=graphene.Int(),mobile=graphene.Boolean())
+    all_localizations = graphene.List(LocalizationType, recent=graphene.Int(), skip=graphene.Int(),
+                                      mobile=graphene.Boolean())
     # city = graphene.Field(LocalizationType, city=graphene.String(required=True))
     city = graphene.List(LocalizationType, city=graphene.String(required=True))
 
     me = graphene.Field(UserType)
+
     def resolve_me(self, info):
         user = info.context.user
         if user.is_anonymous:
@@ -45,24 +47,25 @@ class Query(graphene.ObjectType):
     def resolve_city(self, info, city):
         return LocalizationModel.objects.filter(city=city)
 
-    all_users = graphene.List(UserType)##
-    is_staff = graphene.List(UserType, is_staff=graphene.Boolean(required=True))##
+    all_users = graphene.List(UserType)  ##
+    is_staff = graphene.List(UserType, is_staff=graphene.Boolean(required=True))  ##
 
-    def resolve_all_users(self, info):##
-        return UserModel.objects.all()##
+    def resolve_all_users(self, info):  ##
+        return UserModel.objects.all()  ##
 
-    def resolve_is_staff(self, info, is_staff):##
-        return UserModel.objects.filter(is_staff=is_staff)##
+    def resolve_is_staff(self, info, is_staff):  ##
+        return UserModel.objects.filter(is_staff=is_staff)  ##
 
-    all_donations = graphene.List(DonationType)##
-    donation_by_type = graphene.List(DonationType, donationType=graphene.String(required=True))##
-    donation_with_user = graphene.List(DonationType, donor=graphene.String(required=True),recent=graphene.Int(),skip=graphene.Int())
+    all_donations = graphene.List(DonationType)  ##
+    donation_by_type = graphene.List(DonationType, donationType=graphene.String(required=True))  ##
+    donation_with_user = graphene.List(DonationType, donor=graphene.String(required=True), recent=graphene.Int(),
+                                       skip=graphene.Int())
 
-    def resolve_all_donations(self, info):##
-        return DonationModel.objects.all()##
+    def resolve_all_donations(self, info):  ##
+        return DonationModel.objects.all()  ##
 
-    def resolve_donation_by_type(self, info, donationType):##
-        return DonationModel.objects.filter(donationType=donationType)##
+    def resolve_donation_by_type(self, info, donationType):  ##
+        return DonationModel.objects.filter(donationType=donationType)  ##
 
     def resolve_donation_with_user(self, info, donor, recent=100, skip=0):
         if info.context.user.is_anonymous:
@@ -87,7 +90,8 @@ class ApplyDonationMutation(graphene.Mutation):
 
     donation = graphene.Field(DonationType)
 
-    def mutate(self, info, email, donatedAmount, donatedType,city,placeName,time=None,address='',isMobilePoint=False):
+    def mutate(self, info, email, donatedAmount, donatedType, city, placeName, time=None, address='',
+               isMobilePoint=False):
         if info.context.user.is_anonymous:
             raise Exception('Not logged in!')
         try:
@@ -100,15 +104,22 @@ class ApplyDonationMutation(graphene.Mutation):
             user.donatedPlasma += int(donatedAmount)
         elif donatedType == 'PLT':
             user.donatedPlatelets += int(donatedAmount)
+        elif donatedType == 'ERT':
+            user.donatedErythrocytes += int(donatedAmount)
+        elif donatedType == 'LEU':
+            user.donatedLeukocytes += int(donatedAmount)
         else:
             return None
         user.save()
-        localization = LocalizationModel.objects.filter(city=city,placeName=placeName, address=address,isMobilePoint=isMobilePoint).first()
-        if not localization:
-            localization = LocalizationModel(city=city,placeName=placeName, address=address,isMobilePoint=isMobilePoint)
+        try:
+            localization = LocalizationModel.objects.get(placeName=placeName)
+        except LocalizationModel.DoesNotExist:
+            localization = LocalizationModel(city=city, placeName=placeName, address=address,
+                                             isMobilePoint=isMobilePoint)
             localization.save()
         time = datetime.fromisoformat(time) if time else timezone.now()
-        donation = DonationModel(donor=user,place=localization, donationType=donatedType,amount=donatedAmount, time=time)
+        donation = DonationModel(donor=user, place=localization, donationType=donatedType, amount=donatedAmount,
+                                 time=time)
         donation.save()
         return ApplyDonationMutation(donation=donation)
 

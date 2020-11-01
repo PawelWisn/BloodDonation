@@ -53,6 +53,8 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     donatedBlood = models.IntegerField(default=0)
     donatedPlasma = models.IntegerField(default=0)
     donatedPlatelets = models.IntegerField(default=0)
+    donatedErythrocytes = models.IntegerField(default=0)
+    donatedLeukocytes = models.IntegerField(default=0)
 
     objects = CustomUserManager()
 
@@ -66,6 +68,8 @@ class DonationModel(models.Model):
         BLOOD = "BLD"
         PLASMA = "PLM"
         PLATELETS = "PLT"
+        ERYTHROCYTES = "ERT"
+        LEUKOCYTES = "LEU"
 
     donation_id = models.AutoField(primary_key=True)
     donor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
