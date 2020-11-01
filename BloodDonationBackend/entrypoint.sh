@@ -18,7 +18,7 @@ DonationModel(donor=users[1],place=locs[0],donationType='BLD', amount=450,time=t
 DonationModel(donor=users[1],place=locs[7],donationType='PLT', amount=450,time=timezone.now()).save();
 DonationModel(donor=users[2],place=locs[2],donationType='PLM', amount=450,time=timezone.now()).save();
 DonationModel(donor=users[1],place=locs[5],donationType='ERT', amount=600,time=timezone.now()).save();
-DonationModel(donor=users[0],place=locs[18],donationType='LEU', amount=300,time=timezone.now()).save();
+DonationModel(donor=users[2],place=locs[18],donationType='LEU', amount=300,time=timezone.now()).save();
 DonationModel(donor=users[3],place=locs[3],donationType='ERT', amount=450,time=timezone.now()).save();" | python manage.py shell
 
 python manage.py runscript sendEmailRemainders
