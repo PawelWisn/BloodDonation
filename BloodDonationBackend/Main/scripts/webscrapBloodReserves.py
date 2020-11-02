@@ -23,7 +23,8 @@ def run():
     # webscrapRzeszow()
     # webscrapSlupsk()
     # webscrapSzczecin()
-    webscrapWalbrzych()
+    # webscrapWalbrzych()
+    webscrapWarszawa()
 
 
 def saveToDB(region, volume, group):
@@ -340,3 +341,28 @@ def webscrapWalbrzych():
         group = x['alt'].split(' ')[0]
         group = group.replace('0', 'Z')[:-1] + '_' + ('P' if '+' in group else 'N')
         saveToDB('Walbrzych', volume, group)
+
+def webscrapWarszawa():
+    try:
+        webpage = requests.get(r"http://www.rckik-warszawa.com.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('img', {'src': lambda x: x and re.search(r'/img/krew-(bardzoniski|niski|sredni|wysoki).png', x),
+                             'alt': lambda x: x and re.match(r'(Bardzoniski|Niski|Średni|Wysoki)',x)})
+    for x in a:
+        group = x.parent.text.strip().replace('0','Z')
+        group = group.split('Rh')[0]+ '_' + ('P' if '+' in group else 'N')
+        volume = x['src']
+        volume = volume[volume.rfind('-')+1:volume.rfind('.')]
+        if volume == 'wysoki':
+            volume = 4
+        elif volume == 'sredni':
+            volume = 2
+        elif volume == 'niski':
+            volume = 1
+        else:
+            volume = 0
+        saveToDB('Warszawa', volume, group)
+
+
