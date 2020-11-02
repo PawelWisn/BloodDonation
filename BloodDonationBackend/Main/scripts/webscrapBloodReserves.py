@@ -8,27 +8,27 @@ from selenium import webdriver
 
 
 def run():
-    # webscrapKrakow()
-    # webscrapBialystok()
-    # webscrapBydgoszcz()
-    # webscrapGdansk()
-    # webscrapKatowice()
-    # webscrapKalisz()
-    # webscrapKielce()
-    # webscrapLodz()
-    # webscrapLublin()
-    # webscrapOlsztyn()
-    # webscrapOpole()
-    # webscrapPoznan()
-    # webscrapRaciborz()
-    # webscrapRadom()
-    # webscrapRzeszow()
-    # webscrapSlupsk()
-    # webscrapSzczecin()
-    # webscrapWalbrzych()
-    # webscrapWarszawa()
+    webscrapKrakow()
+    webscrapBialystok()
+    webscrapBydgoszcz()
+    webscrapGdansk()
+    webscrapKatowice()
+    webscrapKalisz()
+    webscrapKielce()
+    webscrapLodz()
+    webscrapLublin()
+    webscrapOlsztyn()
+    webscrapOpole()
+    webscrapPoznan()
+    webscrapRaciborz()
+    webscrapRadom()
+    webscrapRzeszow()
+    webscrapSlupsk()
+    webscrapSzczecin()
+    webscrapWalbrzych()
+    webscrapWarszawa()
     webscrapWroclaw()
-    # webscrapZielonaGora()
+    webscrapZielonaGora()
 
 
 def saveToDB(region, volume, group):
@@ -404,7 +404,6 @@ def webscrapWroclaw():
         volume = x['src']
         volume = 5 - int(volume[volume.rfind('_') + 1:volume.rfind('.')])
         group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if 'plus' in x['alt'] else 'N')
-        print(group, volume)
         saveToDB('Wroclaw', volume, group)
 
 
