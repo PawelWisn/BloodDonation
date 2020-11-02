@@ -20,6 +20,7 @@ def run():
     # webscrapPoznan()
     webscrapRaciborz()
 
+
 def saveToDB(region, volume, group):
     try:
         br = BloodReservesModel.objects.get(region=region, group=group)
@@ -43,7 +44,7 @@ def webscrapKrakow():
         volume = int(link[link.rfind(r'/') + 1:link.rfind(r'.')])
         group = anchor.parent.next_sibling.find('strong').text.strip().replace(u'\xa0', ' ')
         group = group.split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Krakow',volume//25,group)
+        saveToDB('Krakow', volume // 25, group)
 
 
 def webscrapBialystok():
@@ -130,7 +131,7 @@ def webscrapKielce():
         if volume == 10: volume = 100
         group = x.get('title').strip()
         group = group.replace(u'\xa0', ' ').split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Kielce', volume//25, group)
+        saveToDB('Kielce', volume // 25, group)
 
 
 def webscrapLublin():
@@ -186,7 +187,7 @@ def webscrapOpole():
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
-    a = soup.findAll('img', {'alt': lambda x: x and re.match('^(A|0|B|AB) RhD.*?stan$', x)})
+    a = soup.findAll('img', {'alt': lambda x: x and re.match(r'^(A|0|B|AB) RhD.*?stan$', x)})
     for x in a:
         group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if 'plus' in x['alt'] else 'N')
         volume = 5 - int(x['src'][x['src'].rfind(r'.') - 1])
@@ -200,17 +201,19 @@ def webscrapPoznan():
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
-    a = soup.findAll('li', string=re.compile('^(A|0|B|AB) Rh [-+]$'))
+    a = soup.findAll('li', string=re.compile(r'^(A|0|B|AB) Rh [-+]$'))
     for x in a:
         group = x.text.replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.text else 'N')
         volume = x['class'][0][1:]
-        if volume == 'F': volume=4
-        elif volume == 'M': volume=2
-        elif volume == 'L': volume=1
-        else: volume=0
-        print(group, volume)
+        if volume == 'F':
+            volume = 4
+        elif volume == 'M':
+            volume = 2
+        elif volume == 'L':
+            volume = 1
+        else:
+            volume = 0
         saveToDB('Poznan', volume, group)
-
 
 
 def webscrapRaciborz():
@@ -219,13 +222,18 @@ def webscrapRaciborz():
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
-    a = soup.findAll('li', string=re.compile('^(A|0|B|AB) Rh [-+]$'))
+    a = soup.findAll('img', {'src': lambda x: x and re.match(r'/assets/img/krew.*?.png', x),
+                             'title': lambda x: x and re.match(r'site\.(niski|sredni|wysoki|bardzoniski)', x)})
     for x in a:
-        group = x.text.replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.text else 'N')
-        volume = x['class'][0][1:]
-        if volume == 'F': volume=4
-        elif volume == 'M': volume=2
-        elif volume == 'L': volume=1
-        else: volume=0
-        print(group, volume)
+        group = x.parent.text.strip().replace(u'\xa0', '').split('Rh')[0]
+        group = group.replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.parent.text else 'N')
+        volume = x['title'][5:]
+        if volume == 'wysoki':
+            volume = 4
+        elif volume == 'sredni':
+            volume = 2
+        elif volume == 'niski':
+            volume = 1
+        else:
+            volume = 0
         saveToDB('Raciborz', volume, group)
