@@ -15,7 +15,8 @@ def run():
     # webscrapKatowice()
     # webscrapKielce()
     # webscrapLublin()
-    webscrapOlsztyn()
+    # webscrapOlsztyn()
+    webscrapOpole()
 
 
 def webscrapKrakow():
@@ -193,7 +194,7 @@ def webscrapOlsztyn():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     a = soup.findAll('strong')
-    a = list(filter(lambda x: re.search(r'^(0|A|B|AB)Rh\+?$', str(x.text.strip())), a))
+    a = list(filter(lambda x: re.search(r'^(0|A|B|AB)Rh\+?$', str(x.text)), a))
     for x in a:
         group = x.text.strip().replace('0', 'Z').split('Rh')[0] + '_' + ('P' if '+' in x.text else 'N')
         parent = x.parent.parent
@@ -211,6 +212,27 @@ def webscrapOlsztyn():
             br = BloodReservesModel.objects.get(region='Olsztyn', group=group)
         except BloodReservesModel.DoesNotExist:
             BloodReservesModel(region="Olsztyn", volume=volume, group=group).save()
+        else:
+            br.volume = volume
+            br.save()
+
+
+def webscrapOpole():
+    try:
+        webpage = requests.get(r"https://www.rckik-opole.com.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('img', {'alt': lambda x: x and re.match('^(A|0|B|AB).{1}RhD.*?stan$', x)})
+    for x in a:
+        group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if 'plus' in x['alt'] else 'N')
+        volume = 5 - int(x['src'][x['src'].rfind(r'.') - 1])
+        if volume <= 2: volume -= 1
+        print(group, volume)
+        try:
+            br = BloodReservesModel.objects.get(region='Opole', group=group)
+        except BloodReservesModel.DoesNotExist:
+            BloodReservesModel(region="Opole", volume=volume, group=group).save()
         else:
             br.volume = volume
             br.save()
