@@ -24,7 +24,8 @@ def run():
     # webscrapSlupsk()
     # webscrapSzczecin()
     # webscrapWalbrzych()
-    webscrapWarszawa()
+    # webscrapWarszawa()
+    webscrapWroclaw()
 
 
 def saveToDB(region, volume, group):
@@ -334,13 +335,14 @@ def webscrapWalbrzych():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     a = soup.findAll('img', {'src': lambda x: x and re.search(r'/site/templates/as002027/images/\d.png', x),
-                             'alt': lambda x: x and re.match(r'(0|A|B|AB)[-+]',x)})
+                             'alt': lambda x: x and re.match(r'(0|A|B|AB)[-+]', x)})
     for x in a:
         volume = 5 - int(x['src'][x['src'].rfind('/') + 1:x['src'].rfind('.')])
         if volume <= 2: volume -= 1
         group = x['alt'].split(' ')[0]
         group = group.replace('0', 'Z')[:-1] + '_' + ('P' if '+' in group else 'N')
         saveToDB('Walbrzych', volume, group)
+
 
 def webscrapWarszawa():
     try:
@@ -349,12 +351,12 @@ def webscrapWarszawa():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     a = soup.findAll('img', {'src': lambda x: x and re.search(r'/img/krew-(bardzoniski|niski|sredni|wysoki).png', x),
-                             'alt': lambda x: x and re.match(r'(Bardzoniski|Niski|Średni|Wysoki)',x)})
+                             'alt': lambda x: x and re.match(r'(Bardzoniski|Niski|Średni|Wysoki)', x)})
     for x in a:
-        group = x.parent.text.strip().replace('0','Z')
-        group = group.split('Rh')[0]+ '_' + ('P' if '+' in group else 'N')
+        group = x.parent.text.strip().replace('0', 'Z')
+        group = group.split('Rh')[0] + '_' + ('P' if '+' in group else 'N')
         volume = x['src']
-        volume = volume[volume.rfind('-')+1:volume.rfind('.')]
+        volume = volume[volume.rfind('-') + 1:volume.rfind('.')]
         if volume == 'wysoki':
             volume = 4
         elif volume == 'sredni':
@@ -366,3 +368,15 @@ def webscrapWarszawa():
         saveToDB('Warszawa', volume, group)
 
 
+def webscrapWroclaw():
+    try:
+        webpage = requests.get(r"https://www.rckik.wroclaw.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('img', {'src': lambda x: x and re.match(r'images/pojemnik_\d.(png|gif)', x)})
+    for x in a:
+        volume = x['src']
+        volume = 5 - int(volume[volume.rfind('_') + 1:volume.rfind('.')])
+        group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x['alt'] else 'N')
+        saveToDB('Wroclaw', volume, group)
