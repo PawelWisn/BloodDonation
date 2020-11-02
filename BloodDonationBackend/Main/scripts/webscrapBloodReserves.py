@@ -8,26 +8,27 @@ from selenium import webdriver
 
 
 def run():
-    # webscrapKrakow()
-    # webscrapBialystok()
-    # webscrapBydgoszcz()
-    # webscrapGdansk()
-    # webscrapKatowice()
+    webscrapKrakow()
+    webscrapBialystok()
+    webscrapBydgoszcz()
+    webscrapGdansk()
+    webscrapKatowice()
     webscrapKalisz()
-    # webscrapKielce()
-    # webscrapLublin()
-    # webscrapOlsztyn()
-    # webscrapOpole()
-    # webscrapPoznan()
-    # webscrapRaciborz()
-    # webscrapRadom()
-    # webscrapRzeszow()
-    # webscrapSlupsk()
-    # webscrapSzczecin()
-    # webscrapWalbrzych()
-    # webscrapWarszawa()
-    # webscrapWroclaw()
-    # webscrapZielonaGora()
+    webscrapKielce()
+    webscrapLodz()
+    webscrapLublin()
+    webscrapOlsztyn()
+    webscrapOpole()
+    webscrapPoznan()
+    webscrapRaciborz()
+    webscrapRadom()
+    webscrapRzeszow()
+    webscrapSlupsk()
+    webscrapSzczecin()
+    webscrapWalbrzych()
+    webscrapWarszawa()
+    webscrapWroclaw()
+    webscrapZielonaGora()
 
 
 def saveToDB(region, volume, group):
@@ -424,3 +425,30 @@ def webscrapZielonaGora():
         else:
             volume = 0
         saveToDB('Zielona Gora', volume, groups.pop())
+
+
+def webscrapLodz():
+    try:
+        webpage = requests.get(r"http://www.krwiodawstwo.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('img', {
+        'src': lambda x: x and (re.search(r'/images/stany_zapasow/stan_(ba|ni|sr|wy)_\d{5}.jpg', x) or re.search(
+            r'/images/stany_zapasow/kropla.?_19960.png', x))})
+    for x in a:
+        volume = x['src']
+        volume = volume[volume.rfind('/') + 1:volume.rfind('.')]
+        if volume.startswith('kropla'):
+            volume = 0
+        elif volume == "stan_ba_41048":
+            volume = 1
+        elif volume == 'stan_ni_31220':
+            volume = 2
+        elif volume == 'stan_sr_49761':
+            volume = 3
+        else:
+            volume = 4
+        group = x.parent.find('p').text
+        group = group.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in group else 'N')
+        saveToDB('Lodz', volume, group)
