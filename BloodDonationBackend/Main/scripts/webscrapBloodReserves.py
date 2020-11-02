@@ -8,12 +8,13 @@ from selenium import webdriver
 
 
 def run():
-    webscrapKrakow()
-    webscrapBialystok()
-    webscrapBydgoszcz()
-    webscrapGdansk()
-    webscrapKatowice()
-    webscrapKielce()
+    # webscrapKrakow()
+    # webscrapBialystok()
+    # webscrapBydgoszcz()
+    # webscrapGdansk()
+    # webscrapKatowice()
+    # webscrapKielce()
+    webscrapLublin()
 
 
 def webscrapKrakow():
@@ -23,7 +24,7 @@ def webscrapKrakow():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     anchors = soup.findAll('img', {
-        'src': lambda x: x and re.match('https://rckik.krakow.pl/wp-content/uploads/2016/11/\d{1,3}.png', x)})
+        'src': lambda x: x and re.match('https://rckik.krakow.pl/wp-content/uploads/20\d\d/\d{1,2}/\d{1,3}.png', x)})
     for anchor in anchors:
         link = anchor['src']
         volume = int(link[link.rfind(r'/') + 1:link.rfind(r'.')])
@@ -144,12 +145,41 @@ def webscrapKielce():
     for x in a:
         volume = int(x['src'][x['src'].rfind('/') + 1:][:2])
         if volume == 10: volume = 100
-        group= x.get('title')
-        group = group.replace(u'\xa0', ' ').split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in x else 'N')
+        group = x.get('title')
+        group = group.replace(u'\xa0', ' ').split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
         try:
             br = BloodReservesModel.objects.get(region='Kielce', group=group)
         except BloodReservesModel.DoesNotExist:
             BloodReservesModel(region="Kielce", volume=volume // 25, group=group).save()
         else:
             br.volume = volume // 25
+            br.save()
+
+
+def webscrapLublin():
+    def getRh(x):
+        return 'P' if '+' in x.parent.parent.parent.parent.parent.find('h2').text else 'N'
+
+    try:
+        webpage = requests.get(r"http://www.rckik.lublin.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('img', {'src': lambda x: x and re.match('/img/krew-(niski|sredni|wysoki).png', x),
+                             'title': lambda x: x and re.match('site\.(niski|sredni|wysoki)', x)})
+    for x in a:
+        volume = x['title'][5:]
+        if volume == 'wysoki':
+            volume = 4
+        elif volume == 'sredni':
+            volume = 2
+        else:
+            volume = 0
+        group = x.parent.text.strip().replace('0', 'Z') + '_' + getRh(x)
+        try:
+            br = BloodReservesModel.objects.get(region='Lublin', group=group)
+        except BloodReservesModel.DoesNotExist:
+            BloodReservesModel(region="Lublin", volume=volume, group=group).save()
+        else:
+            br.volume = volume
             br.save()
