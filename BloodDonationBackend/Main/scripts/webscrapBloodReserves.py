@@ -8,17 +8,18 @@ from selenium import webdriver
 
 
 def run():
-    # webscrapKrakow()
-    # webscrapBialystok()
-    # webscrapBydgoszcz()
-    # webscrapGdansk()
-    # webscrapKatowice()
-    # webscrapKielce()
-    # webscrapLublin()
-    # webscrapOlsztyn()
-    # webscrapOpole()
-    # webscrapPoznan()
+    webscrapKrakow()
+    webscrapBialystok()
+    webscrapBydgoszcz()
+    webscrapGdansk()
+    webscrapKatowice()
+    webscrapKielce()
+    webscrapLublin()
+    webscrapOlsztyn()
+    webscrapOpole()
+    webscrapPoznan()
     webscrapRaciborz()
+    webscrapRadom()
 
 
 def saveToDB(region, volume, group):
@@ -237,3 +238,26 @@ def webscrapRaciborz():
         else:
             volume = 0
         saveToDB('Raciborz', volume, group)
+
+
+def webscrapRadom():
+    try:
+        webpage = requests.get(r"http://www.rckik.radom.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('p')
+    a = list(filter(lambda x: re.search(r'^(0|A|B|AB) RH [-+].*$', str(x.text)), a))
+    for x in a:
+        group = x.text.strip().replace('0', 'Z').split('RH')[0].strip() + '_' + ('P' if '+' in x.text else 'N')
+        volume = x.parent.find('img')['src']
+        volume = volume[volume.rfind(r'/') + 1:volume.rfind(r'.')]
+        if volume == 'bniski':
+            volume = 0
+        elif volume == 'niski':
+            volume = 1
+        elif volume == 'sredni':
+            volume = 2
+        else:
+            volume = 4
+        saveToDB('Radom', volume, group)
