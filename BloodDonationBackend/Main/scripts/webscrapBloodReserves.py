@@ -8,18 +8,19 @@ from selenium import webdriver
 
 
 def run():
-    webscrapKrakow()
-    webscrapBialystok()
-    webscrapBydgoszcz()
-    webscrapGdansk()
-    webscrapKatowice()
-    webscrapKielce()
-    webscrapLublin()
-    webscrapOlsztyn()
-    webscrapOpole()
-    webscrapPoznan()
-    webscrapRaciborz()
-    webscrapRadom()
+    # webscrapKrakow()
+    # webscrapBialystok()
+    # webscrapBydgoszcz()
+    # webscrapGdansk()
+    # webscrapKatowice()
+    # webscrapKielce()
+    # webscrapLublin()
+    # webscrapOlsztyn()
+    # webscrapOpole()
+    # webscrapPoznan()
+    # webscrapRaciborz()
+    # webscrapRadom()
+    webscrapRzeszow()
 
 
 def saveToDB(region, volume, group):
@@ -269,18 +270,16 @@ def webscrapRzeszow():
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
-    a = soup.findAll('div', {'class': lambda x: x and re.match(r'', x),
-                             'title': lambda x: x and re.match(r'site\.(niski|sredni|wysoki|bardzoniski)', x)})
+    a = soup.findAll('div', {'class': lambda x: x and re.match(r'iconBlood_\d', x)})
     for x in a:
-        group = x.text.strip().replace('0', 'Z').split('RH')[0].strip() + '_' + ('P' if '+' in x.text else 'N')
-        volume = x.parent.find('img')['src']
-        volume = volume[volume.rfind(r'/') + 1:volume.rfind(r'.')]
-        if volume == 'bniski':
-            volume = 0
-        elif volume == 'niski':
+        volume = x.parent['style'].split(' ')[-1][:-3]
+        group = x.text.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.text else 'N')
+        if volume == '22':
+            volume = 3
+        elif volume == '35':
             volume = 1
-        elif volume == 'sredni':
-            volume = 2
+        elif volume == '43':
+            volume = 0
         else:
             volume = 4
-        saveToDB('Radom', volume, group)
+        saveToDB('Rzeszow', volume, group)
