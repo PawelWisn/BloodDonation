@@ -3,6 +3,8 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import time
+from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
 
 def run():
     webscrapKrakow()
@@ -103,8 +105,7 @@ def webscrapGdansk():
 
 
 def webscrapKatowice():
-    from selenium.webdriver.chrome.options import Options
-    from selenium import webdriver
+
     def set_chrome_options() -> None:
         chrome_options = Options()
         chrome_options.add_argument("--headless")
@@ -117,6 +118,16 @@ def webscrapKatowice():
     driver = webdriver.Chrome(options=set_chrome_options())
     driver.get('https://rckik-katowice.pl')
     time.sleep(5)
-    data = driver.find_element_by_id('app')
-    print(data.text)
+    data = driver.find_element_by_class_name('drops').text.replace(u'\xa0', ' ').replace('stan ', '')
+    data = data.replace('średni','2').replace('niski','1').replace('optymalny','3')
+    data = data.replace('maksymalny','4').replace('krytyczny','0').split('\n')
+    for i in range(0,len(data),2):
+        group = data[i].split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in data[i] else 'N')
+        try:
+            br = BloodReservesModel.objects.get(region='Katowice', group=group)
+        except BloodReservesModel.DoesNotExist:
+            BloodReservesModel(region="Katowice", volume=data[i+1], group=group).save()
+        else:
+            br.volume = data[i+1]
+            br.save()
     driver.close()
