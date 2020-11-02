@@ -261,3 +261,26 @@ def webscrapRadom():
         else:
             volume = 4
         saveToDB('Radom', volume, group)
+
+
+def webscrapRzeszow():
+    try:
+        webpage = requests.get(r"https://www.rckk.rzeszow.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('div', {'class': lambda x: x and re.match(r'', x),
+                             'title': lambda x: x and re.match(r'site\.(niski|sredni|wysoki|bardzoniski)', x)})
+    for x in a:
+        group = x.text.strip().replace('0', 'Z').split('RH')[0].strip() + '_' + ('P' if '+' in x.text else 'N')
+        volume = x.parent.find('img')['src']
+        volume = volume[volume.rfind(r'/') + 1:volume.rfind(r'.')]
+        if volume == 'bniski':
+            volume = 0
+        elif volume == 'niski':
+            volume = 1
+        elif volume == 'sredni':
+            volume = 2
+        else:
+            volume = 4
+        saveToDB('Radom', volume, group)
