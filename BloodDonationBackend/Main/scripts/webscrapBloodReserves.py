@@ -6,12 +6,14 @@ import time
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
+
 def run():
     webscrapKrakow()
     webscrapBialystok()
     webscrapBydgoszcz()
     webscrapGdansk()
     webscrapKatowice()
+    webscrapKielce()
 
 
 def webscrapKrakow():
@@ -84,6 +86,7 @@ def webscrapBydgoszcz():
             br.volume = volume
             br.save()
 
+
 def webscrapGdansk():
     try:
         webpage = requests.get(r"http://krew.gda.pl")
@@ -105,29 +108,48 @@ def webscrapGdansk():
 
 
 def webscrapKatowice():
-
-    def set_chrome_options() -> None:
-        chrome_options = Options()
-        chrome_options.add_argument("--headless")
-        chrome_options.add_argument("--no-sandbox")
-        chrome_options.add_argument("--disable-dev-shm-usage")
-        chrome_prefs = {}
-        chrome_options.experimental_options["prefs"] = chrome_prefs
-        chrome_prefs["profile.default_content_settings"] = {"images": 2}
-        return chrome_options
-    driver = webdriver.Chrome(options=set_chrome_options())
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_prefs = {}
+    chrome_options.experimental_options["prefs"] = chrome_prefs
+    chrome_prefs["profile.default_content_settings"] = {"images": 2}
+    driver = webdriver.Chrome(options=chrome_options)
     driver.get('https://rckik-katowice.pl')
     time.sleep(5)
     data = driver.find_element_by_class_name('drops').text.replace(u'\xa0', ' ').replace('stan ', '')
-    data = data.replace('średni','2').replace('niski','1').replace('optymalny','3')
-    data = data.replace('maksymalny','4').replace('krytyczny','0').split('\n')
-    for i in range(0,len(data),2):
+    data = data.replace('średni', '2').replace('niski', '1').replace('optymalny', '3')
+    data = data.replace('maksymalny', '4').replace('krytyczny', '0').split('\n')
+    for i in range(0, len(data), 2):
         group = data[i].split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in data[i] else 'N')
         try:
             br = BloodReservesModel.objects.get(region='Katowice', group=group)
         except BloodReservesModel.DoesNotExist:
-            BloodReservesModel(region="Katowice", volume=data[i+1], group=group).save()
+            BloodReservesModel(region="Katowice", volume=data[i + 1], group=group).save()
         else:
-            br.volume = data[i+1]
+            br.volume = data[i + 1]
             br.save()
     driver.close()
+
+
+def webscrapKielce():
+    try:
+        webpage = requests.get(r"https://www.rckik-kielce.com.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = set(soup.findAll('img', {'src': lambda x: x and re.match('/images/krople/\d{1,3}', x),
+                                 'title': lambda x: x and re.match('[0AB]{1,2} Rh[-+]{1}', x)}))
+    for x in a:
+        volume = int(x['src'][x['src'].rfind('/') + 1:][:2])
+        if volume == 10: volume = 100
+        group= x.get('title')
+        group = group.replace(u'\xa0', ' ').split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in x else 'N')
+        try:
+            br = BloodReservesModel.objects.get(region='Kielce', group=group)
+        except BloodReservesModel.DoesNotExist:
+            BloodReservesModel(region="Kielce", volume=volume // 25, group=group).save()
+        else:
+            br.volume = volume // 25
+            br.save()
