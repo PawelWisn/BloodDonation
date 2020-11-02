@@ -13,6 +13,7 @@ def run():
     # webscrapBydgoszcz()
     # webscrapGdansk()
     # webscrapKatowice()
+    webscrapKalisz()
     # webscrapKielce()
     # webscrapLublin()
     # webscrapOlsztyn()
@@ -26,7 +27,7 @@ def run():
     # webscrapWalbrzych()
     # webscrapWarszawa()
     # webscrapWroclaw()
-    webscrapZielonaGora()
+    # webscrapZielonaGora()
 
 
 def saveToDB(region, volume, group):
@@ -124,6 +125,26 @@ def webscrapKatowice():
         group = data[i].strip().split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in data[i] else 'N')
         saveToDB('Katowice', data[i + 1], group)
     driver.close()
+
+
+def webscrapKalisz():
+    try:
+        webpage = requests.get(r"http://krwiodawstwo.kalisz.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('img', {'src': lambda x: x and re.search(r'/widgets/BloodSupply/assets/blood-\d_\d.png', x)})
+    for x in a:
+        group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x['alt'] else 'N')
+        volume = x['src']
+        volume = volume[volume.rfind('-') + 1:volume.rfind('.')]
+        if volume == '3_4':
+            volume = 3
+        elif volume == '1_4':
+            volume = 2
+        else:
+            volume = 1
+        saveToDB('Kalisz', volume, group)
 
 
 def webscrapKielce():
@@ -389,10 +410,11 @@ def webscrapZielonaGora():
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
-    a = soup.find('div', {"id": lambda x: x == "bloodmeter"}).findAll('div', {'class': lambda x: x and re.search(r'^blood-\d{1,2}',x)})
+    a = soup.find('div', {"id": lambda x: x == "bloodmeter"}).findAll('div', {
+        'class': lambda x: x and re.search(r'^blood-\d{1,2}', x)})
     groups = ['Z_P', 'AB_P', 'B_P', 'A_P', 'Z_N', 'AB_N', 'B_N', 'A_N']
     for x in a:
-        volume = int(float(x['class'][0][x['class'][0].find('-')+1:]))
+        volume = int(float(x['class'][0][x['class'][0].find('-') + 1:]))
         if volume >= 60:
             volume = 4
         elif volume >= 30:
