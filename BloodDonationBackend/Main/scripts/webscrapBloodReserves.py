@@ -21,7 +21,8 @@ def run():
     # webscrapRaciborz()
     # webscrapRadom()
     # webscrapRzeszow()
-    webscrapSlupsk()
+    # webscrapSlupsk()
+    webscrapSzczecin()
 
 
 def saveToDB(region, volume, group):
@@ -295,7 +296,7 @@ def webscrapSlupsk():
     for id in range(166, 174):
         x = soup.find(id=f"menu-item-{id}")
         volume = x['class'][0]
-        group = x.text.replace('0','Z').split('/')[0] + '_' + ('P' if '+' in x.text else 'N')
+        group = x.text.replace('0', 'Z').split('/')[0] + '_' + ('P' if '+' in x.text else 'N')
         if volume == 'brak':
             volume = 0
         elif volume == 'puste':
@@ -306,3 +307,21 @@ def webscrapSlupsk():
             volume = 4
         print(group, volume)
         saveToDB('Slupsk', volume, group)
+
+
+def webscrapSzczecin():
+    try:
+        webpage = requests.get(r"http://www.krwiodawstwo.szczecin.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    a = soup.findAll('img', {'src': lambda x: x and re.search(r'/themes/default/assets/images/blood/\d.(gif|png)', x),
+                             'alt':lambda x: not x})
+    for x in a:
+        volume = int(x['src'][x['src'].rfind('/')+1:x['src'].rfind('.')])
+        if volume<=2: volume-=1
+        group = x.parent.find('span').text
+        group = group.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in group else 'N')
+        saveToDB('Szczecin', volume, group)
+
+
