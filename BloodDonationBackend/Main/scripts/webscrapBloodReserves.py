@@ -20,7 +20,8 @@ def run():
     # webscrapPoznan()
     # webscrapRaciborz()
     # webscrapRadom()
-    webscrapRzeszow()
+    # webscrapRzeszow()
+    webscrapSlupsk()
 
 
 def saveToDB(region, volume, group):
@@ -283,3 +284,25 @@ def webscrapRzeszow():
         else:
             volume = 4
         saveToDB('Rzeszow', volume, group)
+
+
+def webscrapSlupsk():
+    try:
+        webpage = requests.get(r"http://www.krwiodawstwo.slupsk.pl")
+    except ConnectionError:
+        return
+    soup = BeautifulSoup(webpage.text, 'html.parser')
+    for id in range(166, 174):
+        x = soup.find(id=f"menu-item-{id}")
+        volume = x['class'][0]
+        group = x.text.replace('0','Z').split('/')[0] + '_' + ('P' if '+' in x.text else 'N')
+        if volume == 'brak':
+            volume = 0
+        elif volume == 'puste':
+            volume = 1
+        elif volume == 'polowa':
+            volume = 2
+        else:
+            volume = 4
+        print(group, volume)
+        saveToDB('Slupsk', volume, group)
