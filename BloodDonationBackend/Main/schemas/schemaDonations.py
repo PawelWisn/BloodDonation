@@ -47,11 +47,10 @@ class ApplyDonationMutation(graphene.Mutation):
 
     donation = graphene.Field(DonationType)
 
+    @login_required
     def mutate(self, info, donatedAmount, donatedType, city, placeName, time=None, address='',
                isMobilePoint=False):
         user = info.context.user
-        if user.is_anonymous:
-            raise Exception('Not logged in!')
         if donatedType == DonationModel.DONATIONTYPE.BLOOD:
             user.donatedBlood += int(donatedAmount)
         elif donatedType == DonationModel.DONATIONTYPE.PLASMA:

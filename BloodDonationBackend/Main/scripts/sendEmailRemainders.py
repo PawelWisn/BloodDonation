@@ -9,7 +9,7 @@ from time import sleep
 from django.conf import settings
 
 
-def run(): # main function
+def run():
     users = [user for user in UserModel.objects.all()]
     today = timezone.now()
     itemsAbleToDonateDict = getItemsAbleToDonate()

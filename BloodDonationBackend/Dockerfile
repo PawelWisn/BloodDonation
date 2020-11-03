@@ -17,5 +17,5 @@ ENV DISPLAY=:99
 
 COPY entrypoint.sh .
 COPY . .
-HEALTHCHECK --interval=85600s --timeout=180s CMD python manage.py runscript sendEmailRemainders
+HEALTHCHECK --interval=60s --timeout=600s CMD python manage.py runscript dailyExecution
 ENTRYPOINT ["./entrypoint.sh"]
