@@ -8,27 +8,27 @@ from selenium import webdriver
 
 
 def run():
-    webscrapKrakow()
-    webscrapBialystok()
-    webscrapBydgoszcz()
-    webscrapGdansk()
-    webscrapKatowice()
-    webscrapKalisz()
-    webscrapKielce()
-    webscrapLodz()
-    webscrapLublin()
-    webscrapOlsztyn()
-    webscrapOpole()
-    webscrapPoznan()
-    webscrapRaciborz()
-    webscrapRadom()
-    webscrapRzeszow()
-    webscrapSlupsk()
-    webscrapSzczecin()
-    webscrapWalbrzych()
-    webscrapWarszawa()
-    webscrapWroclaw()
-    webscrapZielonaGora()
+    webScrapKrakow()
+    webScrapBialystok()
+    webScrapBydgoszcz()
+    webScrapGdansk()
+    webScrapKatowice()
+    webScrapKalisz()
+    webScrapKielce()
+    webScrapLodz()
+    webScrapLublin()
+    webScrapOlsztyn()
+    webScrapOpole()
+    webScrapPoznan()
+    webScrapRaciborz()
+    webScrapRadom()
+    webScrapRzeszow()
+    webScrapSlupsk()
+    webScrapSzczecin()
+    webScrapWalbrzych()
+    webScrapWarszawa()
+    webScrapWroclaw()
+    webScrapZielonaGora()
 
 
 def saveToDB(region, volume, group):
@@ -41,7 +41,7 @@ def saveToDB(region, volume, group):
         br.save()
 
 
-def webscrapKrakow():
+def webScrapKrakow():
     try:
         webpage = requests.get(r"https://rckik.krakow.pl")
     except ConnectionError:
@@ -57,7 +57,7 @@ def webscrapKrakow():
         saveToDB('Krakow', volume // 25, group)
 
 
-def webscrapBialystok():
+def webScrapBialystok():
     try:
         webpage = requests.get(r"https://www.rckik.bialystok.pl")
     except ConnectionError:
@@ -77,7 +77,7 @@ def webscrapBialystok():
         saveToDB('Bialystok', volume, group)
 
 
-def webscrapBydgoszcz():
+def webScrapBydgoszcz():
     try:
         webpage = requests.get(r"http://www.rckik-bydgoszcz.com.pl")
     except ConnectionError:
@@ -94,7 +94,7 @@ def webscrapBydgoszcz():
         saveToDB('Bydgoszcz', volume, group)
 
 
-def webscrapGdansk():
+def webScrapGdansk():
     try:
         webpage = requests.get(r"http://krew.gda.pl")
     except ConnectionError:
@@ -108,7 +108,7 @@ def webscrapGdansk():
         saveToDB('Gdansk', volume, group)
 
 
-def webscrapKatowice():
+def webScrapKatowice():
     chrome_options = Options()
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--no-sandbox")
@@ -128,7 +128,7 @@ def webscrapKatowice():
     driver.close()
 
 
-def webscrapKalisz():
+def webScrapKalisz():
     try:
         webpage = requests.get(r"http://krwiodawstwo.kalisz.pl")
     except ConnectionError:
@@ -148,7 +148,7 @@ def webscrapKalisz():
         saveToDB('Kalisz', volume, group)
 
 
-def webscrapKielce():
+def webScrapKielce():
     try:
         webpage = requests.get(r"https://www.rckik-kielce.com.pl")
     except ConnectionError:
@@ -164,7 +164,7 @@ def webscrapKielce():
         saveToDB('Kielce', volume // 25, group)
 
 
-def webscrapLublin():
+def webScrapLublin():
     def getRh(x):
         return ('P' if '+' in x.parent.parent.parent.parent.parent.find('h2').text else 'N')
 
@@ -187,7 +187,7 @@ def webscrapLublin():
         saveToDB('Lublin', volume, group)
 
 
-def webscrapOlsztyn():
+def webScrapOlsztyn():
     try:
         webpage = requests.get(r"http://rckikol.pl/potrzeba-krwi/")
     except ConnectionError:
@@ -211,7 +211,7 @@ def webscrapOlsztyn():
         saveToDB('Olsztyn', volume, group)
 
 
-def webscrapOpole():
+def webScrapOpole():
     try:
         webpage = requests.get(r"https://www.rckik-opole.com.pl")
     except ConnectionError:
@@ -226,7 +226,7 @@ def webscrapOpole():
         saveToDB('Opole', volume, group)
 
 
-def webscrapPoznan():
+def webScrapPoznan():
     try:
         webpage = requests.get(r"https://www.rckik.poznan.pl")
     except ConnectionError:
@@ -247,7 +247,7 @@ def webscrapPoznan():
         saveToDB('Poznan', volume, group)
 
 
-def webscrapRaciborz():
+def webScrapRaciborz():
     try:
         webpage = requests.get(r"https://rckik.pl")
     except ConnectionError:
@@ -270,7 +270,7 @@ def webscrapRaciborz():
         saveToDB('Raciborz', volume, group)
 
 
-def webscrapRadom():
+def webScrapRadom():
     try:
         webpage = requests.get(r"http://www.rckik.radom.pl")
     except ConnectionError:
@@ -293,7 +293,7 @@ def webscrapRadom():
         saveToDB('Radom', volume, group)
 
 
-def webscrapRzeszow():
+def webScrapRzeszow():
     try:
         webpage = requests.get(r"https://www.rckk.rzeszow.pl")
     except ConnectionError:
@@ -314,7 +314,7 @@ def webscrapRzeszow():
         saveToDB('Rzeszow', volume, group)
 
 
-def webscrapSlupsk():
+def webScrapSlupsk():
     try:
         webpage = requests.get(r"http://www.krwiodawstwo.slupsk.pl")
     except ConnectionError:
@@ -335,7 +335,7 @@ def webscrapSlupsk():
         saveToDB('Slupsk', volume, group)
 
 
-def webscrapSzczecin():
+def webScrapSzczecin():
     try:
         webpage = requests.get(r"http://www.krwiodawstwo.szczecin.pl")
     except ConnectionError:
@@ -352,7 +352,7 @@ def webscrapSzczecin():
         saveToDB('Szczecin', volume, group)
 
 
-def webscrapWalbrzych():
+def webScrapWalbrzych():
     try:
         webpage = requests.get(r"http://www.rckik.walbrzych.pl/site/")
     except ConnectionError:
@@ -369,7 +369,7 @@ def webscrapWalbrzych():
         saveToDB('Walbrzych', volume, group)
 
 
-def webscrapWarszawa():
+def webScrapWarszawa():
     try:
         webpage = requests.get(r"http://www.rckik-warszawa.com.pl")
     except ConnectionError:
@@ -393,7 +393,7 @@ def webscrapWarszawa():
         saveToDB('Warszawa', volume, group)
 
 
-def webscrapWroclaw():
+def webScrapWroclaw():
     try:
         webpage = requests.get(r"https://www.rckik.wroclaw.pl")
     except ConnectionError:
@@ -407,7 +407,7 @@ def webscrapWroclaw():
         saveToDB('Wroclaw', volume, group)
 
 
-def webscrapZielonaGora():
+def webScrapZielonaGora():
     try:
         webpage = requests.get(r"http://www.rckik.zgora.pl")
     except ConnectionError:
@@ -429,7 +429,7 @@ def webscrapZielonaGora():
         saveToDB('Zielona Gora', volume, groups.pop())
 
 
-def webscrapLodz():
+def webScrapLodz():
     try:
         webpage = requests.get(r"http://www.krwiodawstwo.pl")
     except ConnectionError:
