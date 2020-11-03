@@ -6,7 +6,7 @@ from datetime import datetime
 import graphql_jwt
 from .schemaUsers import UserType
 from .schemaLocalizations import LocalizationType
-
+from graphql_jwt.decorators import login_required
 
 class DonationType(DjangoObjectType):
     class Meta:
@@ -25,10 +25,9 @@ class QueryDonations(graphene.ObjectType):
     def resolve_donation_by_type(self, info, donationType):  ##
         return DonationModel.objects.filter(donationType=donationType)  ##
 
+    @login_required
     def resolve_donation_with_user(self, info, recent=2000, skip=0):
         user = info.context.user
-        if user.is_anonymous:
-            raise Exception('Not logged in!')
         try:
             user = UserModel.objects.get(email=user.email)
         except UserModel.DoesNotExist:

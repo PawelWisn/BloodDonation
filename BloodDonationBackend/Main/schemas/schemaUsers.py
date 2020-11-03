@@ -4,7 +4,7 @@ from Main.models import *
 from django.utils import timezone
 from datetime import datetime
 import graphql_jwt
-
+from graphql_jwt.decorators import login_required
 
 class UserType(DjangoObjectType):
     class Meta:
@@ -17,11 +17,9 @@ class QueryUsers(graphene.ObjectType):
     me = graphene.Field(UserType)
     all_users = graphene.List(UserType)  ##
 
+    @login_required
     def resolve_me(self, info):
-        user = info.context.user
-        if user.is_anonymous:
-            raise Exception('Not logged in!')
-        return user
+        return info.context.user
 
     def resolve_all_users(self, info):  ##
         return UserModel.objects.all()  ##
