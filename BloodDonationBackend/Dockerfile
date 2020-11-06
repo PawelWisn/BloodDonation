@@ -15,7 +15,10 @@ RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/`cu
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/local/bin/
 ENV DISPLAY=:99
 
+ENV PYTHONPATH "${PYTHONPATH}:/"
+
 COPY entrypoint.sh .
 COPY . .
+
 HEALTHCHECK --interval=60s --timeout=600s CMD python manage.py runscript dailyExecution
 ENTRYPOINT ["./entrypoint.sh"]

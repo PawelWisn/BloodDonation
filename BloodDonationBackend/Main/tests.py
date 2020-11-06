@@ -1,6 +1,6 @@
 import django
 from django.test import TestCase
-from models import *
+from Main.models import *
 import random
 
 class UserModelTestCase(TestCase):
@@ -11,5 +11,3 @@ class UserModelTestCase(TestCase):
         with self.assertRaises(django.db.utils.IntegrityError):
             UserModel.objects.create_user(email=randomEmail, password=password+'butother')
 
-if __name__=='__main__':
-    unit
