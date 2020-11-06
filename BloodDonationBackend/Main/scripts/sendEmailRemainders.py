@@ -10,7 +10,7 @@ from django.conf import settings
 
 
 def run():
-    users = [user for user in UserModel.objects.all()]
+    users = [user for user in UserModel.objects.all() if user.want_remainder]
     today = timezone.now()
     itemsAbleToDonateDict = getItemsAbleToDonate()
     sendEmails(users, today, itemsAbleToDonateDict)
@@ -38,7 +38,7 @@ def getItemsAbleToDonate():
             DonationModel.DONATIONTYPE.LEUKOCYTES: LeukocytesWasPrev}
 
 
-def adjustToRules(whatCanBeDonated, user, today):
+def adjustToLawRules(whatCanBeDonated, user, today):
     usersDonations = DonationModel.objects.filter(donor=user).order_by('-time')
     bloodDonationsCounter = 0
     for usersDonation in usersDonations:
@@ -74,7 +74,7 @@ def sendEmails(users, today, itemsAbleToDonateDict):
                     pass
                 else:
                     if "Blood" in whatCanBeDonated:
-                        whatCanBeDonated = adjustToRules(whatCanBeDonated, user, today)
+                        whatCanBeDonated = adjustToLawRules(whatCanBeDonated, user, today)
                     appendix = '\n\t-' + '\n\t-'.join(whatCanBeDonated) + '\n\n'
                     body = (
                         "Dear User,\n\n"

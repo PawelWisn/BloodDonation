@@ -121,7 +121,7 @@ def webScrapKatowice():
     time.sleep(5)
     data = driver.find_element_by_class_name('drops').text.replace(u'\xa0', ' ').replace('stan ', '')
     data = data.replace('średni', '2').replace('niski', '1').replace('optymalny', '3')
-    data = data.replace('maksymalny', '4').replace('krytyczny', '0').split('\n')
+    data = data.replace('wysoki', '4').replace('krytyczny', '0').split('\n')
     for i in range(0, len(data), 2):
         group = data[i].strip().split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in data[i] else 'N')
         saveToDB('Katowice', data[i + 1], group)
