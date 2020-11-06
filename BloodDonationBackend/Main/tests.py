@@ -9,8 +9,31 @@ from time import sleep
 from graphene_django.utils.testing import GraphQLTestCase
 
 
-class UserModelTestCase(TestCase):
-    def test_emails_are_unique(self):
+class TestUserModelQueries(GraphQLTestCase):
+    def setUp(self):
+        super().setUp()
+
+    def test_create_localization_by_mutation_successful(self):
+        response = self.query(
+            '''
+            mutation CreateUser{
+              createUser(email:"someuser@gmail.com",password:"securepass"){
+              user{   
+                    email    
+                    dateJoined
+                    }
+              }
+            }
+            ''', )
+        self.assertResponseNoErrors(response)
+        content = json.loads(response.content)
+        assert content['data']['createUser'] is not None
+        try:
+            UserModel.objects.get(email='someuser@gmail.com')
+        except UserModel.DoesNotExist:
+            raise ValueError("Mutation could not create user!")
+
+    def test_create_user_by_mutation_unsuccessful(self):
         randomEmail = "verylongandnotexpectedthatnooneprobablyhas@gmail.com"
         password = "secretpassword"
         UserModel.objects.create_user(email=randomEmail, password=password)
@@ -38,9 +61,7 @@ class TestLocalizationQueries(GraphQLTestCase):
                     isMobilePoint
               }
             }
-            ''',
-
-        )
+            ''', )
         self.assertResponseNoErrors(response)
         content = json.loads(response.content)
         assert localsNum == len(content['data']['allLocalizations'])
@@ -57,9 +78,7 @@ class TestLocalizationQueries(GraphQLTestCase):
                     isMobilePoint
               }
             }
-            ''',
-
-        )
+            ''', )
         self.assertResponseNoErrors(response)
         content = json.loads(response.content)
         assert len(locals) == len(content['data']['allLocalizations'])
@@ -82,9 +101,7 @@ class TestLocalizationQueries(GraphQLTestCase):
                     isMobilePoint
               }
             }
-            ''',
-
-        )
+            ''', )
         self.assertResponseNoErrors(response)
         content = json.loads(response.content)
         assert len(locals) == len(content['data']['allLocalizations'])
@@ -99,7 +116,7 @@ class TestLocalizationQueries(GraphQLTestCase):
         response = self.query(
             '''
             mutation CreateLocalization{
-              createLocalization(city: "Tulczyn",placeName:"RCKiK Tulczyn", address:"Czarta 19"){ 
+              createLocalization(city: "FakeCity",placeName:"RCKiK FakeCity", address:"Czarta 19"){ 
               localization{   
                     city    
                     placeName
@@ -108,23 +125,23 @@ class TestLocalizationQueries(GraphQLTestCase):
                     }
               }
             }
-            ''',
-
-        )
+            ''', )
         self.assertResponseNoErrors(response)
         content = json.loads(response.content)
-        assert LocalizationModel.objects.filter(city="Tulczyn")
+        assert content['data']['createLocalization'] is not None
+        assert LocalizationModel.objects.filter(city="FakeCity")
         content = content['data']['createLocalization']['localization']
-        if content['city'] != "Tulczyn" or content['address'] != "Czarta 19" or content['placeName'] != "RCKiK Tulczyn" \
+        if content['city'] != "FakeCity" or content['address'] != "Czarta 19" or content[
+            'placeName'] != "RCKiK FakeCity" \
                 or content['isMobilePoint'] != False:
             raise ValueError("Values returned by query are different than expected!")
 
     def test_create_localization_by_mutation_unsuccessful(self):
-        LocalizationModel(city="Oliwa", placeName="RCKiK Oliwa", address="Leona 5").save()
+        LocalizationModel(city="FakeRegion", placeName="RCKiK FakeRegion", address="Leona 5").save()
         response = self.query(
             '''
             mutation CreateLocalization{
-              createLocalization(city: "Oliwa",placeName:"RCKiK Oliwa", address:"Andersa 2"){ 
+              createLocalization(city: "FakeRegion",placeName:"RCKiK FakeRegion", address:"Andersa 2"){ 
               localization{   
                     city    
                     placeName
@@ -133,10 +150,20 @@ class TestLocalizationQueries(GraphQLTestCase):
                     }
               }
             }
-            ''',
-
-        )
+            ''', )
         self.assertResponseNoErrors(response)
         content = json.loads(response.content)
         assert content['data']['createLocalization'] is None
-        assert LocalizationModel.objects.filter(city="Oliwa").first().address == "Leona 5"
+        assert LocalizationModel.objects.filter(city="FakeRegion").first().address == "Leona 5"
+
+
+class TestBloodReservesModelQueries(GraphQLTestCase):
+    def setUp(self):
+        super().setUp()
+        import Main.scripts.webScrapBloodReserves as wsbr
+        wsbr.run()
+
+    def test_blood_reserves_webscrapping_script_successful(self):
+        assert len(BloodReservesModel.objects.all()) == 168
+
+

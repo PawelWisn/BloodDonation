@@ -10,7 +10,7 @@ from graphql_jwt.decorators import login_required
 class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
-        fields = ("email", "date_joined", 'is_superuser', 'is_staff', 'is_active', 'donatedBlood', 'donatedPlasma',
+        fields = ("email", "date_joined", 'is_active', 'donatedBlood', 'donatedPlasma',
                   'donatedPlatelets', 'donatedLeukocytes', 'donatedErythrocytes', 'is_male', 'want_remainder')
 
 
