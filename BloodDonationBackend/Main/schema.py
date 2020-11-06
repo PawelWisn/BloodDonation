@@ -11,7 +11,7 @@ class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
         fields = ("email", "date_joined", 'is_superuser', 'is_staff', 'is_active', 'donatedBlood', 'donatedPlasma',
-                  'donatedPlatelets', 'donatedLeukocytes', 'donatedErythrocytes', 'is_male','want_remainder')
+                  'donatedPlatelets', 'donatedLeukocytes', 'donatedErythrocytes', 'is_male', 'want_remainder')
 
 
 class BloodReservesType(DjangoObjectType):
@@ -34,6 +34,7 @@ class DonationType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     me = graphene.Field(UserType)
+
     @login_required
     def resolve_me(self, info):
         return info.context.user
@@ -68,7 +69,7 @@ class Query(graphene.ObjectType):
             user = UserModel.objects.get(email=user.email)
         except UserModel.DoesNotExist:
             return None
-        return DonationModel.objects.filter(donor=user).order_by('-time')[skip:][:recent]
+        return DonationModel.objects.filter(donor=user).order_by('-time').order_by('-donation_id')[skip:][:recent]
 
 
 class CreateUserMutation(graphene.Mutation):
