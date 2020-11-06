@@ -69,7 +69,7 @@ class Query(graphene.ObjectType):
             user = UserModel.objects.get(email=user.email)
         except UserModel.DoesNotExist:
             return None
-        return DonationModel.objects.filter(donor=user).order_by('-time').order_by('-donation_id')[skip:][:recent]
+        return DonationModel.objects.filter(donor=user).order_by('-time', '-donation_id')[skip:][:recent]
 
 
 class CreateUserMutation(graphene.Mutation):
