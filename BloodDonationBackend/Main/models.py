@@ -73,7 +73,7 @@ class DonationModel(models.Model):
         ERYTHROCYTES = "ERT"
         LEUKOCYTES = "LEU"
 
-    donation_id = models.AutoField(primary_key=True)
+    donationID = models.AutoField(primary_key=True)
     donor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     place = models.ForeignKey(LocalizationModel, on_delete=models.CASCADE)
     donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLOOD, max_length=3)
@@ -81,7 +81,7 @@ class DonationModel(models.Model):
     time = models.DateTimeField(null=True)
 
     def __str__(self):
-        return str(self.donation_id) + '-' + str(self.time.year) + str(self.time.month) + str(self.time.day)
+        return str(self.donationID) + '-' + str(self.time.year) + str(self.time.month) + str(self.time.day)
 
 
 class BloodReservesModel(models.Model):

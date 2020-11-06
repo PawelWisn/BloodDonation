@@ -29,7 +29,7 @@ class LocalizationType(DjangoObjectType):
 class DonationType(DjangoObjectType):
     class Meta:
         model = DonationModel
-        fields = ("donation_id", "donor", 'place', 'donationType', 'amount', 'time')
+        fields = ("donationID", "donor", 'place', 'donationType', 'amount', 'time')
 
 
 class Query(graphene.ObjectType):
@@ -69,7 +69,7 @@ class Query(graphene.ObjectType):
             user = UserModel.objects.get(email=user.email)
         except UserModel.DoesNotExist:
             return None
-        return DonationModel.objects.filter(donor=user).order_by('-time', '-donation_id')[skip:][:recent]
+        return DonationModel.objects.filter(donor=user).order_by('-time', '-donationID')[skip:][:recent]
 
 
 class CreateUserMutation(graphene.Mutation):
