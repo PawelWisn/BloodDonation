@@ -3,8 +3,10 @@ $padVer: 20px;
 $padHor: 30px;
 $logoHeight: 50px;
 $logoWidth: 325px;
+$break1: 400px;
+$break2: 729px;
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: $break1) {
   body {
     .flex-container-upper-bar {
       flex-direction: column;
@@ -31,7 +33,7 @@ $logoWidth: 325px;
   }
 }
 
-@media only screen and (min-width: 400px) and (max-width: 701px) {
+@media only screen and (min-width: $break1) and (max-width: $break2) {
   body {
     .flex-container-upper-bar {
       flex-direction: column;

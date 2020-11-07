@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.scss';
 import UpperBar from './components/UpperBar';
+import BottomBar from "./components/BottomBar";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           Learn React
         </a>
       </header>
-
+        <BottomBar></BottomBar>
     </div>
   );
 }
