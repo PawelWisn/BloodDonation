@@ -4,6 +4,7 @@ ENV PATH /code/node_modules/.bin:$PATH
 COPY package.json ./
 COPY package-lock.json ./
 RUN npm install --silent
+RUN npm install @material-ui/core
 RUN npm rebuild node-sass
 COPY . ./
 EXPOSE 3000
