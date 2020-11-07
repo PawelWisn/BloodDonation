@@ -1,11 +1,5 @@
-import django
-from django.test import TestCase
 from Main.models import *
-import random
-import os
 import json
-from time import sleep
-
 from graphene_django.utils.testing import GraphQLTestCase
 
 
@@ -34,11 +28,51 @@ class TestUserModelQueries(GraphQLTestCase):
             raise ValueError("Mutation could not create user!")
 
     def test_create_user_by_mutation_unsuccessful(self):
-        randomEmail = "verylongandnotexpectedthatnooneprobablyhas@gmail.com"
-        password = "secretpassword"
-        UserModel.objects.create_user(email=randomEmail, password=password)
-        with self.assertRaises(django.db.utils.IntegrityError):
-            UserModel.objects.create_user(email=randomEmail, password=password + 'butother')
+        UserModel.objects.create_user(email='someuser@gmail.com', password='somepass')
+        response = self.query(
+            '''
+            mutation CreateUser{
+              createUser(email:"someuser@gmail.com",password:"securepass"){
+              user{   
+                    email    
+                    dateJoined
+                    }
+              }
+            }
+            ''', )
+        self.assertResponseNoErrors(response)
+        content = json.loads(response.content)
+        assert content['data']['createUser'] is None
+
+    def test_user_login_unsuccessful(self):
+        UserModel.objects.create_user(email='someuser@gmail.com', password='somepass')
+        response = self.query(
+            '''
+            mutation Login{
+              tokenAuth(email:"someuser@gmail.com",password:"wrongpassword"){
+                 token
+              }
+            }
+            ''',
+        )
+        content = json.loads(response.content)
+        assert 'errors' in content.keys()
+        assert content['data']['tokenAuth'] is None
+
+    def test_user_login_successful(self):
+        UserModel.objects.create_user(email='someuser@gmail.com', password='somepass')
+        response = self.query(
+            '''
+            mutation Login{
+              tokenAuth(email:"someuser@gmail.com",password:"somepass"){
+                 token
+              }
+            }
+            ''',
+        )
+        self.assertResponseNoErrors(response)
+        content = json.loads(response.content)
+        assert content['data']['tokenAuth'] is not None
 
 
 class TestLocalizationQueries(GraphQLTestCase):
@@ -165,5 +199,3 @@ class TestBloodReservesModelQueries(GraphQLTestCase):
 
     def test_blood_reserves_webscrapping_script_successful(self):
         assert len(BloodReservesModel.objects.all()) == 168
-
-
