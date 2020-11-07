@@ -10,8 +10,7 @@ from graphql_jwt.decorators import login_required
 class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
-        fields = ("email", "date_joined", 'is_active', 'donatedBlood', 'donatedPlasma',
-                  'donatedPlatelets', 'donatedLeukocytes', 'donatedErythrocytes', 'is_male', 'want_remainder')
+        fields = ("email", "date_joined", 'is_active', 'is_male', 'want_remainder')
 
 
 class BloodReservesType(DjangoObjectType):
@@ -128,18 +127,6 @@ class ApplyDonationMutation(graphene.Mutation):
     def mutate(self, info, donatedAmount, donatedType, city, placeName, time=None, address='',
                isMobilePoint=False, wantRemainder=True):
         user = info.context.user
-        if donatedType == DonationModel.DONATIONTYPE.BLOOD:
-            user.donatedBlood += int(donatedAmount)
-        elif donatedType == DonationModel.DONATIONTYPE.PLASMA:
-            user.donatedPlasma += int(donatedAmount)
-        elif donatedType == DonationModel.DONATIONTYPE.PLATELETS:
-            user.donatedPlatelets += int(donatedAmount)
-        elif donatedType == DonationModel.DONATIONTYPE.ERYTHROCYTES:
-            user.donatedErythrocytes += int(donatedAmount)
-        elif donatedType == DonationModel.DONATIONTYPE.LEUKOCYTES:
-            user.donatedLeukocytes += int(donatedAmount)
-        else:
-            return None
         user.want_remainder = wantRemainder
         user.save()
         try:

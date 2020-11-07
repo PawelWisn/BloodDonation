@@ -53,11 +53,6 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     want_remainder = models.BooleanField(default=False)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
-    donatedBlood = models.IntegerField(default=0)
-    donatedPlasma = models.IntegerField(default=0)
-    donatedPlatelets = models.IntegerField(default=0)
-    donatedErythrocytes = models.IntegerField(default=0)
-    donatedLeukocytes = models.IntegerField(default=0)
 
     objects = CustomUserManager()
 
