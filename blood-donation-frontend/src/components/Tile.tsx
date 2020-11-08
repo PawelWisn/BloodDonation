@@ -1,6 +1,6 @@
 import React from "react";
 import './Tile.scss';
-
+import {useHistory} from "react-router-dom";
 
 function Tile(props: any) {
     const {alt, subject, picture, onClick} = props;
