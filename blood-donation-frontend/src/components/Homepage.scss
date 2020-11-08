@@ -1,8 +1,61 @@
-.homepage-row{
+$break1: 1800px;
+$break2: 1200px;
+$break3: 800px;
+
+@media only screen and (max-width: $break3) {
+  body {
+    .homepage-row {
+      .homepage-element {
+        margin-right: 0;
+        margin-bottom: 2em;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: $break3) {
+  body {
+    .homepage-row {
+      .homepage-element {
+        :nth-child(4n) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: $break2) and (max-width: $break3) {
+  body {
+    .homepage-row {
+      margin-right: 50px;
+    }
+  }
+}
+
+@media only screen and (min-width: $break3) and (max-width: $break2) {
+  body {
+    .homepage-row {
+      :nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+
+.homepage-row {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   min-height: auto;
   overflow: auto;
-  margin:auto;
+  margin: auto;
+  justify-content: center;
+}
+
+
+.homepage-element {
+  margin-right: 100px;
 }

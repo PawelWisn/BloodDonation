@@ -16,20 +16,33 @@ import './Homepage.scss';
 
 function Homepage() {
     return (
-        <div className="flex-wrapper">
+        <div className="main-page-content">
             <UpperBar/>
             <div className='homepage-row'>
-                <Tile subject="BLOOD RESERVES" alt="storage" picture={BlRes}/>
-                <Tile subject="COLLECTION POINT" alt="map" picture={Map}/>
-                <Tile subject="DONOR TEST" alt="quiz" picture={Quiz}/>
-                <Tile subject="BENEFITS" alt="trophy" picture={Trophy}/>
-
-            </div>
-            <div className='homepage-row'>
-                <Tile subject="KNOWLEDGE" alt="education" picture={School}/>
-                <Tile subject="LEGAL REGULATIONS" alt="law" picture={Law}/>
-                <Tile subject="REGISTER DONATION" alt="register" picture={RegDon}/>
-                <Tile subject="MY PROFILE" alt="user" picture={Person}/>
+                <div className='homepage-element'>
+                    <Tile subject="BLOOD RESERVES" alt="storage" picture={BlRes}/>
+                </div>
+                <div className='homepage-element'>
+                    <Tile subject="COLLECTION POINT" alt="map" picture={Map}/>
+                </div>
+                <div className='homepage-element'>
+                    <Tile subject="DONOR TEST" alt="quiz" picture={Quiz}/>
+                </div>
+                <div className='homepage-element'>
+                    <Tile subject="BENEFITS" alt="trophy" picture={Trophy}/>
+                </div>
+                <div className='homepage-element'>
+                    <Tile subject="KNOWLEDGE" alt="education" picture={School}/>
+                </div>
+                <div className='homepage-element'>
+                    <Tile subject="LEGAL REGULATIONS" alt="law" picture={Law}/>
+                </div>
+                <div className='homepage-element'>
+                    <Tile subject="REGISTER DONATION" alt="register" picture={RegDon}/>
+                </div>
+                <div className='homepage-element'>
+                    <Tile subject="MY PROFILE" alt="user" picture={Person}/>
+                </div>
             </div>
 
             <BottomBar/>
