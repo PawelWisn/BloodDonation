@@ -81,6 +81,9 @@ $break2: 769px;
     max-width: $logoWidth;
     align-self: center;
     margin-right: auto;
+    &:hover{
+      cursor: pointer;
+    }
   }
 
   div {
@@ -92,7 +95,9 @@ $break2: 769px;
       align-self: center;
       height: $logoHeight;
       width: 10em;
-
+      &:hover{
+        cursor: pointer;
+      }
       &:first-child {
         margin-right: $padHor+$padVer;
       }

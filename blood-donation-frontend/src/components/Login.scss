@@ -40,6 +40,9 @@ $logoWidth: 650px;
         border: 1px solid black;
         border-radius: 1em;
         padding: 0.5em 2.3em;
+        &:hover{
+          cursor: pointer;
+        }
       }
 
 
@@ -58,6 +61,9 @@ $logoWidth: 650px;
     align-self: center;
     max-height: $logoHeight;
     max-width: $logoWidth;
+    &:hover{
+      cursor: pointer;
+    }
   }
 
 }

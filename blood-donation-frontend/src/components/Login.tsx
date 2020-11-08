@@ -30,7 +30,7 @@ function Login() {
                         <input type='password'/>
                     </div>
                     <div className='submit-button'>
-                        <input type='submit' value='Login'/>
+                        <input type='submit' value='Login' onClick={()=>{handleOnClick('/')}}/>
                     </div>
 
                 </form>
