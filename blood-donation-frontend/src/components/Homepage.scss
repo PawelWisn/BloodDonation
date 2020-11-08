@@ -7,8 +7,9 @@ $break4: 800px;
 
 @media only screen and (max-width: $break4) {
   body {
-    .homepage-row {
+    .homepage-container {
       flex-direction: column;
+
       .homepage-element {
         margin-right: 0;
         margin-bottom: 2em;
@@ -20,7 +21,7 @@ $break4: 800px;
 
 @media only screen and (min-width: $break4) and (max-width: $break3) {
   body {
-    .homepage-row {
+    .homepage-container {
       :nth-child(2n) {
         margin-right: 0;
       }
@@ -31,7 +32,7 @@ $break4: 800px;
 
 @media only screen and (min-width: $break3) and (max-width: $break2) {
   body {
-    .homepage-row {
+    .homepage-container {
       :nth-child(3n) {
         margin-right: 0;
       }
@@ -46,7 +47,7 @@ $break4: 800px;
 
 @media only screen and (min-width: $break2) and (max-width: $break1) {
   body {
-    .homepage-row {
+    .homepage-container {
       :nth-child(4n) {
         margin-right: 0;
       }
@@ -59,9 +60,9 @@ $break4: 800px;
 }
 
 
-@media only screen and (min-width: $break1) and (max-width: $break0){
+@media only screen and (min-width: $break1) and (max-width: $break0) {
   body {
-    .homepage-row {
+    .homepage-container {
       .homepage-element {
         &:nth-child(4n) {
           margin-right: 0;
@@ -72,20 +73,18 @@ $break4: 800px;
 }
 
 
-@media only screen and (min-width: $break0){
+@media only screen and (min-width: $break0) {
   body {
-    .homepage-row {
+    .homepage-container {
       .homepage-element {
-          margin:auto;
+        margin: auto;
       }
     }
   }
 }
 
 
-
-
-.homepage-row {
+.homepage-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

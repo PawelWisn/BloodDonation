@@ -26,7 +26,7 @@ function Homepage() {
     return (
         <div className="main-page-content">
             <UpperBar/>
-            <div className='homepage-row'>
+            <div className='homepage-container'>
                 <div className='homepage-element'>
                     <Tile subject="BLOOD RESERVES" alt="storage" picture={BlRes}
                           onClick={() => tileOnclick('/reserves')}/>

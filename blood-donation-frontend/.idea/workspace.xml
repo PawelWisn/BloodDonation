@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/LegalReg.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LegalReg.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LegalRegArticle.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LegalRegArticle.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Benefits.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Benefits.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Homepage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Homepage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Router.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +71,7 @@
       <workItem from="1604743900018" duration="35115000" />
       <workItem from="1604789918423" duration="6807000" />
       <workItem from="1604832060912" duration="19036000" />
-      <workItem from="1604864240182" duration="12167000" />
+      <workItem from="1604864240182" duration="14368000" />
     </task>
     <servers />
   </component>
@@ -105,6 +111,10 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state width="1857" height="275" key="GridCell.Tab.0.right/40.27.1880.1053/1920.0.1920.1080@40.27.1880.1053" timestamp="1604775762886" />
+    <state x="2564" y="252" key="run.anything.popup" timestamp="1604878815163">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2564" y="252" key="run.anything.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1604878815163" />
     <state x="623" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1604869302772">
       <screen x="0" y="27" width="1920" height="1053" />
     </state>
