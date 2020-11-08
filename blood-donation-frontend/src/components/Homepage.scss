@@ -1,3 +1,4 @@
+$break0: 2060px;
 $break1: 1800px;
 $break2: 1548px;
 $break3: 1200px;
@@ -57,7 +58,7 @@ $break4: 800px;
 }
 
 
-@media only screen and (min-width: $break1) {
+@media only screen and (min-width: $break1) and (max-width: $break0){
   body {
     .homepage-row {
       .homepage-element {
@@ -68,6 +69,19 @@ $break4: 800px;
     }
   }
 }
+
+
+@media only screen and (min-width: $break0){
+  body {
+    .homepage-row {
+      .homepage-element {
+          margin:auto;
+      }
+    }
+  }
+}
+
+
 
 
 .homepage-row {
