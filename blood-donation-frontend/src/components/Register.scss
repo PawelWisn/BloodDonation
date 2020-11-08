@@ -1,10 +1,9 @@
 $logoHeight: 100px;
 $logoWidth: 650px;
-
-
+$picked: #BDFF9C;
 
 .reg-container {
-  margin: $logoHeight/3 auto auto;
+  margin: 1em auto auto;
   width: 100%;
   height: auto;
   max-width: $logoWidth;
@@ -28,6 +27,10 @@ $logoWidth: 650px;
         width: 100%;
         height: 3em;
         font-size: 2em;
+      }
+
+      &:nth-child(2){
+        padding: 0;
       }
     }
 
@@ -66,37 +69,13 @@ $logoWidth: 650px;
 
     }
 
-    .sex-radio {
-      color: black;
-      padding: 1.7em 1em 1.2em 1em;
-      text-align: center;
-      transform: scale(3);
-      transform-origin: -1 -1;
-      width: 100%;
-      margin: auto;
-
-      span {
-        font-size: 1em;
-        border: 1px solid black;
-
-        label {
-          padding: 5px;
-          font-size: 1em;
-        }
-
-        &:first-child {
-          margin-right: 1em;
-        }
-      }
-    }
 
   }
 
 
 }
 
-.sign-logo {
-
+.reg-logo {
   img {
     width: 100%;
 
@@ -108,28 +87,109 @@ $logoWidth: 650px;
 }
 
 @media only screen and (max-width: 650px) {
-  * {
-    .sex-radio {
-      background-color: #CF2929;
-      transform: scale(2) !important;
-      width: 100% !important;
-      margin-left: auto !important;
-      margin-right: auto !important;
-      //font-size: 0.5em;
-    }
+  body {
+    .flex-container {
+      flex-direction: column;
+      justify-content: center;
 
+      .flex-item {
+        margin: auto;
+
+        &:first-child {
+          margin-bottom: 1em;
+        }
+      }
+    }
 
   }
 }
 
 
 
-.sex-item {
+
+.flex-container {
+  padding: 0;
+  margin: 0;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  min-height: auto;
-  overflow: auto;
-  margin: auto;
-  justify-content: center;
+  justify-content: space-around;
+
+  .flex-item {
+    color: black;
+    border: 1px solid black;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1em;
+    text-align: center;
+    padding: 2em 5em 2em 5em;
+    &:hover{
+      cursor: pointer;
+      background-color: #cccccc;
+    }
+    &:last-child{
+      background-color: $picked;
+    }
+  }
+
+  label {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover{
+      cursor: pointer;
+    }
+
+  }
+
+
+  input[type='radio'] {
+    display: none;
+  }
+
+
+}
+
+
+
+@media only screen and (max-width: 310px) {
+  body {
+    .flex-container {
+      .flex-item {
+        padding: 1.5em 4.5em 1.5em 4.5em;
+        font-size: 1em;
+      }
+    }
+
+  }
+}
+
+@media only screen and (max-height: 900px) {
+  .reg-container{
+    margin-top: 10%;
+    font-size: 0.5em;
+  }
+}
+
+@media only screen and (max-height: 700px) {
+  .reg-container{
+    margin-top: 5%;
+    font-size: 0.5em;
+  }
+}
+
+@media only screen and (max-height: 560px) {
+  body{
+    .reg-container{
+      margin-top: 0;
+      font-size: 0.5em;
+    }}
+}
+
+@media only screen and (max-height: 500px) {
+  body{
+    .reg-container{
+      margin-top: 0;
+      font-size: 0.25em;
+    }}
 }

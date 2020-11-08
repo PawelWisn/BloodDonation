@@ -14,7 +14,7 @@ function Register() {
 
     return (
         <div className='reg-container'>
-            <div className='sign-logo'>
+            <div className='reg-logo'>
                 <img alt="logo" src={Logo} onClick={() => handleOnClick('/')}/>
             </div>
 
@@ -24,16 +24,18 @@ function Register() {
                         <label htmlFor='email'>Email</label>
                         <input id='email' type='text'/>
                     </div>
-                    <div className='sex-radio entry-item'>
-                        <span>
-                            <input type='radio' id='female' name='sex' value='Female'/>
-                            <label>Female</label>
-                        </span>
+                    <div className='entry-item'>
+                        <div className='flex-container'>
+                            <div className='flex-item'>
+                                <input type='radio' id='female' name='sex' value='Female'/>
+                                <label>Female</label>
+                            </div>
 
-                        <span>
-                            <input type='radio' id='male' name='sex' value='Male' defaultChecked/>
-                            <label>Male</label>
-                        </span>
+                            <div className='flex-item'>
+                                <input type='radio' id='male' name='sex' value='Male' defaultChecked/>
+                                <label>Male</label>
+                            </div>
+                        </div>
                     </div>
                     <div className='entry-item'>
                         <label htmlFor='password'>Password</label>

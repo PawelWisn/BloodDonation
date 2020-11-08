@@ -1,16 +1,10 @@
 $logoHeight: 100px;
 $logoWidth: 650px;
 
-@media only screen and (max-height: 850px) {
-  body{
-    .login-container{
-      margin-top: 1em;
-    }
-  }
-}
+
 
 .login-container {
-  margin: $logoHeight auto auto;
+  margin: 1em auto auto;
   width: 100%;
   height: auto;
   max-width: $logoWidth;
@@ -60,7 +54,8 @@ $logoWidth: 650px;
     }
 
     &:last-child {
-      padding: 0 0 0 0;
+      padding: 0;
+      font-size: 1.5em;
       text-align: center;
       p{
         span {
@@ -89,4 +84,47 @@ $logoWidth: 650px;
     }
   }
 
+}
+
+
+
+@media only screen and (max-height: 850px) {
+  body{
+    .login-container{
+      margin-top: 1em;
+    }
+  }
+}
+
+@media only screen and (max-height: 850px) {
+  body{
+    .login-container{
+      margin-top: 10%;
+      font-size: 0.5em;
+    }}
+}
+
+
+@media only screen and (max-height: 700px) {
+  body{
+    .login-container{
+      margin-top: 5%;
+      font-size: 0.5em;
+    }}
+}
+
+@media only screen and (max-height: 520px) {
+  body{
+    .login-container{
+      margin-top: 0;
+      font-size: 0.5em;
+    }}
+}
+
+@media only screen and (max-height: 460px) {
+  body{
+    .login-container{
+      margin-top: 0;
+      font-size: 0.25em;
+    }}
 }
