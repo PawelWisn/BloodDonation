@@ -2,6 +2,7 @@ $logoHeight: 100px;
 $logoWidth: 650px;
 
 
+
 .reg-container {
   margin: $logoHeight/3 auto auto;
   width: 100%;
@@ -70,13 +71,16 @@ $logoWidth: 650px;
       padding: 1.7em 1em 1.2em 1em;
       text-align: center;
       transform: scale(3);
+      transform-origin: -1 -1;
+      width: 100%;
+      margin: auto;
+
       span {
         font-size: 1em;
-        width: 100%;
         border: 1px solid black;
 
-        label{
-          padding:5px;
+        label {
+          padding: 5px;
           font-size: 1em;
         }
 
@@ -103,3 +107,29 @@ $logoWidth: 650px;
 
 }
 
+@media only screen and (max-width: 650px) {
+  * {
+    .sex-radio {
+      background-color: #CF2929;
+      transform: scale(2) !important;
+      width: 100% !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+      //font-size: 0.5em;
+    }
+
+
+  }
+}
+
+
+
+.sex-item {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  min-height: auto;
+  overflow: auto;
+  margin: auto;
+  justify-content: center;
+}
