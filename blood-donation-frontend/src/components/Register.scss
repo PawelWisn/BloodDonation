@@ -1,0 +1,18 @@
+.sex-radio{
+  color: black;
+  padding: 1em 1em 1em 1em;
+  text-align: center;
+  span{
+    font-size: 2em;
+    width:100% ;
+    background-color: #CF2929;
+    border: 1px solid black;
+    &:first-child{
+      margin-right: 1em;
+    }
+    input{
+
+    }
+  }
+
+}

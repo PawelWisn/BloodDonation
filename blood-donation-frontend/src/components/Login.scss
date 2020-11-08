@@ -1,6 +1,14 @@
 $logoHeight: 100px;
 $logoWidth: 650px;
 
+@media only screen and (max-height: 850px) {
+  body{
+    .login-container{
+      margin-top: 1em;
+    }
+  }
+}
+
 .login-container {
   margin: $logoHeight auto auto;
   width: 100%;
@@ -23,7 +31,7 @@ $logoWidth: 650px;
         font-size: 2.5em;
       }
 
-      input:not([type='submit']) {
+      input[type='text'], input[type='password'] {
         width: 100%;
         height: 3em;
         font-size: 2em;

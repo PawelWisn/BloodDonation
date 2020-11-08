@@ -2,6 +2,7 @@ import React from "react";
 import Homepage from "../components/Homepage";
 import Benefits from "../components/Benefits";
 import Login from "../components/Login";
+import Register from "../components/Register";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
 
@@ -19,7 +20,7 @@ function MainRouter() {
                 <Route exact path="/declaredonation" component={Homepage}/>
                 <Route exact path="/profile" component={Homepage}/>
                 <Route exact path="/login" component={Login}/>
-                <Route exact path="/register" component={Homepage}/>
+                <Route exact path="/register" component={Register}/>
                 <Redirect to={"/"}/>
             </Switch>
         </Router>

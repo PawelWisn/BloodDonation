@@ -2,9 +2,10 @@ import React from "react";
 import {useHistory} from "react-router-dom";
 import './Common.scss';
 import './Login.scss';
+import './Register.scss';
 import Logo from "../images/logo_white.png";
 
-function Login() {
+function Register() {
 
     const history = useHistory();
 
@@ -23,6 +24,11 @@ function Login() {
                     <div className='entry-item'>
                         <label htmlFor='email'>Email</label>
                         <input type='text'/>
+                    </div>
+                    <div className='entry-item sex-radio'>
+                        <span><input type='radio' id='female' name='female' value='Female'/>Female</span>
+
+                        <span><input type='radio' id='male' name='male' value='Male' checked/>Male</span>
                     </div>
                     <div className='entry-item'>
                         <label htmlFor='password'>Password</label>
@@ -43,4 +49,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;
