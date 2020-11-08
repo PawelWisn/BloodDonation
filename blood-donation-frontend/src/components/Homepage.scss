@@ -1,8 +1,10 @@
 $break1: 1800px;
-$break2: 1200px;
-$break3: 800px;
+$break2: 1548px;
+$break3: 1200px;
+$break4: 800px;
 
-@media only screen and (max-width: $break3) {
+
+@media only screen and (max-width: $break4) {
   body {
     .homepage-row {
       .homepage-element {
@@ -13,32 +15,55 @@ $break3: 800px;
   }
 }
 
-@media only screen and (min-width: $break3) {
+
+@media only screen and (min-width: $break4) and (max-width: $break3) {
   body {
     .homepage-row {
-      .homepage-element {
-        :nth-child(4n) {
-          margin-right: 0;
-        }
+      :nth-child(2n) {
+        margin-right: 0;
       }
     }
   }
 }
 
 
-@media only screen and (min-width: $break2) and (max-width: $break3) {
+@media only screen and (min-width: $break3) and (max-width: $break2) {
   body {
     .homepage-row {
-      margin-right: 50px;
+      :nth-child(3n) {
+        margin-right: 0;
+      }
+
+      :last-child {
+        margin-right: 0;
+      }
     }
   }
 }
 
-@media only screen and (min-width: $break3) and (max-width: $break2) {
+
+@media only screen and (min-width: $break2) and (max-width: $break1) {
   body {
     .homepage-row {
-      :nth-child(2n) {
+      :nth-child(4n) {
         margin-right: 0;
+      }
+
+      .homepage-element {
+        margin-right: 50px;
+      }
+    }
+  }
+}
+
+
+@media only screen and (min-width: $break1) {
+  body {
+    .homepage-row {
+      .homepage-element {
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
       }
     }
   }

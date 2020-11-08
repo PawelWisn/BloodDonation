@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Homepage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Homepage.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Homepage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tile.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UpperBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpperBar.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +40,11 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -65,7 +58,7 @@
       <workItem from="1603991938594" duration="2905000" />
       <workItem from="1604742810702" duration="623000" />
       <workItem from="1604743900018" duration="35115000" />
-      <workItem from="1604789918423" duration="4941000" />
+      <workItem from="1604789918423" duration="6578000" />
     </task>
     <servers />
   </component>
