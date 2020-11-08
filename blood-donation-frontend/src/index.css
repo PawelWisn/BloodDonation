@@ -13,6 +13,7 @@ body {
 
 input, button {
     outline: none !important;
+    color: black;
 }
 
 code {

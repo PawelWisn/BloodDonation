@@ -22,11 +22,11 @@ function Login() {
                 <form>
                     <div className='entry-item'>
                         <label htmlFor='email'>Email</label>
-                        <input type='text'/>
+                        <input id='email' type='text'/>
                     </div>
                     <div className='entry-item'>
                         <label htmlFor='password'>Password</label>
-                        <input type='password'/>
+                        <input id='password' type='password'/>
                     </div>
                     <div className='submit-button'>
                         <input type='submit' value='Login' onClick={() => {
