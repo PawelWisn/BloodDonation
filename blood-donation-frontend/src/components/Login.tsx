@@ -19,7 +19,7 @@ function Login() {
                 <img alt="logo" src={Logo} onClick={() => handleOnClick('/')}/>
             </div>
 
-            <div className='login-form-container'>
+            <div className='login-content-container'>
                 <form>
                     <div className='entry-item'>
                         <label htmlFor='email'>Email</label>
@@ -30,10 +30,15 @@ function Login() {
                         <input type='password'/>
                     </div>
                     <div className='submit-button'>
-                        <input type='submit' value='Login' onClick={()=>{handleOnClick('/')}}/>
+                        <input type='submit' value='Login' onClick={() => {
+                            handleOnClick('/')
+                        }}/>
                     </div>
 
                 </form>
+            </div>
+            <div className='login-content-container'>
+                <p>New to BloodDonation? <span onClick={()=>{handleOnClick('/register')}}>Create an account</span></p>
             </div>
         </div>
     );

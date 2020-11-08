@@ -7,10 +7,12 @@ $logoWidth: 650px;
   height: auto;
   max-width: $logoWidth;
 
-  .login-form-container {
+  .login-content-container {
     background-color: #fcfcfc;
+    border: 1px solid black;
     border-radius: 25px;
     padding: 2em 2em 3em 2em;
+    margin-bottom: 2em;
     height: auto;
 
     .entry-item {
@@ -32,7 +34,7 @@ $logoWidth: 650px;
 
     .submit-button {
       text-align: center;
-      margin-top:1.5em;
+      margin-top: 1.5em;
 
       input {
         font-size: 2em;
@@ -40,11 +42,27 @@ $logoWidth: 650px;
         border: 1px solid black;
         border-radius: 1em;
         padding: 0.5em 2.3em;
-        &:hover{
+
+        &:hover {
           cursor: pointer;
         }
       }
 
+
+    }
+
+    &:last-child {
+      padding: 0 0 0 0;
+      text-align: center;
+      p{
+        span {
+          text-decoration: underline;
+          color: #0355D6;
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
 
     }
 
@@ -53,15 +71,12 @@ $logoWidth: 650px;
 
 }
 
-.sign-logo{
-  img{
-    display: flex;
+.sign-logo {
+
+  img {
     width: 100%;
-    height: auto;
-    align-self: center;
-    max-height: $logoHeight;
-    max-width: $logoWidth;
-    &:hover{
+
+    &:hover {
       cursor: pointer;
     }
   }

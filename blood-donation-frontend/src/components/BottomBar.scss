@@ -70,7 +70,7 @@ $break2: 729px;
 }
 
 .bottom-bar {
-  color:#fcfcfc;
+  color: #fcfcfc;
   background-color: $bg-color;
   padding: $padVer $padHor $padVer $padHor;
   border-top: 2px solid black;
@@ -83,7 +83,8 @@ $break2: 729px;
   button {
     align-self: center;
     padding: 0.5em 1em;
-    &:hover{
+
+    &:hover {
       cursor: pointer;
     }
   }
