@@ -8,6 +8,7 @@ $break4: 800px;
 @media only screen and (max-width: $break4) {
   body {
     .homepage-row {
+      flex-direction: column;
       .homepage-element {
         margin-right: 0;
         margin-bottom: 2em;

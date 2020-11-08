@@ -1,15 +1,23 @@
 import React from 'react';
 import './App.scss';
-import Homepage from './components/Homepage'
+import MainRouter from "./routes/Router";
+
 
 function App() {
     return (
         <div className="App">
 
-            <Homepage/>
+            <MainRouter/>
 
         </div>
     );
+    // return (
+    //     <div className="App">
+    //
+    //         <Homepage/>
+    //
+    //     </div>
+    // );
 }
 
 export default App;
