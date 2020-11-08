@@ -2,6 +2,7 @@ import React from 'react';
 import './BottomBar.scss';
 
 function BottomBar() {
+
     return (
         <div className='bottom-bar flex-container-bottom-bar'>
             <div className='bottom-item'><p>Copyright &copy; 2020 BloodDonation</p></div>

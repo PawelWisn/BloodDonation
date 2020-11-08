@@ -1,0 +1,63 @@
+$logoHeight: 100px;
+$logoWidth: 650px;
+
+.login-container {
+  margin: $logoHeight auto auto;
+  width: 100%;
+  height: auto;
+  max-width: $logoWidth;
+
+  .login-form-container {
+    background-color: #fcfcfc;
+    border-radius: 25px;
+    padding: 2em 2em 3em 2em;
+    height: auto;
+
+    .entry-item {
+      padding: 2em 3em 1em 3em;
+
+      label {
+        width: 100%;
+        font-size: 2.5em;
+      }
+
+      input:not([type='submit']) {
+        width: 100%;
+        height: 3em;
+        font-size: 2em;
+      }
+
+
+    }
+
+    .submit-button {
+      text-align: center;
+      margin-top:1.5em;
+
+      input {
+        font-size: 2em;
+        background-color: #f8d800;
+        border: 1px solid black;
+        border-radius: 1em;
+        padding: 0.5em 2.3em;
+      }
+
+
+    }
+
+  }
+
+
+}
+
+.sign-logo{
+  img{
+    display: flex;
+    width: 100%;
+    height: auto;
+    align-self: center;
+    max-height: $logoHeight;
+    max-width: $logoWidth;
+  }
+
+}

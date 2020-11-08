@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Benefits.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Benefits.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Login.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BottomBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BottomBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Router.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +62,7 @@
       <workItem from="1604742810702" duration="623000" />
       <workItem from="1604743900018" duration="35115000" />
       <workItem from="1604789918423" duration="6807000" />
-      <workItem from="1604832060912" duration="9248000" />
+      <workItem from="1604832060912" duration="14558000" />
     </task>
     <servers />
   </component>
@@ -75,6 +74,10 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="662" y="355" width="626" height="410" key="#com.intellij.fileTypes.FileTypeChooser/40.27.1880.1053/1920.0.1920.1080@40.27.1880.1053" timestamp="1604755692956" />
+    <state x="713" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604844682386">
+      <screen x="40" y="27" width="1880" height="1053" />
+    </state>
+    <state x="713" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/40.27.1880.1053/1920.0.1920.1080@40.27.1880.1053" timestamp="1604844682386" />
     <state x="615" y="331" width="719" height="452" key="EditFileWatcherDialog" timestamp="1604751989292">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
