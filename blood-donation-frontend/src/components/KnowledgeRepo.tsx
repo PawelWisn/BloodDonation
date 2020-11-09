@@ -13,31 +13,32 @@ function KnowledgeRepo() {
             <UpperBar/>
             <div className='subpage-title'>
                 <h1>Knowledge Repository</h1>
-                <h2></h2>
+                <h2>Improve your understanding of blood</h2>
             </div>
 
             <div className="knowledge-container">
                 <div className='knowledge-item'>
-                    <PopupButton message='What is blood and what is its meaning?'  />
+                    <PopupButton message='What is blood and what is its meaning?' popupMessage="Blood is the fluid that carries substances between cells. It consists of, among others, plasma, platelets, red and white blood cells. Its most important task is to broadcast oxygen over the body. It also serves as the body's defensive function and helps heal wounds." />
                 </div>
-                <div className='popup-button knowledge-item'>
-                    <button>How do blood types work?</button>
+                <div className='knowledge-item'>
+                    <PopupButton message='How do blood types work?' popupMessage="Blood can be divided into groups depending on the presence of antigens on red blood cells. People having group A have only A antigen, people having B only have B antigen. People having AB have both antigens. Group 0 means no antigens. Another element is the Rh factor. If one has the D antigen it is referred to as Rh +. Otherwise it is Rh-." />
                 </div>
-                <div className='popup-button knowledge-item'>
-                    <button>What are the rarest blood types?</button>
+                <div className='knowledge-item'>
+                    <PopupButton message='What are the rarest blood types?' popupMessage="The prevalence of different blood groups varies by region and race. The most popular groups in Poland are ARh+ (32%) and 0Rh+ (31%). The BRh+ (15%) is slightly less common. Less frequent groups include ABRh+ (7%), ORh- (6%), ARh- (6%) and BRh- (2%). The rarest group is ABRh- (1%)." />
                 </div>
-                <div className='popup-button knowledge-item'>
-                    <button>What should one do before and after donation?</button>
+                <div className='knowledge-item'>
+                    <PopupButton message='What should one do before and after donation?' popupMessage="xxx" />
                 </div>
-                <div className='popup-button knowledge-item'>
-                    <button>What does the donation process look like?</button>
+                <div className='knowledge-item'>
+                    <PopupButton message='What does the donation process look like?' popupMessage="xxx" />
                 </div>
-                <div className='popup-button knowledge-item'>
-                    <button>Who do the different types of donation help?</button>
+                <div className='knowledge-item'>
+                    <PopupButton message='Who do the different types of donation help?' popupMessage="xxx" />
                 </div>
-                <div className='popup-button knowledge-item'>
-                    <button>How is the blood group determined?</button>
+                <div className='knowledge-item'>
+                    <PopupButton message='How is the blood group determined?' popupMessage="xxx" />
                 </div>
+
 
             </div>
 
