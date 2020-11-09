@@ -8,7 +8,7 @@
 
 .subpage-title {
 
-  margin: 5px auto auto;
+  margin: 5px auto 1em auto;
 
   h1 {
     margin: auto;
@@ -20,6 +20,13 @@
     text-align: center;
     margin: auto;
     font-size: 2.5em;
+  }
+
+}
+
+.popup-button{
+  button{
+    box-shadow: 5px 5px;
   }
 
 }

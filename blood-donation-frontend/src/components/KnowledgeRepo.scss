@@ -1,0 +1,25 @@
+
+
+.knowledge-container{
+  margin:  2em 10% 2em 10% ;
+  padding: 1em 2em 1em 2em;
+
+}
+
+.knowledge-item{
+  button{
+    font-size: 2em;
+    padding: 1em;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0.75em;
+
+  }
+}
+
+
+@media only screen and (max-width: 1000px){
+  .knowledge-container{
+    margin: 2em 2% 2em 2%;
+  }
+}

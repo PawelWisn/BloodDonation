@@ -6,7 +6,7 @@ import './Common.scss';
 import './Benefits.scss';
 
 
-function Homepage() {
+function Benefits() {
 
 
     return (
@@ -47,4 +47,4 @@ function Homepage() {
 }
 
 
-export default Homepage
+export default Benefits

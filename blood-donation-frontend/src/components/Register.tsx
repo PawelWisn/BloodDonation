@@ -34,7 +34,9 @@ function Register() {
                                 'color-primary': !colorPicked,
                                 'color-secondary': colorPicked
                             })} onClick={() => {
-                                if(colorPicked){setColorPicked((state)=>!state)}
+                                if (colorPicked) {
+                                    setColorPicked((state) => !state)
+                                }
                             }}>
                                 <input type='radio' id='female' name='sex' value='0'/>
                                 <label>Female</label>
@@ -44,7 +46,9 @@ function Register() {
                                 'color-primary': colorPicked,
                                 'color-secondary': !colorPicked
                             })} onClick={() => {
-                                if(!colorPicked){setColorPicked((state)=>!state)}
+                                if (!colorPicked) {
+                                    setColorPicked((state) => !state)
+                                }
                             }}>
                                 <input type='radio' id='male' name='sex' value='1' defaultChecked/>
                                 <label>Male</label>
