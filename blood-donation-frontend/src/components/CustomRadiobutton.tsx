@@ -8,7 +8,7 @@ function CustomRadiobutton(props: any) {
     const {labelMessage, name, value, id, colorPicked = false} = props;
 
     return (
-        <div className={classNames('flex-item', {
+        <div className={classNames('radio-flex-item', {
             'color-primary': colorPicked,
             'color-secondary': !colorPicked
         })}>
