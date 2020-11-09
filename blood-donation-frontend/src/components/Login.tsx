@@ -37,7 +37,9 @@ function Login() {
                 </form>
             </div>
             <div className='login-content-container'>
-                <p>New to BloodDonation? <span onClick={()=>{handleOnClick('/register')}}>Create an account</span></p>
+                <p>New to BloodDonation? <span onClick={() => {
+                    handleOnClick('/register')
+                }}>Create an account</span></p>
             </div>
         </div>
     );
