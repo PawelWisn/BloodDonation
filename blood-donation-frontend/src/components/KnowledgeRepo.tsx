@@ -21,31 +21,22 @@ function KnowledgeRepo() {
                     <button>What is blood and what is its meaning?</button>
                 </div>
                 <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
+                    <button>How do blood types work?</button>
                 </div>
                 <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
+                    <button>What are the rarest blood types?</button>
                 </div>
                 <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
+                    <button>What should one do before and after donation?</button>
                 </div>
                 <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
+                    <button>What does the donation process look like?</button>
                 </div>
                 <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
+                    <button>Who do the different types of donation help?</button>
                 </div>
                 <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
-                </div>
-                <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
-                </div>
-                <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
-                </div>
-                <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
+                    <button>How is the blood group determined?</button>
                 </div>
 
             </div>
