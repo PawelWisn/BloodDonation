@@ -1,6 +1,10 @@
 .legal-regulations-container{
-  margin-top: 2em;
-  margin-left: 5%;
-  margin-right: 5%;
+  ul{
+    li{
+      list-style: none;
+      padding: 1em;
+    }
+  }
+  margin: 2em 5% 1em 5%;
   font-size: 2em;
 }

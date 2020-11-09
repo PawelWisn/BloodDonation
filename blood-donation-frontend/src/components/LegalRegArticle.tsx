@@ -3,12 +3,12 @@ import './Common.scss';
 import './LegalRegArticle.scss';
 
 function LegalRegArticle(props: any) {
-    const {id, date, name, link} = props;
+    const {art, date, name, link} = props;
     return (
-        <div>
-            <h4>{id}</h4>
-            <h4>{date}</h4>
-            <a className='article-name' target='_blank' href={link}>{name}</a>
+        <div className='article-element'>
+            <h4>{name}</h4>
+            <h4>Valid from: {date}</h4>
+            <a className='article-link' target='_blank' href={link}>{art}</a>
         </div>
     );
 
