@@ -4,16 +4,10 @@ import React from "react";
 import LegalRegArticle from "./LegalRegArticle";
 import './Common.scss';
 import './LegalReg.scss';
-import {useHistory} from "react-router-dom";
 
 
 function LegalReg() {
 
-    const history = useHistory();
-
-    function tileOnclick(url: string) {
-        history.push(url);
-    }
 
     return (
         <div className="main-page-content">

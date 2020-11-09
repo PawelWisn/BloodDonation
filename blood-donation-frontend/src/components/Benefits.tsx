@@ -1,7 +1,6 @@
 import UpperBar from './UpperBar';
 import BottomBar from "./BottomBar";
 import React from "react";
-import Map from "../images/order.png"
 import './Common.scss';
 import './Benefits.scss';
 

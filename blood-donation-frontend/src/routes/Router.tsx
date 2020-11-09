@@ -5,6 +5,7 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import LegalReg from "../components/LegalReg";
 import KnowledgeRepo from "../components/KnowledgeRepo";
+import Quiz from "../components/Quiz";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 
 
@@ -15,7 +16,7 @@ function MainRouter() {
                 <Route exact path="/" component={Homepage}/>
                 <Route exact path="/reserves" component={Homepage}/>
                 <Route exact path="/localizations" component={Homepage}/>
-                <Route exact path="/quiz" component={Homepage}/>
+                <Route exact path="/quiz" component={Quiz}/>
                 <Route exact path="/benefits" component={Benefits}/>
                 <Route exact path="/knowledge" component={KnowledgeRepo}/>
                 <Route exact path="/regulations" component={LegalReg}/>
