@@ -1,16 +1,20 @@
-import React from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 import './Common.scss';
 import './Register.scss';
 import Logo from "../images/logo_white.png";
+import classNames from 'classnames';
 
 function Register() {
+    const [colorPicked, setColorPicked] = useState(true)
+
 
     const history = useHistory();
 
     function handleOnClick(url: string) {
         history.push(url);
     }
+
 
     return (
         <div className='reg-container'>
@@ -26,13 +30,23 @@ function Register() {
                     </div>
                     <div className='entry-item'>
                         <div className='flex-container'>
-                            <div className='flex-item'>
-                                <input type='radio' id='female' name='sex' value='Female'/>
+                            <div className={classNames('flex-item', {
+                                'color-primary': !colorPicked,
+                                'color-secondary': colorPicked
+                            })} onClick={() => {
+                                if(colorPicked){setColorPicked((state)=>!state)}
+                            }}>
+                                <input type='radio' id='female' name='sex' value='0'/>
                                 <label>Female</label>
                             </div>
 
-                            <div className='flex-item'>
-                                <input type='radio' id='male' name='sex' value='Male' defaultChecked/>
+                            <div className={classNames('flex-item', {
+                                'color-primary': colorPicked,
+                                'color-secondary': !colorPicked
+                            })} onClick={() => {
+                                if(!colorPicked){setColorPicked((state)=>!state)}
+                            }}>
+                                <input type='radio' id='male' name='sex' value='1' defaultChecked/>
                                 <label>Male</label>
                             </div>
                         </div>

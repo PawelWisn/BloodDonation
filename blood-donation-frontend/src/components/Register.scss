@@ -127,7 +127,7 @@ $picked: #BDFF9C;
       background-color: #cccccc;
     }
     &:last-child{
-      background-color: $picked;
+      //background-color: $picked;
     }
   }
 
@@ -192,4 +192,14 @@ $picked: #BDFF9C;
       margin-top: 0;
       font-size: 0.25em;
     }}
+}
+
+
+
+.color-primary{
+  background-color: #BDFF9C ;
+}
+
+.color-secondary{
+  background-color: #fcfcfc ;
 }
