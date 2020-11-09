@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Benefits.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Benefits.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LegalReg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalReg.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LegalReg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalReg.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LegalRegArticle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalRegArticle.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LegalRegArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalRegArticle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +64,7 @@
       <workItem from="1604743900018" duration="35115000" />
       <workItem from="1604789918423" duration="6807000" />
       <workItem from="1604832060912" duration="19036000" />
-      <workItem from="1604864240182" duration="18632000" />
+      <workItem from="1604864240182" duration="19323000" />
     </task>
     <servers />
   </component>
