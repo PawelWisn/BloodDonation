@@ -3,7 +3,7 @@ import BottomBar from "./BottomBar";
 import React from "react";
 import './Common.scss';
 import './KnowledgeRepo.scss';
-
+import PopupButton from './PopupButton';
 
 function KnowledgeRepo() {
 
@@ -17,8 +17,8 @@ function KnowledgeRepo() {
             </div>
 
             <div className="knowledge-container">
-                <div className='popup-button knowledge-item'>
-                    <button>What is blood and what is its meaning?</button>
+                <div className='knowledge-item'>
+                    <PopupButton message='What is blood and what is its meaning?'  />
                 </div>
                 <div className='popup-button knowledge-item'>
                     <button>How do blood types work?</button>
