@@ -8,6 +8,7 @@ import KnowledgeRepo from "../components/KnowledgeRepo";
 import Quiz from "../components/Quiz";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import CollectionPoints from "../components/CollectionPoints";
+import BloodReserves from "../components/BloodReserves";
 
 
 function MainRouter() {
@@ -15,7 +16,7 @@ function MainRouter() {
         <Router>
             <Switch>
                 <Route exact path="/" component={Homepage}/>
-                <Route exact path="/reserves" component={Homepage}/>
+                <Route exact path="/reserves" component={BloodReserves}/>
                 <Route exact path="/localizations" component={CollectionPoints}/>
                 <Route exact path="/quiz" component={Quiz}/>
                 <Route exact path="/benefits" component={Benefits}/>

@@ -1,0 +1,43 @@
+.blood-reserves-container {
+  margin: 2em 2% 2em 2%;
+
+  thead{
+    background-color: #BDFF9C;
+  }
+  table {
+    margin: auto;
+
+    position: relative;
+  }
+
+  td {
+    width: 10em;
+    padding: 1em 0.25em 0.25em 0.25em;
+    height:3em;
+    margin:auto;
+    text-align: center;
+    &:first-child{
+      text-align: left;
+    }
+
+  }
+  tr{
+    margin-bottom: 3em;
+    &.table-sticky-header{
+
+      th {
+        padding:2em;
+
+        background: lightgray;
+        color: black;
+        position: sticky;
+        top: 0;
+        box-shadow: 0 7px 6px -2px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+  }
+}
+
+
+

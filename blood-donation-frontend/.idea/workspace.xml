@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/BloodReserves.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/BloodReserves.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/blood-donation-frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/blood-donation-frontend.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalReg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalReg.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Quiz.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Quiz.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Router.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/.bin/loose-envify" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/@babel/runtime/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/@babel/runtime/README.md" beforeDir="false" />
@@ -420,9 +425,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Sass File" />
-        <option value="SCSS File" />
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
+        <option value="SCSS File" />
       </list>
     </option>
   </component>
@@ -448,6 +453,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -476,7 +482,8 @@
       <workItem from="1604864240182" duration="19730000" />
       <workItem from="1604943948884" duration="26980000" />
       <workItem from="1604998102462" duration="5242000" />
-      <workItem from="1605015198256" duration="22230000" />
+      <workItem from="1605015198256" duration="24105000" />
+      <workItem from="1605047185615" duration="4570000" />
     </task>
     <servers />
   </component>
@@ -529,6 +536,10 @@
     </state>
     <state width="1857" height="69" key="GridCell.Tab.0.right/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605034222923" />
     <state width="1857" height="275" key="GridCell.Tab.0.right/40.27.1880.1053/1920.0.1920.1080@40.27.1880.1053" timestamp="1604775762886" />
+    <state x="2389" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1605047177021">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2389" y="188" width="1022" height="737" key="SettingsEditor/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605047177021" />
     <state x="2423" y="154" width="944" height="806" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1605035619181">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

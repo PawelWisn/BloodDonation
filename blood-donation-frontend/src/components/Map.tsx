@@ -3,7 +3,6 @@ import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 import 'leaflet/dist/leaflet.css';
 import L from "leaflet";
 import Pointer from '../images/pointer.png';
-import CustomRadiobutton from "./CustomRadiobutton";
 
 const pointer = L.icon({
     iconUrl:Pointer,

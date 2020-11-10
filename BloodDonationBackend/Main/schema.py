@@ -46,7 +46,7 @@ class Query(graphene.ObjectType):
             out = out.filter(region=region)
         if group:
             out = out.filter(group=group)
-        return out.order_by("region")
+        return out.order_by("region", 'group')
 
     all_localizations = graphene.List(LocalizationType, recent=graphene.Int(), skip=graphene.Int(),
                                       mobile=graphene.Boolean(), city=graphene.String())

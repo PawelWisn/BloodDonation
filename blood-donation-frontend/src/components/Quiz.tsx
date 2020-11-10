@@ -1,6 +1,6 @@
 import UpperBar from './UpperBar';
 import BottomBar from "./BottomBar";
-import React, {ReactDOM} from "react";
+import React from "react";
 import './Common.scss';
 import './Quiz.scss';
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";

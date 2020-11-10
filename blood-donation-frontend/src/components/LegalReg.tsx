@@ -14,7 +14,7 @@ function LegalReg() {
             <UpperBar/>
             <div className='subpage-title'>
                 <h1>Legal Regulations</h1>
-                <h2>Sprawdz ktore prawo radzi oddawniem krwi</h2>
+                <h2>Check the rules that govern blood donation</h2>
             </div>
 
             <div className='legal-regulations-container'>
