@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ManyRadiobuttonsNoDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ManyRadiobuttonsNoDefault.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Quiz.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Quiz.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Quiz.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Quiz.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.tsx" afterDir="false" />
     </list>
@@ -66,7 +67,7 @@
       <workItem from="1604789918423" duration="6807000" />
       <workItem from="1604832060912" duration="19036000" />
       <workItem from="1604864240182" duration="19730000" />
-      <workItem from="1604943948884" duration="24098000" />
+      <workItem from="1604943948884" duration="26980000" />
     </task>
     <servers />
   </component>

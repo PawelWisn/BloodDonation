@@ -5,6 +5,7 @@ import './Register.scss';
 import Logo from "../images/logo_white.png";
 import classNames from 'classnames';
 import ManyRadiobuttons from "./ManyRadiobuttons";
+
 function Register() {
     const [colorPicked, setColorPicked] = useState(true)
 
@@ -29,7 +30,8 @@ function Register() {
                         <input id='email' type='text'/>
                     </div>
                     <div className='entry-item'>
-                        <ManyRadiobuttons name={'sex'} labels={['Male', 'Female']} values={['1','0']} ids={['sexm','sexf']}/>
+                        <ManyRadiobuttons name={'sex'} labels={['Male', 'Female']} values={['1', '0']}
+                                          ids={['sexm', 'sexf']}/>
                     </div>
                     <div className='entry-item'>
                         <label htmlFor='password'>Password</label>

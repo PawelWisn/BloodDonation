@@ -1,11 +1,42 @@
 .quiz-container {
-  ul {
-    li {
-      list-style: none;
-      padding: 1em;
-    }
-  }
-
   margin: 2em 5% 1em 5%;
   font-size: 2em;
+  background-color: #F2E1C1;
+  border-radius: 5em;
+  padding: 1em;
+
+  .quiz-question {
+    margin: auto;
+    text-align: center;
+
+    .radio-flex-container {
+      margin-left: 25%;
+      margin-right: 25%;
+    }
+
+    .radio-flex-item {
+      padding: 1.5em 3em 1.5em 3em;
+    }
+
+
+
+  }
+
+}
+#quiz-button {
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+
+  button {
+    font-size: 2em;
+    background-color: #f8d800;
+    border: 1px solid black;
+    border-radius: 1em;
+    padding: 0.5em 2.3em;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }
