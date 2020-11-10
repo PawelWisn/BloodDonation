@@ -3,7 +3,6 @@ import BottomBar from "./BottomBar";
 import React from "react";
 import './Common.scss';
 import './Quiz.scss';
-import ManyRadiobuttons from "./ManyRadiobuttons";
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 
 function Quiz() {

@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import './ManyRadiobuttons.scss';
 import CustomRadiobutton from "./CustomRadiobutton";
 
-function ManyRadiobuttons(props: any) {
+function ManyRadiobuttonsNoDefault(props: any) {
     const [picked, setPicked] = useState(-1);
 
     function getRadiobuttons(props: any) {
@@ -35,5 +35,5 @@ function ManyRadiobuttons(props: any) {
 }
 
 
-export default ManyRadiobuttons;
+export default ManyRadiobuttonsNoDefault;
 
