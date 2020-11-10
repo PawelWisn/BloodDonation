@@ -92,8 +92,6 @@ function Quiz() {
     }
 
     function handleQuizButtonClick() {
-
-
         let questions = document.getElementsByClassName('color-primary');
         if (questions.length < 12) {
             updateModalText("Your did not answer to all questions!");
@@ -110,9 +108,7 @@ function Quiz() {
             }
             updateModalText("Congratulations, you are allowed to donate!");
         }
-
     }
-
 }
 
 
