@@ -22,8 +22,11 @@ function ManyRadiobuttons(props: any) {
     }
 
     function changePicked(pickedI: number) {
-        setPicked(pickedI);
-
+        if (pickedI === picked) {
+            setPicked(-1);
+        } else {
+            setPicked(pickedI);
+        }
     }
 
     return (
