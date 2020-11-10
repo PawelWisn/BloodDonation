@@ -18,7 +18,7 @@ console.log(props);
         let markers = []
         for (let i = 0; i < props['data'].length; ++i) {
             let isMobile=props['data'][i]['isMobilePoint'];
-            if (!isMobile && props['displayMobileOnly']){
+            if (!isMobile && props['filter']){
                 continue;
             }
             let placeName=props['data'][i]['placeName'];
