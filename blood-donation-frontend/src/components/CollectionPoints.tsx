@@ -4,8 +4,9 @@ import UpperBar from "./UpperBar";
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import BottomBar from "./BottomBar";
 import CollectionPointTile from "./CollectionPointTile";
+import L from "leaflet";
 import MyMap from "./Map";
-
+import "leaflet/dist/leaflet.css";
 function CollectionPoints() {
 
 
@@ -20,19 +21,19 @@ function CollectionPoints() {
 
             <div className='locals-container'>
                 <div>
-                    <div id='map'>
+                    <div id='mapID'>
                         <MyMap/>
                     </div>
                     <ManyRadiobuttonsNoDefault name='mobileonly' labels={['Mobile points only']} values={['0']}
                                                ids={['mobileRadio']}/>
                 </div>
-                <div className='collection-tiles-container'>
-                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok'/>
-                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
-                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
-                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
-                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
-                </div>
+                {/*<div className='collection-tiles-container'>*/}
+                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok'/>*/}
+                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
+                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
+                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
+                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
+                {/*</div>*/}
 
 
             </div>
