@@ -5,8 +5,15 @@ import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import BottomBar from "./BottomBar";
 import CollectionPointTile from "./CollectionPointTile";
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import MyMap from "./Map";
+
+function xd(){
+    let x = google.maps.Map
+}
 
 function CollectionPoints() {
+
+
 
     return (
         <div className="main-page-content">
@@ -18,7 +25,9 @@ function CollectionPoints() {
 
             <div className='locals-container'>
                 <div>
-                    <div id='map'></div>
+                    <div id='map'>
+                        <MyMap/>
+                    </div>
                     <ManyRadiobuttonsNoDefault name='mobileonly' labels={['Mobile points only']} values={['0']}
                                                ids={['mobileRadio']}/>
                 </div>
