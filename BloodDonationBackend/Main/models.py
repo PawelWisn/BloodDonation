@@ -52,7 +52,7 @@ class UserModel(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_male = models.BooleanField(default=True)
-    want_remainder = models.BooleanField(default=False)
+    want_remainder = models.BooleanField(default=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
