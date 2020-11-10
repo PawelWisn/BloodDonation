@@ -22,7 +22,7 @@ class BloodReservesType(DjangoObjectType):
 class LocalizationType(DjangoObjectType):
     class Meta:
         model = LocalizationModel
-        fields = ("city", 'address', 'placeName', 'isMobilePoint')
+        fields = ("city", 'address', 'placeName', 'isMobilePoint', 'latitude', 'longitude')
 
 
 class DonationType(DjangoObjectType):
