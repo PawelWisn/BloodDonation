@@ -3,7 +3,7 @@ import './ManyRadiobuttons.scss';
 import CustomRadiobutton from "./CustomRadiobutton";
 
 function ManyRadiobuttons(props: any) {
-    const [picked, setPicked] = useState(0);
+    const [picked, setPicked] = useState(-1);
 
     function getRadiobuttons(props: any) {
         const {name, labels, values, ids} = props;

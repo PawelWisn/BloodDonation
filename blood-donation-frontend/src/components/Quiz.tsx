@@ -4,8 +4,9 @@ import React from "react";
 import './Common.scss';
 import './Quiz.scss';
 import ManyRadiobuttons from "./ManyRadiobuttons";
-function Quiz() {
+import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 
+function Quiz() {
 
     return (
         <div className="main-page-content">
@@ -16,7 +17,8 @@ function Quiz() {
             </div>
 
             <div className='quiz-container'>
-                <ManyRadiobuttons name='ans1' values={['YES', 'NO', '??']} labels={['YES', 'NO', '??']} ids={['q1y','q1n','q1m']} />
+                <ManyRadiobuttonsNoDefault name='ans1' labels={['YES', 'NO', '??', '!!']}
+                                           values={['YES', 'NO', '??', '!!']} ids={['q1y', 'q1n', 'q1m', 'q1e']}/>
             </div>
 
             <BottomBar/>
