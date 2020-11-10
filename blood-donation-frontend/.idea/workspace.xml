@@ -9,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Quiz.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Quiz.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Quiz.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Quiz.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +67,7 @@
       <workItem from="1604832060912" duration="19036000" />
       <workItem from="1604864240182" duration="19730000" />
       <workItem from="1604943948884" duration="26980000" />
+      <workItem from="1604998102462" duration="2524000" />
     </task>
     <servers />
   </component>
