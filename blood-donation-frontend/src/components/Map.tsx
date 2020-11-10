@@ -17,11 +17,16 @@ console.log(props);
     function markPoints(props:any){
         let markers = []
         for (let i = 0; i < props['data'].length; ++i) {
+            let isMobile=props['data'][i]['isMobilePoint'];
+            if (!isMobile && props['displayMobileOnly']){
+                continue;
+            }
             let placeName=props['data'][i]['placeName'];
             let lat=props['data'][i]['latitude'];
             let lng=props['data'][i]['longitude'];
+
             markers.push(
-                <Marker position={[parseFloat(lat),parseFloat(lng)]} icon={pointer}>
+                <Marker key={placeName+'marker'} position={[parseFloat(lat),parseFloat(lng)]} icon={pointer}>
                     <Popup>{placeName}</Popup>
                 </Marker>
             );
@@ -37,12 +42,6 @@ console.log(props);
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             {markPoints(props)}
-            {}
-            {/*<Marker position={[52.9967477,15.2212969]} icon={pointer}>*/}
-            {/*    <Popup>*/}
-            {/*        HELLO THERE*/}
-            {/*    </Popup>*/}
-            {/*</Marker>*/}
         </MapContainer>
     );
 }
