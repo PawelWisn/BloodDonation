@@ -64,6 +64,8 @@ def sendEmails(users, today, itemsAbleToDonateDict):
     server.ehlo()
     server.login(sender, passw)
     for user in users:
+        if not user.want_remainder:
+            continue
         donation = DonationModel.objects.filter(donor=user).last()
         if donation is not None:
             difference = (today - donation.time).days / 7
