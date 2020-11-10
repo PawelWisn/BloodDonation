@@ -4,12 +4,7 @@ import UpperBar from "./UpperBar";
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import BottomBar from "./BottomBar";
 import CollectionPointTile from "./CollectionPointTile";
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import MyMap from "./Map";
-
-function xd(){
-    let x = google.maps.Map
-}
 
 function CollectionPoints() {
 

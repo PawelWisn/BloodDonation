@@ -25,8 +25,8 @@ const center = {lat: 52.0688104, lng: 19.4622349};
 
 
 const containerStyle = {
-    width: '400px',
-    height: '400px'
+    width: '1200px',
+    height: '600px'
 };
 
 
@@ -44,17 +44,14 @@ function MyMap() {
     }, [])
 
     return (
-        <LoadScript
-            googleMapsApiKey="AIzaSyDXKIPpaK7QeV9wCJcCwE20z9940fxCjcI"
-        >
+        <LoadScript googleMapsApiKey="AIzaSyDXKIPpaK7QeV9wCJcCwE20z9940fxCjcI">
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
-                zoom={10}
+                zoom={6}
                 onLoad={onLoad}
                 onUnmount={onUnmount}
             >
-                { /* Child components, such as markers, info windows, etc. */ }
                 <></>
             </GoogleMap>
         </LoadScript>
