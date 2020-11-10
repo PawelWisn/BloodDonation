@@ -27,13 +27,13 @@ function CollectionPoints() {
                     <ManyRadiobuttonsNoDefault name='mobileonly' labels={['Mobile points only']} values={['0']}
                                                ids={['mobileRadio']}/>
                 </div>
-                {/*<div className='collection-tiles-container'>*/}
-                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok'/>*/}
-                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
-                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
-                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
-                {/*    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>*/}
-                {/*</div>*/}
+                <div className='collection-tiles-container'>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok'/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
+                </div>
 
 
             </div>
