@@ -2,10 +2,9 @@ import React from "react";
 import './CollectionPoints.scss';
 import UpperBar from "./UpperBar";
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
-import PopupButton from "./PopupButton";
 import BottomBar from "./BottomBar";
 import CollectionPointTile from "./CollectionPointTile";
-
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 function CollectionPoints() {
 
@@ -25,7 +24,10 @@ function CollectionPoints() {
                 </div>
                 <div className='collection-tiles-container'>
                     <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok'/>
-                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={false}/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
+                    <CollectionPointTile placeName='RCKiK Bialystok' address='ulica' city='Bialystok' isMobile={true}/>
                 </div>
 
 

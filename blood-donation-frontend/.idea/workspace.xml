@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/CollectionPointTile.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/CollectionPointTile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/schema.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/schema.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/uploadLocsToDB.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/uploadLocsToDB.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/collectionPoints.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/collectionPoints.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollectionPoints.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollectionPoints.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollectionPointTile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollectionPointTile.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CollectionPoints.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollectionPoints.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/.bin/loose-envify" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/@babel/runtime/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/@babel/runtime/README.md" beforeDir="false" />
@@ -479,7 +471,7 @@
       <workItem from="1604864240182" duration="19730000" />
       <workItem from="1604943948884" duration="26980000" />
       <workItem from="1604998102462" duration="5242000" />
-      <workItem from="1605015198256" duration="599000" />
+      <workItem from="1605015198256" duration="1870000" />
     </task>
     <servers />
   </component>

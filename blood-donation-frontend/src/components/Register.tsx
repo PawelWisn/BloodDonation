@@ -1,13 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import {useHistory} from "react-router-dom";
 import './Common.scss';
 import './Register.scss';
 import Logo from "../images/logo_white.png";
-import classNames from 'classnames';
 import ManyRadiobuttons from "./ManyRadiobuttons";
 
 function Register() {
-    const [colorPicked, setColorPicked] = useState(true)
 
 
     const history = useHistory();
