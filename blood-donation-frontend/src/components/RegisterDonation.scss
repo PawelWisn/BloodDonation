@@ -1,0 +1,24 @@
+.reg-don-container{
+  margin: 2em 2% 2em 2%;
+  background-color: #f8d800;
+  text-align: center;
+  .left-aligned-div{
+    width: 75%;
+    margin:0.1em auto 0.5em auto;
+    text-align: left;
+  }
+}
+
+#drop-down-points{
+  margin:0.5em auto 0.5em auto;
+  width: 75%;
+  height: 3em;
+  font-size: 2em;
+}
+
+#filter-city{
+  padding: 0.5em;
+  font-size: 1em;
+  width: 15%;
+  min-width: 95px;
+}
