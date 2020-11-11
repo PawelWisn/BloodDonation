@@ -3,7 +3,14 @@ import React from "react";
 import Stationary from "../images/stationary.png"
 import Mobile from "../images/mobile.png"
 
-function CollectionPointTile(props: any) {
+type CollectionPointTileType = {
+    placeName: string,
+    address: string,
+    city: string,
+    isMobile: boolean
+}
+
+function CollectionPointTile(props: CollectionPointTileType) {
     const {placeName, address, city, isMobile = false} = props;
 
     return (

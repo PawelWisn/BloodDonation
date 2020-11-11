@@ -2,7 +2,13 @@ import React, {useState} from "react";
 import './PopupButton.scss';
 import classNames from 'classnames';
 
-function PopupButton(props: any) {
+
+type PopupButtonType = {
+    message: string,
+    popupMessage: string
+}
+
+function PopupButton(props: PopupButtonType) {
     const [popupHidden, setPopupHidden] = useState(true);
     const {message, popupMessage} = props;
 

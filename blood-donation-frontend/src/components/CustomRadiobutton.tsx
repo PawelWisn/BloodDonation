@@ -2,9 +2,16 @@ import React from "react";
 import './CustomRadiobutton.scss';
 import classNames from "classnames";
 
-function CustomRadiobutton(props: any) {
-    // const [colorPicked, setColorPicked] = useState(false)
+type CustomRadiobuttonType = {
+    labelMessage: string,
+    name: string,
+    value: string,
+    id: string,
+    handleOnClick: any,
+    colorPicked: boolean
+}
 
+function CustomRadiobutton(props: CustomRadiobuttonType) {
     const {labelMessage, name, value, id, handleOnClick, colorPicked = false} = props;
 
     return (

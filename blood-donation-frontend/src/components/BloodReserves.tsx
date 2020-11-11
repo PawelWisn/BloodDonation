@@ -1,9 +1,9 @@
 import './Common.scss';
 import './BloodReserves.scss';
 import React from "react";
+import PropTypes from 'prop-types';
 import UpperBar from "./UpperBar";
 import BottomBar from "./BottomBar";
-import {Marker, Popup} from "react-leaflet";
 import Zero from '../images/0.png';
 import Quarter from '../images/1.png';
 import Half from '../images/2.png';
@@ -900,8 +900,6 @@ function createTableContent(data: any) {
             const group = data[off]['group'].replace('_', ' ');
             row.push([group, region, volume]);
         }
-        // row = row.sort();
-        console.log(row);
         content.push(
             buildRow(row)
         );

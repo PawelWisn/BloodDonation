@@ -5,27 +5,31 @@ import L from "leaflet";
 import Pointer from '../images/pointer.png';
 
 const pointer = L.icon({
-    iconUrl:Pointer,
-    iconSize: [25,40],
-    iconAnchor:[0,30],
-    popupAnchor:[15,-30]
+    iconUrl: Pointer,
+    iconSize: [25, 40],
+    iconAnchor: [0, 30],
+    popupAnchor: [15, -30]
 })
 
-function MyMap(props: any) {
-console.log(props);
-    function markPoints(props:any){
+type MyMapType = {
+    data: any,
+    filter: boolean
+}
+
+function MyMap(props: MyMapType) {
+    function markPoints(props: MyMapType) {
         let markers = []
         for (let i = 0; i < props['data'].length; ++i) {
-            let isMobile=props['data'][i]['isMobilePoint'];
-            if (!isMobile && props['filter']){
+            let isMobile = props['data'][i]['isMobilePoint'];
+            if (!isMobile && props['filter']) {
                 continue;
             }
-            let placeName=props['data'][i]['placeName'];
-            let lat=props['data'][i]['latitude'];
-            let lng=props['data'][i]['longitude'];
+            let placeName = props['data'][i]['placeName'];
+            let lat = props['data'][i]['latitude'];
+            let lng = props['data'][i]['longitude'];
 
             markers.push(
-                <Marker key={placeName+'marker'} position={[parseFloat(lat),parseFloat(lng)]} icon={pointer}>
+                <Marker key={placeName + 'marker'} position={[parseFloat(lat), parseFloat(lng)]} icon={pointer}>
                     <Popup>{placeName}</Popup>
                 </Marker>
             );

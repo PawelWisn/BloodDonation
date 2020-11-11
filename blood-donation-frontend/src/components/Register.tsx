@@ -6,14 +6,11 @@ import Logo from "../images/logo_white.png";
 import ManyRadiobuttons from "./ManyRadiobuttons";
 
 function Register() {
-
-
     const history = useHistory();
 
     function handleOnClick(url: string) {
         history.push(url);
     }
-
 
     return (
         <div className='reg-container'>

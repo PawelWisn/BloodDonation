@@ -2,7 +2,14 @@ import React from "react";
 import './Common.scss';
 import './LegalRegArticle.scss';
 
-function LegalRegArticle(props: any) {
+type LegalRegArticleType = {
+    art: string,
+    date: string,
+    name: string,
+    link: string
+}
+
+function LegalRegArticle(props: LegalRegArticleType) {
     const {art, date, name, link} = props;
     return (
         <div className='article-element'>

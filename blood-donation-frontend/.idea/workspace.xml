@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BloodReserves.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BloodReserves.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BloodReserves.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BloodReserves.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollectionPointTile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollectionPointTile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomRadiobutton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomRadiobutton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/KnowledgeRepo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/KnowledgeRepo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalReg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalReg.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalRegArticle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalRegArticle.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalRegArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalRegArticle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ManyRadiobuttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ManyRadiobuttons.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/.bin/loose-envify" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/@babel/runtime/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../node_modules/@babel/runtime/README.md" beforeDir="false" />
@@ -477,7 +484,7 @@
       <workItem from="1604943948884" duration="26980000" />
       <workItem from="1604998102462" duration="5242000" />
       <workItem from="1605015198256" duration="24105000" />
-      <workItem from="1605047185615" duration="5899000" />
+      <workItem from="1605047185615" duration="7654000" />
     </task>
     <servers />
   </component>

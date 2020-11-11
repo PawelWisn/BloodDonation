@@ -8,7 +8,6 @@ import './LegalReg.scss';
 
 function LegalReg() {
 
-
     return (
         <div className="main-page-content">
             <UpperBar/>

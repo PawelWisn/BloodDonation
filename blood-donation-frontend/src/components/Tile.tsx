@@ -1,7 +1,14 @@
 import React from "react";
 import './Tile.scss';
 
-function Tile(props: any) {
+type TileType = {
+    alt: string,
+    subject: string,
+    picture: any,
+    onClick: any
+}
+
+function Tile(props: TileType) {
     const {alt, subject, picture, onClick} = props;
 
     return (

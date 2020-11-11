@@ -2,10 +2,17 @@ import React, {useState} from "react";
 import './ManyRadiobuttons.scss';
 import CustomRadiobutton from "./CustomRadiobutton";
 
-function ManyRadiobuttons(props: any) {
+type ManyRadiobuttonsType = {
+    name: string,
+    labels: any,
+    values: any,
+    ids: any
+}
+
+function ManyRadiobuttons(props: ManyRadiobuttonsType) {
     const [picked, setPicked] = useState(0);
 
-    function getRadiobuttons(props: any) {
+    function getRadiobuttons(props: ManyRadiobuttonsType) {
         const {name, labels, values, ids} = props;
         let table = []
         for (let i = 0; i < labels.length; ++i) {
