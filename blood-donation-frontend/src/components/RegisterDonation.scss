@@ -1,24 +1,61 @@
-.reg-don-container{
+#is-new-loc-mobile-div {
+
+  width: unset;
+}
+
+.reg-don-container {
   margin: 2em 2% 2em 2%;
   background-color: #f8d800;
   text-align: center;
-  .left-aligned-div{
+
+  .left-aligned-div {
     width: 75%;
-    margin:0.1em auto 0.5em auto;
+    margin: 0.1em auto 0.5em auto;
     text-align: left;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .new-loc-div {
+    margin: 0.5em auto 0.5em auto;
+    width: 75%;
+    padding: 0.5em;
+    .new-loc-entry-item{
+      margin-bottom: 1em;
+    }
+    p {
+      margin-bottom: 0;
+      padding-left: 1em;
+
+    }
+
+    input {
+      font-size: 2em;
+      padding: 0.25em;
+      margin-top: 0;
+    }
   }
 }
 
-#drop-down-points{
-  margin:0.5em auto 0.5em auto;
+#drop-down-points {
+  margin: 0.5em auto 0.5em auto;
   width: 75%;
   height: 3em;
   font-size: 2em;
+  padding: 0.5em;
 }
 
-#filter-city{
+#filter-city {
   padding: 0.5em;
   font-size: 1em;
-  width: 15%;
+  width: 50%;
   min-width: 95px;
+  max-width: 150px;
 }
+
+#is-new-loc-mobile-div {
+}
+
+

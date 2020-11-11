@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomRadiobutton.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomRadiobutton.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterDonation.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" afterDir="false" />
     </list>
@@ -51,12 +54,12 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/components" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -77,7 +80,7 @@
       <workItem from="1604998102462" duration="5242000" />
       <workItem from="1605015198256" duration="24105000" />
       <workItem from="1605047185615" duration="8477000" />
-      <workItem from="1605093951137" duration="2458000" />
+      <workItem from="1605093951137" duration="9305000" />
     </task>
     <servers />
   </component>
@@ -138,6 +141,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2423" y="154" width="944" height="806" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605035619181" />
+    <state x="2681" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605100826532">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2681" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605100826532" />
     <state x="2564" y="252" key="run.anything.popup" timestamp="1604878815163">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

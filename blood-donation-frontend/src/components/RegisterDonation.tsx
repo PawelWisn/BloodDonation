@@ -1,8 +1,10 @@
 import './Common.scss';
 import './RegisterDonation.scss';
 import UpperBar from "./UpperBar";
-import React from "react";
+import React, {useState} from "react";
 import BottomBar from "./BottomBar";
+import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
+import classNames from "classnames";
 
 let data = [
     {
@@ -30,7 +32,10 @@ let data = [
         "longitude": "19.364955"
     }]
 
+
 function RegisterDonation() {
+    const [newLocHidden, setNewLocHidden] = useState(false);
+
     return (
         <div className="main-page-content">
             <UpperBar/>
@@ -53,6 +58,43 @@ function RegisterDonation() {
                 <div className='left-aligned-div'>
                     <input type="text" id="filter-city" name="filter-city" placeholder="Filter by city"/>
                 </div>
+
+                <div id='not-found-div'>
+                    <div onClick={()=>{setNewLocHidden(false)}}>
+                        <h4>Not found? Add it to the catalog</h4>
+                    </div>
+                    <div className={classNames('new-loc-div', {'hidden': newLocHidden})}>
+                            <div className='new-loc-entry-item'>
+                                <div>
+                                    <p>Institution name</p>
+                                </div>
+                                <div>
+                                    <input id='institution-name' type='text'/>
+                                </div>
+                            </div>
+                        <div className='new-loc-entry-item'>
+                            <div>
+                                <p>Institution address</p>
+                            </div>
+                            <div>
+                                <input id='institution-address' type='text'/>
+                            </div>
+                        </div>
+                        <div className='new-loc-entry-item'>
+                            <div>
+                                <p>Institution city</p>
+                            </div>
+                            <div>
+                                <input id='institution-city' type='text'/>
+                            </div>
+                        </div>
+                        <div id='is-new-loc-mobile-div'>
+                            <ManyRadiobuttonsNoDefault name={'new-loc-mobile'} labels={['Is a mobile point']}
+                                                       values={'0'} ids={'new-loc-mobile-radio'}/>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
 
