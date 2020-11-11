@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterDonation.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" afterDir="false" />
@@ -78,6 +79,7 @@
       <workItem from="1605015198256" duration="24105000" />
       <workItem from="1605047185615" duration="8477000" />
       <workItem from="1605093951137" duration="20235000" />
+      <workItem from="1605123561991" duration="2618000" />
     </task>
     <servers />
   </component>
