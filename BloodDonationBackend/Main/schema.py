@@ -10,7 +10,7 @@ from graphql_jwt.decorators import login_required
 class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
-        fields = ("email", "date_joined", 'is_active', 'is_male', 'want_remainder')
+        fields = ("email", "date_joined", 'is_active', 'is_male', 'want_reminder')
 
 
 class BloodReservesType(DjangoObjectType):
@@ -119,15 +119,15 @@ class ApplyDonationMutation(graphene.Mutation):
         placeName = graphene.String(required=True)
         address = graphene.String(required=False)
         isMobilePoint = graphene.Boolean(required=False)
-        wantRemainder = graphene.Boolean(required=False)
+        wantReminder = graphene.Boolean(required=False)
 
     donation = graphene.Field(DonationType)
 
     @login_required
     def mutate(self, info, donatedAmount, donatedType, city, placeName, time=None, address='',
-               isMobilePoint=False, wantRemainder=True):
+               isMobilePoint=False, wantReminder=True):
         user = info.context.user
-        user.want_remainder = wantRemainder
+        user.want_reminder = wantReminder
         user.save()
         try:
             localization = LocalizationModel.objects.get(placeName=placeName)

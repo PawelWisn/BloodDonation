@@ -7,7 +7,7 @@ import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import classNames from "classnames";
 import ManyRadiobuttons from "./ManyRadiobuttons";
 
-let data =[
+let data = [
     {
         "city": "Barlinek",
         "placeName": "RCKiK Szczecin Mobile Barlinek",
@@ -1474,30 +1474,6 @@ let data =[
     }
 ];
 
-function filterByCity(data: any) {
-    let cityObj = document.getElementById('filter-city') as HTMLInputElement;
-    let cityString = cityObj ? cityObj.value : '';
-    cityString = cityString.toLowerCase()
-    return data.filter((item: any) => {
-        if (!item['city']) {
-            return false
-        }
-        return item['city'].toLowerCase().startsWith(cityString);
-    })
-}
-
-function generateOptions(options: any) {
-
-    let out = [];
-    for (let i = 0; i < options.length; ++i) {
-        out.push(
-            <option
-                key={options[i].placeName + 'dropdown'}
-                value={options[i].placeName}>{options[i].placeName + ', ' + options[i].address + ', ' + options[i].city}</option>
-        );
-    }
-    return out;
-}
 
 function RegisterDonation() {
     const [newLocHidden, setNewLocHidden] = useState(true);
@@ -1520,14 +1496,16 @@ function RegisterDonation() {
                 </select>
                 <div className='left-aligned-div'>
                     <input type="text" id="filter-city" name="filter-city" placeholder="Filter by city"
-                           onKeyUp={() =>{setOptionList(filterByCity(data))}}/>
+                           onKeyUp={() => {
+                               setOptionList(filterByCity(data))
+                           }}/>
                 </div>
 
                 <div id='not-found-div'>
                     <div>
                         <h3>Not found? <span onClick={() => {
                             setNewLocHidden(false);
-                        }}>Click here and it to the catalog</span></h3>
+                        }}>Click here and add it to the catalog</span></h3>
                     </div>
                     <div className={classNames('new-loc-div', {'hidden': newLocHidden})}>
                         <div className='new-loc-entry-item'>
@@ -1556,7 +1534,7 @@ function RegisterDonation() {
                         </div>
                         <div id='is-new-loc-mobile-div'>
                             <ManyRadiobuttonsNoDefault name={'new-loc-mobile'} labels={['Is a mobile point']}
-                                                       values={'0'} ids={'new-loc-mobile-radio'}/>
+                                                       values={'0'} ids={['new-loc-mobile-radio']}/>
                         </div>
                     </div>
                 </div>
@@ -1590,9 +1568,14 @@ function RegisterDonation() {
 
                 </div>
 
+                <div id='remainder-div'>
+                    <ManyRadiobuttons name={'reminderButton'} labels={['Remind me when I can donate again']}
+                                               values={'0'} ids={['reminderButton']}/>
+                </div>
+
                 <div id='apply-donation-button'>
                     <input type='submit' value='Submit' onClick={() => {
-                        console.log('applied')
+                        console.log(collectDataForRequest());
                     }}/>
                 </div>
             </div>
@@ -1601,6 +1584,82 @@ function RegisterDonation() {
             <BottomBar/>
         </div>
     );
+
+    function filterByCity(data: any) {
+        let cityObj = document.getElementById('filter-city') as HTMLInputElement;
+        let cityString = cityObj ? cityObj.value : '';
+        cityString = cityString.toLowerCase()
+        return data.filter((item: any) => {
+            if (!item['city']) {
+                return false
+            }
+            return item['city'].toLowerCase().startsWith(cityString);
+        })
+    }
+
+    function generateOptions(options: any) {
+
+        let out = [];
+        for (let i = 0; i < options.length; ++i) {
+            out.push(
+                <option
+                    key={options[i].placeName + 'dropdown'}
+                    value={options[i].placeName}>{options[i].placeName + ', ' + options[i].address + ', ' + options[i].city}</option>
+            );
+        }
+        return out;
+    }
+
+    function collectDataForRequest() {
+        let name = '', address = '', city = '', mobile = false, donType = 'BLD', donAmount = 0, donDate = '', rem=true;
+        let dropdown: any = document.getElementById('drop-down-points');
+        let selected: string = dropdown ? dropdown['value'] : '';
+        let instNameObj: any = document.getElementById('institution-name');
+        if (instNameObj) {
+            name = instNameObj.value ? instNameObj.value : selected;
+        }
+        let instName: string = instNameObj ? instNameObj.value : selected;
+
+        if (instName !== selected) {
+            let instAddrObj: any = document.getElementById('institution-address');
+            if (instAddrObj) address = instAddrObj.value;
+            let instCityObj: any = document.getElementById('institution-city');
+            if (instCityObj) city = instCityObj.value;
+            let instMobileObj: any = document.getElementById('is-new-loc-mobile-div');
+            if (instMobileObj) {
+                let radio: any = instMobileObj.getElementsByClassName('color-primary');
+                if (radio) mobile = radio.length === 1;
+            }
+        }
+        let donationTypeObj = document.getElementById('reg-what-donated-div');
+
+        if (donationTypeObj) {
+            let pickedObj = donationTypeObj.getElementsByClassName('color-primary');
+            if (pickedObj) {
+                let donated = pickedObj[0].getElementsByTagName('input');
+                if (donated) {
+                    donType = donated[0].value;
+                }
+            }
+        }
+
+        let donAmountObj: any = document.getElementById('reg-how-much');
+        if (donAmountObj) donAmount = parseInt(donAmountObj.value);
+
+        let donDateObj: any = document.getElementById('reg-when');
+        if (donDateObj) donDate = donDateObj.value;
+
+        let reminderOjb: any = document.getElementById('remainder-div');
+        if (reminderOjb) {
+            let radio: any = reminderOjb.getElementsByClassName('color-primary');
+            if (radio) rem = radio.length === 1;
+        }
+
+        let output = {"placeName":name, "address":address,"city":city,"isMobilePoint":mobile,"donationType":donType,"amount":donAmount, "time":donDate, 'wantReminder':rem};
+        return [name, address, city, mobile, donType, donAmount, donDate, rem];
+
+
+    }
 }
 
 export default RegisterDonation;

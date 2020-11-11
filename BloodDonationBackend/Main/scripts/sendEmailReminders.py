@@ -10,7 +10,7 @@ from django.conf import settings
 
 
 def run():
-    users = [user for user in UserModel.objects.all() if user.want_remainder]
+    users = [user for user in UserModel.objects.all() if user.want_reminder]
     today = timezone.now()
     itemsAbleToDonateDict = getItemsAbleToDonate()
     sendEmails(users, today, itemsAbleToDonateDict)
@@ -64,8 +64,6 @@ def sendEmails(users, today, itemsAbleToDonateDict):
     server.ehlo()
     server.login(sender, passw)
     for user in users:
-        if not user.want_remainder:
-            continue
         donation = DonationModel.objects.filter(donor=user).last()
         if donation is not None:
             difference = (today - donation.time).days / 7
