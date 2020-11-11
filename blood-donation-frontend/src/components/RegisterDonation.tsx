@@ -34,7 +34,7 @@ let data = [
 
 
 function RegisterDonation() {
-    const [newLocHidden, setNewLocHidden] = useState(false);
+    const [newLocHidden, setNewLocHidden] = useState(true);
 
     return (
         <div className="main-page-content">
