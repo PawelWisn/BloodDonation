@@ -8,6 +8,10 @@
   background-color: lightgray;
   border-radius: 50px;
 
+  .reg-inline-inputs {
+
+  }
+
   #apply-donation-button {
     text-align: center;
     margin-top: 1em;
@@ -124,24 +128,33 @@
   }
 }
 
-
 .reg-radio-flex-container {
   margin: 6em 2em;
   display: flex;
   flex-direction: row;
   justify-content: center;
 
-  input {
-    width: 100%;
-    flex-grow: 0;
-    flex-basis: 25%;
-    text-align: center;
-    font-size: 2em;
-    padding: 1em 1em 1em 1em;
+  .reg-inline-inputs {
+    p {
+      margin-bottom: 0;
+    }
+
+    input {
+      width: 100%;
+      height: 100%;
+      flex-grow: 0;
+      flex-basis: 25%;
+      text-align: center;
+      font-size: 2em;
+      padding: 1em 1em 1em 1em;
+
+    }
+
     &:first-child {
       margin-right: 6em;
     }
   }
+
 }
 
 @media only screen and (max-width: 800px) {
@@ -149,16 +162,19 @@
     .reg-don-container {
       .reg-radio-flex-container {
         flex-direction: column;
-        align-items: center;
+        //align-items: center;
 
         input {
           width: 75%;
+
+
+        }
+
+        .reg-inline-inputs {
           &:first-child {
-            padding: 1em 1em 1em 1em;
             margin-right: 0;
             margin-bottom: 0.33em;
           }
-
         }
       }
     }
@@ -170,15 +186,18 @@
     .reg-don-container {
       .reg-radio-flex-container {
         flex-direction: column;
-        align-items: center;
+        //align-items: center;
         margin: 5em 1em;
+
         input {
           width: 50%;
+        }
+
+        .reg-inline-inputs {
           &:first-child {
             margin-right: 0;
             margin-bottom: 2em;
           }
-
         }
       }
     }

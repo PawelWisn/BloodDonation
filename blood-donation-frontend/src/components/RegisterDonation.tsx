@@ -108,8 +108,23 @@ function RegisterDonation() {
                                       ids={['optBLD', 'optPLM', 'optPLT', 'optLEU', 'optERT']}/>
                 </div>
                 <div className='reg-radio-flex-container'>
-                    <input type='text' id='reg-how-much' placeholder='0 ml'/>
-                    <input type='date' id='reg-when'/>
+                    <div className='reg-inline-inputs'>
+                        <div>
+                            <p>How much?</p>
+                        </div>
+                        <div>
+                            <input type='text' id='reg-how-much' placeholder='0 ml'/>
+                        </div>
+                    </div>
+                    <div className='reg-inline-inputs'>
+                        <div>
+                            <p>When?</p>
+                        </div>
+                        <div>
+                            <input type='text' id='reg-when'placeholder='yyyy-mm-dd'/>
+                        </div>
+                    </div>
+
                 </div>
 
                 <div id='apply-donation-button'>
