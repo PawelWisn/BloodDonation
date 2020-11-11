@@ -1570,7 +1570,7 @@ function RegisterDonation() {
 
                 <div id='remainder-div'>
                     <ManyRadiobuttons name={'reminderButton'} labels={['Remind me when I can donate again']}
-                                               values={'0'} ids={['reminderButton']}/>
+                                      values={'0'} ids={['reminderButton']}/>
                 </div>
 
                 <div id='apply-donation-button'>
@@ -1611,7 +1611,8 @@ function RegisterDonation() {
     }
 
     function collectDataForRequest() {
-        let name = '', address = '', city = '', mobile = false, donType = 'BLD', donAmount = 0, donDate = '', rem=true;
+        let name = '', address = '', city = '', mobile = false, donType = 'BLD', donAmount = 0, donDate = '',
+            rem = true;
         let dropdown: any = document.getElementById('drop-down-points');
         let selected: string = dropdown ? dropdown['value'] : '';
         let instNameObj: any = document.getElementById('institution-name');
@@ -1655,10 +1656,22 @@ function RegisterDonation() {
             if (radio) rem = radio.length === 1;
         }
 
-        let output = {"placeName":name, "address":address,"city":city,"isMobilePoint":mobile,"donationType":donType,"amount":donAmount, "time":donDate, 'wantReminder':rem};
-        return [name, address, city, mobile, donType, donAmount, donDate, rem];
+        return {
+            "placeName": name,
+            "address": address,
+            "city": city,
+            "isMobilePoint": mobile,
+            "donationType": donType,
+            "amount": donAmount,
+            "time": donDate,
+            'wantReminder': rem
+        };
+    }
 
-
+    function validateRequestData(collection:any){
+        if(collection['amount']<=0){return {'ok':false,'error':"Negative donation amount"}}
+        if(!collection['time'].match(/\d\d\d\d-\d\d-\d\d/)){return {'ok':false,'error':"Invalid data format"}}
+        return {'ok':true}
     }
 }
 
