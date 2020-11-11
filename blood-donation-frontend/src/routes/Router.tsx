@@ -9,6 +9,7 @@ import Quiz from "../components/Quiz";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import CollectionPoints from "../components/CollectionPoints";
 import BloodReserves from "../components/BloodReserves";
+import RegisterDonation from "../components/RegisterDonation";
 
 
 function MainRouter() {
@@ -22,7 +23,7 @@ function MainRouter() {
                 <Route exact path="/benefits" component={Benefits}/>
                 <Route exact path="/knowledge" component={KnowledgeRepo}/>
                 <Route exact path="/regulations" component={LegalReg}/>
-                <Route exact path="/declaredonation" component={Homepage}/>
+                <Route exact path="/declaredonation" component={RegisterDonation}/>
                 <Route exact path="/profile" component={Homepage}/>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register" component={Register}/>
