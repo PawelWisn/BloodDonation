@@ -2,10 +2,50 @@
 }
 
 .reg-don-container {
-  margin: 2em 2% 2em 2%;
-  background-color: #f8d800;
+  margin: 2em 2% 3em 2%;
+  padding: 1em 1em 2em 1em;
   text-align: center;
+  background-color: lightgray;
+  border-radius: 50px;
 
+  #apply-donation-button {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 1.5em;
+
+    input {
+      font-size: 2em;
+      background-color: #f8d800;
+      border: 1px solid black;
+      border-radius: 1em;
+      padding: 0.5em 2.3em;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  #what-donated-header {
+    margin-top: 5em;
+  }
+
+  .color-secondary {
+    background-color: #ffcdde;
+  }
+
+  #reg-what-donated-div {
+    .radio-flex-container {
+
+      .radio-flex-item {
+        margin: 2px 1px;
+        width: 20em;
+        height: 4em;
+        border-radius: 15px;
+
+      }
+    }
+  }
 
   .new-loc-entry-item {
     margin: 0 25% 0 25%;
@@ -67,7 +107,7 @@
 }
 
 #not-found-div {
-  h4 {
+  h3 {
     span {
       text-decoration: underline;
 
@@ -79,7 +119,72 @@
 }
 
 #is-new-loc-mobile-div {
+  .color-secondary {
+    background-color: #ffcdde;
+  }
 }
+
+
+.reg-radio-flex-container {
+  margin: 6em 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  input {
+    width: 100%;
+    flex-grow: 0;
+    flex-basis: 25%;
+    text-align: center;
+    font-size: 2em;
+    padding: 1em 1em 1em 1em;
+    &:first-child {
+      margin-right: 6em;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    .reg-don-container {
+      .reg-radio-flex-container {
+        flex-direction: column;
+        align-items: center;
+
+        input {
+          width: 75%;
+          &:first-child {
+            padding: 1em 1em 1em 1em;
+            margin-right: 0;
+            margin-bottom: 0.33em;
+          }
+
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1300px) {
+  body {
+    .reg-don-container {
+      .reg-radio-flex-container {
+        flex-direction: column;
+        align-items: center;
+        margin: 5em 1em;
+        input {
+          width: 50%;
+          &:first-child {
+            margin-right: 0;
+            margin-bottom: 2em;
+          }
+
+        }
+      }
+    }
+  }
+}
+
 
 @media only screen and (max-width: 400px) {
   body {

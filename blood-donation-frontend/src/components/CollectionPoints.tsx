@@ -1520,7 +1520,7 @@ function CollectionPoints() {
                     <div id='mapID'>
                         <MyMap data={data} filter={displayMobileOnly}/>
                     </div>
-                    <div onClick={swapDisplayMobileOnly}>{
+                    <div id='col-filter-button' onClick={swapDisplayMobileOnly}>{
                         <ManyRadiobuttonsNoDefault name='mobileonly' labels={['Mobile points only']} values={['0']}
                                                    ids={['mobileRadio']}/>
                     }

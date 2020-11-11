@@ -5,6 +5,7 @@ import React, {useState} from "react";
 import BottomBar from "./BottomBar";
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import classNames from "classnames";
+import ManyRadiobuttons from "./ManyRadiobuttons";
 
 let data = [
     {
@@ -46,7 +47,7 @@ function RegisterDonation() {
 
             <div className='reg-don-container'>
                 <div>
-                    <h4>Choose your donation point from the list</h4>
+                    <h3>Choose your donation point from the list</h3>
                 </div>
 
                 <select id="drop-down-points">
@@ -61,19 +62,19 @@ function RegisterDonation() {
 
                 <div id='not-found-div'>
                     <div>
-                        <h4>Not found? <span onClick={() => {
+                        <h3>Not found? <span onClick={() => {
                             setNewLocHidden(false);
-                        }}>Click here and it to the catalog</span></h4>
+                        }}>Click here and it to the catalog</span></h3>
                     </div>
                     <div className={classNames('new-loc-div', {'hidden': newLocHidden})}>
-                            <div className='new-loc-entry-item'>
-                                <div>
-                                    <p>Institution name</p>
-                                </div>
-                                <div>
-                                    <input id='institution-name' type='text'/>
-                                </div>
+                        <div className='new-loc-entry-item'>
+                            <div>
+                                <p>Institution name</p>
                             </div>
+                            <div>
+                                <input id='institution-name' type='text'/>
+                            </div>
+                        </div>
                         <div className='new-loc-entry-item'>
                             <div>
                                 <p>Institution address</p>
@@ -97,6 +98,25 @@ function RegisterDonation() {
                     </div>
                 </div>
 
+                <div id='what-donated-header'>
+                    <h3>What did you donate?</h3>
+                </div>
+                <div id='reg-what-donated-div'>
+                    <ManyRadiobuttons name={'what-donated'}
+                                      labels={['BLOOD', 'PLASMA', 'PLATELETS', 'LEUKOCYTES', 'ERYTHROCYTES']}
+                                      values={['BLD', 'PLM', 'PLT', 'LEU', 'ERT']}
+                                      ids={['optBLD', 'optPLM', 'optPLT', 'optLEU', 'optERT']}/>
+                </div>
+                <div className='reg-radio-flex-container'>
+                    <input type='text' id='reg-how-much' placeholder='0 ml'/>
+                    <input type='date' id='reg-when'/>
+                </div>
+
+                <div id='apply-donation-button'>
+                    <input type='submit' value='Submit' onClick={() => {
+                        console.log('applied')
+                    }}/>
+                </div>
             </div>
 
 
