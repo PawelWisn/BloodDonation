@@ -60,8 +60,10 @@ function RegisterDonation() {
                 </div>
 
                 <div id='not-found-div'>
-                    <div onClick={()=>{setNewLocHidden(false)}}>
-                        <h4>Not found? Add it to the catalog</h4>
+                    <div>
+                        <h4>Not found? <span onClick={() => {
+                            setNewLocHidden(false);
+                        }}>Click here and it to the catalog</span></h4>
                     </div>
                     <div className={classNames('new-loc-div', {'hidden': newLocHidden})}>
                             <div className='new-loc-entry-item'>
