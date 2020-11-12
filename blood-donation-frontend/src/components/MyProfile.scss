@@ -1,7 +1,92 @@
-.my-profile-container{
+.my-profile-container {
   margin: 2em 2% 3em 2%;
-  padding: 1em 1em 2em 1em;
+  padding: 0 1em 3em 1em;
   text-align: center;
   background-color: lightgray;
   border-radius: 50px;
+
+  h1 {
+    font-size: 4em;
+  }
+
+  h2 {
+    font-size: 3em;
+  }
+
+  h5 {
+    font-size: 1.5em;
+    color: #545454;
+  }
+
+  #profile-stats {
+    background-color: lightgray;
+    margin: auto;
+    position: relative;
+    font-size: 1.5em;
+    border-collapse: collapse;
+
+    thead {
+      background-color: #acacac;
+      padding: 2em;
+
+      tr {
+        th {
+          padding: 1em 2em;
+          border: 1px solid black;
+        }
+
+      }
+
+
+    }
+
+    tbody {
+      tr {
+        background-color: #c1c1c1;
+
+        &:nth-child(2n) {
+          background-color: #f2f2f2;
+        }
+
+        td {
+          padding: 1em;
+          border: 1px solid black;
+
+          &:last-child {
+            padding: 1em 10em;
+          }
+
+        }
+
+      }
+    }
+
+  }
+}
+
+
+#progress-outer {
+  margin: 2em auto 3em auto;
+  width: 80vw;
+  height: 5vh;
+  background-color: white;
+  position: relative;
+
+  #progress-text {
+    position: absolute;
+    left: 45%;
+    top: 30%;
+    z-index: 100;
+    height: 5vh;
+  }
+
+  #progress-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+    //padding: 2em;
+    height: 5vh;
+    background-color: lightskyblue;
+  }
 }

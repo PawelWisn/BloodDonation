@@ -890,7 +890,7 @@ function buildRow(row: any) {
 
 function createTableContent(data: any) {
     const iterations = data.length / 8;
-    let content = [];
+    let content:any = [];
     for (let i = 0; i < iterations; ++i) {
         let row = []
         for (let j = 0; j < 8; ++j) {
