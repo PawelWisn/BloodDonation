@@ -29,8 +29,9 @@ function Login() {
                         <input id='password' type='password'/>
                     </div>
                     <div className='submit-button'>
-                        <input type='submit' value='Login' onClick={() => {
-                            handleOnClick('/')
+                        <input type='submit' value='Login' onClick={(e) => {
+                            e.preventDefault();
+                            collectDataForRequest()
                         }}/>
                     </div>
 
@@ -38,11 +39,41 @@ function Login() {
             </div>
             <div className='login-content-container'>
                 <p>New to BloodDonation? <span onClick={() => {
+
                     handleOnClick('/register')
                 }}>Create an account</span></p>
             </div>
         </div>
     );
+
+    function collectDataForRequest() {
+        let loginObj: any = document.getElementById('email');
+        let email: string = loginObj ? loginObj['value'] : '';
+        let passwordObj: any = document.getElementById('password');
+        let password: string = passwordObj ? passwordObj['value'] : '';
+
+        let output = {
+            "email": email,
+            "password": password,
+        };
+
+        let validationResult = validateRequestData(output);
+        if (validationResult['ok']) {
+            console.log('ok')
+            return output;
+        }
+        alert("Error occured: " + validationResult['error']);
+    }
+
+    function validateRequestData(collection: any) {
+        if (!collection['email'].match(/.+?@.+?\..+/)) {
+            return {'ok': false, 'error': "Please provide a valid email address"}
+        }
+        if (collection['password'].length === 0) {
+            return {'ok': false, 'error': "Please type in your password"}
+        }
+        return {'ok': true}
+    }
 }
 
 export default Login;

@@ -10,6 +10,7 @@ import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom
 import CollectionPoints from "../components/CollectionPoints";
 import BloodReserves from "../components/BloodReserves";
 import RegisterDonation from "../components/RegisterDonation";
+import MyProfile from "../components/MyProfile";
 
 
 function MainRouter() {
@@ -24,7 +25,7 @@ function MainRouter() {
                 <Route exact path="/knowledge" component={KnowledgeRepo}/>
                 <Route exact path="/regulations" component={LegalReg}/>
                 <Route exact path="/declaredonation" component={RegisterDonation}/>
-                <Route exact path="/profile" component={Homepage}/>
+                <Route exact path="/profile" component={MyProfile}/>
                 <Route exact path="/login" component={Login}/>
                 <Route exact path="/register" component={Register}/>
                 <Redirect to={"/"}/>

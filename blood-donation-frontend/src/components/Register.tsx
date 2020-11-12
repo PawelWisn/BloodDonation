@@ -19,12 +19,11 @@ function Register() {
             </div>
 
             <div className='reg-content-container'>
-                <form>
                     <div className='entry-item'>
                         <label htmlFor='email'>Email</label>
                         <input id='email' type='text'/>
                     </div>
-                    <div className='entry-item'>
+                    <div className='entry-item' id='male-female-div'>
                         <ManyRadiobuttons name={'sex'} labels={['Male', 'Female']} values={['1', '0']}
                                           ids={['sexm', 'sexf']}/>
                     </div>
@@ -37,15 +36,75 @@ function Register() {
                         <input id='confpassword' type='password'/>
                     </div>
                     <div className='submit-button'>
-                        <input type='submit' value='Register' onClick={() => {
-                            handleOnClick('/')
+                        <input type='submit' value='Register' onClick={(e) => {
+                            e.preventDefault();
+                            collectDataForRequest();
                         }}/>
                     </div>
 
-                </form>
             </div>
         </div>
     );
+
+    function collectDataForRequest() {
+        let emailObj: any = document.getElementById('email');
+        let email: string = emailObj ? emailObj['value'] : '';
+        let passwordObj: any = document.getElementById('password');
+        let password: string = passwordObj ? passwordObj['value'] : '';
+        let confPasswordObj: any = document.getElementById('confpassword');
+        let confPassword: string = confPasswordObj ? confPasswordObj['value'] : '';
+
+        let sex: string = '';
+        let sexObj = document.getElementById('male-female-div');
+        if (sexObj) {
+            let pickedObj = sexObj.getElementsByClassName('color-primary');
+            console.log(pickedObj)
+            if (pickedObj.length===1) {
+                let donated = pickedObj[0].getElementsByTagName('input');
+                if (donated) {
+                    sex = donated[0].value;
+                }
+            }
+        }
+
+        let output = {
+            "email": email,
+            "password": password,
+            "sex": sex === '1'
+        };
+
+        let validationResult = validateRequestData({
+            "email": email,
+            "password": password,
+            "confPassword": confPassword,
+            "sex": sex
+        });
+
+        if (validationResult['ok']) {
+            console.log('ok')
+            return output;
+        }
+        alert("Error occured: " + validationResult['error']);
+    }
+
+    function validateRequestData(collection: any) {
+        if (!collection['email'].match(/.+?@.+?\..+/)) {
+            return {'ok': false, 'error': "Please provide a valid email address"}
+        }
+        if (collection['sex'] === '') {
+            return {'ok': false, 'error': "Please select whether you are male or female"}
+        }
+        if (collection['password'].length === 0) {
+            return {'ok': false, 'error': "Please type in a password"}
+        }
+        if (collection['confPassword'].length === 0) {
+            return {'ok': false, 'error': "Please confirm your password"}
+        }
+        if (collection['confPassword'] !== collection['password']) {
+            return {'ok': false, 'error': "Passwords are not identical"}
+        }
+        return {'ok': true}
+    }
 }
 
 export default Register;

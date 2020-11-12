@@ -1574,8 +1574,9 @@ function RegisterDonation() {
                 </div>
 
                 <div id='apply-donation-button'>
-                    <input type='submit' value='Submit' onClick={() => {
-                        console.log(collectDataForRequest());
+                    <input type='submit' value='Submit' onClick={(e) => {
+                        e.preventDefault();
+                        collectDataForRequest();
                     }}/>
                 </div>
             </div>
@@ -1611,7 +1612,7 @@ function RegisterDonation() {
     }
 
     function collectDataForRequest() {
-        let name = '', address = '', city = '', mobile = false, donType = 'BLD', donAmount = 0, donDate = '',
+        let name = '', address = '', city = '', mobile = false, donType = '', donAmount = 0, donDate = '',
             rem = true;
         let dropdown: any = document.getElementById('drop-down-points');
         let selected: string = dropdown ? dropdown['value'] : '';
@@ -1633,12 +1634,11 @@ function RegisterDonation() {
             }
         }
         let donationTypeObj = document.getElementById('reg-what-donated-div');
-
         if (donationTypeObj) {
             let pickedObj = donationTypeObj.getElementsByClassName('color-primary');
-            if (pickedObj) {
+            if (pickedObj.length === 1) {
                 let donated = pickedObj[0].getElementsByTagName('input');
-                if (donated) {
+                if (donated.length === 1) {
                     donType = donated[0].value;
                 }
             }
@@ -1646,6 +1646,7 @@ function RegisterDonation() {
 
         let donAmountObj: any = document.getElementById('reg-how-much');
         if (donAmountObj) donAmount = parseInt(donAmountObj.value);
+        if (isNaN(donAmount)) donAmount = 0;
 
         let donDateObj: any = document.getElementById('reg-when');
         if (donDateObj) donDate = donDateObj.value;
@@ -1656,7 +1657,7 @@ function RegisterDonation() {
             if (radio) rem = radio.length === 1;
         }
 
-        return {
+        let output = {
             "placeName": name,
             "address": address,
             "city": city,
@@ -1666,12 +1667,27 @@ function RegisterDonation() {
             "time": donDate,
             'wantReminder': rem
         };
+
+        let validationResult = validateRequestData(output);
+
+        if (validationResult['ok']) {
+            console.log('ok')
+            return output;
+        }
+        alert("Error occured: " + validationResult['error']);
     }
 
-    function validateRequestData(collection:any){
-        if(collection['amount']<=0){return {'ok':false,'error':"Negative donation amount"}}
-        if(!collection['time'].match(/\d\d\d\d-\d\d-\d\d/)){return {'ok':false,'error':"Invalid data format"}}
-        return {'ok':true}
+    function validateRequestData(collection: any) {
+        if (collection['amount'] <= 0) {
+            return {'ok': false, 'error': "Please provide positive donation amount"}
+        }
+        if (!['BLD', 'PLM', 'PLT', 'ERT', 'LEU'].includes(collection['donationType'])) {
+            return {'ok': false, 'error': "Please pick donation type"}
+        }
+        if (!collection['time'].match(/^\d\d\d\d-\d\d-\d\d$/)) {
+            return {'ok': false, 'error': "Please provide valid data format"}
+        }
+        return {'ok': true}
     }
 }
 
