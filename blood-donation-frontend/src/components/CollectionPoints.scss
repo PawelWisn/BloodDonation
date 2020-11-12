@@ -2,8 +2,10 @@ $mapW: 900px;
 $mapH: 500px;
 
 .locals-container {
-  margin: 2em 18% 2em 18%;
-
+  margin: 1em 1% 2em 1%;
+  padding: 4em 4em 2em 4em;
+  background-color: lightgray;
+  border-radius: 50px;
   #col-filter-button {
     .color-secondary {
       background-color: #ffcdde;

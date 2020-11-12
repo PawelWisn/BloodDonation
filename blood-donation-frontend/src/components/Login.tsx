@@ -62,7 +62,7 @@ function Login() {
             console.log('ok')
             return output;
         }
-        alert("Error occured: " + validationResult['error']);
+        alert(validationResult['error']);
     }
 
     function validateRequestData(collection: any) {
