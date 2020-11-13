@@ -1,7 +1,7 @@
 import './Common.scss';
 import './RegisterDonation.scss';
 import UpperBar from "./UpperBar";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import BottomBar from "./BottomBar";
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import classNames from "classnames";
@@ -13,7 +13,7 @@ import {useQuery} from "urql";
 // `;
 const LocalizationsQuery = `
   query {
-    allLocalizations {
+    allLocalizations{
         city    
         placeName
         address
@@ -24,10 +24,46 @@ const LocalizationsQuery = `
   }
 `;
 
+type OptionListType = {
+    allLocalizations: LocalizationType[]
+}
+type LocalizationType = {
+    city: string,
+    placeName: string,
+    address: string,
+    isMobilePoint: boolean,
+    latitude: string,
+    longitude: string,
+}
+
+const useOptionList = () => {
+    const [optionListRes] = useQuery({'query': LocalizationsQuery, 'requestPolicy': 'cache-first'});
+    const [optionList, setOptionList] = useState<OptionListType>({allLocalizations: []});
+    useEffect(() => {
+        if (!optionListRes.fetching) {
+            setOptionList(optionListRes.data);
+
+        }
+    }, [optionListRes.fetching]);
+
+    function filterByCity(cityString: string) {
+        cityString = cityString.toLowerCase()
+        const out = optionListRes.data.allLocalizations.filter((item: LocalizationType) => {
+            if (!item['city']) {
+                return false
+            }
+            return item['city'].toLowerCase().startsWith(cityString);
+        });
+        setOptionList({allLocalizations: out});
+    }
+
+    return {optionList, fetching: optionListRes.fetching, error: optionListRes.error, filterByCity};
+};
+
 function RegisterDonation() {
     const [newLocHidden, setNewLocHidden] = useState(true);
-    const [optionList, setOptionList] = useQuery({'query': LocalizationsQuery});
-    if (optionList.fetching) return (
+    const {optionList, fetching, error, filterByCity} = useOptionList()
+    if (fetching) return (
         <div className="main-page-content">
             <UpperBar/>
             <div className='subpage-title'>
@@ -36,7 +72,7 @@ function RegisterDonation() {
             <BottomBar/>
         </div>
     )
-    if (optionList.error) return (
+    else if (error) return (
         <div className="main-page-content">
             <UpperBar/>
             <div>
@@ -45,6 +81,8 @@ function RegisterDonation() {
             <BottomBar/>
         </div>
     )
+
+
     return (
         <div className="main-page-content">
             <UpperBar/>
@@ -59,13 +97,11 @@ function RegisterDonation() {
                 </div>
 
                 <select id="drop-down-points">
-                    {generateOptions(optionList['data']['allLocalizations'])}
+                    <GenerateOptions options={optionList}/>
                 </select>
                 <div className='left-aligned-div'>
                     <input type="text" id="filter-city" name="filter-city" placeholder="Filter by city"
-                           onKeyUp={() => {
-                               setOptionList(filterByCity(optionList['data']['allLocalizations']))
-                           }}/>
+                           onChange={(event) => filterByCity(event.target.value)}/>
                 </div>
 
                 <div id='not-found-div'>
@@ -153,29 +189,14 @@ function RegisterDonation() {
         </div>
     );
 
-    function filterByCity(data: any) {
-        let cityObj = document.getElementById('filter-city') as HTMLInputElement;
-        let cityString = cityObj ? cityObj.value : '';
-        cityString = cityString.toLowerCase()
-        return data.filter((item: any) => {
-            if (!item['city']) {
-                return false
-            }
-            return item['city'].toLowerCase().startsWith(cityString);
-        })
-    }
 
-    function generateOptions(options: any) {
-
-        let out = [];
-        for (let i = 0; i < options.length; ++i) {
-            out.push(
-                <option
-                    key={options[i].placeName + 'dropdown'}
-                    value={options[i].placeName}>{options[i].placeName + ', ' + options[i].address + ', ' + options[i].city}</option>
-            );
-        }
-        return out;
+    function GenerateOptions(props: { options: OptionListType }) {
+        const {allLocalizations} = props.options;
+        return <>{allLocalizations.map(({placeName, address, city}) =>
+            <option
+                key={placeName + 'dropdown'}
+                value={placeName}>{placeName + ', ' + address + ', ' + city}</option>
+        )}</>;
     }
 
     function collectDataForRequest() {

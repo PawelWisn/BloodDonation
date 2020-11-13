@@ -4,6 +4,7 @@ import './Common.scss';
 import './Login.scss';
 import Logo from "../images/logo_white.png";
 import {useMutation} from "urql";
+import {storeToken} from "./utils";
 
 const UserLoginMutation = `
   mutation Login($email:String!,$password:String!) {
@@ -46,6 +47,7 @@ function Login() {
                                 }
                                 else{
                                     alert(r['data']['tokenAuth']['token'])
+                                    storeToken(r['data']['tokenAuth']['token']);
                                     history.push('/');
                                 }
                             })

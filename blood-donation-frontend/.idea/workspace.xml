@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/utils.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/BloodReserves.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BloodReserves.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CollectionPoints.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollectionPoints.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MyProfile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyProfile.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/MyProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyProfile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +22,8 @@
       <list>
         <option value="Sass File" />
         <option value="TypeScript File" />
-        <option value="TypeScript JSX File" />
         <option value="SCSS File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -85,7 +84,7 @@
       <workItem from="1605123561991" duration="15122000" />
       <workItem from="1605170500454" duration="1275000" />
       <workItem from="1605212242584" duration="13446000" />
-      <workItem from="1605262673399" duration="11429000" />
+      <workItem from="1605262673399" duration="23910000" />
     </task>
     <servers />
   </component>
@@ -106,6 +105,10 @@
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
     <state x="662" y="355" width="626" height="410" key="#com.intellij.fileTypes.FileTypeChooser/40.27.1880.1053/1920.0.1920.1080@40.27.1880.1053" timestamp="1604755692956" />
+    <state x="2708" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser" timestamp="1605279210555">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2708" y="272" width="374" height="569" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605279210555" />
     <state x="713" y="302" width="524" height="509" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1604844682386">
       <screen x="40" y="27" width="1880" height="1053" />
     </state>
@@ -146,10 +149,10 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2423" y="154" width="944" height="806" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605035619181" />
-    <state x="2681" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605100826532">
+    <state x="2681" y="468" width="438" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605286524627">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="2681" y="468" width="428" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605100826532" />
+    <state x="2681" y="468" width="438" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1605286524627" />
     <state x="2564" y="252" key="run.anything.popup" timestamp="1604878815163">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>

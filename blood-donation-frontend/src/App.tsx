@@ -2,25 +2,24 @@ import React from 'react';
 import './App.scss';
 import MainRouter from "./routes/Router";
 import {createClient, dedupExchange, cacheExchange, fetchExchange, Provider} from 'urql';
-import { authExchange } from '@urql/exchange-auth';
+import {getToken, storeToken, deleteToken} from "./components/utils";
+
 
 const client = createClient({
     url: 'http://localhost:8000/graphql/',
-    exchanges: [
-        dedupExchange,
-        cacheExchange,
-        // authExchange({
-        //
-        // }),
-        fetchExchange,
-    ],});
+    exchanges: [dedupExchange, cacheExchange, fetchExchange],
+    fetchOptions: () => {
+        const token = getToken();
+        return token ? {headers: {Authorization: `JWT ${token}`}} : {};
+    }
+});
 
 function App() {
     return (
         <Provider value={client}>
-        <div className="App">
-            <MainRouter/>
-        </div>
+            <div className="App">
+                <MainRouter/>
+            </div>
         </Provider>
     );
 }
