@@ -3,9 +3,18 @@ import {useHistory} from "react-router-dom";
 import './Common.scss';
 import './Login.scss';
 import Logo from "../images/logo_white.png";
+import {useMutation} from "urql";
+
+const UserLoginMutation = `
+  mutation Login($email:String!,$password:String!) {
+    tokenAuth(email:$email, password:$password) {
+        token
+    }
+  }
+`;
 
 function Login() {
-
+    const [loginUserResult, LoginUserCall] = useMutation(UserLoginMutation);
     const history = useHistory();
 
     function handleOnClick(url: string) {
@@ -31,7 +40,15 @@ function Login() {
                     <div className='submit-button'>
                         <input type='submit' value='Login' onClick={(e) => {
                             e.preventDefault();
-                            collectDataForRequest()
+                            LoginUserCall(collectDataForRequest()).then(r => {
+                                if(r.error || !r['data']['tokenAuth']){
+                                    alert("Incorrect username or password")
+                                }
+                                else{
+                                    alert(r['data']['tokenAuth']['token'])
+                                    history.push('/');
+                                }
+                            })
                         }}/>
                     </div>
 

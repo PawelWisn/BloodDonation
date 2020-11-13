@@ -1,11 +1,25 @@
 import React from "react";
-import {useHistory} from "react-router-dom";
+import {Redirect, useHistory} from "react-router-dom";
 import './Common.scss';
 import './Register.scss';
 import Logo from "../images/logo_white.png";
 import ManyRadiobuttons from "./ManyRadiobuttons";
+import {useMutation} from "urql";
+
+const UserRegisterMutation = `
+  mutation CreateUser($email:String!,$password:String!, $isMale:Boolean) {
+    createUser(email:$email, password:$password, isMale:$isMale) {
+        user{
+            email
+            dateJoined
+        }
+    }
+  }
+`;
+
 
 function Register() {
+    const [registerUserResult, registerUserCall] = useMutation(UserRegisterMutation);
     const history = useHistory();
 
     function handleOnClick(url: string) {
@@ -38,7 +52,14 @@ function Register() {
                     <div className='submit-button'>
                         <input type='submit' value='Register' onClick={(e) => {
                             e.preventDefault();
-                            collectDataForRequest();
+                            registerUserCall(collectDataForRequest()).then(r => {
+                                if(r.error || !r['data']['createUser']){
+                                    alert("This email has been taken. Please pick a different one")
+                                }
+                                else{
+                                    history.push('/login');
+                                }
+                            })
                         }}/>
                     </div>
 
@@ -58,7 +79,6 @@ function Register() {
         let sexObj = document.getElementById('male-female-div');
         if (sexObj) {
             let pickedObj = sexObj.getElementsByClassName('color-primary');
-            console.log(pickedObj)
             if (pickedObj.length===1) {
                 let donated = pickedObj[0].getElementsByTagName('input');
                 if (donated) {
@@ -70,7 +90,7 @@ function Register() {
         let output = {
             "email": email,
             "password": password,
-            "sex": sex === '1'
+            "isMale": sex === '1'
         };
 
         let validationResult = validateRequestData({
@@ -81,7 +101,6 @@ function Register() {
         });
 
         if (validationResult['ok']) {
-            console.log('ok')
             return output;
         }
         alert(validationResult['error']);

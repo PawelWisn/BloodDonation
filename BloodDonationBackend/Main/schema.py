@@ -75,14 +75,15 @@ class CreateUserMutation(graphene.Mutation):
     class Arguments:
         email = graphene.String(required=True)
         password = graphene.String(required=True)
+        isMale = graphene.Boolean()
 
     user = graphene.Field(UserType)
 
-    def mutate(self, info, email, password):
+    def mutate(self, info, email, password, isMale=True):
         try:
             UserModel.objects.get(email=email)
         except UserModel.DoesNotExist:
-            user = UserModel.objects.create_user(email=email, password=password)
+            user = UserModel.objects.create_user(email=email, password=password, is_male=isMale)
             user.save()
             return CreateUserMutation(user=user)
         else:

@@ -9,38 +9,42 @@ import ManyRadiobuttons from "./ManyRadiobuttons";
 import {useQuery} from "urql";
 
 // const RegisterDonationMutation = `
-//   query {
-//     allReserves {
-//       region
-//       volume
-//       group
-//     }
-//   }
+//
 // `;
+const LocalizationsQuery = `
+  query {
+    allLocalizations {
+        city    
+        placeName
+        address
+        isMobilePoint
+        latitude
+        longitude
+    }
+  }
+`;
 
 function RegisterDonation() {
     const [newLocHidden, setNewLocHidden] = useState(true);
-    const [optionList, setOptionList] = useState(data);
-    // const [userData, setUserData] = useQuery({'query': RegisterDonationMutation});
-    // if (userData.fetching) return (
-    //     <div className="main-page-content">
-    //         <UpperBar/>
-    //         <div className='subpage-title'>
-    //             <h1>Loading ...</h1>
-    //         </div>
-    //         <BottomBar/>
-    //     </div>
-    // )
-    // if (userData.error) return (
-    //     <div className="main-page-content">
-    //         <UpperBar/>
-    //         <div>
-    //             <h1>Error! Please try again</h1>
-    //         </div>
-    //         <BottomBar/>
-    //     </div>
-    // )
-
+    const [optionList, setOptionList] = useQuery({'query': LocalizationsQuery});
+    if (optionList.fetching) return (
+        <div className="main-page-content">
+            <UpperBar/>
+            <div className='subpage-title'>
+                <h1>Loading ...</h1>
+            </div>
+            <BottomBar/>
+        </div>
+    )
+    if (optionList.error) return (
+        <div className="main-page-content">
+            <UpperBar/>
+            <div>
+                <h1>Error! Please try again</h1>
+            </div>
+            <BottomBar/>
+        </div>
+    )
     return (
         <div className="main-page-content">
             <UpperBar/>
@@ -55,12 +59,12 @@ function RegisterDonation() {
                 </div>
 
                 <select id="drop-down-points">
-                    {generateOptions(optionList)}
+                    {generateOptions(optionList['data']['allLocalizations'])}
                 </select>
                 <div className='left-aligned-div'>
                     <input type="text" id="filter-city" name="filter-city" placeholder="Filter by city"
                            onKeyUp={() => {
-                               setOptionList(filterByCity(data))
+                               setOptionList(filterByCity(optionList['data']['allLocalizations']))
                            }}/>
                 </div>
 
