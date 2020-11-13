@@ -46,7 +46,6 @@ function Login() {
                                     alert("Incorrect username or password")
                                 }
                                 else{
-                                    alert(r['data']['tokenAuth']['token'])
                                     storeToken(r['data']['tokenAuth']['token']);
                                     history.push('/');
                                 }
