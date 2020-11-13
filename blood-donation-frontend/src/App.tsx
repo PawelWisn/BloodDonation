@@ -3,7 +3,7 @@ import './App.scss';
 import MainRouter from "./routes/Router";
 import { createClient, Provider } from 'urql';
 
-const client = createClient({ url: 'localhost:8000/graphql' });
+const client = createClient({ url: 'http://localhost:8000/graphql/' });
 
 function App() {
     return (
