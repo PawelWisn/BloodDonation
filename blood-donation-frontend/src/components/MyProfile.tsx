@@ -25,23 +25,6 @@ const UserQuery = `
   }
 `;
 
-function calculateBloodEquivalence(request: any) {
-    const donations = request['data']['donationWithUser'];
-    let equivalenceOfBlood = 0;
-    for (let donation of donations) {
-        let dType = donation['donationType'];
-        let amount = donation['amount'];
-        if (dType === 'BLD') equivalenceOfBlood += amount;
-        else if (dType === 'PLM') equivalenceOfBlood += 200;
-        else if (dType === 'PLT' && amount <= 500) equivalenceOfBlood += 500;
-        else if (dType === 'PLT') equivalenceOfBlood += 1000;
-        else if (dType === 'ERT' && amount < 300) equivalenceOfBlood += 500;
-        else if (dType === 'ERT') equivalenceOfBlood += 1000;
-        else if (dType === 'LEU') equivalenceOfBlood += 2000;
-    }
-    return '' + equivalenceOfBlood;
-}
-
 
 function buildRow(rowIdx: number, columns: any) {
     return (
@@ -103,6 +86,7 @@ function MyProfile() {
         </div>
     )
 
+    let progressPercent = 0;
 
     return (
         <div className="main-page-content">
@@ -127,8 +111,8 @@ function MyProfile() {
                 </div>
 
                 <div id="progress-outer">
-                    <div id='progress-text'>50% TO PROMOTION</div>
-                    <div id='progress-inner'/>
+                    <div id='progress-text'>{handleProgressBar(userData)} TO PROMOTION</div>
+                    <div style={{width: progressPercent + "%"}} id='progress-inner'/>
                 </div>
 
                 <div>
@@ -142,7 +126,6 @@ function MyProfile() {
                             <th>CITY</th>
                             <th>COLLECTION POINT</th>
                         </tr>
-
                         </thead>
                         <tbody>
                         {createTableContent(userData['data']['donationWithUser'])}
@@ -156,11 +139,15 @@ function MyProfile() {
         </div>
     );
 
+    function xd() {
+        return 25;
+    }
+
     function getUserTitle(request: any) {
         const data = request['data']['donationWithUser']
         const eqiv = parseInt(calculateBloodEquivalence(request))
-        if (eqiv >= 20000) return 'dla naradou';
-        if (data && data.length>0) {
+        if (eqiv >= 20000) return 'MERITORIOUS FOR THE HEALTH OF THE NATION';
+        if (data && data.length > 0) {
             if (data[0]['donor']['isMale']) {
                 if (eqiv >= 18000) return 'MERITORIOUS HONORARY BLOOD DONOR, 1 Degree';
                 if (eqiv >= 12000) return 'MERITORIOUS HONORARY BLOOD DONOR, 2 Degree';
@@ -171,6 +158,69 @@ function MyProfile() {
             if (eqiv >= 5000) return 'MERITORIOUS HONORARY BLOOD DONOR, 3 Degree';
         }
         return 'HONORARY BLOOD DONOR';
+    }
+
+    function calculateBloodEquivalence(request: any) {
+        const donations = request['data']['donationWithUser'];
+        let equivalenceOfBlood = 0;
+        for (let donation of donations) {
+            let dType = donation['donationType'];
+            let amount = donation['amount'];
+            if (dType === 'BLD') equivalenceOfBlood += amount;
+            else if (dType === 'PLM') equivalenceOfBlood += 200;
+            else if (dType === 'PLT' && amount <= 500) equivalenceOfBlood += 500;
+            else if (dType === 'PLT') equivalenceOfBlood += 1000;
+            else if (dType === 'ERT' && amount < 300) equivalenceOfBlood += 500;
+            else if (dType === 'ERT') equivalenceOfBlood += 1000;
+            else if (dType === 'LEU') equivalenceOfBlood += 2000;
+        }
+        return '' + equivalenceOfBlood;
+    }
+
+    function handleProgressBar(request: any) {
+        const data = request['data']['donationWithUser'];
+        const eqiv = parseInt(calculateBloodEquivalence(request));
+
+        const progresBar = document.getElementById('progress-inner');
+
+        let percent = 0;
+        if (eqiv >= 20000) {
+            progressPercent = 100;
+            return 100;
+        }
+
+        if (data && data.length > 0) {
+            if (data[0]['donor']['isMale']) {
+                if (eqiv >= 18000) {
+                    progressPercent = 100 - (20000 - eqiv) / 2000 * 100;
+                    return (20000 - eqiv) + ' ml';
+                }
+                if (eqiv >= 12000) {
+                    progressPercent = 100 - (18000 - eqiv) / 6000 * 100;
+                    return (18000 - eqiv) + ' ml';
+                }
+                if (eqiv >= 6000) {
+                    progressPercent = 100 - (12000 - eqiv) / 6000 * 100;
+                    return (12000 - eqiv) + ' ml';
+                }
+                progressPercent = 100 - (6000 - eqiv) / 6000 * 100;
+                return (6000 - eqiv) + ' ml';
+            }
+            if (eqiv >= 15000) {
+                progressPercent = 100 - (20000 - eqiv) / 5000 * 100;
+                return (20000 - eqiv) + ' ml';
+            }
+            if (eqiv >= 10000) {
+                progressPercent = 100 - (15000 - eqiv) / 5000 * 100;
+                return (15000 - eqiv) + ' ml';
+            }
+            if (eqiv >= 5000) {
+                progressPercent = 100 - (10000 - eqiv) / 5000 * 100;
+                return (10000 - eqiv) + ' ml';
+            }
+            progressPercent = 100 - (5000 - eqiv) / 5000 * 100;
+            return (5000 - eqiv) + ' ml';
+        }
     }
 }
 
