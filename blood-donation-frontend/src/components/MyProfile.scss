@@ -27,11 +27,11 @@
 
     thead {
       background-color: #acacac;
-      padding: 2em;
+      padding: 3vw;
 
       tr {
         th {
-          padding: 1em 2em;
+          padding: 1.5vh 3vh;
           border: 1px solid black;
         }
 
@@ -49,12 +49,9 @@
         }
 
         td {
-          padding: 1em;
+          padding: 1.5vw;
           border: 1px solid black;
 
-          &:last-child {
-            padding: 1em 10em;
-          }
 
         }
 
@@ -67,17 +64,18 @@
 
 #progress-outer {
   margin: 2em auto 3em auto;
-  width: 80vw;
-  height: 5vh;
+  max-width: 1400px;
+  width: 100%;
+  height: 4em;
   background-color: white;
   position: relative;
 
   #progress-text {
-    position: absolute;
-    left: 45%;
-    top: 30%;
+    position: relative;
+    padding: 0.8em;
+    margin: auto;
     z-index: 100;
-    height: 5vh;
+    height: 4em;
   }
 
   #progress-inner {
@@ -85,8 +83,58 @@
     left: 0;
     top: 0;
     width: 50%;
-    //padding: 2em;
-    height: 5vh;
+    height: 4em;
     background-color: lightskyblue;
+  }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  body {
+    .my-profile-container {
+      #profile-stats {
+        //font-size: 0.5em;
+
+        thead {
+          padding: 2px;
+
+          tr {
+            th {
+              padding: 2px;
+            }
+          }
+        }
+        tbody {
+          td {
+            padding: 2px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 665px) {
+  body {
+    .my-profile-container {
+      #profile-stats {
+        font-size: 0.5em;
+
+        thead {
+          padding: 2px;
+
+          tr {
+            th {
+              padding: 2px;
+            }
+          }
+        }
+        tbody {
+          td {
+            padding: 2px;
+          }
+        }
+      }
+    }
   }
 }

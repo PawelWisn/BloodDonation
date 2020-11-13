@@ -7,6 +7,126 @@ import BottomBar from "./BottomBar";
 
 let data = [
     {
+        "donationID": "53",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:49.967027"
+    },
+    {
+        "donationID": "52",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:49.810121"
+    },
+    {
+        "donationID": "51",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:49.658805"
+    },
+    {
+        "donationID": "50",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:49.496107"
+    },
+    {
+        "donationID": "49",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:49.339356"
+    },
+    {
+        "donationID": "48",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:49.176155"
+    },
+    {
+        "donationID": "47",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:49.009459"
+    },
+    {
+        "donationID": "46",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:48.847176"
+    },
+    {
+        "donationID": "45",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:48.674033"
+    },
+    {
+        "donationID": "44",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:48.505670"
+    },
+    {
+        "donationID": "43",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:48.337070"
+    },
+    {
+        "donationID": "42",
+        "donationType": "PLT",
+        "place": {
+            "city": "Wroclaw",
+            "placeName": "RCKIK ZIELONA GORA OT ZIELONA GORA"
+        },
+        "amount": 450,
+        "time": "2020-11-13T01:17:47.900769"
+    },
+    {
         "donationID": "41",
         "donationType": "PLT",
         "place": {
