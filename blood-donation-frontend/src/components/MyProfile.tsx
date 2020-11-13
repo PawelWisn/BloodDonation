@@ -62,7 +62,7 @@ function MyProfile() {
     const [userData, setUserData] = useQuery({'query': UserQuery, 'requestPolicy': 'network-only'});
     if (userData.fetching) return (
         <div className="main-page-content">
-            <UpperBar/>
+            <UpperBar  redirectHomeOnLogout={true}/>
             <div className='subpage-title'>
                 <h1>Loading ...</h1>
             </div>
@@ -71,9 +71,9 @@ function MyProfile() {
     )
     if (userData.error) return (
         <div className="main-page-content">
-            <UpperBar/>
+            <UpperBar  redirectHomeOnLogout={true}/>
             <div className='subpage-title'>
-                <h1>{userData.error.message.slice(10)}</h1>
+                <h1>You do not have permission to perform this action</h1>
                 <h2>Please <span id='error-login-link' onClick={() => {
                     history.push('/login')
                 }}>login</span> and try again</h2>
@@ -85,7 +85,7 @@ function MyProfile() {
 
     return (
         <div className="main-page-content">
-            <UpperBar/>
+            <UpperBar  redirectHomeOnLogout={true}/>
 
             <div className="my-profile-container">
                 <div>

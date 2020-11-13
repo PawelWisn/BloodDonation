@@ -7,6 +7,8 @@ import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import classNames from "classnames";
 import ManyRadiobuttons from "./ManyRadiobuttons";
 import {useQuery} from "urql";
+import {getToken} from "./utils";
+import {useHistory} from "react-router-dom";
 
 // const RegisterDonationMutation = `
 //
@@ -63,9 +65,23 @@ const useOptionList = () => {
 function RegisterDonation() {
     const [newLocHidden, setNewLocHidden] = useState(true);
     const {optionList, fetching, error, filterByCity} = useOptionList()
+    const history = useHistory();
+
+    if (getToken() == null) return (
+        <div className="main-page-content">
+            <UpperBar redirectHomeOnLogout={true}/>
+            <div className='subpage-title'>
+                <h1>You do not have permission to perform this action</h1>
+                <h2>Please <span id='error-login-link' onClick={() => {
+                    history.push('/login')
+                }}>login</span> and try again</h2>
+            </div>
+            <BottomBar/>
+        </div>
+    )
     if (fetching) return (
         <div className="main-page-content">
-            <UpperBar/>
+            <UpperBar redirectHomeOnLogout={true}/>
             <div className='subpage-title'>
                 <h1>Loading ...</h1>
             </div>
@@ -74,7 +90,7 @@ function RegisterDonation() {
     )
     else if (error) return (
         <div className="main-page-content">
-            <UpperBar/>
+            <UpperBar redirectHomeOnLogout={true}/>
             <div>
                 <h1>Error! Please try again</h1>
             </div>
@@ -85,7 +101,7 @@ function RegisterDonation() {
 
     return (
         <div className="main-page-content">
-            <UpperBar/>
+            <UpperBar redirectHomeOnLogout={true}/>
             <div className='subpage-title'>
                 <h1>Register Donation</h1>
                 <h2>Add your donation to your account</h2>

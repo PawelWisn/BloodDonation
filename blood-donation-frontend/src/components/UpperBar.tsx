@@ -4,11 +4,14 @@ import Logo from '../images/logo_red.png';
 import {useHistory} from "react-router-dom";
 import {getToken, deleteToken} from "./utils";
 
+type propsType={
+    redirectHomeOnLogout? : boolean
+}
 
-function UpperBar() {
+function UpperBar(props: propsType) {
     const [isAuth, setIsAuth] = useState(getToken() != null);
     const history = useHistory();
-
+    const {redirectHomeOnLogout = false} = props;
     return (
         <div className='upper-bar flex-container-upper-bar'>
             <img alt="logo" src={Logo} onClick={() => history.push('/')}/>
@@ -36,12 +39,15 @@ function UpperBar() {
 
 
     function LoggedIn() {
-        // const history = useHistory();
+        const history = useHistory();
         return (
             <div className='flex-container-upper-bar'>
                 <button onClick={() => {
                     deleteToken();
                     setIsAuth(false)
+                    if (redirectHomeOnLogout) {
+                        history.push('/');
+                    }
                 }}>Logout
                 </button>
             </div>
