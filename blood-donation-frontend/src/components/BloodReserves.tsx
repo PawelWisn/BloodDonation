@@ -43,15 +43,17 @@ function getProperPicture(num: number) {
 
 function buildRow(row: any) {
     const mapping = [row[7][2], row[6][2], row[3][2], row[2][2], row[5][2], row[4][2], row[1][2], row[0][2]];
-    let trContent = [<td>{row[0][1]}</td>,]
+    let trContent = [<td key={row[0][1] + 'region'}>{row[0][1]}</td>,]
     for (let i = 0; i < 8; ++i) {
         trContent.push(
-            <td><img alt={getProperPicture(mapping[i])} src={getProperPicture(mapping[i])}/></td>
+            <td key={row[0][1] + 'col' + i}>
+                <img alt={getProperPicture(mapping[i])} src={getProperPicture(mapping[i])}/>
+            </td>
         )
     }
 
     return (
-        <tr>
+        <tr key={row[0][1] + 'res'}>
             {trContent}
         </tr>
     );
@@ -78,9 +80,24 @@ function createTableContent(data: any) {
 
 function BloodReserves() {
     const [reservesData, setReservesData] = useQuery({'query': BloodReservesQuery});
-    if (reservesData.fetching) return <h1>Loading...</h1>;
-    if (reservesData.error) return <h1>Error!</h1>;
-
+    if (reservesData.fetching) return (
+        <div className="main-page-content">
+            <UpperBar/>
+            <div className='subpage-title'>
+                <h1>Loading ...</h1>
+            </div>
+            <BottomBar/>
+        </div>
+    )
+    if (reservesData.error) return (
+        <div className="main-page-content">
+            <UpperBar/>
+            <div>
+                <h1>Error! Please try again</h1>
+            </div>
+            <BottomBar/>
+        </div>
+    )
     return (
         <div className="main-page-content">
             <UpperBar/>
@@ -92,16 +109,16 @@ function BloodReserves() {
             <div className='blood-reserves-container'>
                 <table>
                     <thead>
-                    <tr className="table-sticky-header">
-                        <th>Region</th>
-                        <th>0 Rh-</th>
-                        <th>0 Rh+</th>
-                        <th>A Rh-</th>
-                        <th>A Rh+</th>
-                        <th>B Rh-</th>
-                        <th>B Rh+</th>
-                        <th>AB Rh-</th>
-                        <th>AB Rh+</th>
+                    <tr key='st-head' className="table-sticky-header">
+                        <th key='st-h-reg'>Region</th>
+                        <th key='st-h-0-'>0 Rh-</th>
+                        <th key='st-h-0+'>0 Rh+</th>
+                        <th key='st-h-a-'>A Rh-</th>
+                        <th key='st-h-a+'>A Rh+</th>
+                        <th key='st-h-b-'>B Rh-</th>
+                        <th key='st-h-b+'>B Rh+</th>
+                        <th key='st-h-ab-'>AB Rh-</th>
+                        <th key='st-h-ab+'>AB Rh+</th>
                     </tr>
                     </thead>
                     <tbody>
