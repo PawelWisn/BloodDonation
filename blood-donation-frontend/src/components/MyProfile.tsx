@@ -1,6 +1,6 @@
 import './Common.scss';
 import './MyProfile.scss'
-import React from "react";
+import React, {useEffect, useState} from "react";
 import UpperBar from "./UpperBar";
 import BottomBar from "./BottomBar";
 import {useQuery} from "urql";
@@ -15,12 +15,33 @@ const UserQuery = `
               city
               placeName
             }      
+        donor{
+              isMale
+        }
         amount
         time       
         donationType
     }
   }
 `;
+
+function calculateBloodEquivalence(request: any) {
+    const donations = request['data']['donationWithUser'];
+    let equivalenceOfBlood = 0;
+    for (let donation of donations) {
+        let dType = donation['donationType'];
+        let amount = donation['amount'];
+        if (dType === 'BLD') equivalenceOfBlood += amount;
+        else if (dType === 'PLM') equivalenceOfBlood += 200;
+        else if (dType === 'PLT' && amount <= 500) equivalenceOfBlood += 500;
+        else if (dType === 'PLT') equivalenceOfBlood += 1000;
+        else if (dType === 'ERT' && amount < 300) equivalenceOfBlood += 500;
+        else if (dType === 'ERT') equivalenceOfBlood += 1000;
+        else if (dType === 'LEU') equivalenceOfBlood += 2000;
+    }
+    return '' + equivalenceOfBlood;
+}
+
 
 function buildRow(rowIdx: number, columns: any) {
     return (
@@ -59,19 +80,19 @@ function createTableContent(data: any) {
 
 function MyProfile() {
     const history = useHistory();
-    const [userData, setUserData] = useQuery({'query': UserQuery, 'requestPolicy': 'network-only'});
+    const [userData] = useQuery({'query': UserQuery, 'requestPolicy': 'cache-and-network'});
     if (userData.fetching) return (
         <div className="main-page-content">
-            <UpperBar  redirectHomeOnLogout={true}/>
+            <UpperBar redirectHomeOnLogout={true}/>
             <div className='subpage-title'>
                 <h1>Loading ...</h1>
             </div>
             <BottomBar/>
         </div>
     )
-    if (userData.error) return (
+    else if (userData.error) return (
         <div className="main-page-content">
-            <UpperBar  redirectHomeOnLogout={true}/>
+            <UpperBar redirectHomeOnLogout={true}/>
             <div className='subpage-title'>
                 <h1>You do not have permission to perform this action</h1>
                 <h2>Please <span id='error-login-link' onClick={() => {
@@ -85,20 +106,21 @@ function MyProfile() {
 
     return (
         <div className="main-page-content">
-            <UpperBar  redirectHomeOnLogout={true}/>
+            <UpperBar redirectHomeOnLogout={true}/>
 
             <div className="my-profile-container">
                 <div>
                     <h5>YOUR CURRENT TITLE</h5>
                 </div>
                 <div>
-                    <h1 id='title-header' className='standout'>HONORARY DONOR</h1>
+                    <h1 id='title-header' className='standout'>{getUserTitle(userData)}</h1>
                 </div>
                 <div>
                     <h5>ALREADY DONATED THE EQUIVALENCE OF</h5>
                 </div>
                 <div>
-                    <h2 id='equivalence-header' className='standout'>15535 ml</h2>
+                    <h2 id='equivalence-header'
+                        className='standout'>{calculateBloodEquivalence(userData)} ml</h2>
                 </div>
                 <div>
                     <h5>OF BLOOD</h5>
@@ -123,7 +145,7 @@ function MyProfile() {
 
                         </thead>
                         <tbody>
-                        {createTableContent(userData)}
+                        {createTableContent(userData['data']['donationWithUser'])}
                         </tbody>
                     </table>
                 </div>
@@ -133,6 +155,23 @@ function MyProfile() {
             <BottomBar/>
         </div>
     );
+
+    function getUserTitle(request: any) {
+        const data = request['data']['donationWithUser']
+        const eqiv = parseInt(calculateBloodEquivalence(request))
+        if (eqiv >= 20000) return 'dla naradou';
+        if (data && data.length>0) {
+            if (data[0]['donor']['isMale']) {
+                if (eqiv >= 18000) return 'MERITORIOUS HONORARY BLOOD DONOR, 1 Degree';
+                if (eqiv >= 12000) return 'MERITORIOUS HONORARY BLOOD DONOR, 2 Degree';
+                if (eqiv >= 6000) return 'MERITORIOUS HONORARY BLOOD DONOR, 3 Degree';
+            }
+            if (eqiv >= 15000) return 'MERITORIOUS HONORARY BLOOD DONOR, 1 Degree';
+            if (eqiv >= 10000) return 'MERITORIOUS HONORARY BLOOD DONOR, 2 Degree';
+            if (eqiv >= 5000) return 'MERITORIOUS HONORARY BLOOD DONOR, 3 Degree';
+        }
+        return 'HONORARY BLOOD DONOR';
+    }
 }
 
 

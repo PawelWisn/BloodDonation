@@ -127,6 +127,9 @@ class ApplyDonationMutation(graphene.Mutation):
     @login_required
     def mutate(self, info, donatedAmount, donatedType, city, placeName, time=None, address='',
                isMobilePoint=False, wantReminder=True):
+
+        if donatedType not in ('BLD','PLT','ERT','PLM','LEU'):
+            return None
         user = info.context.user
         user.want_reminder = wantReminder
         user.save()

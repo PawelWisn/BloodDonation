@@ -4,7 +4,7 @@ import './Common.scss';
 import './Login.scss';
 import Logo from "../images/logo_white.png";
 import {useMutation} from "urql";
-import {storeToken} from "./utils";
+import {deleteToken, storeToken} from "./utils";
 
 const UserLoginMutation = `
   mutation Login($email:String!,$password:String!) {
@@ -42,10 +42,10 @@ function Login() {
                         <input type='submit' value='Login' onClick={(e) => {
                             e.preventDefault();
                             LoginUserCall(collectDataForRequest()).then(r => {
-                                if(r.error || !r['data']['tokenAuth']){
+                                if (r.error || !r['data']['tokenAuth']) {
                                     alert("Incorrect username or password")
-                                }
-                                else{
+                                } else {
+                                    deleteToken();
                                     storeToken(r['data']['tokenAuth']['token']);
                                     history.push('/');
                                 }

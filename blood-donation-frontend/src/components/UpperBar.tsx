@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './UpperBar.scss';
 import Logo from '../images/logo_red.png';
 import {useHistory} from "react-router-dom";

@@ -39,7 +39,7 @@ type LocalizationType = {
 }
 
 const useOptionList = () => {
-    const [optionListRes] = useQuery({'query': LocalizationsQuery, 'requestPolicy': 'cache-first'});
+    const [optionListRes] = useQuery({'query': LocalizationsQuery, 'requestPolicy': 'cache-and-network'});
     const [optionList, setOptionList] = useState<OptionListType>({allLocalizations: []});
     useEffect(() => {
         if (!optionListRes.fetching) {
