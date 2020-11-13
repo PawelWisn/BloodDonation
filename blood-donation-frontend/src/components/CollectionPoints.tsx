@@ -23,7 +23,7 @@ const LocalizationsQuery = `
 
 function CollectionPoints() {
     const [displayMobileOnly, setDisplayMobileOnly] = useState(false);
-    const [localizationsData, setLocalizationsData] = useQuery({'query': LocalizationsQuery});
+    const [localizationsData, setLocalizationsData] = useQuery({'query': LocalizationsQuery,'requestPolicy':'cache-and-network'});
     if (localizationsData.fetching) return (
         <div className="main-page-content">
             <UpperBar/>

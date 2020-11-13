@@ -1,9 +1,19 @@
 import React from 'react';
 import './App.scss';
 import MainRouter from "./routes/Router";
-import { createClient, Provider } from 'urql';
+import {createClient, dedupExchange, cacheExchange, fetchExchange, Provider} from 'urql';
+import { authExchange } from '@urql/exchange-auth';
 
-const client = createClient({ url: 'http://localhost:8000/graphql/' });
+const client = createClient({
+    url: 'http://localhost:8000/graphql/',
+    exchanges: [
+        dedupExchange,
+        cacheExchange,
+        // authExchange({
+        //
+        // }),
+        fetchExchange,
+    ],});
 
 function App() {
     return (

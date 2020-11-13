@@ -79,7 +79,7 @@ function createTableContent(data: any) {
 }
 
 function BloodReserves() {
-    const [reservesData, setReservesData] = useQuery({'query': BloodReservesQuery});
+    const [reservesData, setReservesData] = useQuery({'query': BloodReservesQuery,'requestPolicy':'cache-and-network'});
     if (reservesData.fetching) return (
         <div className="main-page-content">
             <UpperBar/>

@@ -27,7 +27,9 @@ function MyMap(props: MyMapType) {
             let placeName = props['data'][i]['placeName'];
             let lat = props['data'][i]['latitude'];
             let lng = props['data'][i]['longitude'];
-
+            if(!lat || !lng){
+                continue;
+            }
             markers.push(
                 <Marker key={placeName + 'marker'} position={[parseFloat(lat), parseFloat(lng)]} icon={pointer}>
                     <Popup>{placeName}</Popup>

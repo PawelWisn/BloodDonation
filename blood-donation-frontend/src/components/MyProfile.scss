@@ -140,3 +140,13 @@
     }
   }
 }
+
+
+#error-login-link {
+  text-decoration: underline;
+  color: #0355D6;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

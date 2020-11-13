@@ -4,6 +4,7 @@ import React from "react";
 import UpperBar from "./UpperBar";
 import BottomBar from "./BottomBar";
 import {useQuery} from "urql";
+import {useHistory} from "react-router-dom";
 
 const UserQuery = `
   query {
@@ -55,8 +56,10 @@ function createTableContent(data: any) {
     return content;
 }
 
+
 function MyProfile() {
-    const [userData, setUserData] = useQuery({'query': UserQuery});
+    const history = useHistory();
+    const [userData, setUserData] = useQuery({'query': UserQuery, 'requestPolicy': 'network-only'});
     if (userData.fetching) return (
         <div className="main-page-content">
             <UpperBar/>
@@ -69,12 +72,16 @@ function MyProfile() {
     if (userData.error) return (
         <div className="main-page-content">
             <UpperBar/>
-            <div>
-                <h1>Error! Please try again</h1>
+            <div className='subpage-title'>
+                <h1>{userData.error.message.slice(10)}</h1>
+                <h2>Please <span id='error-login-link' onClick={() => {
+                    history.push('/login')
+                }}>login</span> and try again</h2>
             </div>
             <BottomBar/>
         </div>
     )
+
 
     return (
         <div className="main-page-content">
