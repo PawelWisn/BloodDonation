@@ -98,6 +98,7 @@ function BloodReserves() {
             <BottomBar/>
         </div>
     )
+
     return (
         <div className="main-page-content">
             <UpperBar/>
