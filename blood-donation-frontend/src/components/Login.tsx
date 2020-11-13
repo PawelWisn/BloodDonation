@@ -78,7 +78,6 @@ function Login() {
 
         let validationResult = validateRequestData(output);
         if (validationResult['ok']) {
-            console.log('ok')
             return output;
         }
         alert(validationResult['error']);
