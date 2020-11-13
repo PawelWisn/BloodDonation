@@ -6,8 +6,8 @@ import BottomBar from "./BottomBar";
 import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import classNames from "classnames";
 import ManyRadiobuttons from "./ManyRadiobuttons";
-import {useQuery} from "urql";
-import {getToken} from "./utils";
+import {useMutation, useQuery} from "urql";
+import {deleteToken, getToken, storeToken} from "./utils";
 import {useHistory} from "react-router-dom";
 
 // const RegisterDonationMutation = `
@@ -22,6 +22,17 @@ const LocalizationsQuery = `
         isMobilePoint
         latitude
         longitude
+    }
+  }
+`;
+
+const RegisterDonationMutation = `
+  mutation RegisterDonation($donatedAmount:String!,$donatedType:String!, $city:String, $placeName:String!, $isMobilePoint:Boolean, $wantReminder:Boolean, $time:String, $address:String){
+    applyDonation(donatedAmount:$donatedAmount,donatedType:$donatedType, city:$city, placeName:$placeName, isMobilePoint:$isMobilePoint, wantReminder:$wantReminder, time:$time, address:$address) {
+        donation{
+            donationID
+            time
+        }
     }
   }
 `;
@@ -63,6 +74,7 @@ const useOptionList = () => {
 };
 
 function RegisterDonation() {
+    const [registerDonationResult, registerDonationCall] = useMutation(RegisterDonationMutation);
     const [newLocHidden, setNewLocHidden] = useState(true);
     const {optionList, fetching, error, filterByCity} = useOptionList()
     const history = useHistory();
@@ -196,6 +208,14 @@ function RegisterDonation() {
                     <input type='submit' value='Submit' onClick={(e) => {
                         e.preventDefault();
                         collectDataForRequest();
+                        registerDonationCall(collectDataForRequest()).then(r => {
+                            if (r.error || !r['data']['applyDonation']) {
+                                alert("Registration of the donation failed");
+                            }
+                            else{
+                                history.push('/profile')
+                            }
+                        })
                     }}/>
                 </div>
             </div>
@@ -266,26 +286,24 @@ function RegisterDonation() {
             "address": address,
             "city": city,
             "isMobilePoint": mobile,
-            "donationType": donType,
-            "amount": donAmount,
+            "donatedType": donType,
+            "donatedAmount": '' + donAmount,
             "time": donDate,
             'wantReminder': rem
         };
-
         let validationResult = validateRequestData(output);
 
         if (validationResult['ok']) {
-            console.log('ok')
             return output;
         }
         alert(validationResult['error']);
     }
 
     function validateRequestData(collection: any) {
-        if (collection['amount'] <= 0) {
+        if (parseInt(collection['donatedAmount']) <= 0) {
             return {'ok': false, 'error': "Please provide positive donation amount"}
         }
-        if (!['BLD', 'PLM', 'PLT', 'ERT', 'LEU'].includes(collection['donationType'])) {
+        if (!['BLD', 'PLM', 'PLT', 'ERT', 'LEU'].includes(collection['donatedType'])) {
             return {'ok': false, 'error': "Please pick donation type"}
         }
         if (!collection['time'].match(/^\d\d\d\d-\d\d-\d\d$/)) {

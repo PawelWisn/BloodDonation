@@ -8,6 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MyProfile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyProfile.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/MyProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/MyProfile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +84,7 @@
       <workItem from="1605170500454" duration="1275000" />
       <workItem from="1605212242584" duration="13446000" />
       <workItem from="1605262673399" duration="30521000" />
-      <workItem from="1605297492131" duration="8033000" />
+      <workItem from="1605297492131" duration="13526000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,5 @@
 .my-profile-container {
-  margin: 2em 2% 3em 2%;
+  margin: 1em 2% 2em 2%;
   padding: 0 1em 3em 1em;
   text-align: center;
   background-color: lightgray;
@@ -67,7 +67,7 @@
   max-width: 1400px;
   width: 100%;
   height: 4em;
-  background-color: white;
+  background-color: #e9ecef;
   position: relative;
 
   #progress-text {
@@ -88,6 +88,9 @@
   }
 }
 
+.hidden{
+  display: none;
+}
 
 @media only screen and (max-width: 1000px) {
   body {
@@ -140,7 +143,7 @@
 }
 
 
-#error-login-link {
+.span-link {
   text-decoration: underline;
   color: #0355D6;
 

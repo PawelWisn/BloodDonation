@@ -5,6 +5,7 @@ import UpperBar from "./UpperBar";
 import BottomBar from "./BottomBar";
 import {useQuery} from "urql";
 import {useHistory} from "react-router-dom";
+import classNames from "classnames";
 
 const UserQuery = `
   query {
@@ -78,7 +79,7 @@ function MyProfile() {
             <UpperBar redirectHomeOnLogout={true}/>
             <div className='subpage-title'>
                 <h1>You do not have permission to perform this action</h1>
-                <h2>Please <span id='error-login-link' onClick={() => {
+                <h2>Please <span className='span-link' onClick={() => {
                     history.push('/login')
                 }}>login</span> and try again</h2>
             </div>
@@ -110,12 +111,22 @@ function MyProfile() {
                     <h5>OF BLOOD</h5>
                 </div>
 
-                <div id="progress-outer">
-                    <div id='progress-text'>{handleProgressBar(userData)} TO PROMOTION</div>
+                <div className={classNames({'hidden': userData['data']['donationWithUser'].length})}
+                     style={{margin: '5em 0'}}>
+                    <h2>We are glad that you joined our community</h2>
+                    <h2>Find a donation point on the <span className='span-link' onClick={() => {
+                        history.push('/localizations')
+                    }}>map</span> and start helping people</h2>
+                </div>
+
+                <div id="progress-outer"
+                     className={classNames({'hidden': !userData['data']['donationWithUser'].length})}>
+                    <div id='progress-text'>{handleProgressBar(userData)} TO THE NEXT TITLE</div>
                     <div style={{width: progressPercent + "%"}} id='progress-inner'/>
                 </div>
 
-                <div>
+
+                <div className={classNames({'hidden': !userData['data']['donationWithUser'].length})}>
                     <table id='profile-stats'>
                         <thead>
                         <tr id='profile-stats-header-row'>
@@ -139,9 +150,6 @@ function MyProfile() {
         </div>
     );
 
-    function xd() {
-        return 25;
-    }
 
     function getUserTitle(request: any) {
         const data = request['data']['donationWithUser']
@@ -156,6 +164,8 @@ function MyProfile() {
             if (eqiv >= 15000) return 'MERITORIOUS HONORARY BLOOD DONOR, 1 Degree';
             if (eqiv >= 10000) return 'MERITORIOUS HONORARY BLOOD DONOR, 2 Degree';
             if (eqiv >= 5000) return 'MERITORIOUS HONORARY BLOOD DONOR, 3 Degree';
+        } else {
+            return 'CANDIDATE FOR BLOOD DONOR';
         }
         return 'HONORARY BLOOD DONOR';
     }

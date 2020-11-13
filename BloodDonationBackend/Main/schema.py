@@ -116,7 +116,7 @@ class ApplyDonationMutation(graphene.Mutation):
         donatedAmount = graphene.String(required=True)
         donatedType = graphene.String(required=True)
         time = graphene.String(required=False)
-        city = graphene.String(required=True)
+        city = graphene.String(required=False)
         placeName = graphene.String(required=True)
         address = graphene.String(required=False)
         isMobilePoint = graphene.Boolean(required=False)
@@ -140,7 +140,7 @@ class ApplyDonationMutation(graphene.Mutation):
                                              isMobilePoint=isMobilePoint)
             localization.save()
         time = datetime.fromisoformat(time) if time else timezone.now()
-        donation = DonationModel(donor=user, place=localization, donationType=donatedType, amount=donatedAmount,
+        donation = DonationModel(donor=user, place=localization, donationType=donatedType, amount=int(donatedAmount),
                                  time=time)
         donation.save()
         return ApplyDonationMutation(donation=donation)
