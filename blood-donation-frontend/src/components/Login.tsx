@@ -41,15 +41,20 @@ function Login() {
                     <div className='submit-button'>
                         <input type='submit' value='Login' onClick={(e) => {
                             e.preventDefault();
-                            LoginUserCall(collectDataForRequest()).then(r => {
-                                if (r.error || !r['data']['tokenAuth']) {
-                                    alert("Incorrect username or password")
-                                } else {
-                                    deleteToken();
-                                    storeToken(r['data']['tokenAuth']['token']);
-                                    history.push('/');
-                                }
-                            })
+                            let data = collectDataForRequest()
+                            if (!data['ok']) {
+                                alert(data['error']);
+                            } else {
+                                LoginUserCall(data['collection']).then(r => {
+                                    if (r.error || !r['data']['tokenAuth']) {
+                                        alert("Incorrect username or password")
+                                    } else {
+                                        deleteToken();
+                                        storeToken(r['data']['tokenAuth']['token']);
+                                        history.push('/');
+                                    }
+                                })
+                            }
                         }}/>
                     </div>
 
@@ -75,11 +80,8 @@ function Login() {
             "password": password,
         };
 
-        let validationResult = validateRequestData(output);
-        if (validationResult['ok']) {
-            return output;
-        }
-        alert(validationResult['error']);
+        return validateRequestData(output);
+
     }
 
     function validateRequestData(collection: any) {
@@ -89,7 +91,7 @@ function Login() {
         if (collection['password'].length === 0) {
             return {'ok': false, 'error': "Please type in your password"}
         }
-        return {'ok': true}
+        return {'ok': true, 'collection': collection}
     }
 }
 

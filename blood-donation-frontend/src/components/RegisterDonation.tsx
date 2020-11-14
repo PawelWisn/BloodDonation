@@ -207,15 +207,18 @@ function RegisterDonation() {
                 <div id='apply-donation-button'>
                     <input type='submit' value='Submit' onClick={(e) => {
                         e.preventDefault();
-                        collectDataForRequest();
-                        registerDonationCall(collectDataForRequest()).then(r => {
-                            if (r.error || !r['data']['applyDonation']) {
-                                alert("Registration of the donation failed");
-                            }
-                            else{
-                                history.push('/profile')
-                            }
-                        })
+                        let data = collectDataForRequest();
+                        if (!data['ok']) {
+                            alert(data['error']);
+                        } else {
+                            registerDonationCall(data['collection']).then(r => {
+                                if (r.error || !r['data']['applyDonation']) {
+                                    alert("Registration of the donation failed");
+                                } else {
+                                    history.push('/profile')
+                                }
+                            })
+                        }
                     }}/>
                 </div>
             </div>
@@ -291,12 +294,7 @@ function RegisterDonation() {
             "time": donDate,
             'wantReminder': rem
         };
-        let validationResult = validateRequestData(output);
-
-        if (validationResult['ok']) {
-            return output;
-        }
-        alert(validationResult['error']);
+        return validateRequestData(output);
     }
 
     function validateRequestData(collection: any) {
@@ -309,7 +307,7 @@ function RegisterDonation() {
         if (!collection['time'].match(/^\d\d\d\d-\d\d-\d\d$/)) {
             return {'ok': false, 'error': "Please provide valid data format"}
         }
-        return {'ok': true}
+        return {'ok': true, 'collection':collection}
     }
 }
 
