@@ -4,9 +4,10 @@
   background-color: lightgray;
   border-radius: 50px;
 
-  thead{
+  thead {
     background-color: #acacac;
   }
+
   table {
     margin: auto;
 
@@ -16,21 +17,24 @@
   td {
     width: 10em;
     padding: 1em 0.25em 0.25em 0.25em;
-    height:3em;
-    margin:auto;
+    height: 3em;
+    margin: auto;
     text-align: center;
-    &:first-child{
+
+    &:first-child {
       text-align: left;
       font-size: 2em;
     }
 
   }
-  tr{
+
+  tr {
     margin-bottom: 3em;
-    &.table-sticky-header{
+
+    &.table-sticky-header {
 
       th {
-        padding:1em;
+        padding: 1em;
         font-size: 1em;
         background: #c6c6c6;
         color: black;
@@ -44,4 +48,72 @@
 }
 
 
+////////
+@media only screen and (max-width: 1000px) {
+  body {
+
+    .blood-reserves-container{
+      img {
+        width: 50px;
+        height: 50px;
+      }
+      border-right: 5px;
+    }
+    .table-sticky-header {
+      font-size: 0.5em;
+      thead {
+        padding: 0;
+
+        tr {
+          th {
+            padding: 0;
+          }
+        }
+      }
+      tbody {
+        td {
+          padding: 0;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 730px) {
+  body {
+    .blood-reserves-container{
+      td{
+        &:first-child{
+          font-size: 0.5em;
+        }
+      }
+      img {
+        width: 25px;
+        height: 25px;
+      }
+      border-radius: 5px;
+    }
+    .table-sticky-header {
+      font-size: 0.25em;
+      thead {
+        padding: 0;
+
+        tr {padding: 0;
+          th {
+
+          }
+        }
+      }
+      tbody {
+        td {
+          padding: 0;
+          &:first-child{
+            font-size: 0.25em;
+          }
+
+        }
+      }
+    }
+  }
+}
 
