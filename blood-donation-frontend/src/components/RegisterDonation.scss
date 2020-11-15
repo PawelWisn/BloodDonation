@@ -1,10 +1,21 @@
 
+#error-login-link{
+
+      text-decoration: underline;
+      color: #0355D6;
+
+      &:hover {
+        cursor: pointer;
+      }
+}
+
 .reg-don-container {
   margin: 0 2% 1em 2%;
   padding: 1em;
   text-align: center;
   background-color: lightgray;
   border-radius: 50px;
+
 
 
   #apply-donation-button {
@@ -231,5 +242,6 @@
     }
   }
 }
+
 
 
