@@ -194,7 +194,7 @@ def webScrapOlsztyn():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('strong')
-    all = list(filter(lambda x: re.search(r'^(0|A|B|AB)Rh\+?$', str(x.text)), all))
+    all = list(filter(lambda x: re.search(r'^(0|A|B|AB)Rh\+?$', str(x.text)), all))[:8]
     for x in all:
         group = x.text.strip().replace('0', 'Z').split('Rh')[0] + '_' + ('P' if '+' in x.text else 'N')
         parent = x.parent.parent

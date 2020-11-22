@@ -112,6 +112,9 @@ function Register() {
         if (collection['password'].length === 0) {
             return {'ok': false, 'error': "Please type in a password"}
         }
+        if (collection['password'].length <= 6) {
+            return {'ok': false, 'error': "Please type password longer than 6 characters"}
+        }
         if (collection['confPassword'].length === 0) {
             return {'ok': false, 'error': "Please confirm your password"}
         }
