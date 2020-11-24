@@ -13,8 +13,7 @@ class TestUserModelQueries(GraphQLTestCase):
             mutation CreateUser{
               createUser(email:"someuser@gmail.com",password:"securepass"){
               user{   
-                    email    
-                    dateJoined
+                    email
                     }
               }
             }
@@ -35,7 +34,6 @@ class TestUserModelQueries(GraphQLTestCase):
               createUser(email:"someuser@gmail.com",password:"securepass"){
               user{   
                     email    
-                    dateJoined
                     }
               }
             }
