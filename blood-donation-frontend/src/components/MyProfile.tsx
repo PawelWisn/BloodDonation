@@ -21,7 +21,6 @@ const UserQuery = `
         }
         amount
         time       
-        donationType
     }
   }
 `;
