@@ -1,7 +1,6 @@
 import './Common.scss';
 import './BloodReserves.scss';
 import React from "react";
-import PropTypes from 'prop-types';
 import UpperBar from "./UpperBar";
 import BottomBar from "./BottomBar";
 import Zero from '../images/0.png';
@@ -24,9 +23,6 @@ const BloodReservesQuery = `
 
 
 function getProperPicture(num: number) {
-    if (num === 0) {
-        return Zero
-    }
     if (num === 1) {
         return Quarter
     }
@@ -39,10 +35,12 @@ function getProperPicture(num: number) {
     if (num === 4) {
         return Full
     }
+    return Zero
 }
 
 function buildRow(row: any) {
-    const mapping = [row[7][2], row[6][2], row[3][2], row[2][2], row[5][2], row[4][2], row[1][2], row[0][2]];
+    const mapping = [row[6][2], row[7][2], row[2][2], row[3][2], row[4][2], row[5][2], row[0][2], row[1][2]];
+    console.log([row[6][0], row[7][0], row[2][0], row[3][0], row[4][0], row[5][0], row[0][0], row[1][0]]);
     let trContent = [<td key={row[0][1] + 'region'}>{row[0][1]}</td>,]
     for (let i = 0; i < 8; ++i) {
         trContent.push(

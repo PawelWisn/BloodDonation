@@ -1,6 +1,6 @@
 import './Common.scss';
 import './MyProfile.scss'
-import React, {useEffect, useState} from "react";
+import React from "react";
 import UpperBar from "./UpperBar";
 import BottomBar from "./BottomBar";
 import {useQuery} from "urql";

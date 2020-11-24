@@ -7,7 +7,7 @@ import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
 import classNames from "classnames";
 import ManyRadiobuttons from "./ManyRadiobuttons";
 import {useMutation, useQuery} from "urql";
-import {deleteToken, getToken, storeToken} from "./utils";
+import {getToken} from "./utils";
 import {useHistory} from "react-router-dom";
 
 // const RegisterDonationMutation = `

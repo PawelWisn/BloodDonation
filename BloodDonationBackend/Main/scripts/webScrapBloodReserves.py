@@ -221,8 +221,6 @@ def webScrapOpole():
     for x in all:
         group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if 'plus' in x['alt'] else 'N')
         volume = 5 - int(x['src'][x['src'].rfind(r'.') - 1])
-        if volume <= 2:
-            volume -= 1
         saveToDB('Opole', volume, group)
 
 
