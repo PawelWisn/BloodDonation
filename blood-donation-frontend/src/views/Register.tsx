@@ -1,9 +1,9 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
-import './Common.scss';
-import './Register.scss';
+import '../styles/Common.scss';
+import '../styles/Register.scss';
 import Logo from "../images/logo_white.png";
-import ManyRadiobuttons from "./ManyRadiobuttons";
+import ManyRadiobuttons from "../components/ManyRadiobuttons";
 import {useMutation} from "urql";
 
 const UserRegisterMutation = `

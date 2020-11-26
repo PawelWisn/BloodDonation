@@ -2,7 +2,7 @@ import React from 'react';
 import './App.scss';
 import MainRouter from "./routes/Router";
 import {createClient, dedupExchange, cacheExchange, fetchExchange, Provider} from 'urql';
-import {getToken, storeToken, deleteToken} from "./components/utils";
+import {getToken} from "./components/utils";
 
 
 const client = createClient({

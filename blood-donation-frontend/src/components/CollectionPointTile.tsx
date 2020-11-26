@@ -1,4 +1,4 @@
-import './CollectionPointTile.scss'
+import '../styles/CollectionPointTile.scss'
 import React from "react";
 import Stationary from "../images/stationary.png"
 import Mobile from "../images/mobile.png"

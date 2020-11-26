@@ -1,16 +1,16 @@
 import React from "react";
-import Homepage from "../components/Homepage";
-import Benefits from "../components/Benefits";
-import Login from "../components/Login";
-import Register from "../components/Register";
-import LegalReg from "../components/LegalReg";
-import KnowledgeRepo from "../components/KnowledgeRepo";
-import Quiz from "../components/Quiz";
+import Homepage from "../views/Homepage";
+import Benefits from "../views/Benefits";
+import Login from "../views/Login";
+import Register from "../views/Register";
+import LegalReg from "../views/LegalReg";
+import KnowledgeRepo from "../views/KnowledgeRepo";
+import Quiz from "../views/Quiz";
 import {BrowserRouter as Router, Switch, Route, Redirect} from "react-router-dom";
-import CollectionPoints from "../components/CollectionPoints";
-import BloodReserves from "../components/BloodReserves";
-import RegisterDonation from "../components/RegisterDonation";
-import MyProfile from "../components/MyProfile";
+import CollectionPoints from "../views/CollectionPoints";
+import BloodReserves from "../views/BloodReserves";
+import RegisterDonation from "../views/RegisterDonation";
+import MyProfile from "../views/MyProfile";
 
 
 function MainRouter() {

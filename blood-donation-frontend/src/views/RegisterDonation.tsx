@@ -1,13 +1,13 @@
-import './Common.scss';
-import './RegisterDonation.scss';
-import UpperBar from "./UpperBar";
+import '../styles/Common.scss';
+import '../styles/RegisterDonation.scss';
+import UpperBar from "../components/UpperBar";
 import React, {useState, useEffect} from "react";
-import BottomBar from "./BottomBar";
-import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
+import BottomBar from "../components/BottomBar";
+import ManyRadiobuttonsNoDefault from "../components/ManyRadiobuttonsNoDefault";
 import classNames from "classnames";
-import ManyRadiobuttons from "./ManyRadiobuttons";
+import ManyRadiobuttons from "../components/ManyRadiobuttons";
 import {useMutation, useQuery} from "urql";
-import {getToken} from "./utils";
+import {getToken} from "../components/utils";
 import {useHistory} from "react-router-dom";
 
 // const RegisterDonationMutation = `

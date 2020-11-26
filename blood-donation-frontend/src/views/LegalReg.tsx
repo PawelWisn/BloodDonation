@@ -1,9 +1,9 @@
-import UpperBar from './UpperBar';
-import BottomBar from "./BottomBar";
+import UpperBar from '../components/UpperBar';
+import BottomBar from "../components/BottomBar";
 import React from "react";
-import LegalRegArticle from "./LegalRegArticle";
-import './Common.scss';
-import './LegalReg.scss';
+import LegalRegArticle from "../components/LegalRegArticle";
+import '../styles/Common.scss';
+import '../styles/LegalReg.scss';
 
 
 function LegalReg() {

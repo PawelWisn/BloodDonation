@@ -1,5 +1,5 @@
 import React from "react";
-import './CustomRadiobutton.scss';
+import '../styles/CustomRadiobutton.scss';
 import classNames from "classnames";
 
 type CustomRadiobuttonType = {

@@ -1,10 +1,10 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
-import './Common.scss';
-import './Login.scss';
+import '../styles/Common.scss';
+import '../styles/Login.scss';
 import Logo from "../images/logo_white.png";
 import {useMutation} from "urql";
-import {deleteToken, storeToken} from "./utils";
+import {deleteToken, storeToken} from "../components/utils";
 
 const UserLoginMutation = `
   mutation Login($email:String!,$password:String!) {

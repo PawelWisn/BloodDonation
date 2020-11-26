@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import './CollectionPoints.scss';
-import UpperBar from "./UpperBar";
-import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
-import BottomBar from "./BottomBar";
-import CollectionPointTile from "./CollectionPointTile";
-import MyMap from "./Map";
+import '../styles/CollectionPoints.scss';
+import UpperBar from "../components/UpperBar";
+import ManyRadiobuttonsNoDefault from "../components/ManyRadiobuttonsNoDefault";
+import BottomBar from "../components/BottomBar";
+import CollectionPointTile from "../components/CollectionPointTile";
+import MyMap from "../components/Map";
 import "leaflet/dist/leaflet.css";
 import {useQuery} from "urql";
 

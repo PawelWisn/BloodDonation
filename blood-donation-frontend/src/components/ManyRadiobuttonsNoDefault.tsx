@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './ManyRadiobuttons.scss';
+import '../styles/ManyRadiobuttons.scss';
 import CustomRadiobutton from "./CustomRadiobutton";
 
 type ManyRadiobuttonsType = {

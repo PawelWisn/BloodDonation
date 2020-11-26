@@ -143,7 +143,7 @@ AUTHENTICATION_BACKENDS = [
 
 GRAPHQL_JWT = {
     'JWT_VERIFY_EXPIRATION': True,
-    'JWT_EXPIRATION_DELTA': timedelta(minutes=120),
+    'JWT_EXPIRATION_DELTA': timedelta(minutes=180),
 }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

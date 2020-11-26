@@ -35,26 +35,26 @@ class CustomUserManager(BaseUserManager):
 class LocalizationModel(models.Model):
     city = models.CharField(max_length=256)
     address = models.CharField(max_length=256, null=True, default='')
-    placeName = models.CharField(max_length=256, default='', primary_key=True)
-    isMobilePoint = models.BooleanField(default=False)
+    place_name = models.CharField(max_length=256, default='', primary_key=True)
+    is_mobile_point = models.BooleanField(default=False)
     latitude = models.CharField(max_length=20, default='')
     longitude = models.CharField(max_length=20, default='')
 
     def __str__(self):
-        return self.placeName
+        return self.place_name
 
 
 class UserModel(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), max_length=64, unique=True)
     password = models.CharField(max_length=128, default='')
-    date_joined = models.DateTimeField(default=timezone.now)
     is_superuser = models.BooleanField(default=False)
-    is_staff = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
     is_male = models.BooleanField(default=True)
     want_reminder = models.BooleanField(default=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+    is_staff = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
+    date_joined = models.DateTimeField(default=timezone.now)
 
     objects = CustomUserManager()
 

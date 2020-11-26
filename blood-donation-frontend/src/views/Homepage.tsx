@@ -1,7 +1,7 @@
-import UpperBar from './UpperBar';
-import BottomBar from "./BottomBar";
+import UpperBar from '../components/UpperBar';
+import BottomBar from "../components/BottomBar";
 import React from "react";
-import Tile from "./Tile";
+import Tile from "../components/Tile";
 import Map from "../images/map.png"
 import BlRes from "../images/blood_reserves.png"
 import Quiz from "../images/quiz.png"
@@ -10,8 +10,8 @@ import Person from "../images/person.png"
 import School from "../images/school.png"
 import RegDon from "../images/register_donation.png"
 import Trophy from "../images/trophy.png"
-import './Common.scss';
-import './Homepage.scss';
+import '../styles/Common.scss';
+import '../styles/Homepage.scss';
 import {useHistory} from "react-router-dom";
 
 

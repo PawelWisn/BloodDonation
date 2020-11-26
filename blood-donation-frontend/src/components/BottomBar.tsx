@@ -1,5 +1,5 @@
 import React from 'react';
-import './BottomBar.scss';
+import '../styles/BottomBar.scss';
 import PopupButton from './PopupButton';
 
 function BottomBar() {

@@ -22,7 +22,7 @@ class BloodReservesType(DjangoObjectType):
 class LocalizationType(DjangoObjectType):
     class Meta:
         model = LocalizationModel
-        fields = ("city", 'address', 'placeName', 'isMobilePoint', 'latitude', 'longitude')
+        fields = ("city", 'address', 'place_name', 'is_mobile_point', 'latitude', 'longitude')
 
 
 class DonationType(DjangoObjectType):
@@ -56,7 +56,7 @@ class Query(graphene.ObjectType):
         if city:
             out = out.filter(city=city)
         if mobile:
-            out = out.filter(isMobilePoint=mobile)
+            out = out.filter(is_mobile_point=mobile)
         return out[skip:][:recent]
 
     donation_with_user = graphene.List(DonationType, recent=graphene.Int(), skip=graphene.Int())
@@ -101,10 +101,10 @@ class CreateLocalizationMutation(graphene.Mutation):
 
     def mutate(self, info, city, address, placeName, isMobilePoint=False):
         try:
-            LocalizationModel.objects.get(placeName=placeName)
+            LocalizationModel.objects.get(place_name=placeName)
         except LocalizationModel.DoesNotExist:
-            localization = LocalizationModel(city=city, address=address, placeName=placeName,
-                                             isMobilePoint=isMobilePoint)
+            localization = LocalizationModel(city=city, address=address, place_name=placeName,
+                                             is_mobile_point=isMobilePoint)
             localization.save()
             return CreateLocalizationMutation(localization=localization)
         else:
@@ -134,10 +134,10 @@ class ApplyDonationMutation(graphene.Mutation):
         user.want_reminder = wantReminder
         user.save()
         try:
-            localization = LocalizationModel.objects.get(placeName=placeName)
+            localization = LocalizationModel.objects.get(place_name=placeName)
         except LocalizationModel.DoesNotExist:
-            localization = LocalizationModel(city=city, placeName=placeName, address=address,
-                                             isMobilePoint=isMobilePoint)
+            localization = LocalizationModel(city=city, place_name=placeName, address=address,
+                                             is_mobile_point=isMobilePoint)
             localization.save()
         time = datetime.fromisoformat(time) if time else timezone.now()
         donation = DonationModel(donor=user, place=localization, donationType=donatedType, amount=int(donatedAmount),

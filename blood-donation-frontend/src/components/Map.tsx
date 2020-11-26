@@ -25,6 +25,8 @@ function MyMap(props: MyMapType) {
                 continue;
             }
             let placeName = props['data'][i]['placeName'];
+            let address = props['data'][i]['address'];
+            let city = props['data'][i]['city'];
             let lat = props['data'][i]['latitude'];
             let lng = props['data'][i]['longitude'];
             if(!lat || !lng){

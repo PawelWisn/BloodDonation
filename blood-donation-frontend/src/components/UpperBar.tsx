@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './UpperBar.scss';
+import '../styles/UpperBar.scss';
 import Logo from '../images/logo_red.png';
 import {useHistory} from "react-router-dom";
 import {getToken, deleteToken} from "./utils";

@@ -1,5 +1,5 @@
 import React from "react";
-import './Tile.scss';
+import '../styles/Tile.scss';
 
 type TileType = {
     alt: string,

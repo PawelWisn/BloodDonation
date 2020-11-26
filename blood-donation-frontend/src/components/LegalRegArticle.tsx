@@ -1,6 +1,6 @@
 import React from "react";
-import './Common.scss';
-import './LegalRegArticle.scss';
+import '../styles/Common.scss';
+import '../styles/LegalRegArticle.scss';
 
 type LegalRegArticleType = {
     art: string,

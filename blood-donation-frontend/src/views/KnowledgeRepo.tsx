@@ -1,9 +1,9 @@
-import UpperBar from './UpperBar';
-import BottomBar from "./BottomBar";
+import UpperBar from '../components/UpperBar';
+import BottomBar from "../components/BottomBar";
 import React from "react";
-import './Common.scss';
-import './KnowledgeRepo.scss';
-import PopupButton from './PopupButton';
+import '../styles/Common.scss';
+import '../styles/KnowledgeRepo.scss';
+import PopupButton from '../components/PopupButton';
 
 function KnowledgeRepo() {
 

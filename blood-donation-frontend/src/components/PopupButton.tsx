@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import './PopupButton.scss';
+import '../styles/PopupButton.scss';
 import classNames from 'classnames';
 
 

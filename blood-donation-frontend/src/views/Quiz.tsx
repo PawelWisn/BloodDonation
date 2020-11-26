@@ -1,10 +1,10 @@
-import UpperBar from './UpperBar';
-import BottomBar from "./BottomBar";
+import UpperBar from '../components/UpperBar';
+import BottomBar from "../components/BottomBar";
 import React from "react";
-import './Common.scss';
-import './Quiz.scss';
-import ManyRadiobuttonsNoDefault from "./ManyRadiobuttonsNoDefault";
-import PopupButton from "./PopupButton";
+import '../styles/Common.scss';
+import '../styles/Quiz.scss';
+import ManyRadiobuttonsNoDefault from "../components/ManyRadiobuttonsNoDefault";
+import PopupButton from "../components/PopupButton";
 
 function Quiz() {
 

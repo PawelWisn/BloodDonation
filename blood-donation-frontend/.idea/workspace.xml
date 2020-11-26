@@ -4,7 +4,52 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="" />
+    <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Benefits.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Benefits.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Benefits.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Benefits.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BloodReserves.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/BloodReserves.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BloodReserves.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/BloodReserves.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BottomBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/BottomBar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BottomBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BottomBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollectionPointTile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/CollectionPointTile.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollectionPointTile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CollectionPointTile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollectionPoints.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/CollectionPoints.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CollectionPoints.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/CollectionPoints.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Common.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Common.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomRadiobutton.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/CustomRadiobutton.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomRadiobutton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomRadiobutton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Homepage.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Homepage.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Homepage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Homepage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/KnowledgeRepo.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/KnowledgeRepo.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/KnowledgeRepo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/KnowledgeRepo.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalReg.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/LegalReg.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalReg.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/LegalReg.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalRegArticle.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/LegalRegArticle.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LegalRegArticle.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LegalRegArticle.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Login.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ManyRadiobuttons.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/ManyRadiobuttons.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ManyRadiobuttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ManyRadiobuttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ManyRadiobuttonsNoDefault.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ManyRadiobuttonsNoDefault.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Map.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Map.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MyProfile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/MyProfile.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/MyProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/MyProfile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupButton.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/PopupButton.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PopupButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PopupButton.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Quiz.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Quiz.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Quiz.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Quiz.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Register.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/RegisterDonation.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegisterDonation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegisterDonation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tile.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Tile.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Tile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Tile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpperBar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/UpperBar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UpperBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UpperBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/Router.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/Router.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,12 +92,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/src" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/views" />
+      <recent name="$PROJECT_DIR$/src/styles" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -81,6 +128,7 @@
       <workItem from="1605297492131" duration="16044000" />
       <workItem from="1605443005774" duration="449000" />
       <workItem from="1606254688865" duration="2191000" />
+      <workItem from="1606377795643" duration="4966000" />
     </task>
     <servers />
   </component>

@@ -1,8 +1,8 @@
-import './Common.scss';
-import './MyProfile.scss'
+import '../styles/Common.scss';
+import '../styles/MyProfile.scss'
 import React from "react";
-import UpperBar from "./UpperBar";
-import BottomBar from "./BottomBar";
+import UpperBar from "../components/UpperBar";
+import BottomBar from "../components/BottomBar";
 import {useQuery} from "urql";
 import {useHistory} from "react-router-dom";
 import classNames from "classnames";
@@ -190,9 +190,6 @@ function MyProfile() {
         const data = request['data']['donationWithUser'];
         const eqiv = parseInt(calculateBloodEquivalence(request));
 
-        const progresBar = document.getElementById('progress-inner');
-
-        let percent = 0;
         if (eqiv >= 20000) {
             progressPercent = 100;
             return 100;

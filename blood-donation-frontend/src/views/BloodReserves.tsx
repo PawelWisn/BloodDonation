@@ -1,8 +1,8 @@
-import './Common.scss';
-import './BloodReserves.scss';
+import '../styles/Common.scss';
+import '../styles/BloodReserves.scss';
 import React from "react";
-import UpperBar from "./UpperBar";
-import BottomBar from "./BottomBar";
+import UpperBar from "../components/UpperBar";
+import BottomBar from "../components/BottomBar";
 import Zero from '../images/0.png';
 import Quarter from '../images/1.png';
 import Half from '../images/2.png';

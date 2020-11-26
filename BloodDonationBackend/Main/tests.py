@@ -79,7 +79,7 @@ class TestLocalizationQueries(GraphQLTestCase):
         with open(r'collectionPoints.csv', 'r') as src:
             for line in src:
                 city, name, address, isMobile = line.split(';')
-                LocalizationModel(city=city, placeName=name, address=address, isMobilePoint=int(isMobile)).save()
+                LocalizationModel(city=city, place_name=name, address=address, is_mobile_point=int(isMobile)).save()
 
     def test_all_localizations_query_returns_all_localizations(self):
         localsNum = len(LocalizationModel.objects.all())
@@ -117,8 +117,8 @@ class TestLocalizationQueries(GraphQLTestCase):
         for fromDB, fromQ in zip(locals, content['data']['allLocalizations']):
             if fromDB.city != fromQ['city'] \
                     or fromDB.address != fromQ['address'] \
-                    or fromDB.placeName != fromQ['placeName'] \
-                    or fromDB.isMobilePoint != fromQ['isMobilePoint']:
+                    or fromDB.place_name != fromQ['placeName'] \
+                    or fromDB.is_mobile_point != fromQ['isMobilePoint']:
                 raise ValueError("Values returned by query are different than expected!")
 
     def test_all_localizations_filter_by_city(self):
@@ -140,8 +140,8 @@ class TestLocalizationQueries(GraphQLTestCase):
         for fromDB, fromQ in zip(locals, content['data']['allLocalizations']):
             if fromDB.city != fromQ['city'] \
                     or fromDB.address != fromQ['address'] \
-                    or fromDB.placeName != fromQ['placeName'] \
-                    or fromDB.isMobilePoint != fromQ['isMobilePoint']:
+                    or fromDB.place_name != fromQ['placeName'] \
+                    or fromDB.is_mobile_point != fromQ['isMobilePoint']:
                 raise ValueError("Values returned by query are different than expected!")
 
     def test_create_localization_by_mutation_successful(self):
@@ -169,7 +169,7 @@ class TestLocalizationQueries(GraphQLTestCase):
             raise ValueError("Values returned by query are different than expected!")
 
     def test_create_localization_by_mutation_unsuccessful(self):
-        LocalizationModel(city="FakeRegion", placeName="RCKiK FakeRegion", address="Leona 5").save()
+        LocalizationModel(city="FakeRegion", place_name="RCKiK FakeRegion", address="Leona 5").save()
         response = self.query(
             '''
             mutation CreateLocalization{
