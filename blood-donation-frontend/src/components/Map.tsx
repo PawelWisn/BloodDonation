@@ -34,7 +34,7 @@ function MyMap(props: MyMapType) {
             }
             markers.push(
                 <Marker key={placeName + 'marker'} position={[parseFloat(lat), parseFloat(lng)]} icon={pointer}>
-                    <Popup>{placeName}</Popup>
+                    <Popup>{placeName}<br/>{address}<br/>{city}</Popup>
                 </Marker>
             );
         }
