@@ -70,15 +70,15 @@ class DonationModel(models.Model):
         ERYTHROCYTES = "ERT"
         LEUKOCYTES = "LEU"
 
-    donationID = models.AutoField(primary_key=True)
+    donation_id = models.AutoField(primary_key=True)
     donor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     place = models.ForeignKey(LocalizationModel, on_delete=models.CASCADE)
-    donationType = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLOOD, max_length=3)
+    donation_type = models.CharField(choices=DONATIONTYPE.choices, default=DONATIONTYPE.BLOOD, max_length=3)
     amount = models.IntegerField(null=False)
     time = models.DateTimeField(null=True)
 
     def __str__(self):
-        return str(self.donationID) + '-' + str(self.time.year) + str(self.time.month) + str(self.time.day)
+        return str(self.donation_id) + '-' + str(self.time.year) + str(self.time.month) + str(self.time.day)
 
 
 class BloodReservesModel(models.Model):
@@ -91,10 +91,10 @@ class BloodReservesModel(models.Model):
                     ('AB_N', 'AB_N'),
                     ('AB_P', 'AB_P')]
 
-    bloodReserveID = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     region = models.CharField(max_length=64)
     volume = models.IntegerField(default=0)
     group = models.CharField(choices=BLOOD_GROUPS, max_length=4)
 
     def __str__(self):
-        return str(self.bloodReserveID) + '-' + self.region + '-' + self.group
+        return str(self.id) + '-' + self.region + '-' + self.group

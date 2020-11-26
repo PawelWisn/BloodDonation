@@ -16,7 +16,7 @@ class UserType(DjangoObjectType):
 class BloodReservesType(DjangoObjectType):
     class Meta:
         model = BloodReservesModel
-        fields = ('bloodReserveID', "region", 'volume', 'group')
+        fields = ('id', "region", 'volume', 'group')
 
 
 class LocalizationType(DjangoObjectType):
@@ -28,7 +28,7 @@ class LocalizationType(DjangoObjectType):
 class DonationType(DjangoObjectType):
     class Meta:
         model = DonationModel
-        fields = ("donationID", "donor", 'place', 'donationType', 'amount', 'time')
+        fields = ("donation_id", "donor", 'place', 'donation_type', 'amount', 'time')
 
 
 class Query(graphene.ObjectType):
@@ -68,7 +68,7 @@ class Query(graphene.ObjectType):
             user = UserModel.objects.get(email=user.email)
         except UserModel.DoesNotExist:
             return None
-        return DonationModel.objects.filter(donor=user).order_by('-time', '-donationID')[skip:][:recent]
+        return DonationModel.objects.filter(donor=user).order_by('-time', '-donation_id')[skip:][:recent]
 
 
 class CreateUserMutation(graphene.Mutation):
@@ -140,7 +140,7 @@ class ApplyDonationMutation(graphene.Mutation):
                                              is_mobile_point=isMobilePoint)
             localization.save()
         time = datetime.fromisoformat(time) if time else timezone.now()
-        donation = DonationModel(donor=user, place=localization, donationType=donatedType, amount=int(donatedAmount),
+        donation = DonationModel(donor=user, place=localization, donation_type=donatedType, amount=int(donatedAmount),
                                  time=time)
         donation.save()
         return ApplyDonationMutation(donation=donation)

@@ -34,10 +34,11 @@ def run():
 def handleWebScrapFailure(func):
     def out():
         try:
+            time.sleep(0.05)
             func()
         except Exception as e:
             with open('error_log.txt', 'w+') as error_log:
-                print(func.__name__, 'raised', e, file=error_log)
+                print(time.time(), func.__name__, 'raised', e, file=error_log)
 
     return out
 
