@@ -14,7 +14,7 @@ function LegalRegArticle(props: LegalRegArticleType) {
     return (
         <div className='article-element'>
             <h4>{name}</h4>
-            <h4>Valid from: {date}</h4>
+            <h4>Valid since: {date}</h4>
             <a className='article-link' target='_blank' href={link}>{art}</a>
         </div>
     );

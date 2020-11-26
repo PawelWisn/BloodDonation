@@ -31,6 +31,17 @@ def run():
     webScrapZielonaGora()
 
 
+def handleWebScrapFailure(func):
+    def out():
+        try:
+            func()
+        except Exception as e:
+            with open('error_log.txt', 'w+') as error_log:
+                print(func.__name__, 'raised', e, file=error_log)
+
+    return out
+
+
 def saveToDB(region, volume, group):
     try:
         br = BloodReservesModel.objects.get(region=region, group=group)
@@ -41,6 +52,7 @@ def saveToDB(region, volume, group):
         br.save()
 
 
+@handleWebScrapFailure
 def webScrapKrakow():
     try:
         webpage = requests.get(r"https://rckik.krakow.pl")
@@ -57,6 +69,7 @@ def webScrapKrakow():
         saveToDB('Krakow', volume // 25, group)
 
 
+@handleWebScrapFailure
 def webScrapBialystok():
     try:
         webpage = requests.get(r"https://www.rckik.bialystok.pl")
@@ -77,6 +90,7 @@ def webScrapBialystok():
         saveToDB('Bialystok', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapBydgoszcz():
     try:
         webpage = requests.get(r"http://www.rckik-bydgoszcz.com.pl")
@@ -94,6 +108,7 @@ def webScrapBydgoszcz():
         saveToDB('Bydgoszcz', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapGdansk():
     try:
         webpage = requests.get(r"http://krew.gda.pl")
@@ -108,6 +123,7 @@ def webScrapGdansk():
         saveToDB('Gdansk', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapKatowice():
     chrome_options = Options()
     chrome_options.add_argument("--headless")
@@ -128,6 +144,7 @@ def webScrapKatowice():
     driver.close()
 
 
+@handleWebScrapFailure
 def webScrapKalisz():
     try:
         webpage = requests.get(r"http://krwiodawstwo.kalisz.pl")
@@ -148,6 +165,7 @@ def webScrapKalisz():
         saveToDB('Kalisz', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapKielce():
     try:
         webpage = requests.get(r"https://www.rckik-kielce.com.pl")
@@ -164,6 +182,7 @@ def webScrapKielce():
         saveToDB('Kielce', volume // 25, group)
 
 
+@handleWebScrapFailure
 def webScrapLublin():
     def getRh(x):
         return ('P' if '+' in x.parent.parent.parent.parent.parent.find('h2').text else 'N')
@@ -187,6 +206,7 @@ def webScrapLublin():
         saveToDB('Lublin', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapOlsztyn():
     try:
         webpage = requests.get(r"http://rckikol.pl/potrzeba-krwi/")
@@ -211,6 +231,7 @@ def webScrapOlsztyn():
         saveToDB('Olsztyn', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapOpole():
     try:
         webpage = requests.get(r"https://www.rckik-opole.com.pl")
@@ -224,6 +245,7 @@ def webScrapOpole():
         saveToDB('Opole', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapPoznan():
     try:
         webpage = requests.get(r"https://www.rckik.poznan.pl")
@@ -245,6 +267,7 @@ def webScrapPoznan():
         saveToDB('Poznan', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapRaciborz():
     try:
         webpage = requests.get(r"https://rckik.pl")
@@ -268,6 +291,7 @@ def webScrapRaciborz():
         saveToDB('Raciborz', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapRadom():
     try:
         webpage = requests.get(r"http://www.rckik.radom.pl")
@@ -291,6 +315,7 @@ def webScrapRadom():
         saveToDB('Radom', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapRzeszow():
     try:
         webpage = requests.get(r"https://www.rckk.rzeszow.pl")
@@ -312,6 +337,7 @@ def webScrapRzeszow():
         saveToDB('Rzeszow', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapSlupsk():
     try:
         webpage = requests.get(r"http://www.krwiodawstwo.slupsk.pl")
@@ -333,6 +359,7 @@ def webScrapSlupsk():
         saveToDB('Slupsk', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapSzczecin():
     try:
         webpage = requests.get(r"http://www.krwiodawstwo.szczecin.pl")
@@ -350,6 +377,7 @@ def webScrapSzczecin():
         saveToDB('Szczecin', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapWalbrzych():
     try:
         webpage = requests.get(r"http://www.rckik.walbrzych.pl/site/")
@@ -367,6 +395,7 @@ def webScrapWalbrzych():
         saveToDB('Walbrzych', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapWarszawa():
     try:
         webpage = requests.get(r"http://www.rckik-warszawa.com.pl")
@@ -391,6 +420,7 @@ def webScrapWarszawa():
         saveToDB('Warszawa', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapWroclaw():
     try:
         webpage = requests.get(r"https://www.rckik.wroclaw.pl")
@@ -405,6 +435,7 @@ def webScrapWroclaw():
         saveToDB('Wroclaw', volume, group)
 
 
+@handleWebScrapFailure
 def webScrapZielonaGora():
     try:
         webpage = requests.get(r"http://www.rckik.zgora.pl")
@@ -427,6 +458,7 @@ def webScrapZielonaGora():
         saveToDB('Zielona Gora', volume, groups.pop())
 
 
+@handleWebScrapFailure
 def webScrapLodz():
     try:
         webpage = requests.get(r"http://www.krwiodawstwo.pl")

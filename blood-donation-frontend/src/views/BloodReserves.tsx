@@ -40,7 +40,6 @@ function getProperPicture(num: number) {
 
 function buildRow(row: any) {
     const mapping = [row[6][2], row[7][2], row[2][2], row[3][2], row[4][2], row[5][2], row[0][2], row[1][2]];
-    console.log([row[6][0], row[7][0], row[2][0], row[3][0], row[4][0], row[5][0], row[0][0], row[1][0]]);
     let trContent = [<td key={row[0][1] + 'region'}>{row[0][1]}</td>,]
     for (let i = 0; i < 8; ++i) {
         trContent.push(
