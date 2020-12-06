@@ -10,7 +10,7 @@ import classNames from "classnames";
 const UserQuery = `
   query {
     donationWithUser {
-        donationID
+        donationId
         donationType
         place{
               city
@@ -54,7 +54,7 @@ function createTableContent(data: any) {
         const amount = data[i]['amount'] + ' ml';
         const city = data[i]['place']['city'];
         const place = data[i]['place']['placeName'];
-        const key = data[i]['donationID'];
+        const key = data[i]['donation_id'];
         content.push(buildRow(data.length - i, [date, comp, amount, city, place, key]));
     }
     return content;
@@ -198,33 +198,33 @@ function MyProfile() {
         if (data && data.length > 0) {
             if (data[0]['donor']['isMale']) {
                 if (eqiv >= 18000) {
-                    progressPercent = 100 - (20000 - eqiv) / 2000 * 100;
+                    progressPercent = 100 - (20000 - eqiv) / 20;
                     return (20000 - eqiv) + ' ml';
                 }
                 if (eqiv >= 12000) {
-                    progressPercent = 100 - (18000 - eqiv) / 6000 * 100;
+                    progressPercent = 100 - (18000 - eqiv) / 60;
                     return (18000 - eqiv) + ' ml';
                 }
                 if (eqiv >= 6000) {
-                    progressPercent = 100 - (12000 - eqiv) / 6000 * 100;
+                    progressPercent = 100 - (12000 - eqiv) / 60;
                     return (12000 - eqiv) + ' ml';
                 }
-                progressPercent = 100 - (6000 - eqiv) / 6000 * 100;
+                progressPercent = 100 - (6000 - eqiv) / 60;
                 return (6000 - eqiv) + ' ml';
             }
             if (eqiv >= 15000) {
-                progressPercent = 100 - (20000 - eqiv) / 5000 * 100;
+                progressPercent = 100 - (20000 - eqiv) / 50;
                 return (20000 - eqiv) + ' ml';
             }
             if (eqiv >= 10000) {
-                progressPercent = 100 - (15000 - eqiv) / 5000 * 100;
+                progressPercent = 100 - (15000 - eqiv) / 50;
                 return (15000 - eqiv) + ' ml';
             }
             if (eqiv >= 5000) {
-                progressPercent = 100 - (10000 - eqiv) / 5000 * 100;
+                progressPercent = 100 - (10000 - eqiv) / 50;
                 return (10000 - eqiv) + ' ml';
             }
-            progressPercent = 100 - (5000 - eqiv) / 5000 * 100;
+            progressPercent = 100 - (5000 - eqiv) / 50;
             return (5000 - eqiv) + ' ml';
         }
     }

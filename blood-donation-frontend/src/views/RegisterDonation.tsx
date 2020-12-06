@@ -30,7 +30,7 @@ const RegisterDonationMutation = `
   mutation RegisterDonation($donatedAmount:String!,$donatedType:String!, $city:String, $placeName:String!, $isMobilePoint:Boolean, $wantReminder:Boolean, $time:String, $address:String){
     applyDonation(donatedAmount:$donatedAmount,donatedType:$donatedType, city:$city, placeName:$placeName, isMobilePoint:$isMobilePoint, wantReminder:$wantReminder, time:$time, address:$address) {
         donation{
-            donationID
+            donationId
             time
         }
     }

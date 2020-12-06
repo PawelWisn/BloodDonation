@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/webScrapBloodReserves.py" beforeDir="false" afterPath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/webScrapBloodReserves.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/error_log.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/MyProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/MyProfile.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/RegisterDonation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegisterDonation.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +88,7 @@
       <workItem from="1605297492131" duration="16044000" />
       <workItem from="1605443005774" duration="449000" />
       <workItem from="1606254688865" duration="2191000" />
-      <workItem from="1606377795643" duration="5954000" />
+      <workItem from="1606377795643" duration="6710000" />
     </task>
     <servers />
   </component>
