@@ -13,7 +13,7 @@ services:
   ports:
    - "5432"
   volumes:
-   - postgres_data:/var/lib/postgresql/data
+   - postgres-data:/var/lib/postgresql/data
   environment:
    TZ: 'Europe/Warsaw'
    PGTZ: 'Europe/Warsaw'
@@ -33,6 +33,6 @@ services:
 
 
 volumes:
-  postgres_data:
+  postgres-data:
   blood-donation-backend:
   blood-donation-frontend:
