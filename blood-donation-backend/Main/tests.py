@@ -7,7 +7,7 @@ class TestUserModelQueries(GraphQLTestCase):
     def setUp(self):
         super().setUp()
 
-    def test_create_localization_by_mutation_successful(self):
+    def test_create_user_by_mutation_successful(self):
         response = self.query(
             '''
             mutation CreateUser{

@@ -5,10 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/BloodDonationBackend/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/BloodDonationBackend/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/BloodDonationBackend/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/BloodDonationBackend/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/BloodDonationBackend/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/schema.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/dailyExecution.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/sendEmailReminders.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/uploadLocsToDB.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/scripts/webScrapBloodReserves.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/Main/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/collectionPoints.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/entrypoint.sh" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/error_log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/manage.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BloodDonationBackend/requirements.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/MyProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/MyProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/RegisterDonation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/RegisterDonation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Register.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +113,7 @@
       <workItem from="1605443005774" duration="449000" />
       <workItem from="1606254688865" duration="2191000" />
       <workItem from="1606377795643" duration="6710000" />
+      <workItem from="1607302767264" duration="4961000" />
     </task>
     <servers />
   </component>

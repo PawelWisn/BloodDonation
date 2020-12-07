@@ -11,7 +11,6 @@ const UserRegisterMutation = `
     createUser(email:$email, password:$password, isMale:$isMale) {
         user{
             email
-            dateJoined
         }
     }
   }
