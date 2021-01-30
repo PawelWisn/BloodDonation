@@ -23,7 +23,7 @@ def run():
     webScrapRaciborz()
     webScrapRadom()
     webScrapRzeszow()
-    webScrapSlupsk()
+    # webScrapSlupsk()
     webScrapSzczecin()
     webScrapWalbrzych()
     webScrapWarszawa()
@@ -37,7 +37,7 @@ def handleWebScrapFailure(func):
             time.sleep(0.05)
             func()
         except Exception as e:
-            with open('error_log.txt', 'w+') as error_log:
+            with open('error_log.txt', 'a+') as error_log:
                 print(time.time(), func.__name__, 'raised', e, file=error_log)
 
     return out
@@ -482,6 +482,7 @@ def webScrapLodz():
             volume = 3
         else:
             volume = 4
-        group = x.parent.find('p').text
+        group = x.parent.find('p') or x.parent.parent.find('p')
+        group = group.text
         group = group.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in group else 'N')
         saveToDB('Lodz', volume, group)

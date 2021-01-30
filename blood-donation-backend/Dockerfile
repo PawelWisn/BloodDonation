@@ -20,5 +20,5 @@ ENV PYTHONPATH "${PYTHONPATH}:/"
 COPY entrypoint.sh .
 COPY . .
 
-HEALTHCHECK --interval=60s --timeout=600s CMD python manage.py runscript dailyExecution
+HEALTHCHECK --interval=600s --timeout=100s CMD python manage.py runscript dailyExecution
 ENTRYPOINT ["./entrypoint.sh"]

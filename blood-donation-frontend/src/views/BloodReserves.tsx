@@ -63,13 +63,18 @@ function createTableContent(data: any) {
         let row = []
         for (let j = 0; j < 8; ++j) {
             let off = i * 8 + j;
-            const region = data[off]['region'];
-            const volume = parseInt(data[off]['volume']);
-            const group = data[off]['group'].replace('_', ' ');
-            row.push([group, region, volume]);
+            console.log(i,j,off,data[off])
+            if(!data[off]){
+                break;
+            }
+	        const region = data[off]['region'];
+	        const volume = parseInt(data[off]['volume']);
+	        const group = data[off]['group'].replace('_', ' ');
+	        row.push([group, region, volume]);
+
         }
-        content.push(
-            buildRow(row)
+	        content.push(
+	            buildRow(row)
         );
     }
     return content;
