@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c8e10f62-a5fc-47ee-bf3b-7bde65aeea75" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../blood-donation-backend/Main/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blood-donation-backend/Main/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blood-donation-backend/Main/scripts/webScrapBloodReserves.py" beforeDir="false" afterPath="$PROJECT_DIR$/../blood-donation-backend/Main/scripts/webScrapBloodReserves.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../blood-donation-backend/error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../blood-donation-backend/error_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/BloodReserves.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/BloodReserves.tsx" afterDir="false" />
     </list>
@@ -89,7 +91,7 @@
       <workItem from="1606254688865" duration="2191000" />
       <workItem from="1606377795643" duration="6710000" />
       <workItem from="1607302767264" duration="4961000" />
-      <workItem from="1612041154223" duration="788000" />
+      <workItem from="1612041154223" duration="1557000" />
     </task>
     <servers />
   </component>

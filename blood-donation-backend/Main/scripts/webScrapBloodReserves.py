@@ -23,7 +23,7 @@ def run():
     webScrapRaciborz()
     webScrapRadom()
     webScrapRzeszow()
-    # webScrapSlupsk()
+    webScrapSlupsk()
     webScrapSzczecin()
     webScrapWalbrzych()
     webScrapWarszawa()
@@ -345,18 +345,20 @@ def webScrapSlupsk():
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
-    for id in range(166, 174):
-        x = soup.find(id=f"menu-item-{id}")
-        volume = x['class'][0]
-        group = x.text.replace('0', 'Z').split('/')[0] + '_' + ('P' if '+' in x.text else 'N')
-        if volume == 'brak':
-            volume = 0
-        elif volume == 'puste':
-            volume = 1
-        elif volume == 'polowa':
+    divs = soup.findAll('div',{'class': lambda x: x and re.match(r'item .{1,4}rh(minus|plus)', x),
+                              })
+
+    for div in divs:
+        group = div.find('div',{'class': lambda x:x and x=='group'}).text.strip()
+        group = group.replace('0', 'Z').split('RH')[0].strip() + '_' + ('P' if '+' in group else 'N')
+        volume = div.find('img',{'src': lambda x:x and re.match(r"http://krwiodawstwo\.slupsk\.pl/wp-content/uploads/202\d/\d\d/.*?\.png", x)})['src']
+        volume = volume[volume.rfind(r'/')+1:-4]
+        if volume == 'glowna_04':
+            volume = 4
+        elif volume == 'glowna_041':
             volume = 2
         else:
-            volume = 4
+            volume = 0
         saveToDB('Slupsk', volume, group)
 
 
@@ -404,7 +406,7 @@ def webScrapWarszawa():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.search(r'/img/krew-(bardzoniski|niski|sredni|wysoki).png', x),
-                               'alt': lambda x: x and re.match(r'(Bardzoniski|Niski|Średni|Wysoki)', x)})
+                               'alt': lambda x: x and re.match(r'(Bardzo niski|Bardzoniski|Niski|Średni|Wysoki)', x)})
     for x in all:
         group = x.parent.text.strip().replace('0', 'Z')
         group = group.split('Rh')[0] + '_' + ('P' if '+' in group else 'N')

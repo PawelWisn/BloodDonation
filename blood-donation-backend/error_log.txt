@@ -46,3 +46,13 @@
 1612047982.1695454 webScrapSlupsk raised 'NoneType' object is not subscriptable
 1612048045.912936 webScrapSlupsk raised 'NoneType' object is not subscriptable
 1612048109.7108855 webScrapSlupsk raised 'NoneType' object is not subscriptable
+1612049110.2869053 webScrapSlupsk raised 'NoneType' object has no attribute 'text'
+1612049140.4627683 webScrapSlupsk raised 'NoneType' object has no attribute 'text'
+1612049161.321217 webScrapSlupsk raised 'NoneType' object has no attribute 'text'
+1612049253.8770766 webScrapSlupsk raised HTTPConnectionPool(host='www.krwiodawstwo.slupsk.pl', port=80): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7fa83c6c1910>: Failed to establish a new connection: [Errno -2] Name or service not known'))
+1612049889.5176759 webScrapSlupsk raised value too long for type character varying(4)
+
+1612049935.954643 webScrapSlupsk raised value too long for type character varying(4)
+
+1612049988.3307533 webScrapSlupsk raised value too long for type character varying(4)
+

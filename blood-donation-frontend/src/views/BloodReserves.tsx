@@ -57,6 +57,7 @@ function buildRow(row: any) {
 }
 
 function createTableContent(data: any) {
+    console.log(data)
     const iterations = data.length / 8;
     let content: any = [];
     for (let i = 0; i < iterations; ++i) {
