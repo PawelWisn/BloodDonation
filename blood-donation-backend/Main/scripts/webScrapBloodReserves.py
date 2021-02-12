@@ -62,6 +62,8 @@ def webScrapKrakow():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {
         'src': lambda x: x and re.match('https://rckik.krakow.pl/wp-content/uploads/20\d\d/\d{1,2}/\d{1,3}.png', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = x['src']
         volume = int(volume[volume.rfind(r'/') + 1:volume.rfind(r'.')])
@@ -78,6 +80,8 @@ def webScrapBialystok():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('div', {'class': lambda x: x and re.match('m(in|ax|id)Blood', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = x['class'][0][:3]
         if volume == 'min':
