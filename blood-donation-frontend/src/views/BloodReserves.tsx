@@ -57,14 +57,12 @@ function buildRow(row: any) {
 }
 
 function createTableContent(data: any) {
-    console.log(data)
     const iterations = data.length / 8;
     let content: any = [];
     for (let i = 0; i < iterations; ++i) {
         let row = []
         for (let j = 0; j < 8; ++j) {
             let off = i * 8 + j;
-            console.log(i,j,off,data[off])
             if(!data[off]){
                 break;
             }

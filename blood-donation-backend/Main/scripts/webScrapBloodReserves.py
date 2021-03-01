@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 import time
+from datetime import datetime
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 
@@ -38,7 +39,7 @@ def handleWebScrapFailure(func):
             func()
         except Exception as e:
             with open('error_log.txt', 'a+') as error_log:
-                print(time.time(), func.__name__, 'raised', e, file=error_log)
+                print(datetime.now(), func.__name__, 'raised', e, file=error_log)
 
     return out
 
