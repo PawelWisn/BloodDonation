@@ -62,12 +62,12 @@ def webScrapKrakow():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {
-        'src': lambda x: x and re.match('https://rckik.krakow.pl/wp-content/uploads/20\d\d/\d{1,2}/\d{1,3}.png', x)})
+        'src': lambda x: x and re.match('https://rckik.krakow.pl/wp-content/uploads/20\d\d/\d{1,2}/x\d{1,3}.png', x)})
     if len(all)!=8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = x['src']
-        volume = int(volume[volume.rfind(r'/') + 1:volume.rfind(r'.')])
+        volume = int(volume[volume.rfind(r'/') + 2:volume.rfind(r'.png.pagespeed.ic')]) # 2 bcs of x in url
         group = x.parent.next_sibling.find('strong').text.strip().replace(u'\xa0', ' ')
         group = group.split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
         saveToDB('Krakow', volume // 25, group)
@@ -104,6 +104,8 @@ def webScrapBydgoszcz():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('li', {'style': lambda x: x and x.startswith('background:url(theme/default/img')})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x['style'][x['style'].rfind('/') + 1:][:-6].replace('minus', ';').replace('plus', ';')
         group = group.strip().upper().replace('0', 'Z').split(';')
@@ -122,6 +124,8 @@ def webScrapGdansk():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.match('images/blood_\d.png', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = 5 - int(x['src'][x['src'].rfind('.') - 1])
         group = x.parent.next_sibling.text.strip().replace(u'\xa0', ' ')
@@ -158,6 +162,8 @@ def webScrapKalisz():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.search(r'/widgets/BloodSupply/assets/blood-\d_\d.png', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x['alt'] else 'N')
         volume = x['src']
@@ -180,6 +186,8 @@ def webScrapKielce():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = set(soup.findAll('img', {'src': lambda x: x and re.match('/images/krople/\d{1,3}', x),
                                    'title': lambda x: x and re.match('[0AB]{1,2} Rh[-+]{1}', x)}))
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = int(x['src'][x['src'].rfind('/') + 1:][:2])
         if volume == 10: volume = 100
@@ -198,16 +206,19 @@ def webScrapLublin():
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.match('/img/krew-(niski|sredni|wysoki).png', x),
-                               'title': lambda x: x and re.match('site\.(niski|sredni|wysoki)', x)})
+    all = soup.findAll('img', {'src': lambda x: x and re.match('/img/krew-(pilnie-potrzebna|niski|sredni|wysoki).png', x),
+                               'title': lambda x: x and re.match('site\.(pilnie-potrzebna|niski|sredni|wysoki)', x)})
     for x in all:
         volume = x['title'][5:]
         if volume == 'wysoki':
             volume = 4
         elif volume == 'sredni':
             volume = 2
+        elif volume == 'niski':
+            volume = 1
         else:
             volume = 0
+
         group = x.parent.text.strip().replace('0', 'Z') + '_' + getRh(x)
         saveToDB('Lublin', volume, group)
 
@@ -221,6 +232,8 @@ def webScrapOlsztyn():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('strong')
     all = list(filter(lambda x: re.search(r'^(0|A|B|AB)Rh\+?$', str(x.text)), all))[:8]
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x.text.strip().replace('0', 'Z').split('Rh')[0] + '_' + ('P' if '+' in x.text else 'N')
         parent = x.parent.parent
@@ -245,6 +258,8 @@ def webScrapOpole():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'alt': lambda x: x and re.match(r'^(A|0|B|AB) RhD.*?stan$', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if 'plus' in x['alt'] else 'N')
         volume = 5 - int(x['src'][x['src'].rfind(r'.') - 1])
@@ -259,6 +274,8 @@ def webScrapPoznan():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('li', string=re.compile(r'^(A|0|B|AB) Rh [-+]$'))
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x.text.replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.text else 'N')
         volume = x['class'][0][1:]
@@ -282,6 +299,8 @@ def webScrapRaciborz():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.match(r'/assets/img/krew.*?.png', x),
                                'title': lambda x: x and re.match(r'site\.(niski|sredni|wysoki|bardzoniski)', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x.parent.text.strip().replace(u'\xa0', '').split('Rh')[0]
         group = group.replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.parent.text else 'N')
@@ -306,6 +325,8 @@ def webScrapRadom():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('p')
     all = list(filter(lambda x: re.search(r'^(0|A|B|AB) RH [-+].*$', str(x.text)), all))
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x.text.strip().replace('0', 'Z').split('RH')[0].strip() + '_' + ('P' if '+' in x.text else 'N')
         volume = x.parent.find('img')['src']
@@ -329,6 +350,8 @@ def webScrapRzeszow():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('div', {'class': lambda x: x and re.match(r'iconBlood_\d', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = x.parent['style'].split(' ')[-1][:-3]
         group = x.text.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.text else 'N')
@@ -352,6 +375,8 @@ def webScrapSlupsk():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     divs = soup.findAll('div',{'class': lambda x: x and re.match(r'item .{1,4}rh(minus|plus)', x),
                               })
+    if len(divs)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
 
     for div in divs:
         group = div.find('div',{'class': lambda x:x and x=='group'}).text.strip()
@@ -376,6 +401,8 @@ def webScrapSzczecin():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.search(r'/themes/default/assets/images/blood/\d.(gif|png)', x),
                                'alt': lambda x: not x})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = int(x['src'][x['src'].rfind('/') + 1:x['src'].rfind('.')])
         if volume <= 2:
@@ -394,6 +421,8 @@ def webScrapWalbrzych():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.search(r'/site/templates/as002027/images/\d.png', x),
                                'alt': lambda x: x and re.match(r'(0|A|B|AB)[-+]', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = 5 - int(x['src'][x['src'].rfind('/') + 1:x['src'].rfind('.')])
         if volume <= 2:
@@ -412,6 +441,9 @@ def webScrapWarszawa():
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.search(r'/img/krew-(bardzoniski|niski|sredni|wysoki).png', x),
                                'alt': lambda x: x and re.match(r'(Bardzo niski|Bardzoniski|Niski|Średni|Wysoki)', x)})
+    #print(all)
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         group = x.parent.text.strip().replace('0', 'Z')
         group = group.split('Rh')[0] + '_' + ('P' if '+' in group else 'N')
@@ -436,6 +468,8 @@ def webScrapWroclaw():
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {'src': lambda x: x and re.match(r'images/pojemnik_\d.(png|gif)', x)})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = x['src']
         volume = 5 - int(volume[volume.rfind('_') + 1:volume.rfind('.')])
@@ -453,6 +487,8 @@ def webScrapZielonaGora():
     all = soup.find('div', {"id": lambda x: x == "bloodmeter"}).findAll('div', {
         'class': lambda x: x and re.search(r'^blood-\d{1,2}', x)})
     groups = ['Z_P', 'AB_P', 'B_P', 'A_P', 'Z_N', 'AB_N', 'B_N', 'A_N']
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = int(float(x['class'][0][x['class'][0].find('-') + 1:]))
         if volume >= 60:
@@ -469,25 +505,26 @@ def webScrapZielonaGora():
 @handleWebScrapFailure
 def webScrapLodz():
     try:
-        webpage = requests.get(r"http://www.krwiodawstwo.pl")
+        webpage = requests.get(r"https://www.krwiodawstwo.pl")
     except ConnectionError:
         return
     soup = BeautifulSoup(webpage.text, 'html.parser')
     all = soup.findAll('img', {
-        'src': lambda x: x and (re.search(r'/images/stany_zapasow/stan_(ba|ni|sr|wy)_\d{5}.jpg', x) or re.search(
-            r'/images/stany_zapasow/kropla.?_19960.png', x))})
+        'src': lambda x: x and (re.search(r'.*', x))})
+    if len(all)!=8:
+        raise ValueError("Wrong amount of webscrapped data")
     for x in all:
         volume = x['src']
         volume = volume[volume.rfind('/') + 1:volume.rfind('.')]
-        if volume.startswith('kropla'):
+        if volume.startswith('kropla'):#data:image/webp;base64,UklGRrYFAABXRUJQVlA4IKoFAAD
             volume = 0
-        elif volume == "stan_ba_41048":
+        elif volume == "stan_ba_41048":#data:image/webp;base64,UklGRtYFAABXRUJQVlA4IMoFAAA
             volume = 1
-        elif volume == 'stan_ni_31220':
+        elif volume == 'stan_ni_31220':#data:image/webp;base64,UklGRnoEAABXRUJQVlA4IG4EAAA
             volume = 2
-        elif volume == 'stan_sr_49761':
+        elif volume == 'stan_sr_49761':#data:image/webp;base64,UklGRoYEAABXRUJQVlA4IHoEAAD
             volume = 3
-        else:
+        else:                          #data:image/webp;base64,UklGRooEAABXRUJQVlA4IH4EAAC
             volume = 4
         group = x.parent.find('p') or x.parent.parent.find('p')
         group = group.text

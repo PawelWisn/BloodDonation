@@ -21,6 +21,13 @@ class CustomUserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password, **extra_fields):
+        try:
+            self.model.objects.get(email=email)
+        except self.model.DoesNotExist:
+            pass
+        else:
+            return None
+
         extra_fields.setdefault('is_staff', True)
         extra_fields.setdefault('is_superuser', True)
         extra_fields.setdefault('is_active', True)
