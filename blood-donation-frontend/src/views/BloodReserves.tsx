@@ -55,7 +55,7 @@ function buildRow(row: any) {
         </tr>
     );
 }
-
+/////////////////////////////
 function createTableContent(data: any) {
     const iterations = data.length / 8;
     let content: any = [];
