@@ -5,21 +5,25 @@ services:
   command: npm start
   ports:
    - "81:3000"
+  environment:
+   - REACT_APP_API_PROTOCOL
+   - REACT_APP_API_IP
+   - REACT_APP_API_PORT
   volumes:
    - ./blood-donation-frontend:/code
    - /code/node_modules/
  postgres:
   image: postgres:12.2
   ports:
-   - "5432"
+   - "$DB_PORT"
   volumes:
    - postgres-data:/var/lib/postgresql/data
   environment:
    TZ: 'Europe/Warsaw'
    PGTZ: 'Europe/Warsaw'
-   POSTGRES_DB: blooddonation
-   POSTGRES_USER: admin
-   POSTGRES_PASSWORD: password
+   POSTGRES_DB: $DB_NAME
+   POSTGRES_USER: $DB_USER
+   POSTGRES_PASSWORD: $DB_PASSWORD
  backend:
   build: ./blood-donation-backend
   entrypoint: ./entrypoint.sh
@@ -28,6 +32,8 @@ services:
    - ./blood-donation-backend:/code
   ports:
    - "8000:8000"
+  env_file:
+   - '.env'
   depends_on:
    - postgres
 
