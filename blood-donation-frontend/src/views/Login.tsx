@@ -5,6 +5,7 @@ import '../styles/Login.scss';
 import Logo from "../images/logo_white.png";
 import {useMutation} from "urql";
 import {deleteToken, storeToken} from "../components/utils";
+import Button from 'react-bootstrap/Button';
 
 const UserLoginMutation = `
   mutation Login($email:String!,$password:String!) {
@@ -30,16 +31,16 @@ function Login() {
 
             <div className='login-content-container'>
                 <form>
-                    <div className='entry-item'>
+                    <div className='form-group'>
                         <label htmlFor='email'>Email</label>
-                        <input id='email' type='text'/>
+                        <input id='email' type='email' className="form-control" placeholder="Enter email"/>
                     </div>
-                    <div className='entry-item'>
+                    <div className='form-group'>
                         <label htmlFor='password'>Password</label>
-                        <input id='password' type='password'/>
+                        <input id='password' type='password' className="form-control"  placeholder="Enter password"/>
                     </div>
                     <div className='submit-button'>
-                        <input type='submit' value='Login' onClick={(e) => {
+                        <input type='submit' value='Login' className='btn btn-warning' onClick={(e) => {
                             e.preventDefault();
                             let data = collectDataForRequest()
                             if (!data['ok']) {
@@ -61,10 +62,10 @@ function Login() {
                 </form>
             </div>
             <div className='login-content-container'>
-                <p>New to BloodDonation? <span onClick={() => {
-
+                <p>New to BloodDonation?</p> 
+                <p onClick={() => {
                     handleOnClick('/register')
-                }}>Create an account</span></p>
+                }}>Create an account</p>
             </div>
         </div>
     );
