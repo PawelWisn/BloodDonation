@@ -6,7 +6,7 @@ $logoWidth: 650px;
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
-  width: 25%;
+  width: 50%;
   min-width: 20rem;
   height: auto;
   max-width: $logoWidth;
@@ -15,12 +15,12 @@ $logoWidth: 650px;
     background-color: #fcfcfc;
     border: 1px solid black;
     border-radius: 25px;
-    padding: 2em 2em 3em 2em;
+    padding: 2em;
     margin-bottom: 2em;
     height: auto;
 
     .form-group {
-      padding: 1em 1em 1em 1em;
+      padding: 1em;
 
       label {
         width: 100%;

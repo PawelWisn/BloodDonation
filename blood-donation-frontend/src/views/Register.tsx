@@ -32,40 +32,41 @@ function Register() {
             </div>
 
             <div className='reg-content-container'>
-                <div className='entry-item'>
-                    <label htmlFor='email'>Email</label>
-                    <input id='email' type='text'/>
-                </div>
-                <div className='entry-item' id='male-female-div'>
-                    <ManyRadiobuttons name={'sex'} labels={['Male', 'Female']} values={['1', '0']}
-                                      ids={['sexm', 'sexf']}/>
-                </div>
-                <div className='entry-item'>
-                    <label htmlFor='password'>Password</label>
-                    <input id='password' type='password'/>
-                </div>
-                <div className='entry-item'>
-                    <label htmlFor='confpassword'>Confirm Password</label>
-                    <input id='confpassword' type='password'/>
-                </div>
-                <div className='submit-button'>
-                    <input type='submit' value='Register' onClick={(e) => {
-                        e.preventDefault();
-                        let data = collectDataForRequest();
-                        if (!data['ok']) {
-                            alert(data['error']);
-                        } else {
-                            registerUserCall(data['collection']).then(r => {
-                                if (r.error || !r['data']['createUser']) {
-                                    alert("This email has been taken. Please pick a different one")
-                                } else {
-                                    history.push('/login');
-                                }
-                            })
-                        }
-                    }}/>
-                </div>
-
+                <form>
+                    <div className='form-group'>
+                        <label htmlFor='email'>Email</label>
+                        <input id='email' className="form-control" placeholder="Enter email" type='text'/>
+                    </div>
+                    <div className='form-radio' id='male-female-div'>
+                        <ManyRadiobuttons name={'sex'} labels={['Male', 'Female']} values={['1', '0']}
+                                        ids={['sexm', 'sexf']}/>
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='password'>Password</label>
+                        <input id='password' className="form-control" type='password' placeholder="Enter password"/>
+                    </div>
+                    <div className='form-group'>
+                        <label htmlFor='confpassword'>Confirm Password</label>
+                        <input id='confpassword' className="form-control" type='password' placeholder="Enter password"/>
+                    </div>
+                    <div className='submit-button'>
+                        <input type='submit' value='Register' className='btn btn-warning' onClick={(e) => {
+                            e.preventDefault();
+                            let data = collectDataForRequest();
+                            if (!data['ok']) {
+                                alert(data['error']);
+                            } else {
+                                registerUserCall(data['collection']).then(r => {
+                                    if (r.error || !r['data']['createUser']) {
+                                        alert("This email has been taken. Please pick a different one")
+                                    } else {
+                                        history.push('/login');
+                                    }
+                                })
+                            }
+                        }}/>
+                    </div>
+                </form>
             </div>
         </div>
     );

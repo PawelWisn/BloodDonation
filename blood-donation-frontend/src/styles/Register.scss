@@ -3,8 +3,11 @@ $logoWidth: 650px;
 $picked: #BDFF9C;
 
 .reg-container {
-  margin: 1em auto auto;
-  width: 100%;
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  min-width: 20rem;
   height: auto;
   max-width: $logoWidth;
 
@@ -12,6 +15,7 @@ $picked: #BDFF9C;
     background-color: #fcfcfc;
     border: 1px solid black;
     border-radius: 25px;
+    padding: 2em;
     margin-bottom: 2em;
     height: auto;
 
@@ -19,36 +23,33 @@ $picked: #BDFF9C;
       width: unset;
     }
 
-    .entry-item {
-      padding: 2em 3em 1em 3em;
+    .form-group {
+      padding: 1em;
 
       label {
         width: 100%;
-        font-size: 2.5em;
+        font-size: 1.8em;
       }
 
       input[type='text'], input[type='password'] {
         width: 100%;
         height: 3em;
-        font-size: 2em;
+        font-size: 1em;
       }
 
-      &:nth-child(2) {
-        padding: 0;
-      }
     }
 
     .submit-button {
       text-align: center;
       margin-top: 1.5em;
-      margin-bottom: 1.5em;
+      margin-bottom: 1em;
 
       input {
         font-size: 2em;
         background-color: #f8d800;
         border: 1px solid black;
         border-radius: 1em;
-        padding: 0.5em 2.3em;
+        padding: 0.3em 1em;
 
         &:hover {
           cursor: pointer;
@@ -147,6 +148,17 @@ $picked: #BDFF9C;
     .reg-container {
       margin-top: 0;
       font-size: 0.25em;
+    }
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  body {
+    .reg-container {
+      .reg-content-container{
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
     }
   }
 }

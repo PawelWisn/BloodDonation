@@ -37,7 +37,7 @@ function Login() {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='password'>Password</label>
-                        <input id='password' type='password' className="form-control"  placeholder="Enter password"/>
+                        <input id='password' type='password' className="form-control" placeholder="Enter password"/>
                     </div>
                     <div className='submit-button'>
                         <input type='submit' value='Login' className='btn btn-warning' onClick={(e) => {
