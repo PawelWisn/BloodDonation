@@ -1,112 +1,104 @@
-$bg-color: #CF2929;
+$bg-color: #cf2929;
 $padVer: 20px;
 $padHor: 30px;
 $break1: 400px;
 $break2: 729px;
 
 @media only screen and (max-width: $break1) {
+	body {
+		.bottom-bar {
+			padding: $padVer 0 $padVer 0;
+		}
 
+		.flex-container-bottom-bar {
+			flex-direction: column-reverse;
 
-  body {
-    .bottom-bar {
-      padding: $padVer 0 $padVer 0;
-    }
+			.bottom-item {
+				margin: auto;
 
-    .flex-container-bottom-bar {
-      flex-direction: column-reverse;
+				&:first-child {
+					margin: 0 15% 0 15%;
+				}
 
-      .bottom-item {
-        margin: auto;
-
-        &:first-child {
-          margin: 0 15% 0 15%;
-        }
-
-        &:last-child {
-          margin: auto auto 1em;
-        }
-      }
-
-    }
-  }
+				&:last-child {
+					margin: auto auto 1em;
+				}
+			}
+		}
+	}
 }
-
 
 @media only screen and (min-width: $break1) and (max-width: $break2) {
+	body {
+		.bottom-bar {
+			padding: $padVer $padHor / 2 $padVer $padHor / 2;
+		}
 
+		.flex-container-bottom-bar {
+			flex-direction: column-reverse;
 
-  body {
-    .bottom-bar {
-      padding: $padVer $padHor / 2 $padVer $padHor / 2;
-    }
+			.bottom-item {
+				margin: auto;
 
-    .flex-container-bottom-bar {
-      flex-direction: column-reverse;
+				&:first-child {
+					margin: auto;
+				}
 
-      .bottom-item {
-        margin: auto;
-
-        &:first-child {
-          margin: auto;
-        }
-
-        &:last-child {
-          margin: auto auto 1em;
-        }
-      }
-
-    }
-  }
+				&:last-child {
+					margin: auto auto 1em;
+				}
+			}
+		}
+	}
 }
 
-
 .flex-container-bottom-bar {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  min-height: auto;
-  overflow: auto;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	min-height: auto;
+	overflow: auto;
+	justify-content: center;
 }
 
 .bottom-bar {
-  background-color: $bg-color;
-  padding: $padVer $padHor $padVer $padHor;
-  border-top: 2px solid black;
-  width: 100%;
+	background-color: $bg-color;
+	padding: $padVer $padHor $padVer $padHor;
+	border-top: 2px solid black;
+	width: 100%;
 
-  a {
-    align-self: center;
-  }
+	a {
+		align-self: center;
+	}
 
-  .popup-container {
-    align-self: center;
-  }
+	.popup-container {
+		align-self: center;
+	}
 
-  button {
-    align-self: center;
-    padding: 0.5em 1em;
+	button {
+		align-self: center;
+		padding: 0.5em 1em;
 
-    &:hover {
-      cursor: pointer;
-    }
-  }
+		&:hover {
+			cursor: pointer;
+		}
+	}
 
-  p {
-    align-self: center;
-  }
+	p {
+		align-self: center;
+	}
 }
 
 .bottom-item {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+	flex: 1;
+	display: flex;
+	justify-content: center;
 
-  &:first-child {
-    margin-right: auto;
-  }
+	&:first-child {
+		margin-right: auto;
+	}
 
-  &:last-child {
-    margin-left: auto;
-  }
+	&:last-child {
+		margin-left: auto;
+	}
 }

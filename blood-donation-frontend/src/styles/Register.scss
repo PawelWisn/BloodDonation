@@ -1,161 +1,151 @@
 $logoHeight: 100px;
 $logoWidth: 650px;
-$picked: #BDFF9C;
+$picked: #bdff9c;
 
 .reg-container {
-  margin: 1em auto auto;
-  width: 100%;
-  height: auto;
-  max-width: $logoWidth;
+	margin: 1em auto auto;
+	width: 100%;
+	height: auto;
+	max-width: $logoWidth;
 
-  .reg-content-container {
-    background-color: #fcfcfc;
-    border: 1px solid black;
-    border-radius: 25px;
-    margin-bottom: 2em;
-    height: auto;
+	.reg-content-container {
+		background-color: #fcfcfc;
+		border: 1px solid black;
+		border-radius: 25px;
+		margin-bottom: 2em;
+		height: auto;
 
-    .radio-flex-item {
-      width: unset;
-    }
+		.radio-flex-item {
+			width: unset;
+		}
 
-    .entry-item {
-      padding: 2em 3em 1em 3em;
+		.entry-item {
+			padding: 2em 3em 1em 3em;
 
-      label {
-        width: 100%;
-        font-size: 2.5em;
-      }
+			label {
+				width: 100%;
+				font-size: 2.5em;
+			}
 
-      input[type='text'], input[type='password'] {
-        width: 100%;
-        height: 3em;
-        font-size: 2em;
-      }
+			input[type="text"],
+			input[type="password"] {
+				width: 100%;
+				height: 3em;
+				font-size: 2em;
+			}
 
-      &:nth-child(2) {
-        padding: 0;
-      }
-    }
+			&:nth-child(2) {
+				padding: 0;
+			}
+		}
 
-    .submit-button {
-      text-align: center;
-      margin-top: 1.5em;
-      margin-bottom: 1.5em;
+		.submit-button {
+			text-align: center;
+			margin-top: 1.5em;
+			margin-bottom: 1.5em;
 
-      input {
-        font-size: 2em;
-        background-color: #f8d800;
-        border: 1px solid black;
-        border-radius: 1em;
-        padding: 0.5em 2.3em;
+			input {
+				font-size: 2em;
+				background-color: #f8d800;
+				border: 1px solid black;
+				border-radius: 1em;
+				padding: 0.5em 2.3em;
 
-        &:hover {
-          cursor: pointer;
-        }
-      }
-    }
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
 
-    &:last-child {
+		&:last-child {
+			p {
+				span {
+					text-decoration: underline;
+					color: #0355d6;
 
-      p {
-        span {
-          text-decoration: underline;
-          color: #0355D6;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-
-    }
-
-
-  }
-
-
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
 }
 
 .reg-logo {
-  img {
-    width: 100%;
+	img {
+		width: 100%;
 
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
 
 @media only screen and (max-width: 650px) {
-  body {
-    .flex-container {
-      flex-direction: column;
-      justify-content: center;
+	body {
+		.flex-container {
+			flex-direction: column;
+			justify-content: center;
 
-      .flex-item {
-        margin: auto;
+			.flex-item {
+				margin: auto;
 
-        &:first-child {
-          margin-bottom: 1em;
-        }
-      }
-    }
-
-  }
+				&:first-child {
+					margin-bottom: 1em;
+				}
+			}
+		}
+	}
 }
 
-
 @media only screen and (max-width: 310px) {
-  body {
-    .flex-container {
-      .flex-item {
-        padding: 1.5em 4.5em 1.5em 4.5em;
-        font-size: 1em;
-      }
-    }
-
-  }
+	body {
+		.flex-container {
+			.flex-item {
+				padding: 1.5em 4.5em 1.5em 4.5em;
+				font-size: 1em;
+			}
+		}
+	}
 }
 
 @media only screen and (max-height: 900px) {
-  .reg-container {
-    margin-top: 10%;
-    font-size: 0.5em;
-  }
+	.reg-container {
+		margin-top: 10%;
+		font-size: 0.5em;
+	}
 }
 
 @media only screen and (max-height: 700px) {
-  .reg-container {
-    margin-top: 5%;
-    font-size: 0.5em;
-  }
+	.reg-container {
+		margin-top: 5%;
+		font-size: 0.5em;
+	}
 }
 
 @media only screen and (max-height: 560px) {
-  body {
-    .reg-container {
-      margin-top: 0;
-      font-size: 0.5em;
-    }
-  }
+	body {
+		.reg-container {
+			margin-top: 0;
+			font-size: 0.5em;
+		}
+	}
 }
 
 @media only screen and (max-height: 500px) {
-  body {
-    .reg-container {
-      margin-top: 0;
-      font-size: 0.25em;
-    }
-  }
+	body {
+		.reg-container {
+			margin-top: 0;
+			font-size: 0.25em;
+		}
+	}
 }
 
-
 .color-primary {
-  background-color: #BDFF9C;
+	background-color: #bdff9c;
 }
 
 .color-secondary {
-  background-color: #fcfcfc;
+	background-color: #fcfcfc;
 }

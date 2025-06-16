@@ -1,11 +1,12 @@
-from Main.models import BloodReservesModel
-import requests
-from bs4 import BeautifulSoup
 import re
 import time
 from datetime import datetime
-from selenium.webdriver.chrome.options import Options
+
+import requests
+from bs4 import BeautifulSoup
+from Main.models import BloodReservesModel
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 
 
 def run():
@@ -38,8 +39,8 @@ def handleWebScrapFailure(func):
             time.sleep(0.05)
             func()
         except Exception as e:
-            with open('error_log.txt', 'a+') as error_log:
-                print(datetime.now(), func.__name__, 'raised', e, file=error_log)
+            with open("error_log.txt", "a") as error_log:
+                print(datetime.now(), func.__name__, "raised", e, file=error_log)
 
     return out
 
@@ -60,17 +61,16 @@ def webScrapKrakow():
         webpage = requests.get(r"https://rckik.krakow.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {
-        'src': lambda x: x and re.match('https://rckik.krakow.pl/wp-content/uploads/20\d\d/\d{1,2}/x\d{1,3}.png', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and re.match("https://rckik.krakow.pl/wp-content/uploads/20\d\d/\d{1,2}/x\d{1,3}.png", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = x['src']
-        volume = int(volume[volume.rfind(r'/') + 2:volume.rfind(r'.png.pagespeed.ic')]) # 2 bcs of x in url
-        group = x.parent.next_sibling.find('strong').text.strip().replace(u'\xa0', ' ')
-        group = group.split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Krakow', volume // 25, group)
+        volume = x["src"]
+        volume = int(volume[volume.rfind(r"/") + 2 : volume.rfind(r".png.pagespeed.ic")])  # 2 bcs of x in url
+        group = x.parent.next_sibling.find("strong").text.strip().replace("\xa0", " ")
+        group = group.split(" ")[0].replace("0", "Z") + "_" + ("P" if "+" in group else "N")
+        saveToDB("Krakow", volume // 25, group)
 
 
 @handleWebScrapFailure
@@ -79,21 +79,21 @@ def webScrapBialystok():
         webpage = requests.get(r"https://www.rckik.bialystok.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('div', {'class': lambda x: x and re.match('m(in|ax|id)Blood', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("div", {"class": lambda x: x and re.match("m(in|ax|id)Blood", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = x['class'][0][:3]
-        if volume == 'min':
+        volume = x["class"][0][:3]
+        if volume == "min":
             volume = 0
-        elif volume == 'mid':
+        elif volume == "mid":
             volume = 2
-        elif volume == 'max':
+        elif volume == "max":
             volume = 4
-        group = x.text.strip().replace(u'\xa0', ' ')
-        group = group.split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Bialystok', volume, group)
+        group = x.text.strip().replace("\xa0", " ")
+        group = group.split(" ")[0].replace("0", "Z") + "_" + ("P" if "+" in group else "N")
+        saveToDB("Bialystok", volume, group)
 
 
 @handleWebScrapFailure
@@ -102,18 +102,18 @@ def webScrapBydgoszcz():
         webpage = requests.get(r"http://www.rckik-bydgoszcz.com.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('li', {'style': lambda x: x and x.startswith('background:url(theme/default/img')})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("li", {"style": lambda x: x and x.startswith("background:url(theme/default/img")})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x['style'][x['style'].rfind('/') + 1:][:-6].replace('minus', ';').replace('plus', ';')
-        group = group.strip().upper().replace('0', 'Z').split(';')
+        group = x["style"][x["style"].rfind("/") + 1 :][:-6].replace("minus", ";").replace("plus", ";")
+        group = group.strip().upper().replace("0", "Z").split(";")
         volume = 5 - int(group[1])
-        group = group[0] + '_' + ('P' if "plus" in x['style'] else 'N')
+        group = group[0] + "_" + ("P" if "plus" in x["style"] else "N")
         if volume == 1:
             volume = 0
-        saveToDB('Bydgoszcz', volume, group)
+        saveToDB("Bydgoszcz", volume, group)
 
 
 @handleWebScrapFailure
@@ -122,15 +122,15 @@ def webScrapGdansk():
         webpage = requests.get(r"http://krew.gda.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.match('images/blood_\d.png', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and re.match("images/blood_\d.png", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = 5 - int(x['src'][x['src'].rfind('.') - 1])
-        group = x.parent.next_sibling.text.strip().replace(u'\xa0', ' ')
-        group = group.split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Gdansk', volume, group)
+        volume = 5 - int(x["src"][x["src"].rfind(".") - 1])
+        group = x.parent.next_sibling.text.strip().replace("\xa0", " ")
+        group = group.split(" ")[0].replace("0", "Z") + "_" + ("P" if "+" in group else "N")
+        saveToDB("Gdansk", volume, group)
 
 
 @handleWebScrapFailure
@@ -143,14 +143,14 @@ def webScrapKatowice():
     chrome_options.experimental_options["prefs"] = chrome_prefs
     chrome_prefs["profile.default_content_settings"] = {"images": 2}
     driver = webdriver.Chrome(options=chrome_options)
-    driver.get(r'https://rckik-katowice.pl')
+    driver.get(r"https://rckik-katowice.pl")
     time.sleep(5)
-    data = driver.find_element_by_class_name('drops').text.replace(u'\xa0', ' ').replace('stan ', '')
-    data = data.replace('średni', '2').replace('niski', '1').replace('optymalny', '3')
-    data = data.replace('wysoki', '4').replace('krytyczny', '0').split('\n')
+    data = driver.find_element_by_class_name("drops").text.replace("\xa0", " ").replace("stan ", "")
+    data = data.replace("średni", "2").replace("niski", "1").replace("optymalny", "3")
+    data = data.replace("wysoki", "4").replace("krytyczny", "0").split("\n")
     for i in range(0, len(data), 2):
-        group = data[i].strip().split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in data[i] else 'N')
-        saveToDB('Katowice', data[i + 1], group)
+        group = data[i].strip().split(" ")[0].replace("0", "Z") + "_" + ("P" if "+" in data[i] else "N")
+        saveToDB("Katowice", data[i + 1], group)
     driver.close()
 
 
@@ -160,21 +160,21 @@ def webScrapKalisz():
         webpage = requests.get(r"http://krwiodawstwo.kalisz.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.search(r'/widgets/BloodSupply/assets/blood-\d_\d.png', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and re.search(r"/widgets/BloodSupply/assets/blood-\d_\d.png", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x['alt'] else 'N')
-        volume = x['src']
-        volume = volume[volume.rfind('-') + 1:volume.rfind('.')]
-        if volume == '3_4':
+        group = x["alt"].replace("0", "Z").split(" ")[0] + "_" + ("P" if "+" in x["alt"] else "N")
+        volume = x["src"]
+        volume = volume[volume.rfind("-") + 1 : volume.rfind(".")]
+        if volume == "3_4":
             volume = 3
-        elif volume == '1_4':
+        elif volume == "1_4":
             volume = 2
         else:
             volume = 1
-        saveToDB('Kalisz', volume, group)
+        saveToDB("Kalisz", volume, group)
 
 
 @handleWebScrapFailure
@@ -183,44 +183,49 @@ def webScrapKielce():
         webpage = requests.get(r"https://www.rckik-kielce.com.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = set(soup.findAll('img', {'src': lambda x: x and re.match('/images/krople/\d{1,3}', x),
-                                   'title': lambda x: x and re.match('[0AB]{1,2} Rh[-+]{1}', x)}))
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = set(soup.findAll("img", {"src": lambda x: x and re.match("/images/krople/\d{1,3}", x), "title": lambda x: x and re.match("[0AB]{1,2} Rh[-+]{1}", x)}))
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = int(x['src'][x['src'].rfind('/') + 1:][:2])
-        if volume == 10: volume = 100
-        group = x.get('title').strip()
-        group = group.replace(u'\xa0', ' ').split(' ')[0].replace('0', 'Z') + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Kielce', volume // 25, group)
+        volume = int(x["src"][x["src"].rfind("/") + 1 :][:2])
+        if volume == 10:
+            volume = 100
+        group = x.get("title").strip()
+        group = group.replace("\xa0", " ").split(" ")[0].replace("0", "Z") + "_" + ("P" if "+" in group else "N")
+        saveToDB("Kielce", volume // 25, group)
 
 
 @handleWebScrapFailure
 def webScrapLublin():
     def getRh(x):
-        return ('P' if '+' in x.parent.parent.parent.parent.parent.find('h2').text else 'N')
+        return "P" if "+" in x.parent.parent.parent.parent.parent.find("h2").text else "N"
 
     try:
         webpage = requests.get(r"http://www.rckik.lublin.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.match('/img/krew-(pilnie-potrzebna|niski|sredni|wysoki).png', x),
-                               'title': lambda x: x and re.match('site\.(pilnie-potrzebna|niski|sredni|wysoki)', x)})
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll(
+        "img",
+        {
+            "src": lambda x: x and re.match("/img/krew-(pilnie-potrzebna|niski|sredni|wysoki).png", x),
+            "title": lambda x: x and re.match("site\.(pilnie-potrzebna|niski|sredni|wysoki)", x),
+        },
+    )
     for x in all:
-        volume = x['title'][5:]
-        if volume == 'wysoki':
+        volume = x["title"][5:]
+        if volume == "wysoki":
             volume = 4
-        elif volume == 'sredni':
+        elif volume == "sredni":
             volume = 2
-        elif volume == 'niski':
+        elif volume == "niski":
             volume = 1
         else:
             volume = 0
 
-        group = x.parent.text.strip().replace('0', 'Z') + '_' + getRh(x)
-        saveToDB('Lublin', volume, group)
+        group = x.parent.text.strip().replace("0", "Z") + "_" + getRh(x)
+        saveToDB("Lublin", volume, group)
 
 
 @handleWebScrapFailure
@@ -229,15 +234,15 @@ def webScrapOlsztyn():
         webpage = requests.get(r"http://rckikol.pl/potrzeba-krwi/")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('strong')
-    all = list(filter(lambda x: re.search(r'^(0|A|B|AB)Rh\+?$', str(x.text)), all))[:8]
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("strong")
+    all = list(filter(lambda x: re.search(r"^(0|A|B|AB)Rh\+?$", str(x.text)), all))[:8]
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x.text.strip().replace('0', 'Z').split('Rh')[0] + '_' + ('P' if '+' in x.text else 'N')
+        group = x.text.strip().replace("0", "Z").split("Rh")[0] + "_" + ("P" if "+" in x.text else "N")
         parent = x.parent.parent
-        volume = parent.find('div', {'data-fill-amount': lambda y: y and re.match(r'^\d{1,3}$', y)})['data-fill-amount']
+        volume = parent.find("div", {"data-fill-amount": lambda y: y and re.match(r"^\d{1,3}$", y)})["data-fill-amount"]
         volume = int(volume)
         if volume >= 90:
             volume = 4
@@ -247,7 +252,7 @@ def webScrapOlsztyn():
             volume = 1
         else:
             volume = 0
-        saveToDB('Olsztyn', volume, group)
+        saveToDB("Olsztyn", volume, group)
 
 
 @handleWebScrapFailure
@@ -256,14 +261,14 @@ def webScrapOpole():
         webpage = requests.get(r"https://www.rckik-opole.com.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'alt': lambda x: x and re.match(r'^(A|0|B|AB) RhD.*?stan$', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"alt": lambda x: x and re.match(r"^(A|0|B|AB) RhD.*?stan$", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if 'plus' in x['alt'] else 'N')
-        volume = 5 - int(x['src'][x['src'].rfind(r'.') - 1])
-        saveToDB('Opole', volume, group)
+        group = x["alt"].replace("0", "Z").split(" ")[0] + "_" + ("P" if "plus" in x["alt"] else "N")
+        volume = 5 - int(x["src"][x["src"].rfind(r".") - 1])
+        saveToDB("Opole", volume, group)
 
 
 @handleWebScrapFailure
@@ -272,22 +277,22 @@ def webScrapPoznan():
         webpage = requests.get(r"https://www.rckik.poznan.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('li', string=re.compile(r'^(A|0|B|AB) Rh [-+]$'))
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("li", string=re.compile(r"^(A|0|B|AB) Rh [-+]$"))
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x.text.replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.text else 'N')
-        volume = x['class'][0][1:]
-        if volume == 'F':
+        group = x.text.replace("0", "Z").split(" ")[0] + "_" + ("P" if "+" in x.text else "N")
+        volume = x["class"][0][1:]
+        if volume == "F":
             volume = 4
-        elif volume == 'M':
+        elif volume == "M":
             volume = 2
-        elif volume == 'L':
+        elif volume == "L":
             volume = 1
         else:
             volume = 0
-        saveToDB('Poznan', volume, group)
+        saveToDB("Poznan", volume, group)
 
 
 @handleWebScrapFailure
@@ -296,24 +301,23 @@ def webScrapRaciborz():
         webpage = requests.get(r"https://rckik.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.match(r'/assets/img/krew.*?.png', x),
-                               'title': lambda x: x and re.match(r'site\.(niski|sredni|wysoki|bardzoniski)', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and re.match(r"/assets/img/krew.*?.png", x), "title": lambda x: x and re.match(r"site\.(niski|sredni|wysoki|bardzoniski)", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x.parent.text.strip().replace(u'\xa0', '').split('Rh')[0]
-        group = group.replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.parent.text else 'N')
-        volume = x['title'][5:]
-        if volume == 'wysoki':
+        group = x.parent.text.strip().replace("\xa0", "").split("Rh")[0]
+        group = group.replace("0", "Z").split(" ")[0] + "_" + ("P" if "+" in x.parent.text else "N")
+        volume = x["title"][5:]
+        if volume == "wysoki":
             volume = 4
-        elif volume == 'sredni':
+        elif volume == "sredni":
             volume = 2
-        elif volume == 'niski':
+        elif volume == "niski":
             volume = 1
         else:
             volume = 0
-        saveToDB('Raciborz', volume, group)
+        saveToDB("Raciborz", volume, group)
 
 
 @handleWebScrapFailure
@@ -322,24 +326,24 @@ def webScrapRadom():
         webpage = requests.get(r"http://www.rckik.radom.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('p')
-    all = list(filter(lambda x: re.search(r'^(0|A|B|AB) RH [-+].*$', str(x.text)), all))
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("p")
+    all = list(filter(lambda x: re.search(r"^(0|A|B|AB) RH [-+].*$", str(x.text)), all))
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x.text.strip().replace('0', 'Z').split('RH')[0].strip() + '_' + ('P' if '+' in x.text else 'N')
-        volume = x.parent.find('img')['src']
-        volume = volume[volume.rfind(r'/') + 1:volume.rfind(r'.')]
-        if volume == 'bniski':
+        group = x.text.strip().replace("0", "Z").split("RH")[0].strip() + "_" + ("P" if "+" in x.text else "N")
+        volume = x.parent.find("img")["src"]
+        volume = volume[volume.rfind(r"/") + 1 : volume.rfind(r".")]
+        if volume == "bniski":
             volume = 0
-        elif volume == 'niski':
+        elif volume == "niski":
             volume = 1
-        elif volume == 'sredni':
+        elif volume == "sredni":
             volume = 2
         else:
             volume = 4
-        saveToDB('Radom', volume, group)
+        saveToDB("Radom", volume, group)
 
 
 @handleWebScrapFailure
@@ -348,22 +352,22 @@ def webScrapRzeszow():
         webpage = requests.get(r"https://www.rckk.rzeszow.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('div', {'class': lambda x: x and re.match(r'iconBlood_\d', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("div", {"class": lambda x: x and re.match(r"iconBlood_\d", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = x.parent['style'].split(' ')[-1][:-3]
-        group = x.text.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in x.text else 'N')
-        if volume == '22':
+        volume = x.parent["style"].split(" ")[-1][:-3]
+        group = x.text.strip().replace("0", "Z").split(" ")[0] + "_" + ("P" if "+" in x.text else "N")
+        if volume == "22":
             volume = 3
-        elif volume == '35':
+        elif volume == "35":
             volume = 1
-        elif volume == '43':
+        elif volume == "43":
             volume = 0
         else:
             volume = 4
-        saveToDB('Rzeszow', volume, group)
+        saveToDB("Rzeszow", volume, group)
 
 
 @handleWebScrapFailure
@@ -372,24 +376,28 @@ def webScrapSlupsk():
         webpage = requests.get(r"http://www.krwiodawstwo.slupsk.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    divs = soup.findAll('div',{'class': lambda x: x and re.match(r'item .{1,4}rh(minus|plus)', x),
-                              })
-    if len(divs)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    divs = soup.findAll(
+        "div",
+        {
+            "class": lambda x: x and re.match(r"item .{1,4}rh(minus|plus)", x),
+        },
+    )
+    if len(divs) != 8:
         raise ValueError("Wrong amount of webscrapped data")
 
     for div in divs:
-        group = div.find('div',{'class': lambda x:x and x=='group'}).text.strip()
-        group = group.replace('0', 'Z').split('RH')[0].strip() + '_' + ('P' if '+' in group else 'N')
-        volume = div.find('img',{'src': lambda x:x and re.match(r"http://krwiodawstwo\.slupsk\.pl/wp-content/uploads/202\d/\d\d/.*?\.png", x)})['src']
-        volume = volume[volume.rfind(r'/')+1:-4]
-        if volume == 'glowna_04':
+        group = div.find("div", {"class": lambda x: x and x == "group"}).text.strip()
+        group = group.replace("0", "Z").split("RH")[0].strip() + "_" + ("P" if "+" in group else "N")
+        volume = div.find("img", {"src": lambda x: x and re.match(r"http://krwiodawstwo\.slupsk\.pl/wp-content/uploads/202\d/\d\d/.*?\.png", x)})["src"]
+        volume = volume[volume.rfind(r"/") + 1 : -4]
+        if volume == "glowna_04":
             volume = 4
-        elif volume == 'glowna_041':
+        elif volume == "glowna_041":
             volume = 2
         else:
             volume = 0
-        saveToDB('Slupsk', volume, group)
+        saveToDB("Slupsk", volume, group)
 
 
 @handleWebScrapFailure
@@ -398,18 +406,17 @@ def webScrapSzczecin():
         webpage = requests.get(r"http://www.krwiodawstwo.szczecin.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.search(r'/themes/default/assets/images/blood/\d.(gif|png)', x),
-                               'alt': lambda x: not x})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and re.search(r"/themes/default/assets/images/blood/\d.(gif|png)", x), "alt": lambda x: not x})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = int(x['src'][x['src'].rfind('/') + 1:x['src'].rfind('.')])
+        volume = int(x["src"][x["src"].rfind("/") + 1 : x["src"].rfind(".")])
         if volume <= 2:
             volume -= 1
-        group = x.parent.find('span').text
-        group = group.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Szczecin', volume, group)
+        group = x.parent.find("span").text
+        group = group.strip().replace("0", "Z").split(" ")[0] + "_" + ("P" if "+" in group else "N")
+        saveToDB("Szczecin", volume, group)
 
 
 @handleWebScrapFailure
@@ -418,18 +425,17 @@ def webScrapWalbrzych():
         webpage = requests.get(r"http://www.rckik.walbrzych.pl/site/")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.search(r'/site/templates/as002027/images/\d.png', x),
-                               'alt': lambda x: x and re.match(r'(0|A|B|AB)[-+]', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and re.search(r"/site/templates/as002027/images/\d.png", x), "alt": lambda x: x and re.match(r"(0|A|B|AB)[-+]", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = 5 - int(x['src'][x['src'].rfind('/') + 1:x['src'].rfind('.')])
+        volume = 5 - int(x["src"][x["src"].rfind("/") + 1 : x["src"].rfind(".")])
         if volume <= 2:
             volume -= 1
-        group = x['alt'].split(' ')[0]
-        group = group.replace('0', 'Z')[:-1] + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Walbrzych', volume, group)
+        group = x["alt"].split(" ")[0]
+        group = group.replace("0", "Z")[:-1] + "_" + ("P" if "+" in group else "N")
+        saveToDB("Walbrzych", volume, group)
 
 
 @handleWebScrapFailure
@@ -438,26 +444,30 @@ def webScrapWarszawa():
         webpage = requests.get(r"http://www.rckik-warszawa.com.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.search(r'/img/krew-(bardzoniski|niski|sredni|wysoki).png', x),
-                               'alt': lambda x: x and re.match(r'(Bardzo niski|Bardzoniski|Niski|Średni|Wysoki)', x)})
-    #print(all)
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll(
+        "img",
+        {
+            "src": lambda x: x and re.search(r"/img/krew-(bardzoniski|niski|sredni|wysoki).png", x),
+            "alt": lambda x: x and re.match(r"(Bardzo niski|Bardzoniski|Niski|Średni|Wysoki)", x),
+        },
+    )
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        group = x.parent.text.strip().replace('0', 'Z')
-        group = group.split('Rh')[0] + '_' + ('P' if '+' in group else 'N')
-        volume = x['src']
-        volume = volume[volume.rfind('-') + 1:volume.rfind('.')]
-        if volume == 'wysoki':
+        group = x.parent.text.strip().replace("0", "Z")
+        group = group.split("Rh")[0] + "_" + ("P" if "+" in group else "N")
+        volume = x["src"]
+        volume = volume[volume.rfind("-") + 1 : volume.rfind(".")]
+        if volume == "wysoki":
             volume = 4
-        elif volume == 'sredni':
+        elif volume == "sredni":
             volume = 2
-        elif volume == 'niski':
+        elif volume == "niski":
             volume = 1
         else:
             volume = 0
-        saveToDB('Warszawa', volume, group)
+        saveToDB("Warszawa", volume, group)
 
 
 @handleWebScrapFailure
@@ -466,15 +476,15 @@ def webScrapWroclaw():
         webpage = requests.get(r"https://www.rckik.wroclaw.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {'src': lambda x: x and re.match(r'images/pojemnik_\d.(png|gif)', x)})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and re.match(r"images/pojemnik_\d.(png|gif)", x)})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = x['src']
-        volume = 5 - int(volume[volume.rfind('_') + 1:volume.rfind('.')])
-        group = x['alt'].replace('0', 'Z').split(' ')[0] + '_' + ('P' if 'plus' in x['alt'] else 'N')
-        saveToDB('Wroclaw', volume, group)
+        volume = x["src"]
+        volume = 5 - int(volume[volume.rfind("_") + 1 : volume.rfind(".")])
+        group = x["alt"].replace("0", "Z").split(" ")[0] + "_" + ("P" if "plus" in x["alt"] else "N")
+        saveToDB("Wroclaw", volume, group)
 
 
 @handleWebScrapFailure
@@ -483,14 +493,13 @@ def webScrapZielonaGora():
         webpage = requests.get(r"http://www.rckik.zgora.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.find('div', {"id": lambda x: x == "bloodmeter"}).findAll('div', {
-        'class': lambda x: x and re.search(r'^blood-\d{1,2}', x)})
-    groups = ['Z_P', 'AB_P', 'B_P', 'A_P', 'Z_N', 'AB_N', 'B_N', 'A_N']
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.find("div", {"id": lambda x: x == "bloodmeter"}).findAll("div", {"class": lambda x: x and re.search(r"^blood-\d{1,2}", x)})
+    groups = ["Z_P", "AB_P", "B_P", "A_P", "Z_N", "AB_N", "B_N", "A_N"]
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = int(float(x['class'][0][x['class'][0].find('-') + 1:]))
+        volume = int(float(x["class"][0][x["class"][0].find("-") + 1 :]))
         if volume >= 60:
             volume = 4
         elif volume >= 30:
@@ -499,7 +508,7 @@ def webScrapZielonaGora():
             volume = 1
         else:
             volume = 0
-        saveToDB('Zielona Gora', volume, groups.pop())
+        saveToDB("Zielona Gora", volume, groups.pop())
 
 
 @handleWebScrapFailure
@@ -508,25 +517,24 @@ def webScrapLodz():
         webpage = requests.get(r"https://www.krwiodawstwo.pl")
     except ConnectionError:
         return
-    soup = BeautifulSoup(webpage.text, 'html.parser')
-    all = soup.findAll('img', {
-        'src': lambda x: x and (re.search(r'.*', x))})
-    if len(all)!=8:
+    soup = BeautifulSoup(webpage.text, "html.parser")
+    all = soup.findAll("img", {"src": lambda x: x and (re.search(r".*", x))})
+    if len(all) != 8:
         raise ValueError("Wrong amount of webscrapped data")
     for x in all:
-        volume = x['src']
-        volume = volume[volume.rfind('/') + 1:volume.rfind('.')]
-        if volume.startswith('kropla'):#data:image/webp;base64,UklGRrYFAABXRUJQVlA4IKoFAAD
+        volume = x["src"]
+        volume = volume[volume.rfind("/") + 1 : volume.rfind(".")]
+        if volume.startswith("kropla"):  # data:image/webp;base64,UklGRrYFAABXRUJQVlA4IKoFAAD
             volume = 0
-        elif volume == "stan_ba_41048":#data:image/webp;base64,UklGRtYFAABXRUJQVlA4IMoFAAA
+        elif volume == "stan_ba_41048":  # data:image/webp;base64,UklGRtYFAABXRUJQVlA4IMoFAAA
             volume = 1
-        elif volume == 'stan_ni_31220':#data:image/webp;base64,UklGRnoEAABXRUJQVlA4IG4EAAA
+        elif volume == "stan_ni_31220":  # data:image/webp;base64,UklGRnoEAABXRUJQVlA4IG4EAAA
             volume = 2
-        elif volume == 'stan_sr_49761':#data:image/webp;base64,UklGRoYEAABXRUJQVlA4IHoEAAD
+        elif volume == "stan_sr_49761":  # data:image/webp;base64,UklGRoYEAABXRUJQVlA4IHoEAAD
             volume = 3
-        else:                          #data:image/webp;base64,UklGRooEAABXRUJQVlA4IH4EAAC
+        else:  # data:image/webp;base64,UklGRooEAABXRUJQVlA4IH4EAAC
             volume = 4
-        group = x.parent.find('p') or x.parent.parent.find('p')
+        group = x.parent.find("p") or x.parent.parent.find("p")
         group = group.text
-        group = group.strip().replace('0', 'Z').split(' ')[0] + '_' + ('P' if '+' in group else 'N')
-        saveToDB('Lodz', volume, group)
+        group = group.strip().replace("0", "Z").split(" ")[0] + "_" + ("P" if "+" in group else "N")
+        saveToDB("Lodz", volume, group)

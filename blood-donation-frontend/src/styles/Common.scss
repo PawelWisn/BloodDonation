@@ -1,25 +1,22 @@
 .main-page-content {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  justify-content: space-between
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+	justify-content: space-between;
 }
-
 
 .subpage-title {
-  margin: 5px auto 1em auto;
+	margin: 5px auto 1em auto;
 
-  h1 {
-    margin: 0 auto 0 auto;
-    font-size: 3em;
-    text-align: center;
-  }
+	h1 {
+		margin: 0 auto 0 auto;
+		font-size: 3em;
+		text-align: center;
+	}
 
-  h2 {
-    text-align: center;
-    margin: auto;
-    font-size: 2.5em;
-  }
-
+	h2 {
+		text-align: center;
+		margin: auto;
+		font-size: 2.5em;
+	}
 }
-

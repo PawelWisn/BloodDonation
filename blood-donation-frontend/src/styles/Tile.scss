@@ -1,41 +1,41 @@
 $iconSize: 96px;
 $break1: 400px;
 
-@media all and (max-width: $break1){
-  body{
-    .tile{
-      width: 100%;
-      height: 100%;
-      max-width: 300px;
-      max-height: 300px;
-    }
-  }
+@media all and (max-width: $break1) {
+	body {
+		.tile {
+			width: 100%;
+			height: 100%;
+			max-width: 300px;
+			max-height: 300px;
+		}
+	}
 }
 
-.tile{
-  width: 300px;
-  height: 300px;
-  background-color: #fcfcfc;
-  border: 1px solid black;
-  border-radius: 15px;
-  margin: 1em;
-  box-shadow: 5px 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  .icon{
-    display: flex;
-    justify-content: center;
-    padding-bottom: 15%;
-    padding-top: 15%;
-  }
-  .subject{
-    text-decoration: underline;
-  h2{
-  }
-  }
-  &:hover{
-    cursor: pointer;
-  }
+.tile {
+	width: 300px;
+	height: 300px;
+	background-color: #fcfcfc;
+	border: 1px solid black;
+	border-radius: 15px;
+	margin: 1em;
+	box-shadow: 5px 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	.icon {
+		display: flex;
+		justify-content: center;
+		padding-bottom: 15%;
+		padding-top: 15%;
+	}
+	.subject {
+		text-decoration: underline;
+		h2 {
+		}
+	}
+	&:hover {
+		cursor: pointer;
+	}
 }

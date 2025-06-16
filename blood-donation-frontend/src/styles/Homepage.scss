@@ -4,97 +4,89 @@ $break2: 1548px;
 $break3: 1200px;
 $break4: 800px;
 
-
 @media only screen and (max-width: $break4) {
-  body {
-    .homepage-container {
-      flex-direction: column;
+	body {
+		.homepage-container {
+			flex-direction: column;
 
-      .homepage-element {
-        margin-right: 0;
-        margin-bottom: 2em;
-      }
-    }
-  }
+			.homepage-element {
+				margin-right: 0;
+				margin-bottom: 2em;
+			}
+		}
+	}
 }
-
 
 @media only screen and (min-width: $break4) and (max-width: $break3) {
-  body {
-    .homepage-container {
-      :nth-child(2n) {
-        margin-right: 0;
-      }
-    }
-  }
+	body {
+		.homepage-container {
+			:nth-child(2n) {
+				margin-right: 0;
+			}
+		}
+	}
 }
-
 
 @media only screen and (min-width: $break3) and (max-width: $break2) {
-  body {
-    .homepage-container {
-      :nth-child(3n) {
-        margin-right: 0;
-      }
+	body {
+		.homepage-container {
+			:nth-child(3n) {
+				margin-right: 0;
+			}
 
-      :last-child {
-        margin-right: 0;
-      }
-    }
-  }
+			:last-child {
+				margin-right: 0;
+			}
+		}
+	}
 }
-
 
 @media only screen and (min-width: $break2) and (max-width: $break1) {
-  body {
-    .homepage-container {
-      :nth-child(4n) {
-        margin-right: 0;
-      }
+	body {
+		.homepage-container {
+			:nth-child(4n) {
+				margin-right: 0;
+			}
 
-      .homepage-element {
-        margin-right: 50px;
-      }
-    }
-  }
+			.homepage-element {
+				margin-right: 50px;
+			}
+		}
+	}
 }
-
 
 @media only screen and (min-width: $break1) and (max-width: $break0) {
-  body {
-    .homepage-container {
-      .homepage-element {
-        &:nth-child(4n) {
-          margin-right: 0;
-        }
-      }
-    }
-  }
+	body {
+		.homepage-container {
+			.homepage-element {
+				&:nth-child(4n) {
+					margin-right: 0;
+				}
+			}
+		}
+	}
 }
-
 
 @media only screen and (min-width: $break0) {
-  body {
-    .homepage-container {
-      .homepage-element {
-        margin: auto;
-      }
-    }
-  }
+	body {
+		.homepage-container {
+			.homepage-element {
+				margin: auto;
+			}
+		}
+	}
 }
-
 
 .homepage-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  min-height: auto;
-  overflow: auto;
-  margin: auto;
-  justify-content: center;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	min-height: auto;
+	overflow: auto;
+	margin: auto;
+	justify-content: center;
 }
 
-
 .homepage-element {
-  margin-right: 100px;
+	margin-right: 100px;
 }

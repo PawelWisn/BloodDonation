@@ -1,134 +1,122 @@
 $logoHeight: 100px;
 $logoWidth: 650px;
 
-
 .login-container {
-  margin: 1em auto auto;
-  width: 100%;
-  height: auto;
-  max-width: $logoWidth;
+	margin: 1em auto auto;
+	width: 100%;
+	height: auto;
+	max-width: $logoWidth;
 
-  .login-content-container {
-    background-color: #fcfcfc;
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 2em 2em 3em 2em;
-    margin-bottom: 2em;
-    height: auto;
+	.login-content-container {
+		background-color: #fcfcfc;
+		border: 1px solid black;
+		border-radius: 25px;
+		padding: 2em 2em 3em 2em;
+		margin-bottom: 2em;
+		height: auto;
 
-    .entry-item {
-      padding: 2em 3em 1em 3em;
+		.entry-item {
+			padding: 2em 3em 1em 3em;
 
-      label {
-        width: 100%;
-        font-size: 2.5em;
-      }
+			label {
+				width: 100%;
+				font-size: 2.5em;
+			}
 
-      input[type='text'], input[type='password'] {
-        width: 100%;
-        height: 3em;
-        font-size: 2em;
-      }
+			input[type="text"],
+			input[type="password"] {
+				width: 100%;
+				height: 3em;
+				font-size: 2em;
+			}
+		}
 
+		.submit-button {
+			text-align: center;
+			margin-top: 1.5em;
 
-    }
+			input {
+				font-size: 2em;
+				background-color: #f8d800;
+				border: 1px solid black;
+				border-radius: 1em;
+				padding: 0.5em 2.3em;
 
-    .submit-button {
-      text-align: center;
-      margin-top: 1.5em;
+				&:hover {
+					cursor: pointer;
+				}
+			}
+		}
 
-      input {
-        font-size: 2em;
-        background-color: #f8d800;
-        border: 1px solid black;
-        border-radius: 1em;
-        padding: 0.5em 2.3em;
+		&:last-child {
+			padding: 0;
+			font-size: 1.5em;
+			text-align: center;
 
-        &:hover {
-          cursor: pointer;
-        }
-      }
+			p {
+				span {
+					text-decoration: underline;
+					color: #0355d6;
 
-
-    }
-
-    &:last-child {
-      padding: 0;
-      font-size: 1.5em;
-      text-align: center;
-
-      p {
-        span {
-          text-decoration: underline;
-          color: #0355D6;
-
-          &:hover {
-            cursor: pointer;
-          }
-        }
-      }
-
-    }
-
-  }
-
-
+					&:hover {
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
 }
 
 .sign-logo {
+	img {
+		width: 100%;
 
-  img {
-    width: 100%;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-}
-
-
-@media only screen and (max-height: 850px) {
-  body {
-    .login-container {
-      margin-top: 1em;
-    }
-  }
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
 
 @media only screen and (max-height: 850px) {
-  body {
-    .login-container {
-      margin-top: 10%;
-      font-size: 0.5em;
-    }
-  }
+	body {
+		.login-container {
+			margin-top: 1em;
+		}
+	}
 }
 
+@media only screen and (max-height: 850px) {
+	body {
+		.login-container {
+			margin-top: 10%;
+			font-size: 0.5em;
+		}
+	}
+}
 
 @media only screen and (max-height: 700px) {
-  body {
-    .login-container {
-      margin-top: 5%;
-      font-size: 0.5em;
-    }
-  }
+	body {
+		.login-container {
+			margin-top: 5%;
+			font-size: 0.5em;
+		}
+	}
 }
 
 @media only screen and (max-height: 520px) {
-  body {
-    .login-container {
-      margin-top: 0;
-      font-size: 0.5em;
-    }
-  }
+	body {
+		.login-container {
+			margin-top: 0;
+			font-size: 0.5em;
+		}
+	}
 }
 
 @media only screen and (max-height: 460px) {
-  body {
-    .login-container {
-      margin-top: 0;
-      font-size: 0.25em;
-    }
-  }
+	body {
+		.login-container {
+			margin-top: 0;
+			font-size: 0.25em;
+		}
+	}
 }

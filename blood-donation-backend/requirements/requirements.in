@@ -1,0 +1,13 @@
+setuptools
+django
+psycopg2-binary
+psycopg2
+django-extensions
+django-graphql-jwt
+bs4
+selenium
+PyJWT
+django-redis
+requests
+django-cors-headers
+pip-tools

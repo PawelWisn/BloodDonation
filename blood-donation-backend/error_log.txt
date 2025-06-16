@@ -1,0 +1,159 @@
+2025-06-16 13:03:52.547934 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 13:04:09.833046 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 13:04:18.359726 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 13:04:18.411804 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 13:04:26.778191 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 13:04:41.324699 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 13:04:58.242004 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 13:05:20.083929 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 13:05:57.940353 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 13:06:10.693993 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 13:13:25.036207 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 13:13:42.346791 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 13:13:50.777208 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 13:13:50.829107 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 13:13:59.191140 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 13:14:13.655225 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 13:14:30.415927 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 13:14:52.281019 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 13:15:30.970068 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 13:15:43.790648 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 13:27:14.086869 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 13:27:31.469180 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 13:27:53.815816 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 13:27:53.867068 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 13:28:04.178332 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 13:28:21.647827 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 13:28:42.317705 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 13:29:08.926531 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 13:33:30.883415 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 13:33:48.236104 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 13:33:56.684857 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 13:33:56.736647 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 13:34:05.128550 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 13:34:19.843160 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 13:34:36.564758 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 13:34:58.548435 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 13:35:36.280354 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 13:35:48.995420 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 13:41:08.121312 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 13:41:25.428969 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 13:41:34.506946 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 13:41:34.558220 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 13:41:42.900154 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 13:41:57.195448 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 13:42:13.945044 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 13:42:35.928456 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 13:43:13.692087 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 13:43:26.444125 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 13:46:45.538370 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 13:47:02.860638 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 13:47:11.251630 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 13:47:11.303302 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 13:47:19.658266 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 13:47:48.189476 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 13:48:08.779713 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 13:48:35.431843 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 13:49:26.254176 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 13:49:41.987196 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 13:56:23.104263 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 13:56:40.433807 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 13:56:48.831935 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 13:56:48.883363 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 13:56:57.232564 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 13:57:11.751659 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 14:20:41.225406 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 14:20:59.899991 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 14:21:08.305750 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 14:21:08.357617 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 14:21:16.703064 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 14:21:46.244519 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 14:22:06.822873 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 14:22:33.521083 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 14:23:19.008332 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 14:23:34.797080 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 14:32:33.952771 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 14:32:51.189356 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 14:32:59.630112 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 14:32:59.681233 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 14:33:08.115673 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 14:33:22.641652 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 14:33:39.363281 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 14:34:15.178108 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 14:35:00.755534 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 14:35:16.612141 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 14:43:45.707359 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 14:44:03.056229 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 14:44:11.471856 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 14:44:11.523278 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 14:44:19.882719 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 14:44:34.473679 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 14:44:51.152502 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 14:45:13.134159 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 14:45:50.399747 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 14:46:03.817748 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 14:59:35.975334 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 14:59:52.737866 webScrapBydgoszcz raised HTTPConnectionPool(host='www.rckik-bydgoszcz.com.pl', port=80): Max retries exceeded with url: / (Caused by NameResolutionError("<urllib3.connection.HTTPConnection object at 0x7e6a6f832990>: Failed to resolve 'www.rckik-bydgoszcz.com.pl' ([Errno -3] Temporary failure in name resolution)"))
+2025-06-16 15:00:01.143189 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 15:00:01.195028 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 15:00:09.768360 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 15:00:24.344790 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 15:00:41.047150 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 15:01:02.905443 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 15:01:40.298820 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 15:01:53.792228 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 15:11:24.631407 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 15:11:42.253881 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 15:11:50.647811 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 15:11:50.699053 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 15:11:59.059703 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 15:12:13.768938 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 15:12:30.485456 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 15:12:52.432977 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 15:13:29.924274 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 15:13:42.688558 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 15:19:03.476061 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 15:19:20.776776 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 15:19:29.192575 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 15:19:29.244316 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 15:19:37.630137 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 15:20:04.128510 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 15:20:24.715824 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 15:20:51.481122 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 15:21:36.371943 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 15:21:52.285628 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 15:32:34.326520 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 15:32:51.607049 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 15:33:00.067936 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 15:33:00.119767 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 15:33:08.474530 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 15:33:22.837981 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 15:33:39.546027 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 15:34:01.552349 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 15:34:38.836402 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 15:34:52.188896 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'
+2025-06-16 15:40:12.453886 webScrapKrakow raised Wrong amount of webscrapped data
+2025-06-16 15:40:29.735545 webScrapBydgoszcz raised Wrong amount of webscrapped data
+2025-06-16 15:40:38.184185 webScrapGdansk raised Wrong amount of webscrapped data
+2025-06-16 15:40:38.235551 webScrapKatowice raised Message: 'chromedriver' executable needs to be in PATH. Please see https://sites.google.com/a/chromium.org/chromedriver/home
+
+2025-06-16 15:40:46.830489 webScrapKalisz raised Wrong amount of webscrapped data
+2025-06-16 15:41:03.509885 webScrapLodz raised Wrong amount of webscrapped data
+2025-06-16 15:41:20.363759 webScrapOlsztyn raised Wrong amount of webscrapped data
+2025-06-16 15:41:42.417875 webScrapRadom raised Wrong amount of webscrapped data
+2025-06-16 15:42:20.410534 webScrapWarszawa raised Wrong amount of webscrapped data
+2025-06-16 15:42:33.194181 webScrapZielonaGora raised 'NoneType' object has no attribute 'findAll'

@@ -1,53 +1,61 @@
-from datetime import date, datetime, timedelta
-from Main.models import *
-from django.utils import timezone
 import smtplib
+import socket
+from datetime import date, datetime, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import socket
 from time import sleep
+
 from django.conf import settings
+from django.utils import timezone
+from Main.models import *
 
 
 def run():
     users = [user for user in UserModel.objects.all() if user.want_reminder]
     today = timezone.now()
     itemsAbleToDonateDict = getItemsAbleToDonate()
-    sendEmails(users, today, itemsAbleToDonateDict)
+    try:
+        sendEmails(users, today, itemsAbleToDonateDict)
+    except Exception:
+        print("Error while sending emails", flush=True)
 
 
 def getItemsAbleToDonate():
-    BloodWasPrev = dict(
-        [(8, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes")),
-         (4, ("Plasma", "Leukocytes"))])
+    BloodWasPrev = dict([(8, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes")), (4, ("Plasma", "Leukocytes"))])
     PlasmaWasPrev = dict(
-        [(4, ("Platelets", "Blood", "Plasma", "Erythrocytes", "Leukocytes")),
-         (2, ("Blood", "Plasma",))])
-    PlateletsWasPrev = dict([
-        (4, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes"))])
-    ErythrocytesWasPrev = dict(
-        [(8, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes")),
-         (4, ("Plasma", "Platelets", "Leukocytes"))])
-    LeukocytesWasPrev = dict(
-        [(4, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes"))])
+        [
+            (4, ("Platelets", "Blood", "Plasma", "Erythrocytes", "Leukocytes")),
+            (
+                2,
+                (
+                    "Blood",
+                    "Plasma",
+                ),
+            ),
+        ]
+    )
+    PlateletsWasPrev = dict([(4, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes"))])
+    ErythrocytesWasPrev = dict([(8, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes")), (4, ("Plasma", "Platelets", "Leukocytes"))])
+    LeukocytesWasPrev = dict([(4, ("Blood", "Plasma", "Platelets", "Erythrocytes", "Leukocytes"))])
 
-    return {DonationModel.DONATIONTYPE.BLOOD: BloodWasPrev,
-            DonationModel.DONATIONTYPE.PLASMA: PlasmaWasPrev,
-            DonationModel.DONATIONTYPE.PLATELETS: PlateletsWasPrev,
-            DonationModel.DONATIONTYPE.ERYTHROCYTES: ErythrocytesWasPrev,
-            DonationModel.DONATIONTYPE.LEUKOCYTES: LeukocytesWasPrev}
+    return {
+        DonationModel.DONATIONTYPE.BLOOD: BloodWasPrev,
+        DonationModel.DONATIONTYPE.PLASMA: PlasmaWasPrev,
+        DonationModel.DONATIONTYPE.PLATELETS: PlateletsWasPrev,
+        DonationModel.DONATIONTYPE.ERYTHROCYTES: ErythrocytesWasPrev,
+        DonationModel.DONATIONTYPE.LEUKOCYTES: LeukocytesWasPrev,
+    }
 
 
 def adjustToLawRules(whatCanBeDonated, user, today):
-    usersDonations = DonationModel.objects.filter(donor=user).order_by('-time')
+    usersDonations = DonationModel.objects.filter(donor=user).order_by("-time")
     bloodDonationsCounter = 0
     for usersDonation in usersDonations:
         if usersDonation.time.year == today.year and usersDonation.donationType == DonationModel.DONATIONTYPE.BLOOD:
             bloodDonationsCounter += 1
-    if (user.is_male and bloodDonationsCounter >= 6) or (
-            not user.is_male and bloodDonationsCounter >= 4):
+    if (user.is_male and bloodDonationsCounter >= 6) or (not user.is_male and bloodDonationsCounter >= 4):
         bloodIndex = whatCanBeDonated.index("Blood")
-        whatCanBeDonated = whatCanBeDonated[:bloodIndex] + whatCanBeDonated[bloodIndex + 1:]
+        whatCanBeDonated = whatCanBeDonated[:bloodIndex] + whatCanBeDonated[bloodIndex + 1 :]
     return whatCanBeDonated
 
 
@@ -75,7 +83,7 @@ def sendEmails(users, today, itemsAbleToDonateDict):
                 else:
                     if "Blood" in whatCanBeDonated:
                         whatCanBeDonated = adjustToLawRules(whatCanBeDonated, user, today)
-                    appendix = '\n\t-' + '\n\t-'.join(whatCanBeDonated) + '\n\n'
+                    appendix = "\n\t-" + "\n\t-".join(whatCanBeDonated) + "\n\n"
                     body = (
                         "Dear User,\n\n"
                         "It's been enough time since your last donation to regenerate the missing components in your blood.\n"
@@ -88,10 +96,10 @@ def sendEmails(users, today, itemsAbleToDonateDict):
                         "BloodDonation team"
                     )
                     msg = MIMEMultipart()
-                    msg['Subject'] = "BloodDonation - You can donate again"
-                    msg['From'] = sender
-                    msg['To'] = user.email
-                    msg.attach(MIMEText(body, 'plain'))
+                    msg["Subject"] = "BloodDonation - You can donate again"
+                    msg["From"] = sender
+                    msg["To"] = user.email
+                    msg.attach(MIMEText(body, "plain"))
                     text = msg.as_string()
                     server.sendmail(sender, user.email, text)
                     sleep(15)

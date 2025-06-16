@@ -1,26 +1,22 @@
-
 .knowledge-container {
-  margin: 1em 1% 2em 1%;
-  padding: 4em 4em 2em 4em;
-  background-color: lightgray;
-  border-radius: 50px;
-
+	margin: 1em 1% 2em 1%;
+	padding: 4em 4em 2em 4em;
+	background-color: lightgray;
+	border-radius: 50px;
 }
 
 .knowledge-item {
-  button {
-    font-size: 2em;
-    padding: 1em;
-    width: 100%;
-    height: auto;
-    margin-bottom: 0.75em;
-
-  }
+	button {
+		font-size: 2em;
+		padding: 1em;
+		width: 100%;
+		height: auto;
+		margin-bottom: 0.75em;
+	}
 }
 
-
 @media only screen and (max-width: 1000px) {
-  .knowledge-container {
-    margin: 2em 2% 2em 2%;
-  }
+	.knowledge-container {
+		margin: 2em 2% 2em 2%;
+	}
 }

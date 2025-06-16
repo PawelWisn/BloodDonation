@@ -1,4 +1,4 @@
-$bg-color: #CF2929;
+$bg-color: #cf2929;
 $padVer: 20px;
 $padHor: 30px;
 $logoHeight: 50px;
@@ -7,104 +7,100 @@ $break1: 400px;
 $break2: 769px;
 
 @media only screen and (max-width: $break1) {
-  body {
-    .flex-container-upper-bar {
-      flex-direction: column;
+	body {
+		.flex-container-upper-bar {
+			flex-direction: column;
 
-      img {
-        margin: auto;
-      }
+			img {
+				margin: auto;
+			}
 
-      div {
-        margin: auto;
+			div {
+				margin: auto;
 
-        button {
-          width: 5em;
-          height: $logoHeight*0.75;
+				button {
+					width: 5em;
+					height: $logoHeight * 0.75;
 
-          &:first-child {
-            margin-right: 0;
-            margin-bottom: 0.5em;
-          }
-        }
-      }
-
-    }
-  }
+					&:first-child {
+						margin-right: 0;
+						margin-bottom: 0.5em;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media only screen and (min-width: $break1) and (max-width: $break2) {
-  body {
-    .flex-container-upper-bar {
-      flex-direction: column;
+	body {
+		.flex-container-upper-bar {
+			flex-direction: column;
 
-      img {
-        margin: auto;
-      }
+			img {
+				margin: auto;
+			}
 
-      div {
-        margin: auto;
+			div {
+				margin: auto;
 
-        button {
-          width: 8em;
+				button {
+					width: 8em;
 
-          &:first-child {
-            margin-right: 0;
-            margin-bottom: 0.5em;
-          }
-        }
-      }
-
-    }
-  }
+					&:first-child {
+						margin-right: 0;
+						margin-bottom: 0.5em;
+					}
+				}
+			}
+		}
+	}
 }
 
-
 .flex-container-upper-bar {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  min-height: auto;
-  overflow: auto;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	min-height: auto;
+	overflow: auto;
 }
 
 .upper-bar {
-  background-color: $bg-color;
-  padding: $padVer $padHor $padVer $padHor;
-  border-bottom: 2px solid black;
-  height: auto;
+	background-color: $bg-color;
+	padding: $padVer $padHor $padVer $padHor;
+	border-bottom: 2px solid black;
+	height: auto;
 
-  img {
-    width: 100%;
-    height: 100%;
-    max-height: $logoHeight;
-    max-width: $logoWidth;
-    align-self: center;
-    margin-right: auto;
+	img {
+		width: 100%;
+		height: 100%;
+		max-height: $logoHeight;
+		max-width: $logoWidth;
+		align-self: center;
+		margin-right: auto;
 
-    &:hover {
-      cursor: pointer;
-    }
-  }
+		&:hover {
+			cursor: pointer;
+		}
+	}
 
-  div {
-    margin-left: auto;
+	div {
+		margin-left: auto;
 
-    button {
-      font-size: 1em;
-      border-radius: 15px;
-      align-self: center;
-      height: $logoHeight;
-      width: 10em;
+		button {
+			font-size: 1em;
+			border-radius: 15px;
+			align-self: center;
+			height: $logoHeight;
+			width: 10em;
 
-      &:hover {
-        cursor: pointer;
-      }
+			&:hover {
+				cursor: pointer;
+			}
 
-      &:first-child {
-        margin-right: $padHor+$padVer;
-      }
-    }
-  }
+			&:first-child {
+				margin-right: $padHor + $padVer;
+			}
+		}
+	}
 }
-

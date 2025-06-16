@@ -1,43 +1,39 @@
 .quiz-container {
-  margin: 2em 18% 2em 18%;
-  font-size: 1em;
-  background-color: #F2E1C1;
-  border-radius: 5em;
-  padding: 1em;
-  border: 1px solid black;
+	margin: 2em 18% 2em 18%;
+	font-size: 1em;
+	background-color: #f2e1c1;
+	border-radius: 5em;
+	padding: 1em;
+	border: 1px solid black;
 
-  .quiz-question {
-    margin: auto;
-    text-align: center;
+	.quiz-question {
+		margin: auto;
+		text-align: center;
 
-    .radio-flex-container {
-      margin-left: 25%;
-      margin-right: 25%;
-    }
+		.radio-flex-container {
+			margin-left: 25%;
+			margin-right: 25%;
+		}
 
-    .radio-flex-item {
-      padding: 1.5em 3em 1.5em 3em;
-    }
-
-
-
-  }
-
+		.radio-flex-item {
+			padding: 1.5em 3em 1.5em 3em;
+		}
+	}
 }
 #quiz-button {
-  text-align: center;
-  margin-top: 2em;
-  margin-bottom: 1.5em;
+	text-align: center;
+	margin-top: 2em;
+	margin-bottom: 1.5em;
 
-  button {
-    font-size: 2em;
-    background-color: #f8d800;
-    border: 1px solid black;
-    border-radius: 1em;
-    padding: 0.5em 2.3em;
+	button {
+		font-size: 2em;
+		background-color: #f8d800;
+		border: 1px solid black;
+		border-radius: 1em;
+		padding: 0.5em 2.3em;
 
-    &:hover {
-      cursor: pointer;
-    }
-  }
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }

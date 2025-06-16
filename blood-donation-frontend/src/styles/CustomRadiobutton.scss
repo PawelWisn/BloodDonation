@@ -1,43 +1,40 @@
 .color-primary {
-  background-color: #BDFF9C;
+	background-color: #bdff9c;
 
-  &:hover {
-    background-color: #BDFF9C !important;
-  }
+	&:hover {
+		background-color: #bdff9c !important;
+	}
 }
 
 .color-secondary {
-  background-color: #fcfcfc;
+	background-color: #fcfcfc;
 }
 
 .radio-flex-item {
-  color: black;
-  border: 1px solid black;
-  height: 1.5em;
-  font-size: 1em;
-  text-align: center;
-  padding: 1.3em 2em 1.3em 2em;
+	color: black;
+	border: 1px solid black;
+	height: 1.5em;
+	font-size: 1em;
+	text-align: center;
+	padding: 1.3em 2em 1.3em 2em;
 
+	&:hover {
+		cursor: pointer;
+		background-color: #cccccc;
+	}
 
-  &:hover {
-    cursor: pointer;
-    background-color: #cccccc;
-  }
+	input[type="radio"] {
+		display: none;
+	}
 
-  input[type='radio'] {
-    display: none;
-  }
+	label {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-  label {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-  }
+		&:hover {
+			cursor: pointer;
+		}
+	}
 }
-

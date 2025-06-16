@@ -1,34 +1,35 @@
-import graphene
-from graphene_django import DjangoObjectType
-from Main.models import *
-from django.utils import timezone
 from datetime import datetime
+
+import graphene
 import graphql_jwt
+from django.utils import timezone
+from graphene_django import DjangoObjectType
 from graphql_jwt.decorators import login_required
+from Main.models import *
 
 
 class UserType(DjangoObjectType):
     class Meta:
         model = UserModel
-        fields = ("email", "date_joined", 'is_active', 'is_male', 'want_reminder')
+        fields = ("email", "date_joined", "is_active", "is_male", "want_reminder")
 
 
 class BloodReservesType(DjangoObjectType):
     class Meta:
         model = BloodReservesModel
-        fields = ('id', "region", 'volume', 'group')
+        fields = ("id", "region", "volume", "group")
 
 
 class LocalizationType(DjangoObjectType):
     class Meta:
         model = LocalizationModel
-        fields = ("city", 'address', 'place_name', 'is_mobile_point', 'latitude', 'longitude')
+        fields = ("city", "address", "place_name", "is_mobile_point", "latitude", "longitude")
 
 
 class DonationType(DjangoObjectType):
     class Meta:
         model = DonationModel
-        fields = ("donation_id", "donor", 'place', 'donation_type', 'amount', 'time')
+        fields = ("donation_id", "donor", "place", "donation_type", "amount", "time")
 
 
 class Query(graphene.ObjectType):
@@ -46,10 +47,9 @@ class Query(graphene.ObjectType):
             out = out.filter(region=region)
         if group:
             out = out.filter(group=group)
-        return out.order_by("region", 'group')
+        return out.order_by("region", "group")
 
-    all_localizations = graphene.List(LocalizationType, recent=graphene.Int(), skip=graphene.Int(),
-                                      mobile=graphene.Boolean(), city=graphene.String())
+    all_localizations = graphene.List(LocalizationType, recent=graphene.Int(), skip=graphene.Int(), mobile=graphene.Boolean(), city=graphene.String())
 
     def resolve_all_localizations(self, info, recent=2000, skip=0, city=None, mobile=None):
         out = LocalizationModel.objects.all()
@@ -68,7 +68,7 @@ class Query(graphene.ObjectType):
             user = UserModel.objects.get(email=user.email)
         except UserModel.DoesNotExist:
             return None
-        return DonationModel.objects.filter(donor=user).order_by('-time', '-donation_id')[skip:][:recent]
+        return DonationModel.objects.filter(donor=user).order_by("-time", "-donation_id")[skip:][:recent]
 
 
 class CreateUserMutation(graphene.Mutation):
@@ -103,8 +103,7 @@ class CreateLocalizationMutation(graphene.Mutation):
         try:
             LocalizationModel.objects.get(place_name=placeName)
         except LocalizationModel.DoesNotExist:
-            localization = LocalizationModel(city=city, address=address, place_name=placeName,
-                                             is_mobile_point=isMobilePoint)
+            localization = LocalizationModel(city=city, address=address, place_name=placeName, is_mobile_point=isMobilePoint)
             localization.save()
             return CreateLocalizationMutation(localization=localization)
         else:
@@ -125,10 +124,9 @@ class ApplyDonationMutation(graphene.Mutation):
     donation = graphene.Field(DonationType)
 
     @login_required
-    def mutate(self, info, donatedAmount, donatedType, city, placeName, time=None, address='',
-               isMobilePoint=False, wantReminder=True):
+    def mutate(self, info, donatedAmount, donatedType, city, placeName, time=None, address="", isMobilePoint=False, wantReminder=True):
 
-        if donatedType not in ('BLD','PLT','ERT','PLM','LEU'):
+        if donatedType not in ("BLD", "PLT", "ERT", "PLM", "LEU"):
             return None
         user = info.context.user
         user.want_reminder = wantReminder
@@ -136,12 +134,10 @@ class ApplyDonationMutation(graphene.Mutation):
         try:
             localization = LocalizationModel.objects.get(place_name=placeName)
         except LocalizationModel.DoesNotExist:
-            localization = LocalizationModel(city=city, place_name=placeName, address=address,
-                                             is_mobile_point=isMobilePoint)
+            localization = LocalizationModel(city=city, place_name=placeName, address=address, is_mobile_point=isMobilePoint)
             localization.save()
         time = datetime.fromisoformat(time) if time else timezone.now()
-        donation = DonationModel(donor=user, place=localization, donation_type=donatedType, amount=int(donatedAmount),
-                                 time=time)
+        donation = DonationModel(donor=user, place=localization, donation_type=donatedType, amount=int(donatedAmount), time=time)
         donation.save()
         return ApplyDonationMutation(donation=donation)
 
